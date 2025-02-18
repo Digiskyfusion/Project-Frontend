@@ -1,4 +1,8 @@
 import Card from "./Components/Card"
+import Category from "./Components/Category"
+import Employ from "./Components/Employ"
+import FirstSection from "./Components/FirstSection"
+import Footer from "./Components/Footer"
 import MeetFreelancer from "./Components/MeetFreelancer"
 import Navbar from "./Components/Navbar"
 import ReviewSection from "./Components/ReviewSection"
@@ -13,11 +17,15 @@ function App() {
     <>
     
     <Navbar />
+    <FirstSection />
     <Secondsection />
     <Videosection />
     <MeetFreelancer />
     <Card />
     <ReviewSection />
+    <Footer />
+    <Employ />
+    <Category />
     </>
   )
 }
