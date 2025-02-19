@@ -1,8 +1,10 @@
 import Card from "./Components/Card"
-import Category from "./Components/Category"
+import CarouselSection from "./Components/CarouselSection"
 import Employ from "./Components/Employ"
 import FirstSection from "./Components/FirstSection"
 import Footer from "./Components/Footer"
+import Jobsection from "./Components/Jobsection"
+import Loginpage from "./Components/Loginpage"
 import MeetFreelancer from "./Components/MeetFreelancer"
 import Navbar from "./Components/Navbar"
 import ReviewSection from "./Components/ReviewSection"
@@ -17,7 +19,7 @@ function App() {
     <>
     
     <Navbar />
-    <FirstSection />
+    {/* <FirstSection />
     <Secondsection />
     <Videosection />
     <MeetFreelancer />
@@ -25,7 +27,9 @@ function App() {
     <ReviewSection />
     <Footer />
     <Employ />
-    <Category />
+    <CarouselSection /> */}
+    {/* <Jobsection /> */}
+    <Loginpage />
     </>
   )
 }

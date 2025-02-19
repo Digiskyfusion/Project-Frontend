@@ -24,7 +24,7 @@ function Category() {
         aria-label="Previous Slide"
         onClick={() => swiperInstance?.slidePrev()}
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={24} color="white" />
       </button>
 
       {/* Swiper Carousel */}
@@ -64,7 +64,7 @@ function Category() {
         aria-label="Next Slide"
         onClick={() => swiperInstance?.slideNext()}
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={24} color="white" />
       </button>
     </div>
   );
