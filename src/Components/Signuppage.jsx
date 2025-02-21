@@ -44,7 +44,15 @@ function Signuppage() {
 
       if (response.ok) {
         alert("Signup successful!");
-        setFormData("")
+        setFormData({
+          name:"",
+          email:"",
+          password:"",
+          roleType:"",
+          country:"",
+          mobileNumber:"",
+          credits:"",
+        })
       } else {
         alert(data.message || "Signup failed");
       }

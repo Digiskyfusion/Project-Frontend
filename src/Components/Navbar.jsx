@@ -33,6 +33,7 @@ const Navbar = () => {
         {/* {/ Button /} */}
         <div className="hidden md:block">
           <button className="py-2 px-8 border-2 rounded-full">Login</button>
+          {/* <button className="py-2 px-8 border-2 rounded-full">Register</button> */}
         </div>
 
         {/* {/ Mobile Menu Button /} */}
