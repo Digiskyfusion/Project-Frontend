@@ -16,6 +16,12 @@ import SecondSection from "./Components/Secondsection"
 import Signuppage from "./Components/Signuppage"
 import Work from "./Components/Work"
 import Footer from "./Components/Footer"
+import Thirdsection from "./Components/Thirdsection"
+import Thirdsectionfivth from "./Components/Thirdsectionfivth"
+import Thirdsectionseven from "./Components/Thirdsectionseven"
+import Fourthsectioneight from "./Components/Fourthsectioneight"
+import Fourthsectionfour from "./Components/Fourthsectionfour"
+
 function App() {
   
 
@@ -31,10 +37,19 @@ function App() {
    <FullJobCard />
    <MeetFreelancer />
    <ReviewSection />
-   <SecondReview />
+   <SecondReview /> 
+
+    <Thirdsection /> 
+   <Thirdsectionfivth />
+   <Thirdsectionseven /> 
+    <Fourthsectioneight /> 
+
+   <Fourthsectionfour />
+
+  
    
    <Footer />
-   
+                  
     </>
   )
 }
