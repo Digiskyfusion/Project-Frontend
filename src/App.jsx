@@ -21,13 +21,24 @@ import Thirdsectionfivth from "./Components/Thirdsectionfivth"
 import Thirdsectionseven from "./Components/Thirdsectionseven"
 import Fourthsectioneight from "./Components/Fourthsectioneight"
 import Fourthsectionfour from "./Components/Fourthsectionfour"
-
+import Calltoaction from "./Components/Calltoaction"
+import Contectus from "./Components/Contectus"
+import Mapsection from "./Components/mapsection"
+import ContactForm from "./Components/ContactForm"
+import Mapcomponent from "./Components/Mapcomponent"
+import Cards from "./Components/ProfileCard"
+import ProfileCard from "./Components/ProfileCard"
+import Education from "./Components/Education"
+import Livechat from "./Components/Livechat"
+import Livechatcomponent from "./Components/Livechatcomponent"
+import LiveChatPage from "./Pages/LiveChatPage"
+import Card from "./Components/Card"
 function App() {
   
 
   return (
     <>
-    <Navbar />
+     <Navbar />
     <FirstSection />
     <SecondSection />
     <Signuppage />
@@ -44,10 +55,22 @@ function App() {
    <Thirdsectionseven /> 
     <Fourthsectioneight /> 
 
-   <Fourthsectionfour />
+   <Fourthsectionfour /> 
+   <Calltoaction />
+   <Contectus />
 
+   <Mapsection />
+   <ContactForm />
+   <Mapcomponent />
   
    
+
+   <ProfileCard />
+   <Education />
+   <Card />
+    <Livechatcomponent />
+   <Livechat />
+   <LiveChatPage />
    <Footer />
                   
     </>
