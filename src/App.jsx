@@ -1,4 +1,5 @@
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"
 import SecondReviews from "./Components/SecondReviews"
 import Cart from "./Components/Card"
@@ -23,7 +24,7 @@ import Fourthsectioneight from "./Components/Fourthsectioneight"
 import Fourthsectionfour from "./Components/Fourthsectionfour"
 import Calltoaction from "./Components/Calltoaction"
 import Contectus from "./Components/Contectus"
-import Mapsection from "./Components/mapsection"
+import Mapsection from "./Components/Mapsection"
 import ContactForm from "./Components/ContactForm"
 import Mapcomponent from "./Components/Mapcomponent"
 import Cards from "./Components/ProfileCard"
@@ -33,12 +34,33 @@ import Livechat from "./Components/Livechat"
 import Livechatcomponent from "./Components/Livechatcomponent"
 import LiveChatPage from "./Pages/LiveChatPage"
 import Card from "./Components/Card"
+import Subcategory from "./Components/Subcategory"
+import HomePage from "./Pages/HomePage"
+import AboutUsPage from "./Pages/AboutUsPage"
+import ContactUsPages from "./Pages/ContactUsPage"
+import ScrollToTop from "./Components/ScrollToTop";
 function App() {
   
 
   return (
     <>
-     <Navbar />
+
+<BrowserRouter>
+<ScrollToTop /> {/* Ensure this is inside BrowserRouter */}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/livechat" element={<LiveChatPage />} />
+        <Route path="/contactus" element={<ContactUsPages />} />
+      </Routes>
+      
+      <Footer />
+    </BrowserRouter>
+    {/* <HomePage /> */}
+    {/* <AboutUsPage /> */}
+    
+     {/* <Navbar />
     <FirstSection />
     <SecondSection />
     <Signuppage />
@@ -63,15 +85,14 @@ function App() {
    <ContactForm />
    <Mapcomponent />
   
-   
-
    <ProfileCard />
    <Education />
    <Card />
     <Livechatcomponent />
    <Livechat />
-   <LiveChatPage />
-   <Footer />
+   <LiveChatPage /> */}
+
+   <Subcategory />
                   
     </>
   )

@@ -6,7 +6,7 @@ import location from './../assets/Images/location.png';
 
 function Mapcomponent() {
   return (
-    <div className='flex flex-col items-center p-10 bg-gray-100 rounded-xl shadow-xl'>
+    <div className='flex flex-col items-center p-10  rounded-l-xl shadow-xl'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 w-full max-w-4xl'>
         <div className='flex flex-col items-center bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-2xl transition-shadow duration-300'>
           <img src={mailimage} alt='Email' className='w-14 h-14 mb-4' />

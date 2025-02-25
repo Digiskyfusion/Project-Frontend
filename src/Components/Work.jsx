@@ -26,13 +26,13 @@ function Work() {
       <h1 className="text-3xl font-bold mt-3 md:px-5 text-gray-800">How It Works</h1>
       <div className="mb-6 flex md:mt-2 border-b-4 border-gray-300">
         <button 
-          className={`px-3 py-2 mx-2 text-2xl text-black relative ${view === 'client' ? 'border-b-4 border-green-500' : ''}`} 
+          className={`px-3 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'client' ? 'border-b-4 border-green-500' : ''}`} 
           onClick={() => setView('client')}
         >
           Client
         </button>
         <button 
-          className={`px-6 py-2 mx-2 text-2xl text-black relative ${view === 'freelancer' ? 'border-b-4 border-green-500' : ''}`} 
+          className={`px-6 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'freelancer' ? 'border-b-4 border-green-500' : ''}`} 
           onClick={() => setView('freelancer')}
         >
           Freelancer  

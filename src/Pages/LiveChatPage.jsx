@@ -4,7 +4,7 @@ import Livechatcomponent from '../Components/Livechatcomponent';
 
 function LiveChatPage() {
   return (
-    <div className="flex h-screen px-6   ">
+    <div className="flex px-6   ">
       
       {/* Left Sidebar (Contacts) */}
       <div className="w-1/4   shadow-md hidden md:flex flex-col">

@@ -15,7 +15,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white shadow-2xl rounded-2xl border border-gray-200">
+    <div className=" p-8   border-gray-200 ">
       <h2 className="text-3xl font-extrabold text-center text-[#004930] mb-6">Contact Us</h2>
       {submitted ? (
         <p className="text-green-600 text-center text-lg font-semibold">Thank you for your message!</p>

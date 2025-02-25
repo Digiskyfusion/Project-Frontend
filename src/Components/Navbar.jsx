@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,20 +14,22 @@ const Navbar = () => {
         {/* {/ Desktop Menu /} */}
         <ul className="hidden md:flex space-x-6">
           <li className="flex justify-center items-center">
-            <select className="border-none outline-0 cursor-pointer">
+          <Link to="/" >Home</Link>
+            {/* <select className="border-none outline-0 cursor-pointer">
               <option>Find Freelancer</option>
-            </select>
+            </select> */}
           </li>
           <li className="flex justify-center items-center ">
-            <select className="border-none outline-0 cursor-pointer">
+          <Link to="/aboutus" >About US</Link>
+            {/* <select className="border-none outline-0 cursor-pointer">
               <option>Find Work</option>
-            </select>
+            </select> */}
           </li>
           <li className="flex justify-center items-center">
-            <a href="" >About Us</a>
+            <Link to="/livechat" >Live Chat</Link>
           </li>
           <li className="flex justify-center items-center">
-          <a href="" >Contact Us</a>
+          <Link to="/contactus" >Contact Us</Link>
           </li>
         </ul>
 
