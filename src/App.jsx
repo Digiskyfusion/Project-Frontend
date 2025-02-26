@@ -39,6 +39,13 @@ import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
 import ScrollToTop from "./Components/ScrollToTop";
+import Services from "./Pages/Services";
+import DashboardPage from "./Pages/DashboardPage";
+import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
+import FreelancerDetails from "./Components/FreelancerDetails";
+import FreelancreClientPage from "./Pages/FreelancreClientPage";
+import ClientFormPage from "./Pages/ClientFormPage";
+import ChooseUSPage from "./Pages/ChooseUSPage";
 function App() {
   
 
@@ -51,10 +58,18 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat" element={<LiveChatPage />} />
+        <Route path="/service" element={ <Services />} />
+        <Route path="/dashboard" element={ <DashboardPage />} />
+        <Route path="/FreelancerNoUpadte" element={   <FreelancerProfilePage />} />
+        <Route path="/FreelancreClientPage" element={    <FreelancreClientPage />} />
+        <Route path="/FreelancerUpadte" element={    <FreelancerDetails />} />
+        <Route path="/ClientForm" element={ <ClientFormPage />} />
         <Route path="/contactus" element={<ContactUsPages />} />
+        <Route path="/registration" element={<Signuppage />} />
+        <Route path="/Subcatagory" element={<Subcategory  />} />
       </Routes>
-      
       <Footer />
     </BrowserRouter>
     {/* <HomePage /> */}
@@ -92,7 +107,7 @@ function App() {
    <Livechat />
    <LiveChatPage /> */}
 
-   <Subcategory />
+   {/* <Subcategory /> */}
                   
     </>
   )

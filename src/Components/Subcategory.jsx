@@ -2,21 +2,21 @@ import React from 'react';
 import image3 from './../assets/Images/Ellipse 151.png';
 
 const obj = [
-  { Tv: "Streaming Service Ad", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Gaming Platform Promotion", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Social Media Marketing", images:[ image3,  image3,  image3,  image3]},
-  { Tv: "Online Course Advertisement", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "E-commerce Product Display", images: [ image3,  image3,  image3,  image3]},
-  { Tv: "Health & Fitness Campaign", images:[ image3,  image3,  image3,  image3] },
-  { Tv: "Food & Beverage Commercial", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Fashion Brand Showcase", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Tech Product Launch", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Travel & Tourism Ad", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Automobile Promotion", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Music & Entertainment", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Education & Learning", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Real Estate Showcase", images: [ image3,  image3,  image3,  image3] },
-  { Tv: "Home & Lifestyle Ad", images:[ image3,  image3,  image3,  image3] }
+  { Tv: "TV Chaneel Ad", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Monetization", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Content Marketing", images:[ image3,  image3,  image3,  image3]},
+  { Tv: "Email Marketing", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Pay-per-click (PPC) ", images: [ image3,  image3,  image3,  image3]},
+  { Tv: "Influencer Marketing", images:[ image3,  image3,  image3,  image3] },
+  { Tv: "Affiliate Marketing", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Video Marketing", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Marketing Analytics", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Marketing Automation", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Performance Marketer", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Fackbook Ads", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Linkdin Ads", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Social Media Marketing", images: [ image3,  image3,  image3,  image3] },
+  { Tv: "Search Engine Optimization", images:[ image3,  image3,  image3,  image3] }
 ];
 
 function Subcategory() {

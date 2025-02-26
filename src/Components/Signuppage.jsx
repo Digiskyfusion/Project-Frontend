@@ -2,66 +2,101 @@ import React, { useState } from 'react';
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from 'react-icons/fa';
 import signup from './../assets/Images/signup.png';
 import loginImage from './../assets/Images/loginimage.png';
-
+import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 function Signuppage() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
-  const [ formData, setFormData] = useState({
-    name:"",
-    email:"",
-    password:"",
-    roleType:"",
-    country:"",
-    mobileNumber:"",
-    credits:"",
-  })
 
-  const handleChange= (e)=>
-  {
-    const {  name, value} = e.target
-    setFormData((prevData)=>({
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    roleType: "",
+    country: "",
+    mobileNumber: "",
+    credits: "",
+  });
+
+  const handleChangeLogin = (e) => {
+    const { name, value } = e.target;
+    setLoginForm((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
+  const handleChangeSignup = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  // Handle Form Submission
-  const handleSubmit = async (e) => {
+  // Signup API Call
+  const handleSubmitSignup = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch("http://192.168.29.50:3000/api/auth/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      console.log(response);
-      
-      
+
       const data = await response.json();
 
       if (response.ok) {
-        alert("Signup successful!");
+        toast.success("Signup successful!");
         setFormData({
-          name:"",
-          email:"",
-          password:"",
-          roleType:"",
-          country:"",
-          mobileNumber:"",
-          credits:"",
-        })
+          name: "",
+          email: "",
+          password: "",
+          roleType: "",
+          country: "",
+          mobileNumber: "",
+          credits: "",
+        });
+        localStorage.setItem("token", data.token);
+        setIsLogin(true);
       } else {
         alert(data.message || "Signup failed");
       }
     } catch (error) {
       alert("An error occurred. Please try again.");
-
     }
   };
 
+  // Login API Call
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://192.168.29.50:3000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginForm),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      
+      if (response.ok) {
+        toast.success("Login successful!");
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard"); // Redirect after login
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    }
+  };
 
   return (
     <div>
@@ -101,15 +136,17 @@ function Signuppage() {
 
           {isLogin ? (
             // Login Form
-            <form className='flex flex-col w-full'>
+            <div className='flex flex-col w-full'>
+            <Toaster />
+            <form className='flex flex-col w-full' onSubmit={handleLoginSubmit}>
               <div className='flex flex-col gap-4 mb-4'>
                 <label className='flex-1 relative'>
-                  <input type='email' placeholder='Enter email' className='w-full p-2 border rounded-lg pr-10' />
-                  <FaEnvelope className='absolute right-3 top-3 text-gray-400' />
+                <input type="email" name="email" value={loginForm.email} onChange={handleChangeLogin} placeholder="Enter email" className="w-full p-2 border rounded-lg" required />
+                <FaEnvelope className="absolute right-3 top-3 text-gray-400" />
                 </label>
                 <label className='flex-1 relative'>
-                  <input type='password' placeholder='Enter password' className='w-full p-2 border rounded-lg pr-10' />
-                  <FaLock className='absolute right-3 top-3 text-gray-400' />
+                <input type="password" name="password" value={loginForm.password} onChange={handleChangeLogin} placeholder="Enter password" className="w-full p-2 border rounded-lg" required />
+                <FaLock className="absolute right-3 top-3 text-gray-400" />
                 </label>
               </div>
 
@@ -121,16 +158,19 @@ function Signuppage() {
                 <button className='bg-[#004930] text-white py-2 px-6 md:px-10 rounded-full'>Login</button>
               </div>
             </form>
+            </div>
           ) : (
             // Signup Form
-            <form className='flex flex-col w-full' onSubmit={handleSubmit}>
+            <div className='flex flex-col w-full' >
+            <Toaster />
+            <form className='flex flex-col w-full' onSubmit={handleSubmitSignup}>
               <div className='flex flex-col md:flex-row gap-4 mb-4'>
                 <label className='flex-1 relative'>
-                  <input type='text' placeholder='Username' value={formData.name} name='name' onChange={handleChange} className='w-full p-2 border rounded-lg pr-10' />
+                  <input type='text' placeholder='Username' value={formData.name} name='name' onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                   <FaUser className='absolute right-3 top-3 text-gray-400' />
                 </label>
                 <label className='flex-1 relative'>
-                  <select className='w-full p-2 border rounded-lg pr-10 appearance-none' name='country' value={formData.country} onChange={handleChange}>
+                  <select className='w-full p-2 border rounded-lg pr-10 appearance-none' name='country' value={formData.country} onChange={handleChangeSignup}>
                     <option value='' disabled selected>Select Country</option>
                     <option value='USA'>United States</option>
                     <option value='Canada'>Canada</option>
@@ -149,18 +189,18 @@ function Signuppage() {
 
               <div className='flex flex-col md:flex-row gap-4 mb-4'>
                 <label className='flex-1 relative'>
-                  <input type='email' placeholder='Enter email' name='email' value={formData.email} onChange={handleChange} className='w-full p-2 border rounded-lg pr-10' />
+                  <input type='email' placeholder='Enter email' name='email' value={formData.email} onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                   <FaEnvelope className='absolute right-3 top-3 text-gray-400' />
                 </label>
                 <label className='flex-1 relative'>
-                  <input type='text' placeholder='Enter phone number' name='mobileNumber' value={formData.mobileNumber} onChange={handleChange} className='w-full p-2 border rounded-lg pr-10' />
+                  <input type='text' placeholder='Enter phone number' name='mobileNumber' value={formData.mobileNumber} onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                   <FaPhone className='absolute right-3 top-3 text-gray-400' />
                 </label>
               </div>
 
               <div className='flex flex-col md:flex-row gap-4 mb-4'>
                 <label className='flex-1 relative'>
-                  <select className='w-full p-2 border rounded-lg pr-10 appearance-none' name='roleType' onChange={handleChange} value={formData.roleType}>
+                  <select className='w-full p-2 border rounded-lg pr-10 appearance-none' name='roleType' onChange={handleChangeSignup} value={formData.roleType}>
                     <option value='' disabled>Select Role Type</option>
                     <option value='freelancer'>Freelancer</option>
                     <option value='client'>Client</option>
@@ -168,13 +208,13 @@ function Signuppage() {
                   <FaUsers className='absolute right-3 top-3 text-gray-400' />
                 </label>
                 <label className='flex-1 relative'>
-                  <input type='text' placeholder='Credit' name='credits' value={formData.credits} onChange={handleChange} className='w-full p-2 border rounded-lg pr-10' />
+                  <input type='text' placeholder='Credit' name='credits' value={formData.credits} onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                   <FaWallet className='absolute right-3 top-3 text-gray-400' />
                 </label>
               </div>
 
               <div className='mb-4 relative'>
-                <input type='password' placeholder='Enter password' name='password' value={formData.password} onChange={handleChange} className='w-full p-2 border rounded-lg pr-10' />
+                <input type='password' placeholder='Enter password' name='password' value={formData.password} onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                 <FaLock className='absolute right-3 top-3 text-gray-400' />
               </div>
 
@@ -186,6 +226,7 @@ function Signuppage() {
                 <button className='bg-[#004930] text-white py-2 px-6 md:px-10 rounded-full cursor-pointer'>Sign Up</button>
               </div>
             </form>
+            </div>
           )}
 
           {/* Social Login Buttons */}
