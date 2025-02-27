@@ -78,8 +78,9 @@ function Signuppage() {
     try {
       const response = await fetch("http://192.168.29.50:3000/api/auth/login", {
         method: "POST",
+        
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginForm),
+        body: JSON.stringify(loginForm),  
       });
 
       const data = await response.json();
@@ -87,8 +88,9 @@ function Signuppage() {
       
       if (response.ok) {
         toast.success("Login successful!");
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.user.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        console.log(localStorage.getItem("token"));
         navigate("/dashboard"); // Redirect after login
       } else {
         alert(data.message || "Login failed");

@@ -36,7 +36,7 @@ function FirstSection() {
 
         {/* Center Carousel */}
         <motion.div
-          className="w-full sm:w-1/2 px-5"
+          className="w-full sm:w-1/2 px-5 lg:mb-20"
           initial={{ opacity: 0, y: 50 }} // Start lower on Y-axis
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}

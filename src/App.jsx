@@ -46,6 +46,7 @@ import FreelancerDetails from "./Components/FreelancerDetails";
 import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
+import CardsProfile from "./Components/CardsProfile";
 function App() {
   
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat" element={<LiveChatPage />} />
+        <Route path="/allfreelancer" element={<ProfileCard />} />
         <Route path="/service" element={ <Services />} />
         <Route path="/dashboard" element={ <DashboardPage />} />
         <Route path="/FreelancerNoUpadte" element={   <FreelancerProfilePage />} />
@@ -108,6 +110,9 @@ function App() {
    <LiveChatPage /> */}
 
    {/* <Subcategory /> */}
+
+   <CardsProfile />
+   
                   
     </>
   )

@@ -1,6 +1,6 @@
 import React from "react";
 import first from "./../assets/Images/first.png";
-
+import { Link } from "react-router-dom";
 const profiles = Array.from({ length: 16 }, (_, index) => ({
   id: index + 1,
   name: `User ${index + 1}`,
@@ -19,6 +19,7 @@ const profiles = Array.from({ length: 16 }, (_, index) => ({
 function ProfileCard() {
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+    <h1 className="text-sm md:text-2xl font-bold mb-8 text-center">All Freelancer</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {profiles.map((profile) => (
           <div
@@ -45,7 +46,7 @@ function ProfileCard() {
             </div>
             <div className="mt-3 flex gap-4">
               <button className="px-4 py-2 bg-[#004930] text-white rounded-md ">
-                Chat Now
+                <Link to ="/livechat">Chat Now </Link> 
               </button>
               <button className="px-4 py-2 bg-[#004930] text-white rounded-md  ">
                 Details
