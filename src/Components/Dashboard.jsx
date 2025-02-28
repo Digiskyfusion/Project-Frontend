@@ -19,12 +19,12 @@ function Dashboard() {
               <Link to="/">
               <li className="cursor-pointer">Home</li>
               </Link>
-              <li className="cursor-pointer">About Us</li>
-              <li className="cursor-pointer">Contact Us</li>
-              <li className="cursor-pointer">Why DigiSky</li>
-              <li className="cursor-pointer">Reviews</li>
-              <li className="cursor-pointer">Find Work</li>
-              <li className="cursor-pointer">Find Freelancer</li>
+              <li className="cursor-pointer"><Link to="/aboutus" >About Us</Link></li>
+              <li className="cursor-pointer"><Link to="/ChooseUSPage" >Choose Us</Link></li>
+              <li className="cursor-pointer"><Link to="/service" >Service</Link></li>
+              <li className="cursor-pointer"><Link to="/contactus" >Contact Us</Link></li>
+              {/* <li className="cursor-pointer">Find Work</li>
+              <li className="cursor-pointer">Find Freelancer</li> */}
             </ul>
           </div>
         </div>

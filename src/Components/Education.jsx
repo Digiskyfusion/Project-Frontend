@@ -1,5 +1,6 @@
 import React from 'react';
 import first from './../assets/Images/first.png';
+import { Link } from 'react-router-dom';
 
 function Education() {
   return (
@@ -16,7 +17,7 @@ function Education() {
           </div>
         </div>
         <button className="w-full sm:w-auto px-4 py-2 bg-[#004930] text-white rounded-md hover:bg-[#003620] transition">
-          Chat Now
+         <Link to="/livechat">Chat Now</Link> 
         </button>
       </div>
 

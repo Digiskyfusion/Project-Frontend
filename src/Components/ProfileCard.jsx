@@ -49,7 +49,7 @@ function ProfileCard() {
                 <Link to ="/livechat">Chat Now </Link> 
               </button>
               <button className="px-4 py-2 bg-[#004930] text-white rounded-md  ">
-                Details
+              <Link to="/freelancerDetails">Details</Link>  
               </button>
             </div>
           </div>

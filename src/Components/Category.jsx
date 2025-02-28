@@ -17,10 +17,10 @@ function Category() {
   ];
 
   return (
-    <div className="relative px-20 py-10">
+    <div className="relative px-6 md:px-10 lg:px-20 py-10">
       {/* Left Navigation Button */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80"
+        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
         aria-label="Previous Slide"
         onClick={() => swiperInstance?.slidePrev()}
       >
@@ -30,11 +30,13 @@ function Category() {
       {/* Swiper Carousel */}
       <Swiper
         modules={[Navigation]}
-        spaceBetween={20}
+        spaceBetween={30}
         slidesPerView={1}
         breakpoints={{
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          540: { slidesPerView: 1.2 }, // Small phones
+          640: { slidesPerView: 2 },   // Tablets
+          1024: { slidesPerView: 3 },  // Laptops
+          1280: { slidesPerView: 4 },  // Larger screens
         }}
         onSwiper={setSwiperInstance}
         className="w-full"
@@ -53,14 +55,14 @@ function Category() {
             </div>
             <h1 className="text-xl text-white font-bold mt-4">{category.title}</h1>
             <h2 className="text-white mt-0.5">{category.jobs}</h2>
-            <p className="text-white mt-4">{category.desc}</p>
+            <p className="text-white mt-4 text-center">{category.desc}</p>
           </SwiperSlide>
         ))}
       </Swiper>
 
       {/* Right Navigation Button */}
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80"
+        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
         aria-label="Next Slide"
         onClick={() => swiperInstance?.slideNext()}
       >

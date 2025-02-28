@@ -26,7 +26,7 @@ const Navbar = () => {
             </select> */}
           </li>
           <li className="flex justify-center items-center">
-            <NavLink to="/ChooseUSPage" >ChooseUSPage</NavLink>
+            <NavLink to="/ChooseUSPage" >Choose Us</NavLink>
           </li>
           <li className="flex justify-center items-center">
             <NavLink to="/allfreelancer" >All Freelancer</NavLink>

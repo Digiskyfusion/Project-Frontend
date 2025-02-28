@@ -6,6 +6,7 @@ import fourthimage from './../assets/Images/a-modern-and-luxurious-cosmetics-bra
 import Years from 'react-calendar/dist/esm/DecadeView/Years.js';
 import { AlignLeft } from 'lucide-react';
 import { GiConfirmed } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
 function CardsProfile() {
   return (
@@ -22,7 +23,7 @@ function CardsProfile() {
           </div>
         </div>
         <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#004930] to-[#006f4a] text-white font-semibold rounded-md shadow-lg transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-[#004930]">
-          Chat Now
+         <Link to="/livechat">Chat Now</Link> 
         </button>
       </div>
 

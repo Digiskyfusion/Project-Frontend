@@ -2,6 +2,7 @@ import React from 'react'
 import pic from './../assets/Images/Ellipse 70.png';
 import Dashboard from './Dashboard';
 import DashboardSecond from './DashboardSecond';
+import { Link } from 'react-router-dom';
 
 function ClientForm() {
   return (
@@ -83,7 +84,7 @@ function ClientForm() {
                             {/* {/ Upload Button /} */}
                             <div className='mt-6'>
                                 <button className='bg-[#004930] text-white px-6 py-2 rounded-full md:px-8 hover:bg-[#003720] transition-all'>
-                                Upload
+                              <Link to="/clientDetails" >Upload</Link>  
                                 </button>
                             </div>
             

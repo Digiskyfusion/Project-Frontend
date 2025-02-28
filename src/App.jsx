@@ -47,6 +47,7 @@ import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
+import Clientprofile from "./Components/Clientprofile";
 function App() {
   
 
@@ -63,7 +64,7 @@ function App() {
         <Route path="/livechat" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<ProfileCard />} />
         <Route path="/service" element={ <Services />} />
-        <Route path="/dashboard" element={ <DashboardPage />} />
+        <Route path="/dashboard" element={ <DashboardPage />} /> 
         <Route path="/FreelancerNoUpadte" element={   <FreelancerProfilePage />} />
         <Route path="/FreelancreClientPage" element={    <FreelancreClientPage />} />
         <Route path="/FreelancerUpadte" element={    <FreelancerDetails />} />
@@ -71,6 +72,8 @@ function App() {
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/registration" element={<Signuppage />} />
         <Route path="/Subcatagory" element={<Subcategory  />} />
+        <Route path="/freelancerDetails" element={<Education  />} />
+        <Route path="/clientDetails" element={<CardsProfile  />} />
       </Routes>
       <Footer />
     </BrowserRouter>
@@ -102,17 +105,20 @@ function App() {
    <ContactForm />
    <Mapcomponent />
   
-   <ProfileCard />
-   <Education />
+   
+   {/* <Education />
    <Card />
     <Livechatcomponent />
    <Livechat />
-   <LiveChatPage /> */}
+   <LiveChatPage /> */} 
 
    {/* <Subcategory /> */}
 
-   <CardsProfile />
-   
+   {/* <CardsProfile /> */}
+
+   {/* <Clientprofile /> */}
+
+   {/* <ProfileCard /> */}
                   
     </>
   )
