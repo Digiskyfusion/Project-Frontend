@@ -5,6 +5,11 @@ import Signuppage from "./Components/Signuppage"
 import ProfileCard from "./Components/ProfileCard"
 import Education from "./Components/Education"
 import LiveChatPage from "./Pages/LiveChatPage"
+import Footer from "./Components/Footer"
+import ProfileCard from "./Components/ProfileCard"
+import Education from "./Components/Education"
+import LiveChatPage from "./Pages/LiveChatPage"
+import Subcategory from "./Components/Subcategory"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
@@ -23,6 +28,7 @@ import ForgotPassword from "./Components/ForgetPassword";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ResetpasswordPage from "./Pages/ResetpasswordPage";
 
+import TvAdvertising from "./Pages/TvAdvertising";
 function App() {
   
 
@@ -51,50 +57,10 @@ function App() {
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/forget-password" element={<ForgetPasswordPage  />} />
         <Route path="/resetpassword" element={<ResetpasswordPage  />} />
+        <Route path="/channel" element={<TvAdvertising  />} />
       </Routes>
     </BrowserRouter>
-    {/* <HomePage /> */}
-    {/* <AboutUsPage /> */}
-    
-     {/* <Navbar />
-    <FirstSection />
-    <SecondSection />
-    <Signuppage />
-   <Work />
-   <CarouselSection />
-   <Employ />
-   <FullJobCard />
-   <MeetFreelancer />
-   <ReviewSection />
-   <SecondReview /> 
-
-    <Thirdsection /> 
-   <Thirdsectionfivth />
-   <Thirdsectionseven /> 
-    <Fourthsectioneight /> 
-
-   <Fourthsectionfour /> 
-   <Calltoaction />
-   <Contectus />
-
-   <Mapsection />
-   <ContactForm />
-   <Mapcomponent />
   
-   
-   {/* <Education />
-   <Card />
-    <Livechatcomponent />
-   <Livechat />
-   <LiveChatPage /> */} 
-
-   {/* <Subcategory /> */}
-
-   {/* <CardsProfile /> */}
-
-   {/* <Clientprofile /> */}
-
-   {/* <ProfileCard /> */}
                   
     </>
   )
