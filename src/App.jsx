@@ -1,39 +1,11 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"
-import SecondReviews from "./Components/SecondReviews"
-import Cart from "./Components/Card"
-import Carousel from "./Components/Carousel"
-import CarouselSection from "./Components/CarouselSection"
-import Category from "./Components/Category"
-import Employ from "./Components/Employ"
-import FirstSection from "./Components/FirstSection"
-import FullJobCard from "./Components/FullJobCard"
-import JobSection from "./Components/Jobsection"
-import MeetFreelancer from "./Components/MeetFreelancer"
-import ReviewSection from "./Components/ReviewSection"
-import SecondReview from "./Components/SecondReviews"
-import SecondSection from "./Components/Secondsection"
 import Signuppage from "./Components/Signuppage"
-import Work from "./Components/Work"
 import Footer from "./Components/Footer"
-import Thirdsection from "./Components/Thirdsection"
-import Thirdsectionfivth from "./Components/Thirdsectionfivth"
-import Thirdsectionseven from "./Components/Thirdsectionseven"
-import Fourthsectioneight from "./Components/Fourthsectioneight"
-import Fourthsectionfour from "./Components/Fourthsectionfour"
-import Calltoaction from "./Components/Calltoaction"
-import Contectus from "./Components/Contectus"
-import Mapsection from "./Components/Mapsection"
-import ContactForm from "./Components/ContactForm"
-import Mapcomponent from "./Components/Mapcomponent"
-import Cards from "./Components/ProfileCard"
 import ProfileCard from "./Components/ProfileCard"
 import Education from "./Components/Education"
-import Livechat from "./Components/Livechat"
-import Livechatcomponent from "./Components/Livechatcomponent"
 import LiveChatPage from "./Pages/LiveChatPage"
-import Card from "./Components/Card"
 import Subcategory from "./Components/Subcategory"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
@@ -47,7 +19,7 @@ import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
-import Clientprofile from "./Components/Clientprofile";
+import TvAdvertising from "./Pages/TvAdvertising";
 function App() {
   
 
@@ -74,51 +46,11 @@ function App() {
         <Route path="/Subcatagory" element={<Subcategory  />} />
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
+        <Route path="/channel" element={<TvAdvertising  />} />
       </Routes>
       <Footer />
     </BrowserRouter>
-    {/* <HomePage /> */}
-    {/* <AboutUsPage /> */}
-    
-     {/* <Navbar />
-    <FirstSection />
-    <SecondSection />
-    <Signuppage />
-   <Work />
-   <CarouselSection />
-   <Employ />
-   <FullJobCard />
-   <MeetFreelancer />
-   <ReviewSection />
-   <SecondReview /> 
-
-    <Thirdsection /> 
-   <Thirdsectionfivth />
-   <Thirdsectionseven /> 
-    <Fourthsectioneight /> 
-
-   <Fourthsectionfour /> 
-   <Calltoaction />
-   <Contectus />
-
-   <Mapsection />
-   <ContactForm />
-   <Mapcomponent />
   
-   
-   {/* <Education />
-   <Card />
-    <Livechatcomponent />
-   <Livechat />
-   <LiveChatPage /> */} 
-
-   {/* <Subcategory /> */}
-
-   {/* <CardsProfile /> */}
-
-   {/* <Clientprofile /> */}
-
-   {/* <ProfileCard /> */}
                   
     </>
   )
