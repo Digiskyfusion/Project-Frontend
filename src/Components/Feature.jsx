@@ -6,7 +6,7 @@ function Feature() {
     { id: 1, title: "Payment status", desc: "Ensure fair payments and transparent transactions", img: message },
     { id: 2, title: "Seamless Chat", desc: "Communicate easily with clients and freelancers", img: message },
     { id: 3, title: "Affordable Subscription Plans", desc: "Communicate easily with clients and freelancers", img: message },
-    { id: 4, title: "Profile Visibility Enhancement", desc: " Increase your visibility and attract more clients", img: message },
+    // { id: 4, title: "Profile Visibility Enhancement", desc: " Increase your visibility and attract more clients", img: message },
   ];
 
   return (

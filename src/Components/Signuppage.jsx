@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, } from 'react';
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from 'react-icons/fa';
 import signup from './../assets/Images/signup.png';
 import loginImage from './../assets/Images/loginimage.png';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 function Signuppage() {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Signuppage() {
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://192.168.29.50:3000/api/auth/signup", {
+      const response = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -76,7 +76,7 @@ function Signuppage() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://192.168.29.50:3000/api/auth/login", {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         
         headers: { "Content-Type": "application/json" },
@@ -101,19 +101,6 @@ function Signuppage() {
   };
 
 
-
-  const handleGoogleLogin = () => {
-    window.location.href = "http://192.168.29.50:3000/auth/google";
-  };
-
-
-
-
-
-
-
-
-
   return (
     <div>
       <div className='flex flex-col md:flex-row items-center justify-center p-3'>
@@ -130,7 +117,7 @@ function Signuppage() {
               className={`px-6 py-1 md:px-10 rounded-full cursor-pointer border-2 ${
                 isLogin ? 'bg-[#004930] text-white border-[#004930]' : 'text-[#004930] border-[#004930]'
               }`}
-              onClick={() => setIsLogin(true)}
+              onClick={() => setIsLogin(true) }
             >
               Login
             </button>
@@ -167,7 +154,7 @@ function Signuppage() {
               </div>
 
               <div className='mb-4'>
-                <a href='#' className='text-[#333333] hover:underline'>Forgot Password?</a>
+                <Link to='/forget-password' className='text-[#333333] hover:underline'>Forgot Password?</Link>
               </div>
 
               <div className='flex'>
@@ -247,7 +234,7 @@ function Signuppage() {
 
           {/* Social Login Buttons */}
           <div className='flex flex-col justify-center gap-4 mt-6'>
-            <button className='flex items-center justify-center gap-2 bg-[#004930] text-white md:px-20 py-2 px-8 rounded-full' onClick={handleGoogleLogin}>
+            <button className='flex items-center justify-center gap-2 bg-[#004930] text-white md:px-20 py-2 px-8 rounded-full'>
               <FaGoogle className='text-xl' />
               Continue with Google
             </button>

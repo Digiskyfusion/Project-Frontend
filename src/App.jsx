@@ -2,6 +2,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"
 import Signuppage from "./Components/Signuppage"
+import ProfileCard from "./Components/ProfileCard"
+import Education from "./Components/Education"
+import LiveChatPage from "./Pages/LiveChatPage"
 import Footer from "./Components/Footer"
 import ProfileCard from "./Components/ProfileCard"
 import Education from "./Components/Education"
@@ -19,6 +22,12 @@ import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
+import SubCategoryPage from "./Pages/SubCategoryPage";
+import AllFreelancerPage from "./Pages/AllFreelancerPage";
+import ForgotPassword from "./Components/ForgetPassword";
+import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
+import ResetpasswordPage from "./Pages/ResetpasswordPage";
+
 import TvAdvertising from "./Pages/TvAdvertising";
 function App() {
   
@@ -34,7 +43,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat" element={<LiveChatPage />} />
-        <Route path="/allfreelancer" element={<ProfileCard />} />
+        <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={ <Services />} />
         <Route path="/dashboard" element={ <DashboardPage />} /> 
         <Route path="/FreelancerNoUpadte" element={   <FreelancerProfilePage />} />
@@ -43,12 +52,13 @@ function App() {
         <Route path="/ClientForm" element={ <ClientFormPage />} />
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/registration" element={<Signuppage />} />
-        <Route path="/Subcatagory" element={<Subcategory  />} />
+        <Route path="/Subcatagory" element={<SubCategoryPage  />} />
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
+        <Route path="/forget-password" element={<ForgetPasswordPage  />} />
+        <Route path="/resetpassword" element={<ResetpasswordPage  />} />
         <Route path="/channel" element={<TvAdvertising  />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   
                   

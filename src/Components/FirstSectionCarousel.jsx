@@ -48,7 +48,7 @@ function FirstSectionCarousel() {
             }`}
           >
             <div className="relative z-10 bottom-6  bg-opacity-50 p-4 rounded-lg">
-              <h1 className="text-white text-lg md:text-4xl font-bold">{slide.title}</h1>
+              <h1 className="text-white text-lg lg:text-4xl font-bold">{slide.title}</h1>
               <p className="text-white text-sm md:text-2xl mt-5">{slide.text}</p>
             </div>
           </div>
