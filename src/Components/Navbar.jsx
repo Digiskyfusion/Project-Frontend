@@ -6,8 +6,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#004930] text-white p-4 shadow-md sticky top-0 z-20">
-      <div className="container px-12 flex justify-between items-center">
+    <nav className="bg-[#004930] text-white px-2 py-4  shadow-md sticky top-0 z-20">
+      <div className="container px-1 xl:px-12 flex justify-between items-center ">
         {/* {/ Logo /} */}
         <a href="#" className="text-2xl font-bold">LOGO</a>
         
@@ -28,21 +28,21 @@ const Navbar = () => {
           <li className="flex justify-center items-center">
             <NavLink to="/ChooseUSPage" >Choose Us</NavLink>
           </li>
-          <li className="flex justify-center items-center">
+          {/* <li className="flex justify-center items-center">
             <NavLink to="/allfreelancer" >All Freelancer</NavLink>
-          </li>
+          </li> */}
           <li className="flex justify-center items-center">
             <NavLink to="/service" >Service</NavLink>
           </li>
-          <li className="flex justify-center items-center">
+          {/* <li className="flex justify-center items-center">
             <NavLink to="/FreelancreClientPage" >  FreelancreClientPage</NavLink>
-          </li>
-          <li className="flex justify-center items-center">
+          </li> */}
+          {/* <li className="flex justify-center items-center">
             <NavLink to="/ClientForm" >  ClientForm</NavLink>
-          </li>
-          <li className="flex justify-center items-center">
+          </li> */}
+          {/* <li className="flex justify-center items-center">
             <NavLink to="Subcatagory" >  Subcatagory</NavLink>
-          </li>
+          </li> */}
           <li className="flex justify-center items-center">
           <NavLink to="/contactus" >Contact Us</NavLink>
           </li>
@@ -50,7 +50,7 @@ const Navbar = () => {
 
         {/* {/ Button /} */}
         <div className="hidden md:block">
-          <button className="py-2 px-8 border-2 rounded-full"><NavLink to="/registration" >Registration </NavLink></button>
+          <button className="py-2 px-8 border-2 rounded-full"><Link to="/registration" >Registration </Link></button>
           {/* <button className="py-2 px-8 border-2 rounded-full">Register</button> */}
         </div>
 

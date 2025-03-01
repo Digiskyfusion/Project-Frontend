@@ -1,7 +1,8 @@
-import React from 'react'
+
 import Dashboard from '../Components/Dashboard'
 import DashboardSecond from '../Components/DashboardSecond'
 import MainDashboard from '../Components/MainDashboard'
+import Footer from '../Components/Footer'
 
 
 function DashboardPage() {
@@ -17,6 +18,7 @@ function DashboardPage() {
     <MainDashboard />
   </div>
 </div>
+<Footer />
       
     </>
   )

@@ -6,7 +6,7 @@ function SquareCards() {
     { id: 1, title: "Sign Up", desc: "Create a profile and join our community", img: pencil },
     { id: 2, title: "Find a Job", desc: "Browse jobs and apply easily", img: pencil },
     { id: 3, title: "Work on Projects", desc: "Collaborate with teams and clients", img: pencil },
-    { id: 4, title: "Get Paid", desc: "Secure payments for your work", img: pencil },
+    // { id: 4, title: "Get Paid", desc: "Secure payments for your work", img: pencil },
   ];
 
   return (

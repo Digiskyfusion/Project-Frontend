@@ -30,7 +30,7 @@ function FirstSection() {
           <img
             src={value}
             alt="Value"
-            className="absolute top-6 sm:top-24 right-6 sm:right-24 w-16 sm:w-24 h-16 sm:h-24 object-contain"
+            className="absolute top-6 lg:top-20 lg:right-20 right-6   w-16 lg:w-24 h-16 lg:h-24 object-contain"
           />
         </motion.div>
 
