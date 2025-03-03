@@ -1,10 +1,9 @@
 import  { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const navigate= useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -15,9 +14,8 @@ const ForgotPassword = () => {
       });
       const data = await response.json();
       setMessage(data.message);
-      navigate("/resetpassword")
     } catch (error) {
-      setMessage("Something went wrong.");
+      setMessage("Something went wrong.", error);
     }
   };
 
@@ -34,11 +32,11 @@ const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
+          <button type="submit" className="w-full bg-blue-500 cursor-pointer text-white p-2 rounded">
             Submit
           </button>
         </form>
-        {message && <p className="mt-4 text-sm text-gray-700">{message}</p>}
+        {message && <p className="mt-4 text-sm text-green-700">{message}</p>}
       </div>
     </div>
   );

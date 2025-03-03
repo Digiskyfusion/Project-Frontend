@@ -68,7 +68,7 @@ function Signuppage() {
         alert(data.message || "Signup failed");
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.",error);
     }
   };
 
@@ -96,7 +96,7 @@ function Signuppage() {
         alert(data.message || "Login failed");
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.", error);
     }
   };
 

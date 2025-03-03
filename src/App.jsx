@@ -24,11 +24,9 @@ import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
-import ForgotPassword from "./Components/ForgetPassword";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ResetpasswordPage from "./Pages/ResetpasswordPage";
 
-import TvAdvertising from "./Pages/TvAdvertising";
 function App() {
   
 
@@ -60,8 +58,7 @@ function App() {
         <Route path="/channel" element={<TvAdvertising  />} />
       </Routes>
     </BrowserRouter>
-  
-                  
+   
     </>
   )
 }
