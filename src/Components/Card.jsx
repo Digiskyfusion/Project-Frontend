@@ -29,7 +29,7 @@ function Cart () {
           variants={cardVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: false, amount: 0.2 }}   
           whileHover="hover"
         >
           <h2 className="text-xl font-semibold mb-2 text-gray-800 group-hover:text-white">Standard Plan</h2>

@@ -20,6 +20,7 @@ import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
 import TvAdvertising from "./Pages/TvAdvertising";
+import Loginform from "./Components/Loginform";
 function App() {
   
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/channel" element={<TvAdvertising  />} />
+        <Route path="/login" element={<Loginform  />} />
       </Routes>
       <Footer />
     </BrowserRouter>
