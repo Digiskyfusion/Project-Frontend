@@ -21,6 +21,9 @@ import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
 import TvAdvertising from "./Pages/TvAdvertising";
 import Loginform from "./Components/Loginform";
+import Clientformmpage from "./Pages/Clientformmpage";
+import ClientProfile from "./Components/Clientprofile";
+import Starplus from "./Components/Starplus";
 function App() {
   
 
@@ -49,9 +52,14 @@ function App() {
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/channel" element={<TvAdvertising  />} />
         <Route path="/login" element={<Loginform  />} />
+        <Route path="/client" element={<Clientformmpage />} />
+        <Route path="/ClientProfile" element={<ClientProfile />} />
       </Routes>
       <Footer />
     </BrowserRouter>
+
+
+    <Starplus />
   
                   
     </>

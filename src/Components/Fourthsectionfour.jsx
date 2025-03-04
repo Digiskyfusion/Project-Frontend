@@ -24,7 +24,7 @@ function Fourthsectionfour() {
           ].map((item, index) => (
             <details key={index} className="p-4 transition duration-300 bg-white/10 backdrop-blur-lg rounded-lg hover:bg-white/20 cursor-pointer">
               <summary className="text-xl font-semibold flex items-center gap-2 cursor-pointer">
-                <Pencil className="w-6 h-6 text-yellow-400 transition-transform duration-300 hover:scale-110" />
+                <Pencil className="w-6 h-6 text-white transition-transform duration-300 hover:scale-110" />
                 {item.title}
                 <IoIosArrowDown className="w-4 h-4 text-white absolute right-2 top-2 cursor-pointer hover:text-gray-300" />
               </summary>

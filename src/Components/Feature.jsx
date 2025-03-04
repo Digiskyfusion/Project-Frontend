@@ -1,12 +1,19 @@
 import React from "react";
 import message from './../assets/Images/illustration-credit-card-icon 1.png';
+import feature from './../assets/Images/feature.png';
+import feature2 from './../assets/Images/feature2.png';
+import feature3 from './../assets/Images/feature3.png';
+
+
+
+
 
 function Feature() {
   const steps = [
     { id: 1, title: "Payment status", desc: "Ensure fair payments and transparent transactions", img: message },
-    { id: 2, title: "Seamless Chat", desc: "Communicate easily with clients and freelancers", img: message },
-    { id: 3, title: "Affordable Subscription Plans", desc: "Communicate easily with clients and freelancers", img: message },
-    { id: 4, title: "Profile Visibility Enhancement", desc: " Increase your visibility and attract more clients", img: message },
+    { id: 2, title: "Seamless Chat", desc: "Communicate easily with clients and freelancers", img: feature },
+    { id: 3, title: "Affordable Subscription Plans", desc: "Communicate easily with clients and freelancers", img: feature2 },
+    { id: 4, title: "Profile Visibility Enhancement", desc: " Increase your visibility and attract more clients", img: feature3 },
   ];
 
   return (
