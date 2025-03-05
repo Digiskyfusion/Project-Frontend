@@ -12,15 +12,15 @@ function About() {
           <h3 className='text-lg uppercase font-semibold text-gray-300  text-center md:text-start'>About Us</h3>
           <h1 className='text-3xl md:text-5xl font-bold mt-2 md:mt-5 text-center md:text-start'>What do we do?</h1>
           <p className='mt-4 text-md md:text-xl text-gray-300 leading-relaxed md:mt-10 text-center md:text-start'>
-            It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum English.
+          We bridge the gap between businesses and top freelancers, making hiring and working effortless. Our platform ensures seamless collaboration, secure payments, and high-quality results
           </p>
 
           {/* {/ Stats Section /} */}
           <div className=' flex justify-between mt-8  space-y-4'>
             {[
-              { end: 5000, label: 'projects completed ' },
-              { end: 200, label: 'years of excellence' },
-              { end: 10, label: 'Client' },
+              { end: 700, label: 'projects completed ' },
+              { end: 1, label: 'years of excellence' },
+              { end: 100, label: 'Satisfied Clients' },
             ].map((item, index) => (
               <p key={index} className='text-center md:text-start'>
                  <span className="text-white ">

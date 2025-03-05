@@ -43,9 +43,9 @@ function Secondsection() {
           {/* Features List */}
           <div className="space-y-6">
             {[ 
-              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Joining is completely free", text: "Sign up to view talent profiles, discover projects, or schedule a consultation." },
-              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Create a job listing and hire the best talent", text: "Sign up to view talent profiles, discover projects, or schedule a consultation." },
-              { icon: <FaShieldVirus className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Collaborate with top talent—at an affordable price", text: "Sign up to view talent profiles, discover projects, or schedule a consultation." },
+              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Drop us a message", text: "We’d love to hear from you!" },
+              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Let’s work together", text: "Whether you’re hiring or freelancing, we’ve got your back." },
+              { icon: <FaShieldVirus className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Join a thriving network ", text: "Connect with top talent and game-changing projects" },
             ].map((item, index) => (
               <div
                 key={index}

@@ -23,7 +23,6 @@ import SubCategoryPage from "./Pages/SubCategoryPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ResetpasswordPage from "./Pages/ResetpasswordPage";
-import CategoryPage from "./Pages/CategoryPage";
 import Clientformm from "./Components/Clientformm";
 
 function App() {

@@ -10,10 +10,10 @@ function Category() {
   const [swiperInstance, setSwiperInstance] = useState(null);
 
   const categories = [
-    { title: "Development & IT", jobs: "160 jobs", desc: "Frontend, Backend, Web and App Developer Jobs", img: Vector },
-    { title: "Design & Creative", jobs: "120 jobs", desc: "Graphic Design, UI/UX, Animation Jobs", img: Vector },
-    { title: "Marketing & Sales", jobs: "90 jobs", desc: "SEO, Content Marketing, Social Media Jobs", img: Vector },
-    { title: "Writing & Translation", jobs: "70 jobs", desc: "Copywriting, Blogging, Translation Jobs", img: Vector }
+    { title: " Development & IT", jobs: " 180 Jobs", desc: "Frontend, Backend, Web and App Developer Jobs", img: Vector },
+    { title: " Graphic Design & UI/UX", jobs: "120 jobs", desc: "Logos, Branding, Website & App Design", img: Vector },
+    { title: " Digital Marketing", jobs: "150 jobs", desc: " SEO, Social Media, Performance Marketing", img: Vector },
+    { title: "Writing & Translation", jobs: "130 jobs", desc: "Content Writing, Copywriting, Blogging, Translations.", img: Vector }
   ];
 
   return (
