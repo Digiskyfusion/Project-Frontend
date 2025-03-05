@@ -1,6 +1,11 @@
+
+import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import  { useEffect, useState } from "react";
 import {  Link, useNavigate } from "react-router-dom";
+
 
 function FreelancerClientForm() {
   const [activeForm, setActiveForm] = useState("freelancer");
@@ -55,6 +60,11 @@ function FreelancerForm() {
     languages: "",
   });
 
+
+
+
+
+
   return (
     <div>
 
@@ -67,7 +77,11 @@ function FreelancerForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label className="block font-medium">Freelancer id</label>
+
+                <input type="text" className="w-full p-2 border rounded-md"  name="freelancerId" placeholder="Enter Freelancer id"  />
+
                 <input type="text" className="w-full p-2 border rounded-md"   name="freelancerId" placeholder="Enter Freelancer id"  />
+
             </div>
             <div>
                 <label className="block font-medium">Category ID</label>

@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { IoMdDownload, IoMdShare } from "react-icons/io";
 import { CiStar } from "react-icons/ci";
 import twomale from './../assets/Images/a-high-quality--creative-digital-illustration-feat (1) 1.png';
-
-
-
-
+import male from './../assets/Images/Ellipse 75.png';
+import girl from './../assets/Images/Ellipse 72.png';
+import women from './../assets/Images/Ellipse 73.png';
 
 function SecondReviews() {
   const [selectedReview, setSelectedReview] = useState({
@@ -23,17 +22,17 @@ function SecondReviews() {
     },
     male: {
       name: "Rajesh Kumar",
-      image: twomale,
+      image:male,
       text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
     },
     female2: {
       name: "Simran Kaur",
-      image:twomale,
+      image:girl,
       text: "Simran’s review: Lorem Ipsum is simply dummy text of the printing industry. It has survived not only five centuries but also the leap into electronic typesetting."
     },
     male2: {
       name: "Rajesh Kumar",
-      image: twomale,
+      image: women ,
       text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
     },
   };
@@ -84,9 +83,10 @@ function SecondReviews() {
             <div className='md:flex md:items-center'>
               <div className='flex mt-4 relative'>
                 <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-6 lg:left-4 cursor-pointer z-10" onClick={() => setSelectedReview(reviews.female)} />
-                <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
-                <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
-                <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
+                <img src={male} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
+                <img src={girl} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
+                <img src={women } alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
+                
               </div>
 
               {/* {/ Star Ratings /} */}
