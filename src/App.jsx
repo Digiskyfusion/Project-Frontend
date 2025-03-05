@@ -2,14 +2,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"
 import Signuppage from "./Components/Signuppage"
-import ProfileCard from "./Components/ProfileCard"
+
 import Education from "./Components/Education"
 import LiveChatPage from "./Pages/LiveChatPage"
-import Footer from "./Components/Footer"
-import ProfileCard from "./Components/ProfileCard"
-import Education from "./Components/Education"
-import LiveChatPage from "./Pages/LiveChatPage"
-import Subcategory from "./Components/Subcategory"
+
+
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
@@ -24,11 +21,10 @@ import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
-import ForgotPassword from "./Components/ForgetPassword";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ResetpasswordPage from "./Pages/ResetpasswordPage";
+import Clientformm from "./Components/Clientformm";
 
-import TvAdvertising from "./Pages/TvAdvertising";
 function App() {
   
 
@@ -57,11 +53,11 @@ function App() {
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/forget-password" element={<ForgetPasswordPage  />} />
         <Route path="/resetpassword" element={<ResetpasswordPage  />} />
-        <Route path="/channel" element={<TvAdvertising  />} />
+        <Route path="/client" element={<Clientformm  />} />
+        {/* <Route path="/categorypage" element={<CategoryPage  />} /> */}
       </Routes>
     </BrowserRouter>
-  
-                  
+   
     </>
   )
 }

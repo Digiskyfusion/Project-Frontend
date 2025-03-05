@@ -3,9 +3,9 @@ import pencil from './../assets/Images/a-modern--minimalistic--and-stylish-ui-il
 
 function SquareCards() {
   const steps = [
-    { id: 1, title: "Sign Up", desc: "Create a profile and join our community", img: pencil },
-    { id: 2, title: "Find a Job", desc: "Browse jobs and apply easily", img: pencil },
-    { id: 3, title: "Work on Projects", desc: "Collaborate with teams and clients", img: pencil },
+    { id: 1, title: "Sign Up", desc: " Create your profile and become part of our thriving community", img: pencil },
+    { id: 2, title: "Browse Projects", desc: " Find the best fit for your skills or business needs.", img: pencil },
+    { id: 3, title: " Connect & Collaborate ", desc: " Communicate, set expectations, and start working.", img: pencil },
     // { id: 4, title: "Get Paid", desc: "Secure payments for your work", img: pencil },
   ];
 

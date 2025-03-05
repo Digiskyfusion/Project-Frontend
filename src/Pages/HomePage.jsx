@@ -15,7 +15,7 @@ function HomePage() {
     <div className=''>
         <FirstSection />
         <Secondsection />
-        {/* <Card /> */}
+        <Card />
         <Work />
         <ReviewSection />
         <CarouselSection />

@@ -45,14 +45,23 @@ function Signuppage() {
     try {
       const response = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json" 
+        },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-
+      console.log(data.user);
+      
+      localStorage.setItem("user", JSON.stringify(data.user));
       if (response.ok) {
         toast.success("Signup successful!");
+        if (formData.roleType === "freelancer") {
+          navigate("/FreelancreClientPage");
+        } else if (formData.roleType === "client") {
+          navigate("/client");
+        }
         setFormData({
           name: "",
           email: "",
@@ -68,7 +77,7 @@ function Signuppage() {
         alert(data.message || "Signup failed");
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.",error);
     }
   };
 
@@ -96,7 +105,7 @@ function Signuppage() {
         alert(data.message || "Login failed");
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.", error);
     }
   };
 
