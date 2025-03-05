@@ -23,7 +23,8 @@ import TvAdvertising from "./Pages/TvAdvertising";
 import Loginform from "./Components/Loginform";
 import Clientformmpage from "./Pages/Clientformmpage";
 import ClientProfile from "./Components/Clientprofile";
-import Starplus from "./Components/Starplus";
+import StarPlusPage from "./Pages/StarPlusPage";
+import AdvertisingPage from "./Pages/AdvertisingPage";
 function App() {
   
 
@@ -54,12 +55,14 @@ function App() {
         <Route path="/login" element={<Loginform  />} />
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
+        <Route path="/starplus" element={<StarPlusPage />} />
+        <Route path="/advertising" element={<AdvertisingPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
 
 
-    <Starplus />
+    
   
                   
     </>

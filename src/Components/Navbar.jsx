@@ -28,13 +28,13 @@ const Navbar = () => {
           <li className="flex justify-center items-center">
             <NavLink to="/ChooseUSPage" >Choose Us</NavLink>
           </li>
-          <li className="flex justify-center items-center">
+          {/* <li className="flex justify-center items-center">
             <NavLink to="/allfreelancer" >All Freelancer</NavLink>
-          </li>
+          </li> */}
           <li className="flex justify-center items-center">
             <NavLink to="/service" >Service</NavLink>
           </li>
-          <li className="flex justify-center items-center">
+          {/* <li className="flex justify-center items-center">
             <NavLink to="/FreelancreClientPage" >  FreelancreClientPage</NavLink>
           </li>
           <li className="flex justify-center items-center">
@@ -42,7 +42,7 @@ const Navbar = () => {
           </li>
           <li className="flex justify-center items-center">
             <NavLink to="Subcatagory" >  Subcatagory</NavLink>
-          </li>
+          </li> */}
           <li className="flex justify-center items-center">
           <NavLink to="/contactus" >Contact Us</NavLink>
           </li>

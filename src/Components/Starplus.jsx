@@ -1,103 +1,105 @@
-import React from "react";
-import tvadd1 from "./../assets/Images/tvadd1.png";
-import tvadd2 from "./../assets/Images/tvadd2.png";
-import pixelcut from "./../assets/Images/pixelcut-export (2) 1.png";
+import React, { useState } from 'react';
+import tvadd1 from './../assets/Images/tvadd1.png';
+import tvadd2 from './../assets/Images/tvadd2.png';
+import pixel from './../assets/Images/pixelcut-export (2) 1.png';
+import { Link } from 'react-router-dom';
+import { FaRupeeSign } from "react-icons/fa";
+import SelectSection from './SelectSection';
 
 function Starplus() {
+  const [selectedImage, setSelectedImage] = useState(tvadd1);
+  const obj=[
+    {
+      name:'User for',
+      nickname:"Impact"
+    },
+    {
+      name:'Ad Type',
+      nickname:"Image"
+    },
+    {
+      name:'Lead more',
+      nickname:"3"
+    },
+    {
+      name:'Span',
+      nickname:"1 day"
+    }
+  ]
+
   return (
-    <div className="max-w-6xl mx-auto p-8 bg-gradient-to-r from-gray-100 to-white shadow-xl rounded-lg">
-      {/* Main Flex Container */}
-      <div className="flex">
-        
-        {/* Left Side - Two Images */}
-        <div className="w-1/4 flex flex-col space-y-6 justify-start">
-          {[tvadd1, tvadd2].map((image, index) => (
-            <div key={index} className="relative">
-              <img
-                src={image}
-                alt={`TV Ad ${index + 1}`}
-                className="rounded-lg shadow-lg border-2 border-gray-200"
-              />
-            </div>
-          ))}
+    <div className='px-4 py-5'>
+      {/* Main container */}
+      <div className='flex flex-col lg:flex-row justify-between items-center gap-8'>
+        {/* Images section */}
+        <div className='flex flex-col-reverse md:flex-row justify-center items-center gap-5'>
+          <div className='flex md:flex-col gap-2'>
+            <img 
+              src={tvadd1} 
+              alt='Ad 1' 
+              className={`cursor-pointer  w-30 h-30  md:w-50 md:h-50 rounded-md p-2  ${selectedImage === tvadd1 ? 'border-2 ' : ''}`} 
+              onMouseOver={() => setSelectedImage(tvadd1)}
+            />
+            <img 
+              src={tvadd2} 
+              alt='Ad 2' 
+              className={` cursor-pointer w-30 h-30  md:w-50 md:h-50  rounded-md p-2 ${selectedImage === tvadd2 ? 'border-2' : ''}`} 
+              onMouseOver={() => setSelectedImage(tvadd2)}
+            />
+          </div>
+          {/* show image */}
+          <div className='border-2 rounded-md p-2'>
+            <img src={selectedImage} alt='Ad Large' className='h-64 md:h-96 w-auto rounded-md' />
+          </div>
         </div>
 
-        {/* Center - Main Image with Next Channel Hint */}
-        <div className="w-1/2 flex flex-col items-center">
-          <img
-            src={tvadd1}
-            alt="TV Ad Center"
-            className="rounded-lg shadow-md w-2/3"
-          />
-          {/* Hint for Next Channel */}
-          <div className="mt-6 p-3 bg-gray-200 rounded-md text-center w-2/3 shadow-sm">
-            <p className="text-sm text-gray-700">
-              Looking for another channel? <br />
-              <span className="font-semibold text-blue-600 cursor-pointer">
-                Switch to the next channel →
-              </span>
+        {/* Content section */}
+        <div className='w-full lg:w-1/2 space-y-5'>
+          {/* Border div */}
+          <div className='flex flex-wrap gap-3'>
+            {obj.map((curr, i) => (
+              <div key={i} className='p-3 border-l-4 rounded-md border-[#004930] '>
+                <h2 className='text-lg font-semibold'>{curr.name} <p className='text-primary text-sm'>{curr.nickname}</p></h2>
+              </div>
+            ))}
+          </div>
+
+          {/* Content */}
+          <p className='text-gray-700 text-sm md:text-base'>
+            Aston Bands are thin horizontal strips that appear during a program at the bottom of the screen.
+            The Aston Band duration per exposure is 10 seconds. For more details to place your advertisement on this platform,
+            kindly contact us at <a href='mailto:help@TheMediaAnt.com' className='text-blue-500'>help@TheMediaAnt.com</a> or call us at
+            <span className='font-bold'> 080-67415510</span>.
+          </p>
+
+          {/* Price section */}
+          <div className='flex items-center gap-5'>
+            <div className='border-2 rounded-md p-4'>
+              <h1 className='text-lg font-bold'>Rack Rate</h1>
+              <del className='text-gray-500 '> <p className='flex items-center'><FaRupeeSign />23,005/Per </p> <span>Aston Band</span></del>
+            </div>
+            <div>
+              <img src={pixel} alt='Pixel Representation' className='w-20 h-20 lg:w-30 lg:h-30' />
+            </div>
+          </div>
+
+          {/* Button */}
+          <div className='flex items-center gap-5'>
+            <button className='px-5 py-2 bg-[#004930] text-white cursor-pointer rounded-md shadow transition-all'>
+              <Link to="/login">Login to view</Link> 
+            </button>
+            <p className='text-gray-600 text-sm border-2 p-2 rounded-md flex gap-2'>
+              Mini Billing: <span className='font-bold flex items-center '><FaRupeeSign />23,805/per</span>
             </p>
           </div>
         </div>
-
-        {/* Right Side - Text Content */}
-        <div className="w-1/4 relative pl-6">
-          {/* Vertical Line */}
-          <div className="absolute left-0 top-0 h-full w-[2px] bg-gray-300"></div>
-
-          {/* Ad Details */}
-          <div className="space-y-3 border-b border-gray-300 pb-4 mb-4">
-            <h2 className="text-lg font-semibold text-gray-800">
-              User for: <span className="font-normal text-gray-600">Impact</span>
-            </h2>
-            <h2 className="text-lg font-semibold text-gray-800">
-              Ad Type: <span className="font-normal text-gray-600">Image</span>
-            </h2>
-            <h2 className="text-lg font-semibold text-gray-800">
-              Lead More: <span className="font-normal text-gray-600">3</span>
-            </h2>
-            <h2 className="text-lg font-semibold text-gray-800">
-              Span: <span className="font-normal text-gray-600">1 day</span>
-            </h2>
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-700 text-sm mt-4 leading-relaxed">
-            Aston Bands are thin horizontal strips that appear during a program at the bottom of the screen. The Aston Band duration per exposure is 10 seconds.
-            For more details on placing your advertisement on this platform, kindly contact us at
-            <a href="mailto:help@TheMediaAnt.com" className="text-blue-500"> help@TheMediaAnt.com</a> or call us at <span className="font-semibold text-gray-900">080-67415510</span>.
-          </p>
-
-          {/* Rack Rate - Box without Animations */}
-          <div className="mt-6 p-4 bg-gray-50 border border-gray-300 rounded-lg shadow-md text-center">
-            <h2 className="text-lg font-bold text-gray-900">Rack Rate</h2>
-            <h3 className="text-lg font-semibold text-green-600">₹23,805 / per</h3>
-            <p className="text-md font-medium text-gray-700">Aston Band</p>
-          </div>
-
-          {/* Pixelcut Image - Separate */}
-          <div className="mt-4 flex justify-center">
-            <img
-              src={pixelcut}
-              alt="Pixelcut Example"
-              className="rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Buttons - No Animation */}
-          <div className="flex justify-end space-x-4 mt-6">
-            <button className="bg-blue-600 text-white py-2 px-5 rounded-md font-semibold shadow-md">
-              Login to View
-            </button>
-            <button className="bg-gray-800 text-white py-2 px-5 rounded-md font-semibold shadow-md">
-              Min Billing: ₹23,805
-            </button>
-          </div>
-        </div>
+      </div>
+      <div className='mt-7'>
+        <h1 className='text-center text-sm md:text-2xl font-bold'>Execution Details</h1>
+        <SelectSection />
       </div>
     </div>
   );
 }
 
 export default Starplus;
-      
