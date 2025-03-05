@@ -58,6 +58,7 @@ const obj = [
 
 function Subcategory() {
   return (
+    <>
     <div className="p-5">
       <div className="mb-5 text-center">
         <h1 className="text-3xl font-bold text-gray-800">Subcategory Page</h1>
@@ -79,6 +80,7 @@ function Subcategory() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

@@ -7,11 +7,12 @@ import ReviewSection from '../Components/ReviewSection'
 import Category from '../Components/Category'
 import MeetFreelancer from '../Components/MeetFreelancer'
 import CarouselSection from '../Components/CarouselSection'
+import Footer from '../Components/Footer'
 function HomePage() {
   return (
     <>
 
-    <div>
+    <div className=''>
         <FirstSection />
         <Secondsection />
         <Card />
@@ -19,6 +20,7 @@ function HomePage() {
         <ReviewSection />
         <CarouselSection />
         <MeetFreelancer />
+        <Footer />
     </div>
       
     </>

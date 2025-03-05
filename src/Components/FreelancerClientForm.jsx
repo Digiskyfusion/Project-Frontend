@@ -1,5 +1,11 @@
+
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+
+import axios from "axios";
+import  { useEffect, useState } from "react";
+import {  Link, useNavigate } from "react-router-dom";
+
 
 function FreelancerClientForm() {
   const [activeForm, setActiveForm] = useState("freelancer");
@@ -56,6 +62,9 @@ function FreelancerForm() {
 
 
 
+
+
+
   return (
     <div>
 
@@ -64,11 +73,15 @@ function FreelancerForm() {
             <form className=" bg-white p-6 rounded-lg shadow-md space-y-4">
         <h2 className="text-2xl font-bold mb-4 text-center">Freelancer Details</h2>
     
-        {/* {/ {/ {/ <!-- Freelancer Details --> /} /} /} */}
+        {/* {/ {/ {/ {/ <!-- Freelancer Details --> /} /} /} /} */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label className="block font-medium">Freelancer id</label>
+
                 <input type="text" className="w-full p-2 border rounded-md"  name="freelancerId" placeholder="Enter Freelancer id"  />
+
+                <input type="text" className="w-full p-2 border rounded-md"   name="freelancerId" placeholder="Enter Freelancer id"  />
+
             </div>
             <div>
                 <label className="block font-medium">Category ID</label>
@@ -95,7 +108,7 @@ function FreelancerForm() {
             <input type="date" className="w-full p-2 border rounded-md" name="date_of_birth"  />
         </div>
     
-        {/* {/ {/ {/ <!-- Verification Details --> /} /} /} */}
+        {/* {/ {/ {/ {/ <!-- Verification Details --> /} /} /} /} */}
         <h3 className="text-xl font-semibold mt-4">Verification Details</h3>
     
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -156,7 +169,7 @@ function FreelancerForm() {
                 <input type="date" className="w-full p-2 border rounded-md" name="verification_date"  />
             </div>
     
-        {/* {/ {/ {/ <!-- Professional Details --> /} /} /} */}
+        {/* {/ {/ {/ {/ <!-- Professional Details --> /} /} /} /} */}
         <h3 className="text-xl font-semibold mt-4">Professional Details</h3>
     
     
@@ -190,10 +203,10 @@ function FreelancerForm() {
             <input type="text" name="languages" className="w-full p-2 border rounded-md" placeholder="Enter Languages (comma separated)"  />
         </div>
     
-        {/* {/ {/ {/ <!-- Verification Button --> /} /} /} */}
+        {/* {/ {/ {/ {/ <!-- Verification Button --> /} /} /} /} */}
         <div className='flex'>
         <button type="submit" className=" bg-[#004930] text-white py-2 px-5 md:px-6 rounded-full font-semibold ">
-            Verify Freelancer
+          <Link to="/freelancerDetails">Verify Freelancer</Link>  
         </button>
         </div>
        

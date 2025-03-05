@@ -41,7 +41,7 @@ function ClientForm() {
                                 </div>
                                 <div>
                                 <label className='font-medium'>Email</label>
-                                <input type='email' mailto:placeholder='johndoe@example.com' className='w-full border-2 border-black outline-0 px-5 py-2 rounded-xl' />
+                                <input type='email' placeholder='johndoe@example.com' className='w-full border-2 border-black outline-0 px-5 py-2 rounded-xl' />
                                 </div>
                             </div>
             

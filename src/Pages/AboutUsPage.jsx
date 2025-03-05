@@ -8,9 +8,11 @@ import MeetFreelancer from "../Components/MeetFreelancer";
 import Fourthsectioneight from "../Components/Fourthsectioneight";
 import Calltoaction from "../Components/Calltoaction";
 import SecondReviews from "../Components/SecondReviews";
+import Footer from "../Components/Footer";
 
 function AboutUsPage() {
   return (
+    <>
     <main className="">
       <About />
       <ImageCarousel />
@@ -29,10 +31,12 @@ function AboutUsPage() {
         <Feature />
       </div>
       <MeetFreelancer />
-      <Fourthsectioneight />
+      {/* <Fourthsectioneight /> */}
       <Calltoaction />
       <SecondReviews />
     </main>
+    <Footer />
+    </>
   );
 }
 

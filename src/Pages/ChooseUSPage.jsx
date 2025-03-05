@@ -6,6 +6,7 @@ import Fourthsectionfour from '../Components/Fourthsectionfour'
 import Thirdsectionfivth from '../Components/Thirdsectionfivth'
 import Thirdsectionseven from '../Components/Thirdsectionseven'
 import Polo from '../Components/Polo'
+import Footer from '../Components/Footer'
 
 function ChooseUSPage() {
   return (
@@ -17,6 +18,7 @@ function ChooseUSPage() {
       <Thirdsectionfivth />
       <Polo />
       <Thirdsectionseven /> 
+      <Footer />
     </div>
   )
 }

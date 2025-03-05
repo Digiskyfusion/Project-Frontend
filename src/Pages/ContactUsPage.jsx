@@ -1,10 +1,11 @@
-import React from 'react'
+
 import ContactUs from "../Components/Contectus"
 import Secondsection from '../Components/Secondsection'
 import Mapcomponent from '../Components/Mapcomponent'
 import Mapsection from '../Components/Mapsection'
 import ContactForm from '../Components/ContactForm'
 import Support from '../Components/Support'
+import Footer from '../Components/Footer'
 function ContactUsPages() {
   return (
     <>
@@ -25,7 +26,7 @@ function ContactUsPages() {
         </div>
         <Support />
     </div>
-      
+      <Footer />
     </>
   )
 }

@@ -11,16 +11,16 @@ function Fourthsectionfour() {
         {/* Left Side - Text & Icons */}
         <div className="flex flex-col gap-6 lg:w-1/2 bg-gradient-to-br from-[#004930] to-[#006F4A] text-white px-8 py-10 h-full rounded-l-xl">
           <h1 className="text-3xl font-bold relative tracking-wide">
-            Connecting Talent with Opportunities Seamlessly
+          Where Talent Meets Opportunity
           </h1>
           
           {/* Features List - Details & Summary */}
           {[ 
-            { title: 'A simple and intuitive interface', summary: 'Easy-to-use design for smooth navigation.' },
-            { title: 'Find the best talent quickly', summary: 'Advanced filters to locate top freelancers fast.' },
-            { title: 'Secure and transparent transactions', summary: 'Safe payments with full transparency.' },
-            { title: 'Built-in project management tools', summary: 'Track deadlines and progress effortlessly.' },
-            { title: 'Seamless collaboration', summary: 'Real-time chat and file sharing for smooth teamwork.' }
+            { title: 'Swipe. Click. Connect.', summary: ' A seamless interface designed for productivity.' },
+            { title: 'Talk. Collaborate. Deliver.', summary: ' Instant messaging for smooth communication.' },
+            { title: ' Shine Brighter, Get Noticed.', summary: 'Boost your profile and attract dream clients.' },
+            { title: 'Earn Securely. Get Paid On Time.', summary: 'Transparent transactions, zero stress.' },
+            { title: 'Skill Up. Level Up. Succeed.', summary: 'Exclusive resources to help you grow and stay ahead.' }
           ].map((item, index) => (
             <details key={index} className="p-4 transition duration-300 bg-white/10 backdrop-blur-lg rounded-lg hover:bg-white/20 cursor-pointer">
               <summary className="text-xl font-semibold flex items-center gap-2 cursor-pointer">

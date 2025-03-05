@@ -1,9 +1,11 @@
-import React from 'react';
+
 import LiveChat from '../Components/Livechat';
 import Livechatcomponent from '../Components/Livechatcomponent';
+import Footer from '../Components/Footer';
 
 function LiveChatPage() {
   return (
+    <>
     <div className="flex px-6   ">
       
       {/* Left Sidebar (Contacts) */}
@@ -18,6 +20,8 @@ function LiveChatPage() {
       </div>
 
     </div>
+    <Footer />
+    </>
   );
 }
 
