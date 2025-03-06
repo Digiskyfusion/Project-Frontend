@@ -4,7 +4,7 @@ import Confused from '../Components/Confused'
 import Content from '../Components/Content'
 import SelectTv from '../Components/SelectTv'
 
-function TvAdvertising() {
+function TvAdvertisingPage() {
   return (
     <div className=''>
     <SelectTv />
@@ -15,4 +15,4 @@ function TvAdvertising() {
   )
 }
 
-export default TvAdvertising
+export default TvAdvertisingPage
