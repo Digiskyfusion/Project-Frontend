@@ -5,13 +5,15 @@ import aajtak from './../assets/Images/aajtak.png';
 import colors from './../assets/Images/colors.png';
 import aasta from './../assets/Images/aasta.png';
 import Confused from './Confused';
+import { useNavigate } from 'react-router-dom';
 
 function Channel() {
+  const navigate= useNavigate()
   const channels = [
-    { img: starplus, name: 'STAR Plus', category: 'Entertainment', viewers: '121.3M', spend: '5,00,000 Min Spend' },
-    { img: aajtak, name: 'Aaj Tak', category: 'News', viewers: '186.1M', spend: '5,00,000 Min Spend' },
-    { img: colors, name: 'Colors', category: 'Entertainment', viewers: '138.7M', spend: '5,00,000 Min Spend' },
-    { img: aasta, name: 'Aastha', category: 'Spiritual', viewers: '52.7M', spend: '10,000 Min Spend' }
+    { img: starplus, name: 'STAR Plus', category: 'Entertainment', viewers: '121.3M', spend: '5,00,000 Min Spend', path: '/starplus' },
+    { img: aajtak, name: 'Aaj Tak', category: 'News', viewers: '186.1M', spend: '5,00,000 Min Spend', path: '/ajtak' },
+    { img: colors, name: 'Colors', category: 'Entertainment', viewers: '138.7M', spend: '5,00,000 Min Spend', path: '/colors' },
+    { img: aasta, name: 'Aastha', category: 'Spiritual', viewers: '52.7M', spend: '10,000 Min Spend', path: '/astha' }
   ];
 
   return (
@@ -20,7 +22,7 @@ function Channel() {
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full max-w-7xl'>
         {channels.map((channel, index) => (
           <div 
-            key={index} 
+            key={index} onClick={() => navigate(channel.path)}
             className='flex flex-col items-center p-6 md:p-8 bg-white shadow-xl rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl w-full max-w-xs md:max-w-sm cursor-pointer'
           >
             <img src={channel.img} alt={channel.name} className='w-full max-w-xs h-40 md:h-48 rounded-lg object-cover' />
