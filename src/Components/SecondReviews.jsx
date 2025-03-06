@@ -8,19 +8,33 @@ import women from './../assets/Images/Ellipse 73.png';
 
 function SecondReviews() {
   const [selectedReview, setSelectedReview] = useState({
-    name: "Amandeep Kaur",
+    name: " Emily R., Startup Founder",
     image: twomale,
-    text: "Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+    text: "Hiring through this platform was a game-changer! Found a top-notch designer in no time!"
   });
 
   // Reviews Data
   const reviews = {
     female: {
-      name: "Simran Kaur",
+      name: " Emily R., Startup Founder",
       image: twomale,
-      text: "Simran’s review: Lorem Ipsum is simply dummy text of the printing industry. It has survived not only five centuries but also the leap into electronic typesetting."
+      text: "The entire process was smooth and stress-free. I got my project done faster than expected!"
     },
     male: {
+      name: "Mark T., Entrepreneur",
+      image: twomale,
+      text: "Quality work at an affordable price! The freelancer I hired exceeded my expectations."
+    },
+    female2: {
+      name: "David S., Small Business Owner",
+      image:twomale,
+      text: "This is my go-to platform for hiring experts. Reliable, easy, and efficient!"
+    },
+    male2: {
+      name: "Amandeep Kaur",
+      image: twomale,
+      text: "This platform has completely transformed my freelancing journey!"
+
       name: "Rajesh Kumar",
       image:male,
       text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
@@ -34,6 +48,7 @@ function SecondReviews() {
       name: "Rajesh Kumar",
       image: women ,
       text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
+
     },
   };
 

@@ -10,14 +10,14 @@ function Work() {
 
   const content = {
     client: [
-      { img: joboffer, title: 'Connect with Freelancers', text: 'Find skilled freelancers for your projects and collaborate seamlessly.' },
-      { img: jobpost, title: 'Post a Job', text: 'Easily post job listings and attract the best talent for your needs.' },
-      { img: workdone, title: 'Collaborate Easily', text: 'Seamlessly work with freelancers and manage your projects.' }
+      { img: joboffer, title: 'Post a Job ', text: 'Describe your project, set a budget, and let skilled professionals apply.' },
+      { img: jobpost, title: 'Connect with Experts', text: ' Browse top-rated freelancers, check their work, and hire with confidence' },
+      { img: workdone, title: ' Get Work Done ', text: 'Track progress, communicate easily, and receive high-quality results.' }
     ],
     freelancer: [
-      { img: first, title: 'Find Clients', text: 'Discover exciting projects and start working with clients worldwide.' },
-      { img: workdone, title: 'Deliver Quality Work', text: 'Complete high-quality tasks and build your freelance reputation.' },
-      { img: joboffer, title: 'Grow Your Career', text: 'Scale your freelance business and achieve financial independence.' }
+      { img: first, title: 'Create a Winning Profile ', text: 'Highlight your skills, experience, and portfolio.' },
+      { img: workdone, title: ' Find High-Paying Projects ', text: ' Apply for jobs that match your expertise and start earning.' },
+      { img: joboffer, title: ' Build Your Reputation ', text: ' Deliver great work, get positive reviews, and attract more clients.' }
     ]
   };
 

@@ -7,6 +7,7 @@ import Thirdsectionfivth from '../Components/Thirdsectionfivth'
 import Thirdsectionseven from '../Components/Thirdsectionseven'
 import Polo from '../Components/Polo'
 import Footer from '../Components/Footer'
+import Thirdsection from '../Components/Thirdsection'
 
 function ChooseUSPage() {
   return (
@@ -14,6 +15,7 @@ function ChooseUSPage() {
     <ThirdSectionFirst />
       <MeetFreelancer />
       <ProjectSection />
+      <Thirdsection />
       <Fourthsectionfour />
       <Thirdsectionfivth />
       <Polo />
