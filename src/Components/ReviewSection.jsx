@@ -6,20 +6,20 @@ import userImage from './../assets/Images/Ellipse 79.png';
 function ReviewSection() {
   const reviews = [
     {
-      name: "Manish",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      name: "Rahul D.",
+      text: "Game-changer for my career! I landed my dream clients faster than ever. Truly amazing!.",
       rating: 5,
       image: userImage,
     },
     {
-      name: "Manisha",
-      text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      name: "Neha k.",
+      text: "User-friendly and reliable! The swipe-and-connect feature makes job hunting effortless.",
       rating: 4,
       image: userImage,
     },
     {
-      name: "Priya Soni",
-      text: "An unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      name: "Vikram R.",
+      text: "On-time payments, zero worries! I love how transparent and hassle-free the process is.",
       rating: 5,
       image: userImage,
     },
@@ -37,9 +37,7 @@ function ReviewSection() {
           What Our Customers Say
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl mb-6">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        Your success is our priority! See what our users love about working with us:Seamless and efficient! Finding the right projects has never been this easy. Highly recommended!.
         </p>
         <button className="py-2 px-5 bg-[#004930] text-white rounded-full hover:bg-teal-700 transition duration-300">
           View All

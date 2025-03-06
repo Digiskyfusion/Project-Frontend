@@ -4,24 +4,24 @@ import thirspic from './../assets/Images/a-young-woman-with-black-hair-and-glass
 
 const slides = [
   {
-    title: "Bridging people to turn dreams into achievements into achievements",
-    text: "Use AI to find skilled professionals or list jobs while staying in control.",
+    title: " The Secret Ingredient to Your Businessʼs Success!",
+    text: "Great ideas need great execution—hire expert freelancers and turn your vision into reality, faster than ever!",
   },
   {
-    title: "Empowering businesses with talent discovery",
-    text: "Leverage smart hiring solutions to build your dream team efficiently team efficiently.",
+    title: " The Fuel Behind Every Big Success!",
+    text: "Your vision is powerful—now, power it up with expert freelancers and watch your dreams turn into reality!",
   },
   {
-    title: "Empowering businesses with talent discovery",
-    text: "Find jobs that match your skills and grow in your career seamlessly team efficiently.",
+    title: " The Smartest Way to Scale!",
+    text: "Don’t just plan—execute with speed, skill, and precision. Hire top freelancers and bring your ideas to life!",
   },
   {
-    title: "AI-driven recruitment at your fingertips your fingertips",
-    text: "Streamline your hiring process with automated and intelligent solutions team efficiently.",
+    title: "Your Secret to Unstoppable Growth!",
+    text: "  Success isn’t just about ideas—it’s about action. With the right freelancers, you can achieve more, faster!",
   },
   {
-    title: "Unlock new career possibilities as the value",
-    text: "Explore new job opportunities and stay ahead in the competitive team efficiently.",
+    title: "The Magic Touch Your Business Needs!",
+    text: " Transform challenges into opportunities, ideas into impact—hire expert freelancers and make success your story!",
   },
 ];
 

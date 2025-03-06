@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import Logo from './../assets/Images/digilogo12.png';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#004930] text-white px-2 py-4  shadow-md sticky top-0 z-20">
+    <nav className="bg-[#004930] text-white px-6 py-4  shadow-md sticky top-0 z-20">
       <div className="container px-1 xl:px-12 flex justify-between items-center ">
         {/* {/ Logo /} */}
-        <a href="#" className="text-2xl font-bold">LOGO</a>
+        <Link to="/" className="text-2xl font-bold">
+        <img src={Logo} alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
+        </Link>
         
         {/* {/ Desktop Menu /} */}
         <ul className="hidden md:flex space-x-6">

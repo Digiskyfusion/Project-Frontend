@@ -20,10 +20,11 @@ function MeetFreelancer() {
           viewport={{ once: false, amount: 0.2 }}
         >
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Let’s Meet with Freelancer
+          Connect. Collaborate. Create. 
           </h1>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-            Establish connections and build your own Virtual Talent Bench™ for fast project execution or major transformations.
+          Your dream team is just a click away! Build your Virtual Talent Bench™ with top-tier 
+          freelancers who bring skill, speed, and creativity to your projects.
           </p>
         </motion.div>
 
