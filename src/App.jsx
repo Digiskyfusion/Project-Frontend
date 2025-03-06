@@ -19,12 +19,16 @@ import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
-import SubCategoryPage from "./Pages/SubCategoryPage";
-import AllFreelancerPage from "./Pages/AllFreelancerPage";
-import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
-import ResetpasswordPage from "./Pages/ResetpasswordPage";
-import Clientformm from "./Components/Clientformm";
-
+import TvAdvertising from "./Pages/TvAdvertisingPage";
+import Loginform from "./Components/Loginform";
+import Clientformmpage from "./Pages/Clientformmpage";
+import ClientProfile from "./Components/Clientprofile";
+import StarPlusPage from "./Pages/StarPlusPage";
+import AdvertisingPage from "./Pages/AdvertisingPage";
+import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
+import AjTakPage from "./Pages/AjTakPage";
+import ColorPages from "./Pages/ColorPages";
+import AsthaPage from "./Pages/AsthaPage";
 function App() {
   
 
@@ -51,13 +55,18 @@ function App() {
         <Route path="/Subcatagory" element={<SubCategoryPage  />} />
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
-        <Route path="/forget-password" element={<ForgetPasswordPage  />} />
-        <Route path="/resetpassword" element={<ResetpasswordPage  />} />
-        <Route path="/client" element={<Clientformm  />} />
-        {/* <Route path="/categorypage" element={<CategoryPage  />} /> */}
+        <Route path="/channel" element={<TvAdvertising  />} />
+        <Route path="/login" element={<Loginform  />} />
+        <Route path="/client" element={<Clientformmpage />} />
+        <Route path="/ClientProfile" element={<ClientProfile />} />
+        <Route path="/ADCDPAGE" element={<StarPlusPage />} />
+        <Route path="/starplus" element={<AdvertisingPage />} />
+        <Route path="/TvAdvertising" element={<TvAdvertisingPage />} />
+        <Route path="/ajtak" element={<AjTakPage />} />
+        <Route path="/colors" element={<ColorPages />} />
+        <Route path="/astha" element={<AsthaPage />} />
       </Routes>
     </BrowserRouter>
-   
     </>
   )
 }

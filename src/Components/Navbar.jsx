@@ -39,9 +39,15 @@ const Navbar = () => {
             <NavLink to="/service" >Service</NavLink>
           </li>
           {/* <li className="flex justify-center items-center">
+
+            <NavLink to="/FreelancreClientPage" >  FreelancreClientPage</NavLink>
+          </li>
+          <li className="flex justify-center items-center">
+
             <NavLink to="/categorypage" >  Category Page</NavLink>
           </li> */}
           {/* <li className="flex justify-center items-center">
+
             <NavLink to="/ClientForm" >  ClientForm</NavLink>
           </li> */}
           {/* <li className="flex justify-center items-center">
