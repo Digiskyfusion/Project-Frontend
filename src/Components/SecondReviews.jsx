@@ -34,22 +34,18 @@ function SecondReviews() {
       name: "Amandeep Kaur",
       image: twomale,
       text: "This platform has completely transformed my freelancing journey!"
+    },
+    // female2: {
+    //   name: "Simran Kaur",
+    //   image:girl,
+    //   text: "Simran’s review: Lorem Ipsum is simply dummy text of the printing industry. It has survived not only five centuries but also the leap into electronic typesetting."
+    // },
+    // male2: {
+    //   name: "Rajesh Kumar",
+    //   image: women ,
+    //   text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
 
-      name: "Rajesh Kumar",
-      image:male,
-      text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
-    },
-    female2: {
-      name: "Simran Kaur",
-      image:girl,
-      text: "Simran’s review: Lorem Ipsum is simply dummy text of the printing industry. It has survived not only five centuries but also the leap into electronic typesetting."
-    },
-    male2: {
-      name: "Rajesh Kumar",
-      image: women ,
-      text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
-
-    },
+    // },
   };
 
   const handleDownload = () => {

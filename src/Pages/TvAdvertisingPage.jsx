@@ -3,6 +3,7 @@ import Channel from '../Components/Channel'
 import Confused from '../Components/Confused'
 import Content from '../Components/Content'
 import SelectTv from '../Components/SelectTv'
+import Footer from '../Components/Footer'
 
 function TvAdvertisingPage() {
   return (
@@ -10,7 +11,8 @@ function TvAdvertisingPage() {
     <SelectTv />
       <Channel />
       <Confused />
-      <Content />
+      {/* <Content /> */}
+      <Footer />
     </div>
   )
 }

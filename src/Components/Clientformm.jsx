@@ -1,11 +1,7 @@
 
-import React, { useState } from "react";
+import  { useEffect, useState } from "react";
 import {  useNavigate } from "react-router-dom";
 
-function Clientformm() {
-  const [activeForm, setActiveForm] = useState("client"); // Managing form toggle
-import React, { useEffect, useState } from "react";
-import {  Link, useNavigate } from "react-router-dom";
 
 function Clientformm() {
   const [activeForm, setActiveForm] = useState("client"); // Managing form toggle
@@ -47,34 +43,8 @@ function Clientformm() {
 
 // Separate ClientForm component
 function ClientForm() {
-  const [clientData, setClientData] = useState({
-    clientId: "",
-    image: null,
-    mobileNumber: "",
-    govtIdProof: null,
-    govtIdNumber: "",
-  });
+ 
 
-
-
-  return (
-    <form className="space-y-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">Client Details</h2>
-
-      <div>
-        <label className="block font-medium">Client ID hello</label>
-        <input
-          type="text"
-          name="clientId"
-          value=""
-          onChange=""
-//   const [clientData, setClientData] = useState({
-//     clientId: "",
-//     image: null,
-//     mobileNumber: "",
-//     govtIdProof: null,
-//     govtIdNumber: "",
-//   });
 const navigate= useNavigate()
   const [clientData, setClientData] = useState({
     client_id: "",  // Auto-filled later
@@ -185,10 +155,6 @@ const navigate= useNavigate()
         <label className="block font-medium">Image</label>
         <input
           type="file"
-          name="image"
-          onChange=""
-          className="w-full p-2 border rounded-md"
-        />
           name="image" 
           onChange={handleFileChange} 
           className="w-full p-2 border rounded-md"
@@ -201,8 +167,6 @@ const navigate= useNavigate()
         <input
           type="tel"
           name="mobileNumber"
-          value=""
-          onChange=""
           value={clientData.mobileNumber}
           onChange={handleChange}
           className="w-full p-2 border rounded-md"
@@ -214,8 +178,6 @@ const navigate= useNavigate()
         <label className="block font-medium">Govt-Id-Proof</label>
         <input
           type="file"
-          name="govtIdProof"
-          onChange=""
           name="govt_id_proof"
           onChange={handleFileChange} 
           className="w-full p-2 border rounded-md"
@@ -226,9 +188,6 @@ const navigate= useNavigate()
         <label className="block font-medium">Govt-Id-Number</label>
         <input
           type="text"
-          name="govtIdNumber"
-          value=""
-          onChange=""
           name="govt_id_number"
           value={clientData.govt_id_number}
           onChange={handleChange}
@@ -237,21 +196,12 @@ const navigate= useNavigate()
         />
       </div>
 
-      <div className="flex justify-center">
         <button
           type="submit"
           className="bg-[#004930] text-white py-2 px-5 rounded-full font-semibold"
         >
           Submit Client Details
-      <div className="flex ">
-        <button
-          type="submit"
-          className="bg-[#004930] text-white py-2 px-5 rounded-full font-semibold cursor-pointer" 
-        >
-          Verify Client Details
-         
-        </button>
-      </div>
+          </button>
     </form>
   );
 }

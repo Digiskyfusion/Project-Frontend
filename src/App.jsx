@@ -2,11 +2,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar"
 import Signuppage from "./Components/Signuppage"
-
 import Education from "./Components/Education"
 import LiveChatPage from "./Pages/LiveChatPage"
-
-
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
@@ -17,6 +14,7 @@ import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
 import FreelancerDetails from "./Components/FreelancerDetails";
 import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
+import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardsProfile";
 import TvAdvertising from "./Pages/TvAdvertisingPage";
@@ -29,6 +27,10 @@ import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
 import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
+import SubCategoryPage from "./Pages/SubCategoryPage";
+import SolarSystemPage from "./Pages/SolarSystemPage";
+import CartTv from "./Components/CartTv";
+
 function App() {
   
 
@@ -55,16 +57,17 @@ function App() {
         <Route path="/Subcatagory" element={<SubCategoryPage  />} />
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
-        <Route path="/channel" element={<TvAdvertising  />} />
         <Route path="/login" element={<Loginform  />} />
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
+        <Route path="/channel" element={<TvAdvertisingPage />} />
         <Route path="/starplus" element={<AdvertisingPage />} />
-        <Route path="/TvAdvertising" element={<TvAdvertisingPage />} />
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
+        <Route path="/solarsystem" element={<SolarSystemPage />} />
+        <Route path="/cart" element={<CartTv />} />
       </Routes>
     </BrowserRouter>
     </>
