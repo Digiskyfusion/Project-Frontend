@@ -2,12 +2,7 @@
 import React, { useState } from 'react';
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
-import  { useState, } from 'react';
-import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from 'react-icons/fa';
-import signup from './../assets/Images/signup.png';
-import loginImage from './../assets/Images/loginimage.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import toast, { Toaster } from 'react-hot-toast';
 import newpic from './../assets/Images/new pic.png';
@@ -113,7 +108,7 @@ function Signuppage() {
   return (
     <div>
       <div className='flex flex-col md:flex-row items-center justify-center p-3'>
-        <div className='p-5 w-full md:w-1/2 flex flex-col items-center md:py-5'>
+        <div className='p-5 w-full flex flex-col items-center md:w-1/2  md:py-5'>
           <h1 className='text-3xl font-bold text-center text-[#000000] mb-2'>DIGISKY</h1>
           <p className='text-center text-[#333333] mb-6'>Please Sign Up to continue</p>
 
@@ -122,11 +117,6 @@ function Signuppage() {
 
               className='px-6 py-1 md:px-10 rounded-full cursor-pointer border-2 text-[#004930] border-[#004930]'
               onClick={() => navigate("/login")}
-
-              className={`px-6 py-1 md:px-10 rounded-full cursor-pointer border-2 ${
-                isLogin ? 'bg-[#004930] text-white border-[#004930]' : 'text-[#004930] border-[#004930]'
-              }`}
-              onClick={() => setIsLogin(true) }
 
             >
               Login
@@ -147,34 +137,9 @@ function Signuppage() {
 
           <div className='flex flex-col w-full'>
 
-          {isLogin ? (
-            // Login Form
-            <div className='flex flex-col w-full'>
-            <Toaster />
-            <form className='flex flex-col w-full' onSubmit={handleLoginSubmit}>
-              <div className='flex flex-col gap-4 mb-4'>
-                <label className='flex-1 relative'>
-                <input type="email" name="email" value={loginForm.email} onChange={handleChangeLogin} placeholder="Enter email" className="w-full p-2 border rounded-lg" required />
-                <FaEnvelope className="absolute right-3 top-3 text-gray-400" />
-                </label>
-                <label className='flex-1 relative'>
-                <input type="password" name="password" value={loginForm.password} onChange={handleChangeLogin} placeholder="Enter password" className="w-full p-2 border rounded-lg" required />
-                <FaLock className="absolute right-3 top-3 text-gray-400" />
-                </label>
-              </div>
-
-              <div className='mb-4'>
-                <Link to='/forget-password' className='text-[#333333] hover:underline'>Forgot Password?</Link>
-              </div>
-
-              <div className='flex'>
-                <button className='bg-[#004930] text-white py-2 px-6 md:px-10 rounded-full'>Login</button>
-              </div>
-            </form>
-            </div>
-          ) : (
-            // Signup Form
-            <div className='flex flex-col w-full' >
+      
+            {/* {/ // Signup Form /} */}
+            <div className='flex flex-col w-full ' >
 
             <Toaster />
             <form className='flex flex-col w-full' onSubmit={handleSubmitSignup}>
@@ -255,6 +220,7 @@ function Signuppage() {
           <img src={newpic} alt='Signup' className='w-full max-w-xl shadow-lg' />
         </div>
       </div>
+    </div>
     </div>
   );
 }
