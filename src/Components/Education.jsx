@@ -1,9 +1,11 @@
 import React from 'react';
 import first from './../assets/Images/first.png';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 function Education() {
   return (
+    <>
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
       
       {/* Profile Section */}
@@ -63,6 +65,8 @@ function Education() {
         <p className="text-sm text-gray-700 mt-2">No portfolio projects added.</p>
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -72,15 +73,12 @@ function VideoCarousel({video,contentone,contenttwo,rate,linkone,linktwo,linkthr
     </p>
 
         {/* Pricing Section */}
-        <div className="mt-4 flex justify-between items-center border-t py-3 px-4 bg-[#004930] rounded-md text-white">
-          <div>
-            <p className="text-sm font-medium ">Base Rate</p>
-            <p className="text-lg font-semibold ">{rate}</p>
-          </div>
+        <div className="mt-4 flex justify-between items-center border-t py-3   rounded-md text-white">
+          
 
           {/* Add to Bag Button */}
-          <button className=" bg-white rounded-full cursor-pointer text-black px-4 py-2 text-sm font-medium hover:bg-[#003220] hover:text-white transition">
-            Add to Bag <br/> <span className="text-xs">For Discounted Rate</span>
+          <button className="  rounded-full cursor-pointer bg-[#004930]  px-4 py-2 text-sm font-medium hover:bg-[#003220] hover:text-white transition">
+           <Link to="/ADCDPAGE">See More</Link> 
           </button>
         </div>
       </div>

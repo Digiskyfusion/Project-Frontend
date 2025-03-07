@@ -17,7 +17,7 @@ function Ads() {
   };
 
   return (
-    <div className='px-5 mt-5'>
+    <div className='px-5 mt-5 mb-6'>
     <h1 className='text-sm md:text-xl lg:text-3xl font-bold'>Other Ad Options</h1>
     <div className="max-w-md mt-4  bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 flex justify-center items-center ">
       

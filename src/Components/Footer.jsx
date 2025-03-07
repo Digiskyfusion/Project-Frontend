@@ -61,15 +61,15 @@ function Footer() {
         <div className="flex flex-col items-start md:justify-start">
           <h1 className="text-lg font-semibold mb-3">Menu</h1>
           <ul className="space-y-2 text-sm text-start">
-            <li><Link to="/">How to recruit</Link></li>
-            <li><Link to="/about">Skill Marketplace</Link></li>
-            <li><Link to="/services">Service Directory</Link></li>
-            <li><Link to="/portfolio">Recruit an agency</Link></li>
-            <li><Link to="/ContactUs">Corporation</Link></li>
-            <li><Link to="/ContactUs">Advanced Business</Link></li>
-            <li><Link to="/ContactUs">Any recruitment</Link></li>
-            <li><Link to="/ContactUs">Reach out to hire</Link></li>
-            <li><Link to="/ContactUs">Recruit globally</Link></li>
+            <li><Link to="/allfreelancer">ALL Freelancer</Link></li>
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/FreelancreClientPage">Freelancre Client Page</Link></li>
+            <li><Link to="/FreelancerUpadte">Freelancer Upadte</Link></li>
+            <li><Link to="/ClientForm">Client Form</Link></li>
+            <li><Link to="/Subcatagory">Sub Catagory</Link></li>
+            <li><Link to="/freelancerDetails">Freelancer Details</Link></li>
+            <li><Link to="/clientDetails">Client Details</Link></li>
+            <li><Link to="/channel">Tv Advertising</Link></li>
           </ul>
         </div>
 
