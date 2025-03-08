@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image1 from './../assets/Images/tvadd1.png';
 import image2 from './../assets/Images/tvadd2.png';
+import { Link } from 'react-router-dom';
 
 
 const images = [image1, image2];
@@ -17,6 +18,7 @@ function Ads() {
   };
 
   return (
+    
     <div className='px-5 mt-5 mb-6'>
     <h1 className='text-sm md:text-xl lg:text-3xl font-bold'>Other Ad Options</h1>
     <div className="max-w-md mt-4  bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 flex justify-center items-center ">
@@ -54,7 +56,7 @@ function Ads() {
         
         <div className="flex flex-col gap-3 mt-4">
           <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
-            Execution Detail
+           <Link to="/ADCDPAGE">Execution Detail</Link> 
           </button>
           <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
             Execution Detail

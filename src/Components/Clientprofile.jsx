@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Ellipse from "./../assets/Images/Ellipse 122.png";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 function ClientProfile() {
   const [rating, setRating] = useState(0);
   const cards = [...Array(15)];
 
   return (
+    <div>
     <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
       {cards.reduce((sections, _, index) => {
         if (index % 3 === 0) sections.push(cards.slice(index, index + 3));
@@ -51,6 +53,8 @@ function ClientProfile() {
           ))}
         </div>  
       ))}
+    </div>
+<Footer />
     </div>
   );
 }

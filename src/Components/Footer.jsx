@@ -8,7 +8,7 @@ import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="bg-[#004930] text-white py-10 px-6 md:px-16">
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-4  gap-8 text-center  md:text-left">
         {/* First Section - For customers */}
         <div className="flex flex-col items-start md:justify-start">
           <h1 className="text-lg  mb-3 poppins-thin">For customers</h1>
@@ -42,7 +42,7 @@ function Footer() {
         </div>
 
         {/* Third Section - Resources */}
-        <div className="flex flex-col items-start md:justify-start">
+        {/* <div className="flex flex-col items-start md:justify-start">
           <h1 className="text-lg font-semibold mb-3">Resources</h1>
           <ul className="space-y-2 text-sm text-start">
             <li><Link to="/">How to recruit</Link></li>
@@ -55,11 +55,11 @@ function Footer() {
             <li><Link to="/ContactUs">Reach out to hire</Link></li>
             <li><Link to="/ContactUs">Recruit globally</Link></li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Fourth Section - Menu */}
         <div className="flex flex-col items-start md:justify-start">
-          <h1 className="text-lg font-semibold mb-3">Menu</h1>
+          <h1 className="text-lg font-semibold mb-3">Pages</h1>
           <ul className="space-y-2 text-sm text-start">
             <li><Link to="/allfreelancer">ALL Freelancer</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
@@ -78,7 +78,7 @@ function Footer() {
           <div className="text-2xl">
             <h1>Follow Us</h1>
             <div className="flex gap-5 mt-3">
-              <a href="https://www.instagram.com/digiskyfusion?igsh=d242aTBrNGQzZDR6" target="_blank" className="hover:text-orange-400"><CiInstagram /></a>
+              <a href="https://www.instagram.com/digiskyfusion?igsh=d242aTBrNGQzZDR6" target="_blank" className="hover:text-blue-400"><CiInstagram /></a>
               <a href="https://www.facebook.com/share/15AWmqvS2x/" target="_blank" className="hover:text-blue-500"><CiFacebook /></a>
               <a href="https://www.linkedin.com/in/digisky-fusion-01a6002b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="hover:text-blue-600"><FaLinkedinIn /></a>
               <a href="https://x.com/digiskyfusion?t=tLHE_G31tsLiB6QpX_XA8Q&s=09" target="_blank" className="hover:text-blue-400"><FaTwitter /></a>

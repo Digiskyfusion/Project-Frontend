@@ -3,7 +3,7 @@ import React from 'react';
 function Calltoaction() {
   return (
     <section className="flex flex-col items-center text-black py-10 px-4 rounded-2xl shadow-lg">
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl md:gap-4">
         <div className="text-left">
           <h1 className="text-4xl font-bold mb-4">Our Mission: Empower. Connect. Succeed.</h1>
           <p className="text-lg">We believe in a world where talent meets opportunity effortlessly. Our platform 

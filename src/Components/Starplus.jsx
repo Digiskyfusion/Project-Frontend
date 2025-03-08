@@ -72,7 +72,7 @@ function Starplus() {
               <del className='text-gray-500 flex items-center'><FaRupeeSign />23,005/Per <span>Aston Band</span></del>
             </div>
             <button 
-              className='cursor-pointer border-2 rounded-md py-11 px-5 hover:bg-[#004930] hover:text-white border-[#004930]'
+              className='cursor-pointer border-2 rounded-md py-7 px-5 bg-[#004930] text-white border-[#004930]'
               onClick={handleAddToCart}
             >
               Add To Bag

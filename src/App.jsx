@@ -29,7 +29,10 @@ import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import SolarSystemPage from "./Pages/SolarSystemPage";
-import CartTv from "./Components/CartTv";
+import CartTvPage from "./Pages/CartTvPage";
+import PostJobPage from "./Pages/PostJobPage";
+import AllJobsPage from "./Pages/AllJobsPage";
+import DiscoverHire from "./Components/Discoverhire";
 
 function App() {
   
@@ -58,6 +61,7 @@ function App() {
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/login" element={<Loginform  />} />
+        <Route path="/discover" element={<DiscoverHire   />} />
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
@@ -67,7 +71,9 @@ function App() {
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
         <Route path="/solarsystem" element={<SolarSystemPage />} />
-        <Route path="/cart" element={<CartTv />} />
+        <Route path="/cart" element={<CartTvPage />} />
+        <Route path="/postjob" element={<PostJobPage />} />
+        <Route path="/all-jobs" element={<AllJobsPage />} />
       </Routes>
     </BrowserRouter>
     </>
