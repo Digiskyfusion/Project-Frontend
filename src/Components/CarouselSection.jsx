@@ -1,5 +1,6 @@
 import React from "react";
 import Category from "./Category";
+import { Link } from "react-router-dom";
 
 function CarouselSection() {
   return (
@@ -10,7 +11,7 @@ function CarouselSection() {
           <p className="text-black mt-2">2025 jobs live-200+ added  today</p>
         </div>
         <button className="bg-[#004930] text-white px-6 py-2 rounded-3xl hover:bg-opacity-80 transition">
-        View all Cotegory
+      <Link to="/Subcatagory" >  View all Category</Link>
         </button>
       </div>
       <Category />

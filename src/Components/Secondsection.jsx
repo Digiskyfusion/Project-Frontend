@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPencilAlt, FaShieldVirus } from 'react-icons/fa';
 import professionalteam from './../assets/Images/professionalteam.png';
+import { Link } from 'react-router-dom';
 
 function Secondsection() {
   const [inView, setInView] = useState(false);
@@ -68,15 +69,15 @@ function Secondsection() {
               className={`px-6 py-3 rounded-full hover:bg-[#004930] border-2 border-[#004930] text-[#004930] hover:text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 ${
                 inView ? 'animate-fadeInUp' : ''
               }`}
-            >
-              Create an account at no cost
+            > <Link to="/registration"> Create an account at no cost</Link>
+             
             </button>
             <button
               className={`px-6 py-3 rounded-full hover:bg-[#004930] border-2 border-[#004930] text-[#004930] hover:text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 ${
                 inView ? 'animate-fadeInUp' : ''
               }`}
             >
-              Discover how to hire
+             <Link to="/discover">Discover how to hire</Link> 
             </button>
           </div>
         </div>

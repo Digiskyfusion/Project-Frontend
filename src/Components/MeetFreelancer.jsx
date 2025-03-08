@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Carousel from "./Carousel";
+import { Link } from "react-router-dom";
 
 function MeetFreelancer() {
   return (
@@ -41,7 +42,7 @@ function MeetFreelancer() {
             whileHover={{ scale: 1.05, rotate: 3 }} // Rotation effect
             whileTap={{ scale: 0.95 }}
           >
-            Detail
+           <Link to="/allfreelancer">Details</Link>
           </motion.button>
         </motion.div>
       </div>

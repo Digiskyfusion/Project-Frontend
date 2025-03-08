@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere, Stars, Line, Html, Text } from "@react-three/drei";
 import { Suspense } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SolarSystem = () => {
   const OrbitPath = ({ radius }) => {
@@ -106,7 +107,7 @@ const SolarSystem = () => {
           whileTap={{ scale: 0.9 }}
           className="mt-4 bg-[#004930] cursor-pointer text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#366051] transition-all"
         >
-          Get Started
+          <Link to="/contactus" >Get Started</Link>
         </motion.button>
       </motion.div>
 
@@ -128,7 +129,7 @@ const SolarSystem = () => {
           whileTap={{ scale: 0.9 }}
           className="mt-4 bg-[#004930] cursor-pointer text-white  px-4 py-2 rounded-lg font-semibold hover:bg-[#366051] transition-all"
         >
-          Get Started
+         <Link to="/contactus" >Get Started</Link>
         </motion.button>
       </motion.div>
 

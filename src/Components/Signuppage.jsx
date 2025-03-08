@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import newpic from "./../assets/Images/new pic.png";
 
 function Signuppage() {
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -69,13 +68,13 @@ function Signuppage() {
           roleType: "",
           country: "",
           mobileNumber: "",
-          credits: "",
+          // credits: "",
         });
       } else {
-        toast.error(data.message || "Signup failed");
+        toast.error("Invailed credentials");
       }
     } catch (error) {
-      toast.error(`Error: ${error.message}`);
+      toast.error(`Error `);
     }
   };
 
@@ -83,29 +82,7 @@ function Signuppage() {
     window.location.href = "http://localhost:3000/auth/google";
   };
 
-  const handleLoginSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginForm),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Login successful!");
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard"); // Redirect after login
-      } else {
-        toast.error(data.message || "Login failed");
-      }
-    } catch (error) {
-      toast.error(`Error: ${error.message}`);
-    }
-  };
+ 
 
   return (
     <div>
@@ -182,15 +159,31 @@ function Signuppage() {
                 </select>
                 <FaUsers className="absolute right-3 top-3 text-gray-400" />
               </label>
-              <label className="flex-1 relative">
-                <input type="text" placeholder="Credit" name="credits" value={formData.credits} onChange={handleChangeSignup} className="w-full p-2 border rounded-lg pr-10" />
-                <FaWallet className="absolute right-3 top-3 text-gray-400" />
+               {/* Password Input with Show/Hide Feature */}
+               <label className="flex-1 relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChangeSignup}
+                  className="w-full p-2 border rounded-lg pr-10"
+                />
+                
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-gray-400"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
               </label>
-            </div>
-            <div className='mb-4 relative'>
+              {/* <div className='mb-4 relative'>
                 <input type='password' placeholder='Enter password' name='password' value={formData.password} onChange={handleChangeSignup} className='w-full p-2 border rounded-lg pr-10' />
                 <FaLock className='absolute right-3 top-3 text-gray-400' />
-              </div>
+              </div> */}
+            </div>
+           
 <div className="flex">
 <button className="bg-[#004930] text-white py-2 px-6 md:px-10 rounded-full cursor-pointer">Sign Up</button>
 </div>

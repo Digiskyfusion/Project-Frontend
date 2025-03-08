@@ -33,7 +33,6 @@ function VideoCarousel({video,contentone,contenttwo,rate,linkone,linktwo,linkthr
           src={mediaItems[currentIndex].src}
           className="w-full h-72"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="YouTube Video"
         ></iframe>

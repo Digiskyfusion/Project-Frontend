@@ -26,7 +26,7 @@ function ReviewSection() {
   ];
 
   return (
-    <div className="w-full bg-gray-50 py-12 px-6 md:flex md:justify-between md:items-center sm:px-12">
+    <div className="w-full bg-gray-50 py-12 px-6 md:flex md:justify-between md:items-center md:gap-4 sm:px-12">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -36,12 +36,12 @@ function ReviewSection() {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
           What Our Customers Say
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mb-6">
+        <p className="text-lg text-gray-600 max-w-3xl mb-6 ">
         Your success is our priority! See what our users love about working with us:Seamless and efficient! Finding the right projects has never been this easy. Highly recommended!.
         </p>
-        <button className="py-2 px-5 bg-[#004930] text-white rounded-full hover:bg-teal-700 transition duration-300">
+        {/* <button className="py-2 px-5 bg-[#004930] text-white rounded-full hover:bg-teal-700 transition duration-300">
           View All
-        </button>
+        </button> */}
       </motion.div>
 
       {/* Review Cards */}
