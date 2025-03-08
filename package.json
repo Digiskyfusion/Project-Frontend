@@ -11,6 +11,8 @@
     "proxy": "http://192.168.29.50:3000"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.4",
+    "@react-three/fiber": "^9.0.4",
     "@tailwindcss/vite": "^4.0.6",
     "aos": "^2.3.4",
     "axios": "^1.8.1",

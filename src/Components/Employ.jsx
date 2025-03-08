@@ -1,5 +1,6 @@
 import React from 'react';
 import flatstyle from './../assets/Images/flatstyle.png';
+import { Link } from 'react-router-dom';
 
 const Employ = () => {
   return (
@@ -16,7 +17,7 @@ const Employ = () => {
             Digisky connects you with projects that 
             respect your talent. No office politics—just pure work and rewards.</p>
             <button className="bg-white text-black py-2 px-6 rounded-full transition duration-300 hover:bg-gray-300">
-              Post jobs for free
+             <Link to="/postjob">Post jobs</Link> 
             </button>
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
@@ -32,7 +33,7 @@ const Employ = () => {
             Post your job for free and get 
             matched with professionals who donʼt just work—but create magic.</p>
             <button className="bg-white text-black py-2 px-6 rounded-full transition duration-300 hover:bg-gray-300">
-              Post jobs for free
+            <Link to="/postjob">Post jobs</Link>
             </button>
           </div>
           <div className="w-full md:w-1/2 flex justify-center">

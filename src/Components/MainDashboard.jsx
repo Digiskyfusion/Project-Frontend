@@ -5,6 +5,7 @@ import { CiSettings } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from 'framer-motion';
 import overview from './../assets/Images/a-minimalistic-square-icon-with-a-chart-line-graph (1) 1.png';
+import { Link } from 'react-router-dom';
 
 const card = [
     {
@@ -148,7 +149,7 @@ function MainDashboard() {
                     <div className="flex flex-wrap justify-between items-center gap-2">
                         <h1 className="text-lg font-semibold">Progress</h1>
                         <button className="border-2 border-[#004930] text-[#004930] hover:bg-[#004930] hover:text-white px-3 py-1 rounded-full text-sm cursor-pointer">
-                            See More
+                           <Link to="/ClientProfile">See More</Link> 
                         </button>
                     </div>
 
