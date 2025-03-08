@@ -1,11 +1,15 @@
 import React from "react";
 import pencil from './../assets/Images/a-modern--minimalistic--and-stylish-ui-illustratio (1) 1.png';
+import work1 from './../assets/Images/work1.png';
+import work2 from './../assets/Images/work2.png';
+
+
 
 function SquareCards() {
   const steps = [
     { id: 1, title: "Sign Up", desc: " Create your profile and become part of our thriving community", img: pencil },
-    { id: 2, title: "Browse Projects", desc: " Find the best fit for your skills or business needs.", img: pencil },
-    { id: 3, title: " Connect & Collaborate ", desc: " Communicate, set expectations, and start working.", img: pencil },
+    { id: 2, title: "Browse Projects", desc: " Find the best fit for your skills or business needs.", img: work1 },
+    { id: 3, title: " Connect & Collaborate ", desc: " Communicate, set expectations, and start working.", img:  work2  },
     // { id: 4, title: "Get Paid", desc: "Secure payments for your work", img: pencil },
   ];
 

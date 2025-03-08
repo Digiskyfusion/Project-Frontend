@@ -27,6 +27,8 @@ import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
 import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
+import DetailPage from "./Components/DetailPage";
+import TermsAndConditions from "./Components/Termsandcondition";
 
 function App() {
   
@@ -63,8 +65,11 @@ function App() {
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
+        <Route path="/detailpage" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
+
+    <TermsAndConditions />
     </>
   )
 }

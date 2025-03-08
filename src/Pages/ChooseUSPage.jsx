@@ -16,8 +16,8 @@ function ChooseUSPage() {
       <ProjectSection />
       <Fourthsectionfour />
       <Thirdsectionfivth />
-      <Polo />
-      <Thirdsectionseven /> 
+      {/* <Polo /> */}
+      {/* <Thirdsectionseven />  */}
       <Footer />
     </div>
   )
