@@ -8,14 +8,18 @@ import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="bg-[#004930] text-white py-10 px-6 md:px-16">
+
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-5 gap-24 text-center md:text-left">
+
       <div className="mx-auto grid grid-cols-1 md:grid-cols-4  gap-8 text-center  md:text-left">
+
         {/* First Section - For customers */}
         <div className="flex flex-col items-start md:justify-start">
           <h1 className="text-lg  mb-3 poppins-thin">For customers</h1>
           <ul className="space-y-2 text-sm text-start">
             <li><Link to="/">How to recruit</Link></li>
-            <li><Link to="/about">Skill Marketplace</Link></li>
-            <li><Link to="/services">Service Directory</Link></li>
+            <li><Link to="/Subcatagory">Skill Marketplace</Link></li>
+            <li><Link to="/service">Service Directory</Link></li>
             <li><Link to="/portfolio">Recruit an agency</Link></li>
             <li><Link to="/ContactUs">Corporation</Link></li>
             <li><Link to="/ContactUs">Advanced Business</Link></li>
@@ -57,7 +61,7 @@ function Footer() {
           </ul>
         </div> */}
 
-        {/* Fourth Section - Menu */}
+        {/* Fourth Section - Menu
         <div className="flex flex-col items-start md:justify-start">
           <h1 className="text-lg font-semibold mb-3">Pages</h1>
           <ul className="space-y-2 text-sm text-start">
@@ -71,7 +75,7 @@ function Footer() {
             <li><Link to="/clientDetails">Client Details</Link></li>
             <li><Link to="/channel">Tv Advertising</Link></li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Fifth Section - Follow Us */}
         <div className="flex flex-col items-start">

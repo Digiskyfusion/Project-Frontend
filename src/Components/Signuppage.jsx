@@ -1,7 +1,18 @@
+
+
+import React, { useState } from 'react';
+import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaWallet, FaGoogle, FaApple } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import toast, { Toaster } from 'react-hot-toast';
+import newpic from './../assets/Images/new pic.png';
+
 import { useState } from "react";
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import newpic from "./../assets/Images/new pic.png";
+
 
 function Signuppage() {
   const navigate = useNavigate();
@@ -86,15 +97,25 @@ function Signuppage() {
 
   return (
     <div>
+
+      <div className='flex flex-col md:flex-row items-center justify-center p-3'>
+        <div className='p-5 w-full flex flex-col items-center md:w-1/2  md:py-5'>
+          <h1 className='text-3xl font-bold text-center text-[#000000] mb-2'>DIGISKY</h1>
+          <p className='text-center text-[#333333] mb-6'>Please Sign Up to continue</p>
+
       <div className="flex flex-col md:flex-row items-center justify-center p-3">
         <div className="p-5 w-full flex flex-col items-center md:w-1/2 md:py-5">
           <h1 className="text-3xl font-bold text-center text-[#000000] mb-2">DIGISKY</h1>
           <p className="text-center text-[#333333] mb-6">Please Sign Up to continue</p>
 
+
           <div className="flex justify-center gap-4 mb-4">
             <button
               className="px-6 py-1 md:px-10 rounded-full cursor-pointer border-2 text-[#004930] border-[#004930]"
               onClick={() => navigate("/login")}
+
+
+
             >
               Login
             </button>
@@ -137,6 +158,13 @@ function Signuppage() {
               </label>
             </div>
 
+
+          <div className='flex flex-col w-full'>
+
+      
+            {/* {/ // Signup Form /} */}
+            <div className='flex flex-col w-full ' >
+
             <div className="flex flex-col md:flex-row gap-4 mb-4">
               <label className="flex-1 relative">
                 <input type="email" placeholder="Enter email" name="email" value={formData.email} onChange={handleChangeSignup} className="w-full p-2 border rounded-lg pr-10" />
@@ -147,6 +175,7 @@ function Signuppage() {
                 <FaPhone className="absolute right-3 top-3 text-gray-400" />
               </label>
             </div>
+
 
             <div className="flex flex-col md:flex-row gap-4 mb-4">
               <label className="flex-1 relative">
@@ -212,6 +241,7 @@ function Signuppage() {
           <img src={newpic} alt="Signup" className="w-full max-w-xl shadow-lg" />
         </div>
       </div>
+    </div>
     </div>
   );
 }

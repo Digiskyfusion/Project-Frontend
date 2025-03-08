@@ -14,8 +14,8 @@ function Clientformm() {
       </h1>
       <p className="text-center">Please sign up to continue</p>
 
-      {/* Toggle buttons */}
-      {/* {/ Toggle buttons /} */}
+      {/* {/ Toggle buttons /}
+      {/ {/ Toggle buttons /} /} */}
       <div className="flex justify-center space-x-4">
         <button
           className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
@@ -33,9 +33,9 @@ function Clientformm() {
           Client
         </button>
       </div>
-
-      {/* Render ClientForm if 'client' is selected */}
-      {/* {/ Render ClientForm if 'client' is selected /} */}
+{/* 
+      {/ Render ClientForm if 'client' is selected /}
+      {/ {/ Render ClientForm if 'client' is selected /} /} */}
       {activeForm === "client" && <ClientForm />}
     </div>
   );

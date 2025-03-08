@@ -18,8 +18,8 @@ function ChooseUSPage() {
       <Thirdsection />
       <Fourthsectionfour />
       <Thirdsectionfivth />
-      <Polo />
-      <Thirdsectionseven /> 
+      {/* <Polo /> */}
+      {/* <Thirdsectionseven />  */}
       <Footer />
     </div>
   )
