@@ -1,26 +1,26 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar"
-import Signuppage from "./Components/Signuppage"
-import Education from "./Components/Education"
+import Navbar from "./Components/Navbar/Navbar"
+import Signuppage from "./Components/SignupPage/Signuppage"
+import Education from "./Components/EducationPage/Education"
 import LiveChatPage from "./Pages/LiveChatPage"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
-import ScrollToTop from "./Components/ScrollToTop";
+import ScrollToTop from "./Components/ScrolltopTop/ScrollToTop";
 import Services from "./Pages/Services";
 import DashboardPage from "./Pages/DashboardPage";
 import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
-import FreelancerDetails from "./Components/FreelancerDetails";
+import FreelancerDetails from "./Components/FreelancerDetailPage/FreelancerDetails";
 import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
-import CardsProfile from "./Components/CardsProfile";
+import CardsProfile from "./Components/CardProfilePage/CardsProfile";
 import TvAdvertising from "./Pages/TvAdvertisingPage";
-import Loginform from "./Components/Loginform";
+import Loginform from "./Components/LoginPage/LoginForm";
 import Clientformmpage from "./Pages/Clientformmpage";
-import ClientProfile from "./Components/Clientprofile";
+import ClientProfile from "./Components/ClientProfile/Clientprofile";
 import StarPlusPage from "./Pages/StarPlusPage";
 import AdvertisingPage from "./Pages/AdvertisingPage";
 import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
@@ -32,7 +32,8 @@ import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-import DiscoverHire from "./Components/Discoverhire";
+import DiscoverHire from "./Components/DiscoverPage/Discoverhire";
+import FreelancerJobs from "./Components/FreelancerJobPage/FreelancerJob";
 
 function App() {
   
@@ -74,6 +75,7 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
+        <Route path="/freelancerjob" element={<FreelancerJobs />} />
       </Routes>
     </BrowserRouter>
     </>

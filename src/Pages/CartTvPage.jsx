@@ -1,6 +1,7 @@
 import React from 'react'
-import CartTv from '../Components/CartTv'
-import Footer from '../Components/Footer'
+import Footer from '../Components/Footer/Footer'
+import CartTv from '../Components/CartTvPage/CartTv'
+
 
 function CartTvPage() {
   return (

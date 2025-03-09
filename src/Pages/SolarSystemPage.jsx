@@ -1,6 +1,7 @@
 import React from 'react'
-import SolarSystem from '../Components/SolarSystem'
-import Footer from '../Components/Footer'
+import SolarSystem from '../Components/HomePage/SolarSystem'
+import Footer from '../Components/Footer/Footer'
+
 
 function SolarSystemPage() {
   return (

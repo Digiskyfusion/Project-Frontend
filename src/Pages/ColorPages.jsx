@@ -1,15 +1,25 @@
 import React from 'react'
-import Advertising from '../Components/Advertising'
-import VideoCarousel from '../Components/VideoCarousel'
+import Advertising from '../Components/AdvertisingPage/Advertising'
+import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel'
 import colors from './../assets/Images/colors_logo.png';
-import Footer from '../Components/Footer';
-import Ads from '../Components/Ads';
+import Footer from '../Components/Footer/Footer';
+import Ads from '../Components/AdvertisingPage/Ads';
 import Video13 from "../assets/Videos/video13.mp4"
 // import Video14 from "../assets/Videos/video14.mp4"
 import Video15 from "../assets/Videos/video15.mp4"
+import { useNavigate } from 'react-router-dom';
 // import Video16 from "../assets/Videos/video16.mp4"
 
 function ColorPages() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
+
+  // Redirect to login if no token
+  React.useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
   return (
     <>
       <Advertising image={colors} first="138M" firstone="MONTHLY CUME REACH" second="HINDI" secondone="LANGUAGE OF COLORS" about="About Advertising in Colors" para="The channel which celebrates the color of every relationship, Colors TV is the go-to name for entertainment. Every show is made to inspire, from serials to reality shows each and every show on this channel is massively famous and has a very high engagement. Advertising with them powers up your brand by boosting brand visibility" />

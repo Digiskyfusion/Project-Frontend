@@ -1,19 +1,29 @@
 import React from 'react'
-import Advertising from '../Components/Advertising'
+import Advertising from '../Components/AdvertisingPage/Advertising'
 import ajtak from './../assets/Images/ajtak.png';
-import VideoCarousel from '../Components/VideoCarousel';
-import Footer from '../Components/Footer';
-import Ads from '../Components/Ads';
+import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
+import Footer from '../Components/Footer/Footer';
+import Ads from '../Components/AdvertisingPage/Ads';
 import Video1 from "../assets/Videos/videoplayback.mp4"
 import Video2 from "../assets/Videos/video2.mp4"
 import Video3 from "../assets/Videos/video3.mp4"
 import Video4 from "../assets/Videos/video4.mp4"
 import Video5 from "../assets/Videos/video5.mp4"
 import Video6 from "../assets/Videos/video6.mp4"
+import { useNavigate } from 'react-router-dom';
 
 
 
 function AjTakPage() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
+
+  // Redirect to login if no token
+  React.useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
   return (
     <div>
       <Advertising image={ajtak} first="186.1M " firstone="MONTHLY CUME REACH" second="HINDI" secondone="LANGUAGE OF AAJ TAK" about="About Advertising in Aaj Tak" para="The channel of every household, Aaj Tak is considered one of the first choice news channels by the viewer for getting accurate information regarding any event. It covers the latest news in Politics, Entertainment, Bollywood, Business, and Sports. Advertising with them powers up your brand by boosting brand visibility and creating awareness." />

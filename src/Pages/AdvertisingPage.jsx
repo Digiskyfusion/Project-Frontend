@@ -1,11 +1,21 @@
 import React from 'react'
-import Advertising from '../Components/Advertising'
-import VideoCarousel from '../Components/VideoCarousel'
-import Ads from '../Components/Ads'
 import starplus from './../assets/Images/starplus.png';
-import Footer from '../Components/Footer';
+import { useNavigate } from 'react-router-dom';
+import Advertising from '../Components/AdvertisingPage/Advertising';
+import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
+import Ads from '../Components/AdvertisingPage/Ads';
+import Footer from '../Components/Footer/Footer';
 
 function AdvertisingPage() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
+
+  // Redirect to login if no token
+  React.useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
   return (
     <div>
       <Advertising  image={starplus} first="121.3M" firstone="Monthly Cume Reach" second="80M+" secondone="Daily Active Viewers" about="About Advertising in STAR Plus" para="The motto of maintaining the same relationship but with new thinking has made Star Plus a fan-favorite channel.From daily soaps to religious shows, Star Plus has always kept its audience glued to its content. Every show reflects a human story, making it more engaging. Advertising here strategically creates a lasting impact on audiences."/> 
