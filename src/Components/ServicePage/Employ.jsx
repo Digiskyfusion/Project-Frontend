@@ -1,4 +1,4 @@
-import React from "react";
+
 import flatstyle from "./../../assets/Images/flatstyle.png";
 import { useNavigate } from "react-router-dom";
 

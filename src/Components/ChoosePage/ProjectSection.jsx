@@ -1,4 +1,4 @@
-import React from 'react'
+
 import pic from './../../assets/Images/a-creative-e-commerce-concept-featuring-a-miniatur(1) 1.png';
 
 function ProjectSection() {

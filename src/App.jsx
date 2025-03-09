@@ -17,7 +17,6 @@ import ClientFormPage from "./Pages/ClientFormPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
 import CardsProfile from "./Components/CardProfilePage/CardsProfile";
-import TvAdvertising from "./Pages/TvAdvertisingPage";
 import Loginform from "./Components/LoginPage/LoginForm";
 import Clientformmpage from "./Pages/Clientformmpage";
 import ClientProfile from "./Components/ClientProfile/Clientprofile";
@@ -42,7 +41,7 @@ function App() {
     <>
 
 <BrowserRouter>
-<ScrollToTop /> {/* Ensure this is inside BrowserRouter */}
+<ScrollToTop /> 
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

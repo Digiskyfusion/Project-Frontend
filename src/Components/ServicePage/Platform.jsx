@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion"; // Import Framer Motion
 import { CiSearch, CiLocationOn } from "react-icons/ci";
 import pic from './../../assets/Images/a-modern-and-engaging-digital-illustration-of-a-sm (2) (1) 1.png';

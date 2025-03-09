@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Footer from '../Components/Footer/Footer'
 import Polo from "../Components/ChoosePage/Polo"
 import ThirdSectionFirst from "../Components/ChoosePage/ThirdSectionFirst"

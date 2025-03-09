@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { MdOutlineHorizontalRule } from "react-icons/md";
 import thirspic from './../../assets/Images/a-young-woman-with-black-hair-and-glasses--sitting 1 (1).png';
 

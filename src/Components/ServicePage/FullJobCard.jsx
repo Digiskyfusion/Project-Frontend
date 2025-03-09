@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { FaBriefcase, FaMoneyBillWave, FaClipboardList } from "react-icons/fa";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useNavigate   } from "react-router-dom";
