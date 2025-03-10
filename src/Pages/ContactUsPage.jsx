@@ -2,7 +2,7 @@
 
 import ContactUs from '../Components/ContactusPage/ContactUs'
 import Mapcomponent from '../Components/ContactusPage/Mapcomponent'
-import Mapsection from '../Components/ContactusPage/Mapsection'
+import Mapsection from '../Components/ContactusPage/mapsection'
 import ContactForm from '../Components/ContactusPage/ContactForm'
 import Support from '../Components/ContactusPage/Support'
 import Footer from '../Components/Footer/Footer'
