@@ -1,14 +1,28 @@
 import React from 'react'
+<<<<<<< HEAD
 import Advertising from '../Components/Advertising'
 import VideoCarousel from '../Components/VideoCarousel'
 import astha from './../assets/Images/aasta.png';
 import Footer from '../Components/Footer';
 import Ads from '../Components/Ads';
+=======
+
+import astha from './../assets/Images/aasta.png';
+
+
+>>>>>>> 5bdeadc (Fresh start with clean code)
 import Video7 from "../assets/Videos/video7.mp4"
 import Video8 from "../assets/Videos/video8.mp4"
 
 import Video10 from "../assets/Videos/video10.mp4"
 import Video11 from "../assets/Videos/video11.mp4"
+<<<<<<< HEAD
+=======
+import Advertising from '../Components/AdvertisingPage/Advertising';
+import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
+import Footer from '../Components/Footer/Footer';
+import Ads from '../Components/AdvertisingPage/Ads';
+>>>>>>> 5bdeadc (Fresh start with clean code)
 
 function AsthaPage() {
   return (
