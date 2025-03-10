@@ -1,16 +1,10 @@
 
-
-
-import axios from "axios";
 import  { useEffect, useState } from "react";
-
-import { useState } from "react";
-
 import {  Link, useNavigate } from "react-router-dom";
 
 
-
 function FreelancerClientForm() {
+
   const [activeForm, setActiveForm] = useState("freelancer");
   const navigate= useNavigate()
   return (

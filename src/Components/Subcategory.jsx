@@ -37,6 +37,7 @@ const detailCards = {
     { name: "Alice Johnson", role: "TV Ad Manager", image: image3, description: "Expert in TV ad placements and strategy." },
     { name: "Robert Brown", role: "Media Buyer", image: image8, description: "Negotiates and purchases ad slots for clients." },
     { name: "Sophia Martinez", role: "Ad Producer", image: image10, description: "Creates compelling TV advertisements." }
+    
   ],
   "Content Marketing": [
     { name: "Ethan Williams", role: "Content Strategist", image: image0, description: "Specialist in long-form content & blogging." },

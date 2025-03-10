@@ -11,7 +11,11 @@ function TvAdvertisingPage() {
     <SelectTv />
       <Channel />
       <Confused />
+
+      <Content />
+
       {/* <Content /> */}
+
       <Footer />
     </div>
   )

@@ -84,6 +84,7 @@ function Starplus() {
       <div className='mt-7'>
         <h1 className='text-center text-sm md:text-2xl font-bold'>Execution Details</h1>
         <SelectSection />
+        
       </div>
     </div>
   );
