@@ -8,23 +8,29 @@ import LiveChatPage from "./Pages/LiveChatPage"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
+
 import ScrollToTop from "./Components/ScrollToTop";
+import Navbar from "./Components/Navbar";
+import HomePage from "./Pages/HomePage";
+import AboutUsPage from "./Pages/AboutUsPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
+import LiveChatPage from "./Pages/LiveChatPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import DashboardPage from "./Pages/DashboardPage";
 import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
 import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import FreelancerDetails from "./Components/FreelancerDetails";
 import ClientFormPage from "./Pages/ClientFormPage";
-import SubCategoryPage from "./Pages/SubCategoryPage";
-import Services from "./Pages/Services";
+
 import ContactUsPages from "./Pages/ContactUsPage";
 import Signuppage from "./Components/Signuppage";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import Services from "./Pages/Services";
 import Education from "./Components/Education";
+
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import ChooseUSPage from "./Pages/ChooseUSPage";
+
 import CardsProfile from "./Components/CardsProfile";
 import Loginform from "./Components/LoginForm";
 import Clientformmpage from "./Pages/Clientformmpage";
@@ -35,8 +41,10 @@ import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
 import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
+
 import DetailPage from "./Components/DetailPage";
 import TermsAndConditions from "./Components/Termsandcondition";
+
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
@@ -81,7 +89,9 @@ function App() {
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
+
         <Route path="/detailpage" element={<DetailPage />} />
+
         <Route path="/solarsystem" element={<SolarSystemPage />} />
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
