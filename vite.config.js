@@ -5,12 +5,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+          if (id.includes('node_modules')) return 'vendor';
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Adjust limit to avoid warnings
+    chunkSizeWarningLimit: 1000, // Avoid warnings
   },
 });
