@@ -4,12 +4,12 @@ import ajtak from './../assets/Images/ajtak.png';
 import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
 import Footer from '../Components/Footer/Footer';
 import Ads from '../Components/AdvertisingPage/Ads';
-import Video1 from "../assets/Videos/videoplayback.mp4"
-import Video2 from "../assets/Videos/video2.mp4"
-import Video3 from "../assets/Videos/video3.mp4"
-import Video4 from "../assets/Videos/video4.mp4"
-import Video5 from "../assets/Videos/video5.mp4"
-import Video6 from "../assets/Videos/video6.mp4"
+// import Video1 from "../assets/Videos/videoplayback.mp4"
+// import Video2 from "../assets/Videos/video2.mp4"
+// import Video3 from "../assets/Videos/video3.mp4"
+// import Video4 from "../assets/Videos/video4.mp4"
+// import Video5 from "../assets/Videos/video5.mp4"
+// import Video6 from "../assets/Videos/video6.mp4"
 import { useNavigate } from 'react-router-dom';
 
 
