@@ -5,11 +5,7 @@ import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-
-const SolarSystem = () => { 
-
 const SolarSystem = () => {
-
   const OrbitPath = ({ radius }) => {
     const points = Array.from({ length: 101 }, (_, i) => {
       const angle = (i / 100) * Math.PI * 2;
