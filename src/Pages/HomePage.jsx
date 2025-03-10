@@ -9,6 +9,7 @@ import Work from '../Components/HomePage/Work'
 import ReviewSection from '../Components/HomePage/ReviewSection'
 import CarouselSection from '../Components/HomePage/CarouselSection'
 import MeetFreelancer from '../Components/HomePage/MeetFreelancer'
+import Navbar from '../Components/Navbar/Navbar'
 
 function HomePage() {
   return (

@@ -33,6 +33,7 @@ import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
 import DiscoverHire from "./Components/DiscoverPage/Discoverhire";
 import FreelancerJobs from "./Components/FreelancerJobPage/FreelancerJob";
+import MembershipPlans from "./Components/HomePage/Card";
 
 function App() {
   
@@ -42,9 +43,10 @@ function App() {
 
 <BrowserRouter>
 <ScrollToTop /> 
-      <Navbar />
+<Navbar />      
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/MembershipPlans" element={<MembershipPlans />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat" element={<LiveChatPage />} />

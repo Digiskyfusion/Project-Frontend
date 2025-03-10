@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const MembershipPlans = () => {
+  const URL= import.meta.env.VITE_API_URL
+
   const plans = [
     { name: "Basic", credit: 10, amount: 19.99 },
     { name: "Standard", credit: 25, amount: 39.99 },
@@ -44,7 +46,7 @@ const MembershipPlans = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:3000/api/plan/create", {
+      const response = await fetch(`"${URL}api/plan/create"`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

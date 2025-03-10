@@ -8,7 +8,7 @@ function FreelancerClientForm() {
   const [activeForm, setActiveForm] = useState("freelancer");
   const navigate= useNavigate()
   return (
-    <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
+    <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4 ">
       <h1 className="text-center text-xl text-black font-bold md:text-2xl">Digisky</h1>
       <p className="text-center">Please sign up to continue</p>
       
@@ -77,7 +77,7 @@ function FreelancerForm() {
 
                 <input type="text" className="w-full p-2 border rounded-md"  name="freelancerId" placeholder="Enter Freelancer id"  />
 
-                <input type="text" className="w-full p-2 border rounded-md"   name="freelancerId" placeholder="Enter Freelancer id"  />
+                {/* <input type="text" className="w-full p-2 border rounded-md"   name="freelancerId" placeholder="Enter Freelancer id"  /> */}
 
             </div>
             <div>

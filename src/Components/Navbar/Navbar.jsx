@@ -9,19 +9,17 @@ const Navbar = () => {
   const [roleType, setRoleType] = useState(null);
 
   useEffect(() => {
-    const handleStorageChange = () => {
+    const handleAuthChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
       const userData = JSON.parse(localStorage.getItem("user"));
-      // console.log(userData);
-      
       setRoleType(userData?.roleType || null);
     };
 
-    handleStorageChange(); // Initial check
-    window.addEventListener("storage", handleStorageChange);
+    handleAuthChange(); // Initial check
+    window.addEventListener("authChange", handleAuthChange);
 
     return () => {
-      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("authChange", handleAuthChange);
     };
   }, []);
 
@@ -29,81 +27,86 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    setIsLoggedIn(false);
-    setRoleType(null);
+    localStorage.removeItem("roleType");
+    
+    // Dispatch custom event to notify navbar
+    window.dispatchEvent(new Event("authChange"));
   };
 
   const freelancerNav = (
     <>
-      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-      <li><NavLink to="/freelancerjob">My Jobs</NavLink></li>
+      <li><NavLink to="/FreelancreClientPage">Profile Verification</NavLink></li>
+      <li><NavLink to="/ClientProfile">Client Profile</NavLink></li>
+      <li><NavLink to="/MembershipPlans">Plan Info</NavLink></li>
+      <li><NavLink to="/FreelancerUpadte">Edit Profile</NavLink></li>
     </>
   );
 
   const clientNav = (
     <>
-      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-      <li><NavLink to="/postjob">Post a Job</NavLink></li>
-      <li><NavLink to="/all-jobs">Manage Jobs</NavLink></li>
+      <li><NavLink to="/client">Profile Verification</NavLink></li>
+      <li><NavLink to="/ClientForm">Edit Profile</NavLink></li>
+      <li><NavLink to="/Subcatagory">Subcategory</NavLink></li>
+      <li><NavLink to="/allfreelancer">Freelancer Profile</NavLink></li>
     </>
   );
 
   return (
     <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-20">
       <div className="container px-1 xl:px-12 flex justify-between items-center">
-        {/* Logo */}
         <Link to="/" className="text-2xl font-bold">
           <img src={Logo} alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
         </Link>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/aboutus">About Us</NavLink></li>
-          <li><NavLink to="/ChooseUSPage">Choose Us</NavLink></li>
-          <li><NavLink to="/service">Service</NavLink></li>
-          <li><NavLink to="/contactus">Contact Us</NavLink></li>
+          {!isLoggedIn || (roleType !== "client" && roleType !== "freelancer") ? (
+            <>
+              <li><NavLink to="/">Home</NavLink></li>
+              <li><NavLink to="/aboutus">About Us</NavLink></li>
+              <li><NavLink to="/ChooseUSPage">Choose Us</NavLink></li>
+              <li><NavLink to="/service">Service</NavLink></li>
+              <li><NavLink to="/contactus">Contact Us</NavLink></li>
+            </>
+          ) : null}
 
-          {/* Role-Based Navigation */}
           {isLoggedIn && roleType === "freelancer" && freelancerNav}
           {isLoggedIn && roleType === "client" && clientNav}
         </ul>
 
-        {/* Registration / Logout Button */}
         <div className="hidden md:block">
           {!isLoggedIn ? (
             <button className="py-2 px-8 border-2 rounded-full">
-              <Link to="/registration"> <a href="/registration">Registration</a></Link>
+              <Link to="/registration"><a href="/registration">Registration</a></Link>
             </button>
           ) : (
             <button className="py-2 px-8 border-2 rounded-full" onClick={handleLogout}>
-             <Link to="/login"> <a href="/login">Logout</a></Link> 
+             <a href=""> Logout</a>
             </button>
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-green-900 p-4 text-center">
           <ul className="space-y-4">
-            <li><NavLink to="/" className="block hover:text-gray-300">Home</NavLink></li>
-            <li><NavLink to="/aboutus" className="block hover:text-gray-300">About Us</NavLink></li>
-            <li><NavLink to="/ChooseUSPage" className="block hover:text-gray-300">Choose Us</NavLink></li>
-            <li><NavLink to="/service" className="block hover:text-gray-300">Service</NavLink></li>
-            <li><NavLink to="/contactus" className="block hover:text-gray-300">Contact Us</NavLink></li>
+            {!isLoggedIn || (roleType !== "client" && roleType !== "freelancer") ? (
+              <>
+                <li><NavLink to="/" className="block hover:text-gray-300">Home</NavLink></li>
+                <li><NavLink to="/aboutus" className="block hover:text-gray-300">About Us</NavLink></li>
+                <li><NavLink to="/ChooseUSPage" className="block hover:text-gray-300">Choose Us</NavLink></li>
+                <li><NavLink to="/service" className="block hover:text-gray-300">Service</NavLink></li>
+                <li><NavLink to="/contactus" className="block hover:text-gray-300">Contact Us</NavLink></li>
+              </>
+            ) : null}
 
-            {/* Role-Based Navigation */}
             {isLoggedIn && roleType === "freelancer" && freelancerNav}
             {isLoggedIn && roleType === "client" && clientNav}
           </ul>
 
-          {/* Mobile Registration / Logout Button */}
           <div className="mt-4">
             {!isLoggedIn ? (
               <button className="py-2 px-5 border-2 rounded-full">
@@ -111,7 +114,7 @@ const Navbar = () => {
               </button>
             ) : (
               <button className="py-2 px-5 border-2 rounded-full bg-red-600" onClick={handleLogout}>
-                Logout
+                <a href="">Logout</a>
               </button>
             )}
           </div>

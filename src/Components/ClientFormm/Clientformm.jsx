@@ -4,8 +4,15 @@ import {  useNavigate } from "react-router-dom";
 
 
 function Clientformm() {
-  const [activeForm, setActiveForm] = useState("client"); // Managing form toggle
-
+  const [activeForm, setActiveForm] = useState("client"); // Managing form toggl
+  const [userRole, setUserRole] = useState(""); // Store user role
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      setUserRole(parsedUser.roleType); // Assuming roleType is stored in user data
+    }
+  }, []);
   const navigate= useNavigate()
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
@@ -18,10 +25,13 @@ function Clientformm() {
       {/* {/ Toggle buttons /} */}
       <div className="flex justify-center space-x-4">
         <button
-          className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
+          className={`py-2 px-4 font-semibold rounded-md cursor-pointer  ${
             activeForm === "freelancer" ? "text-black underline" : "text-gray-700"
           }`}
-          onClick={() => navigate("/FreelancreClientPage")}
+          onClick={() => {if (userRole !== "client") {
+              navigate("/FreelancreClientPage");
+          }}}
+          disabled={userRole === "client"}
         >
           Freelancer
         </button>
@@ -43,7 +53,8 @@ function Clientformm() {
 
 // Separate ClientForm component
 function ClientForm() {
- 
+  const URL= import.meta.env.VITE_API_URL
+
 
 const navigate= useNavigate()
   const [clientData, setClientData] = useState({
@@ -115,7 +126,7 @@ const navigate= useNavigate()
     console.log("FormData before sending:", [...formData.entries()]);
   
     try {
-      const response = await fetch("http://localhost:3000/api/client/createclient", {
+      const response = await fetch(`http://localhost:3000/api/client/createclient`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

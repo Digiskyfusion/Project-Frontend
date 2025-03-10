@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css'; // Default styles
 import { CiSettings } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from 'framer-motion';
-import overview from './../assets/Images/a-minimalistic-square-icon-with-a-chart-line-graph (1) 1.png';
+import overview from './../../assets/Images/a-minimalistic-square-icon-with-a-chart-line-graph (1) 1.png';
 import { Link } from 'react-router-dom';
 
 const card = [

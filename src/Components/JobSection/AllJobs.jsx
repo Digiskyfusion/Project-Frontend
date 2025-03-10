@@ -3,6 +3,8 @@ import { FaBriefcase, FaMoneyBillWave, FaClipboardList } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 
 const JobSection = () => {
+  const URL = import.meta.env.VITE_API_URL;
+
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -21,17 +23,33 @@ const JobSection = () => {
   const fetchJobs = async () => {
     setLoading(true);
     setError("");
+
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:3000/api/jobs", {
+      // const userId = localStorage.getItem("user"); // ✅ Get user ID from localStorage
+      const user = JSON.parse(localStorage.getItem("user")); // Parse the stored user object
+      const userId = user?._id; // Safely access _id
+      // console.log(userId);
+
+      if (!userId) {
+        throw new Error("User ID not found");
+      }
+
+      const res = await fetch(`http://localhost:3000/api/jobs`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
+
       if (!res.ok) throw new Error("Failed to fetch jobs");
+
       const data = await res.json();
-      setJobs(data);
+
+      // ✅ Filter only jobs posted by the logged-in user
+      const userJobs = data.filter((job) => job.postedBy === userId);
+
+      setJobs(userJobs);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -130,7 +148,7 @@ const JobSection = () => {
   );
 };
 
-// Edit Job Form
+// Edit Job Form Component
 const EditJobForm = ({ job, onClose, updateJobState }) => {
   const [formData, setFormData] = useState({
     title: job.title,
@@ -164,7 +182,7 @@ const EditJobForm = ({ job, onClose, updateJobState }) => {
 
       if (!res.ok) throw new Error("Failed to update job");
 
-      // Directly update the job state
+      // Update the job state directly
       updateJobState((prevJobs) =>
         prevJobs.map((j) => (j._id === job._id ? { ...j, ...formData } : j))
       );

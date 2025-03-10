@@ -18,7 +18,7 @@ const profiles = Array.from({ length: 16 }, (_, index) => ({
 
 function ProfileCard() {
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+    <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200 ">
     <h1 className="text-sm md:text-2xl font-bold mb-8 text-center">All Freelancer</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {profiles.map((profile) => (

@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "../Components/DashboardPage/Dashboard";
 import DashboardSecond from "../Components/DashboardPage/DashboardSecond";
-import MainDashboard from "../Components/DashboardPage/DashboardSecond";
+import MainDashboard from "../Components/DashboardPage/MainDashboard";
 import Footer from "../Components/Footer/Footer";
+import Navbar from "../Components/Navbar/Navbar";
 
 
 function DashboardPage() {

@@ -5,6 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 
 const PostJob = () => {
+  const URL= import.meta.env.VITE_API_URL
+
   const navigate = useNavigate();
   const location = useLocation();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -38,7 +40,7 @@ const PostJob = () => {
       setJobData((prev) => ({
         ...prev,
         file: file,
-        filePreview: URL.createObjectURL(file),
+       filePreview: window.URL.createObjectURL(file), // ✅ Ensure using `window.URL`
       }));
     }
   };
@@ -65,11 +67,13 @@ const PostJob = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/jobs", {
+      const res = await fetch(`http://localhost:3000/api/jobs`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
+      console.log(formData);
+      
 
       const data = await res.json();
       if (res.ok) {
@@ -142,7 +146,6 @@ const PostJob = () => {
             type="number"
             name="budget"
             placeholder="Budget"
-            required
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
             value={jobData.budget}
             onChange={handleChange}
