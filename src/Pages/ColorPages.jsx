@@ -4,9 +4,9 @@ import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel'
 import colors from './../assets/Images/colors_logo.png';
 import Footer from '../Components/Footer/Footer';
 import Ads from '../Components/AdvertisingPage/Ads';
-import Video13 from "../assets/Videos/video13.mp4"
+// import Video13 from "../assets/Videos/video13.mp4"
 // import Video14 from "../assets/Videos/video14.mp4"
-import Video15 from "../assets/Videos/video15.mp4"
+// import Video15 from "../assets/Videos/video15.mp4"
 import { useNavigate } from 'react-router-dom';
 // import Video16 from "../assets/Videos/video16.mp4"
 

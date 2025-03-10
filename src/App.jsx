@@ -27,15 +27,15 @@ import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
 
-import DetailPage from "./Components/DetailPage";
-import TermsAndConditions from "./Components/Termsandcondition";
+// import DetailPage from "./Components/";
+// import TermsAndConditions from "./Components/Termsandcondition";
 
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-import DiscoverHire from "./Components/Discoverhire";
+// import DiscoverHire from "./Components/";
 import FreelancerJobs from "./Components/FreelancerJobPage/FreelancerJob";
 import MembershipPlans from "./Components/HomePage/Card";
 
@@ -76,7 +76,7 @@ function App() {
         <Route path="/freelancerDetails" element={<Education  />} />
         <Route path="/clientDetails" element={<CardsProfile  />} />
         <Route path="/login" element={<Loginform  />} />
-        <Route path="/discover" element={<DiscoverHire   />} />
+        {/* <Route path="/discover" element={<DiscoverHire   />} /> */}
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
@@ -86,7 +86,7 @@ function App() {
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
 
-        <Route path="/detailpage" element={<DetailPage />} />
+        {/* <Route path="/detailpage" element={<DetailPage />} /> */}
 
         <Route path="/solarsystem" element={<SolarSystemPage />} />
         <Route path="/cart" element={<CartTvPage />} />

@@ -3,11 +3,11 @@ import React from 'react'
 import astha from './../assets/Images/aasta.png';
 
 
-import Video7 from "../assets/Videos/video7.mp4"
-import Video8 from "../assets/Videos/video8.mp4"
+// import Video7 from "../assets/Videos/video7.mp4"
+// import Video8 from "../assets/Videos/video8.mp4"
 
-import Video10 from "../assets/Videos/video10.mp4"
-import Video11 from "../assets/Videos/video11.mp4"
+// import Video10 from "../assets/Videos/video10.mp4"
+// import Video11 from "../assets/Videos/video11.mp4"
 import Advertising from '../Components/AdvertisingPage/Advertising';
 import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
 import Footer from '../Components/Footer/Footer';
