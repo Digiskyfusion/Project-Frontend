@@ -29,6 +29,8 @@ function Clientformm() {
             activeForm === "freelancer" ? "text-black underline" : "text-gray-700"
           }`}
           onClick={() => {if (userRole !== "client") {
+
+            
               navigate("/FreelancreClientPage");
           }}}
           disabled={userRole === "client"}
