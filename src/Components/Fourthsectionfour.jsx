@@ -1,7 +1,9 @@
 import React from 'react';
 import { Pencil, Info } from 'lucide-react'; // Importing a pencil and info icon
-import office from './../assets/Images/office.png';
+// import office from './../assets/Images/office.png';
 import { IoIosArrowDown } from "react-icons/io";
+import image from './../assets/Images/-a-sleek-and-modern-corporate-office-with-a-premiu (7).png';
+
 
 function Fourthsectionfour() {
   return (
@@ -34,8 +36,8 @@ function Fourthsectionfour() {
         </div>
 
         {/* Right Side - Image */}
-        <div className=" w-full lg:w-[67.7%] h-full  flex items-center justify-center  rounded-r-xl shadow-md">
-          <img src={office} alt="Office" className="w-full h-full  object-cover  shadow-lg " />
+        <div className=" w-full lg:w-[53.8%] h-full  flex items-center justify-center  ">
+          <img src={image} alt="Office" className="w-full h-full  object-cover   " />
         </div>
         
       </div>

@@ -7,9 +7,11 @@ import Years from 'react-calendar/dist/esm/DecadeView/Years.js';
 import { AlignLeft } from 'lucide-react';
 import { GiConfirmed } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 function CardsProfile() {
   return (
+    <>
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200">
       
       {/* Profile Section */}
@@ -64,6 +66,8 @@ function CardsProfile() {
   ))}
 </div>
     </div>
+    <Footer />  
+    </>
   );
 }
 

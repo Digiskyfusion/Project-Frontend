@@ -13,7 +13,7 @@ function Category() {
     { title: " Development & IT", jobs: " 180 Jobs", desc: "Frontend, Backend, Web and App Developer Jobs", img: Vector },
     { title: " Graphic Design & UI/UX", jobs: "120 jobs", desc: "Logos, Branding, Website & App Design", img: Vector },
     { title: " Digital Marketing", jobs: "150 jobs", desc: " SEO, Social Media, Performance Marketing", img: Vector },
-    { title: "Writing & Translation", jobs: "130 jobs", desc: "Content Writing, Copywriting, Blogging, Translations.", img: Vector }
+    { title: "Writing & Translation", jobs: "130 jobs", desc: "Content Writing, Copywriting, Blogging.", img: Vector }
   ];
 
   return (
@@ -36,7 +36,7 @@ function Category() {
           540: { slidesPerView: 1.2 }, // Small phones
           640: { slidesPerView: 2 },   // Tablets
           1024: { slidesPerView: 3 },  // Laptops
-          1280: { slidesPerView: 4 },  // Larger screens
+          1280: { slidesPerView: 3 },  // Larger screens
         }}
         onSwiper={setSwiperInstance}
         className="w-full"
@@ -55,7 +55,7 @@ function Category() {
             </div>
             <h1 className="text-xl text-white font-bold mt-4">{category.title}</h1>
             <h2 className="text-white mt-0.5">{category.jobs}</h2>
-            <p className="text-white mt-4 text-center">{category.desc}</p>
+            <p className="text-white mt-4 ">{category.desc}</p>
           </SwiperSlide>
         ))}
       </Swiper>

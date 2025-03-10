@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import joboffer from './../assets/Images/joboffer.png';
 import workdone from './../assets/Images/workdone.jpg';
 import jobpost from './../assets/Images/jobpost.jpg';
@@ -7,17 +8,28 @@ import first from './../assets/Images/first.png';
 function Work() {
   const [view, setView] = useState('client');
   const [hoverIndex, setHoverIndex] = useState(null);
+  const navigate = useNavigate();
+
+  // Function to check authentication and redirect
+  const handlePostJobClick = () => {
+    const isAuthenticated = localStorage.getItem('token'); // Assuming token is stored in localStorage
+    if (isAuthenticated) {
+      navigate('/postjob');
+    } else {
+      navigate('/login');
+    }
+  };
 
   const content = {
     client: [
-      { img: joboffer, title: 'Connect with Freelancers', text: 'Find skilled freelancers for your projects and collaborate seamlessly.' },
-      { img: jobpost, title: 'Post a Job', text: 'Easily post job listings and attract the best talent for your needs.' },
-      { img: workdone, title: 'Collaborate Easily', text: 'Seamlessly work with freelancers and manage your projects.' }
+      { img: joboffer, title: 'Post a Job', text: 'Describe your project, set a budget, and let skilled professionals apply.', action: handlePostJobClick },
+      { img: jobpost, title: 'Connect with Experts', text: 'Browse top-rated freelancers, check their work, and hire with confidence' },
+      { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.' }
     ],
     freelancer: [
-      { img: first, title: 'Find Clients', text: 'Discover exciting projects and start working with clients worldwide.' },
-      { img: workdone, title: 'Deliver Quality Work', text: 'Complete high-quality tasks and build your freelance reputation.' },
-      { img: joboffer, title: 'Grow Your Career', text: 'Scale your freelance business and achieve financial independence.' }
+      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.' },
+      { img: workdone, title: 'Find High-Paying Projects', text: 'Apply for jobs that match your expertise and start earning.' },
+      { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.' }
     ]
   };
 
@@ -25,17 +37,17 @@ function Work() {
     <div className="bg-gray-100 py-7 px-3">
       <h1 className="text-3xl font-bold mt-3 md:px-5 text-gray-800">How It Works</h1>
       <div className="mb-6 flex md:mt-2 border-b-4 border-gray-300">
-        <button 
-          className={`px-3 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'client' ? 'border-b-4 border-green-500' : ''}`} 
+        <button
+          className={`px-3 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'client' ? 'border-b-4 border-green-500' : ''}`}
           onClick={() => setView('client')}
         >
           Client
         </button>
-        <button 
-          className={`px-6 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'freelancer' ? 'border-b-4 border-green-500' : ''}`} 
+        <button
+          className={`px-6 py-2 mx-2 text-2xl cursor-pointer text-black relative ${view === 'freelancer' ? 'border-b-4 border-green-500' : ''}`}
           onClick={() => setView('freelancer')}
         >
-          Freelancer  
+          Freelancer
         </button>
       </div>
 
@@ -60,6 +72,14 @@ function Work() {
             <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all md:ml-6 md:mr-6 relative">
               <h1 className="text-xl md:text-2xl font-bold text-gray-800">{item.title}</h1>
               <p className="text-gray-600 mt-2">{item.text}</p>
+              {item.action && (
+                <button
+                  className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                  onClick={item.action}
+                >
+                  {item.title}
+                </button>
+              )}
             </div>
             {index % 2 !== 0 ? (
               <div className="flex justify-center mb-4 md:mb-0">

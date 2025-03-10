@@ -6,10 +6,10 @@ import Vector from './../assets/Images/Vector (1).png';
 
 function Jobsection() {
   const jobs = [
-    { title: 'UI/UX Designer', company: 'Digisky', category: 'Design & Creative', location: 'Mohali', salary: '$400-$500/month', remote: true, days: "10 days left to apply" },
-    { title: 'Frontend Developer', company: 'TechCorp', category: 'Development', location: 'Bangalore', salary: '$600-$700/month', remote: true, days: "5 days left to apply" },
-    { title: 'Marketing Specialist', company: 'Brandify', category: 'Marketing', location: 'New York', salary: '$500-$600/month', remote: true, days: "3 days left to apply" },
-    { title: 'Project Manager', company: 'SkyHigh', category: 'Management', location: 'London', salary: '$700-$800/month', remote: true, days: "7 days left to apply" }
+    { title: 'UI/UX Designer', company: 'Digisky', category: 'Design & Creative', location: 'Mohali', salary: '$400-$500/month', remote: true, experience: '2+ years', type: 'Full-Time', days: "10 days left to apply" },
+    { title: 'Frontend Developer', company: 'TechCorp', category: 'Development', location: 'Bangalore', salary: '$600-$700/month', remote: true, experience: '3+ years', type: 'Part-Time', days: "5 days left to apply" },
+    { title: 'Marketing Specialist', company: 'Brandify', category: 'Marketing', location: 'New York', salary: '$500-$600/month', remote: false, experience: '1+ years', type: 'Contract', days: "3 days left to apply" },
+    { title: 'Project Manager', company: 'SkyHigh', category: 'Management', location: 'London', salary: '$700-$800/month', remote: true, experience: '5+ years', type: 'Freelance', days: "7 days left to apply" }
   ];
 
   return (
@@ -20,11 +20,10 @@ function Jobsection() {
           className='bg-white shadow-md rounded-xl p-5 flex flex-col items-start border border-gray-200 relative 
                      transition duration-300 ease-in-out hover:bg-[#004930] hover:text-white group' 
         >
-
           {/* Company Logos - Turn White on Hover */}
           <div className='absolute top-2 right-2 flex gap-2 md:px-5 md:py-2'>
             <img src={king} alt='Company logo 1' className='w-4 h-4 sm:w-8 sm:h-8 transition duration-300 group-hover:invert ' />
-            <img src={Vector} alt='Company logo 2' className='w-4 h-4 sm:w-8 sm:h-8  ' />
+            <img src={Vector} alt='Company logo 2' className='w-4 h-4 sm:w-8 sm:h-8' />
           </div>
 
           {/* Job Header */}
@@ -39,7 +38,7 @@ function Jobsection() {
             </div>
           </div>
 
-          {/* Job Category - Centered */}
+          {/* Job Category */}
           <div className='w-full px-9 mt-1'>
             <p className='text-gray-600 text-xs sm:text-sm font-medium group-hover:text-white'>{job.category}</p>
           </div>
@@ -51,6 +50,8 @@ function Jobsection() {
               <CiLocationOn className='mr-1 group-hover:text-[#004930]' /> {job.location}
             </span>
             <span className='bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs sm:text-sm group-hover:bg-white group-hover:text-[#004930]'>{job.salary}</span>
+            <span className='bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs sm:text-sm group-hover:bg-white group-hover:text-[#004930]'>{job.experience}</span>
+            <span className='bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs sm:text-sm group-hover:bg-white group-hover:text-[#004930]'>{job.type}</span>
           </div>
 
           {/* Application Deadline */}

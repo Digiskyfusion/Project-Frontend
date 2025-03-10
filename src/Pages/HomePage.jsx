@@ -8,6 +8,7 @@ import Category from '../Components/Category'
 import MeetFreelancer from '../Components/MeetFreelancer'
 import CarouselSection from '../Components/CarouselSection'
 import Footer from '../Components/Footer'
+import SolarSystem from '../Components/SolarSystem'
 function HomePage() {
   return (
     <>
@@ -16,6 +17,7 @@ function HomePage() {
         <FirstSection />
         <Secondsection />
         <Card />
+        <SolarSystem />
         <Work />
         <ReviewSection />
         <CarouselSection />
