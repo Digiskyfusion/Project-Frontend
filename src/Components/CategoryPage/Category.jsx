@@ -1,24 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // Icons for navigation
-import Vector from "./../../assets/Images/Vector.png";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Category() {
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const categories = [
-    { title: " Development & IT", jobs: " 180 Jobs", desc: "Frontend, Backend, Web and App Developer Jobs", img: Vector },
-    { title: " Graphic Design & UI/UX", jobs: "120 jobs", desc: "Logos, Branding, Website & App Design", img: Vector },
-    { title: " Digital Marketing", jobs: "150 jobs", desc: " SEO, Social Media, Performance Marketing", img: Vector },
-    { title: "Writing & Translation", jobs: "130 jobs", desc: "Content Writing, Copywriting, Blogging.", img: Vector }
-  ];
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${API_URL}api/category/getallCategory`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch categories");
+        }
+        const data = await response.json();
+        console.log("data");
+        console.log(data);
+        setCategories(data || []);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  if (loading) return <p className="text-center text-white">Loading categories...</p>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
     <div className="relative px-6 md:px-10 lg:px-20 py-10">
-      {/* Left Navigation Button */}
       <button
         className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
         aria-label="Previous Slide"
@@ -27,16 +46,15 @@ function Category() {
         <ChevronLeft size={24} color="white" />
       </button>
 
-      {/* Swiper Carousel */}
       <Swiper
         modules={[Navigation]}
         spaceBetween={30}
         slidesPerView={1}
         breakpoints={{
-          540: { slidesPerView: 1.2 }, // Small phones
-          640: { slidesPerView: 2 },   // Tablets
-          1024: { slidesPerView: 3 },  // Laptops
-          1280: { slidesPerView: 3 },  // Larger screens
+          540: { slidesPerView: 1.2 },
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 3 },
         }}
         onSwiper={setSwiperInstance}
         className="w-full"
@@ -45,22 +63,21 @@ function Category() {
           <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-6 rounded-3xl">
             <div className="flex">
               <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-16 h-16 overflow-hidden bg-white">
-                <img loading="lazy"
-                  src={category.img}
+                {/* <img
+                  loading="lazy"
+                  src={category.img || "https://via.placeholder.com/50"}
                   alt={category.title}
                   className="w-10 h-10 object-contain rounded-full flex-shrink-0"
-                  
-                />
+                /> */}
               </div>
             </div>
-            <h1 className="text-xl text-white font-bold mt-4">{category.title}</h1>
-            <h2 className="text-white mt-0.5">{category.jobs}</h2>
-            <p className="text-white mt-4 ">{category.desc}</p>
+            <h1 className="text-xl text-white font-bold mt-4">{category.name}</h1>
+            {/* <h2 className="text-white mt-0.5">{category.jobs}</h2>
+            <p className="text-white mt-4">{category.desc}</p> */}
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Right Navigation Button */}
       <button
         className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
         aria-label="Next Slide"
