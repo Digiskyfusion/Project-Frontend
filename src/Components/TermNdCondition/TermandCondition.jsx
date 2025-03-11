@@ -1,8 +1,10 @@
 import React from 'react';
 
-const TermsAndConditions = () => {
+const TermandCondition = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <>
+    <div className='min-h-screen bg-gradient-to-br from-gray-100 to-gray-200'>
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-4 md:p-10">
       <div className="min-w-full min-h-full"> {/* Removed max-w and added h-full */}
         <div className="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 mx-auto max-w-screen-lg"> {/* Added max-w-screen-lg and mx-auto */}
           <div className="mb-10 text-center">
@@ -33,13 +35,13 @@ const TermsAndConditions = () => {
               <strong>3. Intellectual Property</strong>
             </p>
             <p>
-              All content provided on our service, including but not limited to text, graphics, logos, and software, is the property of [Your Company Name] and is protected by intellectual property laws.
+              All content provided on our service, including but not limited to text, graphics, logos, and software, is the property of Digisky and is protected by intellectual property laws.
             </p>
             <p>
               <strong>4. Limitation of Liability</strong>
             </p>
             <p>
-              [Your Company Name] shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of our service.
+              Digisky fusion shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of our service.
             </p>
             <p>
               <strong>5. Changes to Terms</strong>
@@ -47,35 +49,30 @@ const TermsAndConditions = () => {
             <p>
               We reserve the right to modify these Terms and Conditions at any time. Any changes will be effective immediately upon posting. Your continued use of the service constitutes acceptance of the revised terms.
             </p>
+           
             <p>
-              <strong>6. Governing Law</strong>
+              <strong>6. Contact Information</strong>
             </p>
             <p>
-              These Terms and Conditions shall be governed by and construed in accordance with the laws of [Your Jurisdiction].
+              If you have any questions about these Terms and Conditions, please contact us at digiskyhelp@gmail.com.
             </p>
             <p>
-              <strong>7. Contact Information</strong>
-            </p>
-            <p>
-              If you have any questions about these Terms and Conditions, please contact us at [Your Contact Information].
-            </p>
-            <p>
-              <strong>8. User Accounts</strong>
+              <strong>7. User Accounts</strong>
             </p>
             <p>
               If our service requires you to create an account, you are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.
             </p>
             <p>
-              <strong>9. Termination</strong>
+              <strong>8. Termination</strong>
             </p>
             <p>
               We may terminate or suspend your access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
             </p>
             <p>
-              <strong>10. Third-Party Links</strong>
+              <strong>9. Third-Party Links</strong>
             </p>
             <p>
-              Our service may contain links to third-party websites or services that are not owned or controlled by [Your Company Name]. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.
+              Our service may contain links to third-party websites or services that are not owned or controlled by Digisky. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.
             </p>
           </div>
           {/* <div className="mt-10 flex justify-center">
@@ -91,7 +88,9 @@ const TermsAndConditions = () => {
         </div>
       </div>
     </div>
+</div>
+    </>
   );
 };
 
-export default TermsAndConditions;
+export default TermandCondition;

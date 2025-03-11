@@ -15,11 +15,20 @@ function Content() {
                 </div>
                 <div>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>TV Advertising Cost</h1>
-                    <p className='mt-4 livvic-medium'><span className='text-[#004930] hover:underline hover:cursor-pointer'>TELEVSION ADVERTISING </span>is the most popular advertising medium in India. One of the most common searches we come across related to advertising is TV advertising cost.What is it that makes people search for TV advertising cost? About 210 million households in India have TV sets with 892 million people watching it.Running an ad on television ensures millions of eyeballs. 
-                    This is the single-biggest reason why people search for TV advertising costs the most.It’s the popularity of television as the largest medium of entertainment in India. Buying a television set is expensive and hence it’s a family investment. Most households in India have only one television set that is watched by the entire family.
-                     Television is not a luxury but an essential for people.Some other reasons why everyone wants to look for TV advertising cost are - TV as a family entertainer and the high emotional investment of people in television. Watching a program/ad with the family encourages discussion that leads to rise in awareness and consideration.
-                     Also, with the dominance of soaps/series, movies, political news, reality shows and sports events, watching television also involves a very high level of emotions.Not only is television trusted as a medium but being showcased on television also marks the brand with authenticity, credibility, premium value. 
-                    Hence, a number of brands when considering advertising aspire to be present on television hence search for TV advertising cost. <span className='text-[#004930] hover:underline hover:cursor-pointer livvic-medium'>GET THE COMPLETE LIST OF TV CHANNELS IN INDIA</span> updated with rates and reach numbers. These rate and reach numbers are updated periodically ensuring that the advertisers get the latest data.</p>
+                    <p className='mt-4 livvic-medium'>Television advertising is the most popular advertising medium in India. One of the
+                    most common searches we come across related to advertising is TV advertising cost  What is it that makes people search for TV advertising cost? About 210 million
+                    households in India have TV sets, with 892 million people watching it. Running an ad on television ensures millions of eyeballs. This is the single biggest
+                    reason why people search for TV advertising costs the most.  Television remains the largest medium of entertainment in India. Buying a
+                    television set is expensive and is often a family investment. Most households in India have only one television set, which is watched by the entire family. Television
+                    is not a luxury but an essential part of daily life.There are many reasons why businesses look for TV advertising costs. Television
+                    is a family entertainer and has a high emotional investment. Watching a program or an ad together encourages discussions, increasing awareness and
+                    consideration.
+                    Additionally, with the dominance of soap operas, movies, political news, reality
+                    shows, and sports events, watching television is an emotionally engaging experience.
+                    Being featured on television also enhances a brand’s credibility, authenticity, and premium value. This is why many brands aspire to advertise on TV and often
+                    search for TV advertising costs.
+                    Get the complete list of TV channels in India with updated rates and reach numbers. These rate and reach numbers are periodically updated to ensure
+                    advertisers have access to the latest data.</p>
                 </div>
                 <div>
                     <h1 className='text-lg'>Find below the TV advertising rates in India:</h1>
@@ -27,126 +36,124 @@ function Content() {
                 </div>
                  <div className='mt-4'>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>Television Advertising Agency</h1>
-                    <p className='mt-4 livvic-medium'>The Media Ant is a Television advertising agency. We provide the best and lowest <span className='text-[#004930] hover:underline hover:cursor-pointer'>ADVERTISING RATE FOR TV ADVERTISING</span> to our clients. 
-                    Through our tie-up with more than 1000 TV channels across India, we assure the best-discounted advertising rate when placing an ad on Television through The Media Ant.
-                    You can contact us for the best discounts for TV ads and to execute your Television advertising campaign. You can contact us either online, or by sending a mail to Help@TheMediaAnt.com or calling us at 08067415510.
-                    The Media Ant not only works with TV channels but also with other service providers like Amagi, Cable networks, Tata Sky and Airtel DTH. 
-                    Get the best rates for Amagi, advertising on cable TVs, and the Tata Sky TV ad at The Media Ant.</p>
+                    <p className='mt-4 livvic-medium'>The Media Ant is a leading Television Advertising Agency, offering the best and most cost-effective TV advertising rates. With partnerships across 1,000+ TV
+                    channels in India, we ensure discounted pricing and seamless execution of your television ad campaigns.
+                    You can reach out to us for exclusive TV ad discounts and complete campaign management. Contact us online, via email at Help@TheMediaAnt.com, or call us
+                    at 08067415510. Beyond TV channels, The Media Ant collaborates with Amagi, Cable Networks, Tata Sky, and Airtel DTH to provide the best rates for all platforms.</p>
                  </div>
 
                  <div>
                      <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>TV Advertising Rates</h1>
-                     <p className='mt-4 livvic-medium'>The process of TV advertising campaign planning is complex and often requires subscription to paid services like BARC to make an efficient plan and take an informed decision about selecting the right genre, TV channels, TV programs and time bands at the most cost-effective TV advertising rates.
-                     We understand this can be difficult for the first-time or new advertisers and hence The Media Ant is there to take care of it all- from getting TV advertising data to negotiating TV advertising rates, you can trust The Media Ant with end-to-end planning and execution of your TV ad campaigns.
-                     To get the best TV advertising rates, you just have to follow these simple steps:
-                     1 Visit the <span className='text-[#004930] hover:underline hover:cursor-pointer' >TELEVSION PAGES</span> . You would be able to see thousands of advertising options on television.
-                     2 You can filter the TV channels of your choice by selecting category options based on genre, advertising option, languages, location, network or channel type etc.
-                     3 You can filter the TV channels of your choice by selecting category options based on genre, advertising option, languages, location, network or channel type etc.
-                     4 Visit the <span className='text-[#004930] hover:underline hover:cursor-pointer' >TELEVSION PAGES</span> . You would be able to see thousands of advertising options on television.
+                     <p className='mt-4 livvic-medium'>Planning a TV advertising campaign can be complex, often requiring data insights from sources like BARC to make informed decisions. Factors like genre,
+                     TV channels, time slots, and program selection play a crucial role in determining the most cost-effective rates.For first-time advertisers, navigating this process can be challenging. That’s
+                     where The Media Ant comes in – providing end-to-end planning, negotiation, and execution of your TV ad campaigns. 
+                    <p> Follow these simple steps to access the latest TV advertising rates:</p>
+                     <h1>1 Visit our Television Page to explore advertising options.</h1>
+                     <h1>2 Select your preferred TV channels based on genre, target audience, and budget.</h1>
+                     <h1> 3 Use advanced filters to customize your selection by languages, locations, networks, and categories.</h1>
+                      <h1>4 Get instant access to thousands of TV advertising opportunities</h1>
                      </p>
                  </div>
 
                  <div>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>What is television advertising? </h1>
-                    <p className='mt-4 livvic-medium'>The practice of developing and showing television ads with the intention of promoting a good or service is known as television advertising.
-                    <span  className='text-[#004930] hover:underline hover:cursor-pointer livvic-medium'>TELEVSION ADVERTISING </span>is one of the most popular and efficient communication methods. This is due to the vast reach, frequency, and effect it provides. They can range from short and simple to long and complex, but they all share the same goal of selling something.
-                    The type of advertisement most commonly seen on television is the 30-second commercial, which typically has a voiceover telling you about what's going on in the ad and often shows people using or enjoying their product while music plays in the background.
-                    Television advertisements are everywhere. They're on television, in <span className='text-[#004930] hover:underline hover:cursor-pointer'>MAGAZINES</span>, on  <span className='text-[#004930] hover:underline hover:cursor-pointer'>BILLBOARDS</span>, and even <span className='text-[#004930] hover:underline hover:cursor-pointer'>ONLINE</span>. You can't escape them! Advertisers spend billions of dollars yearly to ensure you see their ads - because they know it works.</p>
+                    <p className='mt-4 livvic-medium'>Television advertising refers to the creation and broadcasting of ads to promote a
+                    product or service. It remains one of the most effective communication methods,tv 2 thanks to its reach, frequency, and impact.
+                    The most common form of TV advertising is the 30-second commercial, often featuring a voiceover, visuals, and music to engage viewers.
+                    TV ads are everywhere – on television, magazines, billboards, and online.Advertisers invest billions annually because they know TV advertising works!</p>
                  </div>
 
 
                  <div>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>How does television advertising work?</h1>
-                    <p className='mt-4 livvic-medium'>Commercials or ads are broadcast on television networks or stations to promote products or services. Businesses and organizations can purchase these advertisements to market their goods and services.
-                     They may be broadcast either during particular shows or during the breaks in between shows. <span  className='text-[#004930] hover:underline hover:cursor-pointer'>ADVERTISERS CAN CHOOSE TO AIR THEIR ADS</span> during specific hours, days of the week, or on certain networks or programmes that their target audience is likely to be watching to target that audience specifically.
-                     <span  className='text-[#004930] hover:underline hover:cursor-pointer'>The PRICE OF TELEVSION ADVERTISING</span> can vary depending on the network, timeslot, and length of the advertisement, among other things. </p>
+                    <p className='mt-4 livvic-medium'>Television ads are aired on networks and channels to market products and services. Businesses purchase TV ad slots based on their target audience,
+                    programming, and budget.These ads may be broadcast during specific shows, prime time, or within breaks. Advertisers can also choose to run their ads on certain days, hours, or
+                    networks to maximize impact.The cost of TV advertising depends on factors like network selection, time slot,and ad length. </p>
                  </div>
 
                  <div >
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>What are the types of TV advertising?</h1>
-                    <p className='mt-4'>There are many various types of television advertising, including:</p>
-                    <p className='mt-4 livvic-medium'>Television Commercials(TVCs): Television Commercials are the most typical television advertisement. They usually air during commercial breaks and run between 15 and 60 seconds.</p>
-                    <p className='mt-4 livvic-medium'>1Product Placement: Product placement is when a company's goods or services are prominently shown in a film or television programme.
-                     This might happen naturally as part of the narrative (for example, a character using an iPhone) or explicitly, such as when a product is seen up close or is utilized in a significant scene.</p>
-                     <p className='mt-4 livvic-medium'>2Product Placement: Product placement is when a company's goods or services are prominently shown in a film or television programme. 
-                     This might happen naturally as part of the narrative (for example, a character using an iPhone) or explicitly, such as when a product is seen up close or is utilized in a significant scene.</p>
-                     <p className='mt-4 livvic-medium'>3Product Placement: Product placement is when a company's goods or services are prominently shown in a film or television programme.
-                      This might happen naturally as part of the narrative (for example, a character using an iPhone) or explicitly, such as when a product is seen up close or is utilized in a significant scene.</p>
-                      <p className='mt-4 livvic-medium'>4Product Placement: Product placement is when a company's goods or services are prominently shown in a film or television programme. 
-                      This might happen naturally as part of the narrative (for example, a character using an iPhone) or explicitly, such as when a product is seen up close or is utilized in a significant scene.</p>
+                    <p className='mt-4'>There are various types of television advertising, including:</p>
+                    <p className='mt-4 livvic-medium'> 1 Television Commercials(TVCs): Television commercials are the most common type of TV advertisement. They typically air during commercial breaks and last between 15 to 60 seconds.</p>
+                    <p className='mt-4 livvic-medium'> 2 Product Placement: Product placement occurs when a brand’s products or services are integrated into a TV show or film. This can happen in two ways:</p>
+                    <h1> . Naturally as part of the storyline (e.g., a character using an iPhone).</h1>
+                    <h1> . Explicitly with a close-up shot or a major scene featuring the product.</h1>
+                    <p className='mt-4 livvic-medium'> 3 Infomercials: Infomercials are long-format ads, usually 15 to 30 minutes long, showcasing a product in detail with demonstrations and testimonials.</p>
+                    <p className='mt-4 livvic-medium'> 4 Sponsorships: Brands sponsor a segment, show, or event, gaining visibility through logos, brand mentions, and promotional messages.</p>
+                    <p className='mt-4 livvic-medium'> 5 Scroll Ads & Aston Bands: These are short, scrolling text ads at the bottom of the TV screen, often seen during news and live events.</p>
+                    
                  </div>
 
                  <div>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Advertising Price</h1>
-                    <p className='mt-4 livvic-medium'>Is Television advertising price really sky-rocketing as perceived by most first-time advertisers?  Not really, in fact the TV advertisement price is actually one of the lowest if one considers cost per reach.The reason why TV advertisement price seems to be very high is that running TV ads on one spot means broadcasting your ad to millions of people at a time.
-                    If one reach costs me a single rupee too then also running ads on one spot would cost the brand millions.However, on the other side, let’s look at the benefits a brand can get by paying the high television advertising price- reach in millions in a short span of time. 
-                    TV advertisements are the best when a brand is looking for mass reach in a very short time.This is one of the reasons why one can find e-commerce brands advertising aggressively on television days or weeks before sale.
-                    When considering the most efficient medium to reach out to a very large audience at the lowest TV advertisement price, visit TV page to check out all the TV advertising options on the basis of target audience, budget, geography and product. </p>
+                    <p className='mt-4 livvic-medium'>Is TV advertising expensive? Not necessarily! While the overall cost seems high,the cost per reach is actually one of the lowest among advertising mediums.</p>
+                    <h1 className='mt-4 livvic-medium'>1 Why does it seem costly? Running an ad on TV reaches millions at a time. Even at ₹1 per viewer, the total cost adds up.</h1>
+                    <h1 className='mt-4 livvic-medium'>2 Why is it worth it? Brands pay for TV ads because they guarantee mass reach in a short time. This is why e-commerce brands frequently advertise on TV before sales.</h1>
+                    <p className='mt-4 livvic-medium'>To find the best TV advertising prices, visit our TV advertising page, where you can explore rates based on target audience, budget, geography, and product.</p>
                  </div>
 
                  <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Ad Cost</h1>
-                    <p className='mt-4 livvic-medium'>One very important question that we are often asked is how to determine TV ad cost and how to plan a television campaign. We have covered a detailed account of all the steps involved in planning a television campaign and determining the TV ad cost.
-                     Following is the list of articles that can help you understand how to calculate TV ad cost, step-by-step using BARC ratings data:</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Ad Cost & Measurement</h1>
+                    <p className='mt-4 livvic-medium'>Many advertisers ask: How is TV ad cost determined? Here’s what you need to know:</p>
 
-                     <p className='mt-4 livvic-medium'>1TV Campaign Measurement Terms Explained: How do you know that the TV ad cost quoted by a TV channel is correct? You check the historical ad reach data using BARC tool. BARC stands for Broadcast Audience Research Council that measures TV program and ads performance. This article would help readers understand how BARC measures TV performance.</p>
-                     <p className='mt-4 livvic-medium'>2TV Campaign Measurement Terms Explained: How do you know that the TV ad cost quoted by a TV channel is correct? You check the historical ad reach data using BARC tool. BARC stands for Broadcast Audience Research Council that measures TV program and ads performance. This article would help readers understand how BARC measures TV performance.</p>
-                     <p className='mt-4 livvic-medium'>3TV Campaign Measurement Terms Explained: How do you know that the TV ad cost quoted by a TV channel is correct? You check the historical ad reach data using BARC tool. BARC stands for Broadcast Audience Research Council that measures TV program and ads performance. This article would help readers understand how BARC measures TV performance.</p>
+                     <p className='mt-4 livvic-medium'>1TV Campaign Measurement Terms Explained: How do you verify if a TV channel’s ad cost is correct?</p>
+                     <h1 className='mt-4 livvic-medium'>2 Use BARC (Broadcast Audience Research Council) data to check historical ad reach and performance.</h1>
+                     <p className='mt-4 livvic-medium'>3 How BARC Data Helps: BARC measures TV program viewership and ad effectiveness.</p>
+                     <h1 className='mt-4 livvic-medium'> 4 It helps advertisers understand their TV ad performance before investing.</h1>
+                     
                  </div>
 
                  <div>
                     <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4 '>Television Advertising In India</h1>
-                    <p className='mt-4 livvic-medium'>Television advertising in India is the most popular advertising option. Television advertising is popular because it has the lowest cost per reach among all other media verticals.
-                      Rates for advertising in Television in India are quoted in terms of advertising rate per 10 sec.There are specialist television advertising agencies who can help you get discounted rates on the television advertising card rate.
-                      By placing an ad on television, a brand can reach out to complete India in a single instance.Television advertising also has the added advantage of reaching out to users multiple times. TV ad engages with two senses of humans, eyes, and ears, and is more impactful than other formats. There are more than 1000 Television channels in India.Television in India is broadcasted in homes through cables and direct to home (DTH). Advertising on DTH is also an available media for television advertising. Advertisers can advertise in popular DTH service providers likes Tata Sky, Airtel DTH, and Videocon DTH.Media options available for advertising in TV are video ads, scrollers, Aston bands, teleshopping, and L BandsViewership data for TV in India is reported by BARC. 
-                      BARC stands for Broadcast Audience Research Council, and is a consortium of broadcasters, advertisers, and advertising and media agencies, via their apex bodies.</p>
+                    <p className='mt-4 livvic-medium'>Television advertising remains the most popular and effective advertising medium in India. Its biggest advantage is the lowest cost per reach, making it an
+                    excellent choice for brands aiming for mass visibility.</p>
                  </div>
 
                  <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Advertisement In India</h1>
-                    <p className='mt-4 livvic-medium'>According to EY-FICCI latest report, TV advertisement in India grew by about 25% in 2021 against a drop of 21.5% in 2020. 
-                    This recovery in TV advertisement in India in 2021 was majorly volume-driven.For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.The fact that TV advertisement in India is the most popular advertising medium can be established looking at the performance of TV advertising industry during the year 2020 when due to lockdown, new content wasn’t being produced.
-                     TV channels were dependent on re-runs of popular TV shows and still getting very high TRPs.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>Why Choose TV Advertising</h1>
+                    <h1 className='mt-4 livvic-medium'>Widespread Reach: With over 1,000 TV channels, ads can target audiences nationwide</h1>
+                    <h1 className='mt-4 livvic-medium'>Multi-Sensory Engagement: TV ads combine visuals and sound, makingthem more impactful than other formats.</h1>
+                    <h1 className='mt-4 livvic-medium'>Repetition & Recall: Ads can be broadcast multiple times, reinforcing brandmessages.</h1>
+                    <p className='mt-4 livvic-medium'>TV advertisements in India are priced per 10 seconds, and several agencies offer discounted rates to advertisers.</p>
                  </div>
 
                  <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Advertising Agency</h1>
-                    <p className='mt-4 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.The fact that TV advertisement in India is the most popular advertising medium can be established looking at the performance of TV advertising industry during the year 2020 when due to lockdown, new content wasn’t being produced. 
-                    TV channels were dependent on re-runs of popular TV shows and still getting very high TRPs.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>Types of TV Advertising</h1>
+                    <p className='mt-4 livvic-medium'>TV ads can be broadcast via cable TV and Direct-to-Home (DTH) services like
+                    Tata Sky, Airtel DTH, and Videocon DTH. Advertising options include:</p>
+                    <h1 className='mt-4 livvic-medium'>Television Commercials (TVCs): Standard 15-60 second ads aired breaks.</h1>
+                    <h1 className='mt-4 livvic-medium'>Product Placement: Brands featured within TV shows or movies.</h1>
+                    <h1 className='mt-4 livvic-medium'>Infomercials: Long-format ads demonstrating a product in detail.</h1>
+                    <h1 className='mt-4 livvic-medium'>Sponsorships: Brands sponsoring TV programs or segments.</h1>
+                    <h1 className='mt-4 livvic-medium'>Scroll Ads & Aston Bands: Text ads displayed at the bottom of the screen.</h1>
                  </div>
 
                  <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>Advertising Options In Televisions</h1>
-                    <p className='mt-4 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.The fact that TV advertisement in India is the most popular advertising medium can be established looking at the performance of TV advertising industry during the year 2020 when due to lockdown, new content wasn’t being produced. 
-                    TV channels were dependent on re-runs of popular TV shows and still getting very high TRPs.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4'>TV Advertising Trends & Market Growth</h1>
+                    <h1 className='mt-4 livvic-medium'>In 2021, TV advertising in India grew by 25%, recovering from a 21.5% drop in 2020 due to lockdowns.</h1>
+                    <h1 className='mt-4 livvic-medium'>In 2022, TV ad revenue was projected to reach ₹344 billion, up from ₹313 billion in 2021.</h1>
+                    <p className='mt-4 livvic-medium'>Even during lockdowns, when no new content was being produced, TV channels relied on re-runs of popular shows, yet still achieved high TRPs—proving the unmatched power of television advertising</p>
             
-                    <h1 className='text-sm md:text-xl xl:text-2xl mt-4 '>Regular FCT Ad</h1>
-                    <p className='mt-2 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl mt-4 '>How TV Advertising Costs Are Measured</h1>
+                    <p className='mt-2 livvic-medium'>TV ad pricing depends on BARC (Broadcast Audience Research Council) data, which tracks viewership trends and helps advertisers plan their campaigns effectively.</p>
+                    <p className='mt-2 livvic-medium'>Looking for the best TV ad rates? Visit our TV advertising page to explore tailored options based on budget, audience, and product type.</p>
 
-                    <h1 className='text-sm md:text-xl xl:text-2xl  '>Aston Band</h1>
-                    <p className='mt-2 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl  '>Cost of Advertising on Television</h1>
+                    <p className='mt-2 livvic-medium'>The cost of TV advertising is determined by the number of viewers for a specific channel. It is typically quoted as the cost for a 10-second ad spot.</p>
 
-                    <h1 className='text-sm md:text-xl xl:text-2xl  '>Scrollers Ad</h1>
-                    <p className='mt-2 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.</p>
+                    <h1 className='text-sm md:text-xl xl:text-2xl  '>Factors Affecting TV Ad Costs</h1>
+                    <h1 className='mt-2 livvic-medium'>Channel Popularity: Higher viewership channels have higher ad rates.</h1>
+                    <h1 className='mt-2 livvic-medium'>Time Slot: Ads during prime time (high viewership hours) are more expensive than non-prime time slots.</h1>
+                    <h1 className='mt-2 livvic-medium'>Ad Placement:</h1>
+                    <p className='mt-2 livvic-medium' >Prime Time Bands: Most expensive due to peak audience engagement.</p>
+                    <p className='mt-2 livvic-medium' >RODP (Run of the Day Part): Ads are evenly distributed throughout the day, making it a cost-effective option.</p>
+                    <h1 className='mt-2 livvic-medium'>HD vs. Non-HD: Ad rates vary based on whether the channel is HD or standard definition.</h1>
+                    
 
-                    <h1 className='text-sm md:text-xl xl:text-2xl '>Teleshopping ad</h1>
-                    <p className='mt-2 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.</p>
-
-                    <h1 className='text-sm md:text-xl xl:text-2xl  '>L Band</h1>
-                    <p className='mt-2 livvic-medium'>For the year 2022, the revenue from TV advertisement in India is expected to be around INR 344 billion as compared to TV advertisement in India size of 313 billion in INR.</p>
-                 </div>
-
-                 <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold mt-4 '>Cost For Advertising In TV</h1>
-                    <p className='mt-4 livvic-medium'>The cost of advertising on Television depends on the number of viewers for that particular channel. The rate for television advertising is always quoted as the amount that an advertiser needs to pay for playing a 10-sec ad once.
-                    For e.g: If Aaj Tak's rate for advertising is Rs 500, it means that an advertiser needs to pay Rs 500 for playing the ad once.The cost of TV advertising also varies with the time of day. Time bands when more viewers are present cost more to advertise. Time band with the highest viewership is termed as Primetime bands for TV advertising. Another popular term used in TV advertising is 'Run of the Day part', also known as RODP.In RODP, the ads get equally distributed throughout the day. 
-                    You can find the advertising rate on TV for Prime Time and Non-Prime time on The Media Ant. Advertising rates in television also vary for HD and Non HD connections.</p>
-                 </div>
-
-                 <div>
-                    <h1 className='text-sm md:text-xl xl:text-2xl font-bold '>Television Advertising Ad Format</h1>
-                    <p className='mt-4 livvic-medium'>For e.g: If Aaj Tak's rate for advertising is Rs 500, it means that an advertiser needs to pay Rs 500 for playing the ad once.The cost of advertising on Television depends on the number of viewers for that particular channel. The rate for television advertising is always quoted as the amount that an advertiser needs to pay for playing a 10-sec ad once.</p>
-                 </div>
+                    <h1 className='text-sm md:text-xl xl:text-2xl '>Example</h1>
+                    <p className='mt-2 livvic-medium'> If the ad rate for Aaj Tak is ₹500, an advertiser pays ₹500 for a 10-second spot.</p>
+                    <p className='mt-2 livvic-medium'>Want to know the best advertising rates for different TV channels? Contact us today for customized ad solutions!</p>
+                  </div>
                  <Table3Component />
                 </div>
         </div>

@@ -93,9 +93,11 @@ const randomJobs= [
               </div>
 
               {/* Apply Button */}
+              <Link to="/livechat" className="cursor-pointer">
               <button className="mt-4 w-full py-2 rounded-lg bg-[#004930] text-white font-semibold hover:bg-green-700 transition">
-                <Link to="/livechat">Apply Now</Link>
+               Apply Now
               </button>
+              </Link>
             </div>
           ))}
         </div>
