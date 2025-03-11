@@ -15,20 +15,21 @@ function FreelancerClientForm() {
       <div className="flex justify-center space-x-4">
         <button
           className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
-            activeForm === "freelancer" ? "text-black underline" : "text-gray-700"
+            activeForm === "freelancer" ? "texst-black underline" : "text-gray-700"
           }`}
 
         >
           Freelancer
         </button>
-        <button
-          className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
-            activeForm === "client" ? "text-black underline" : "text-gray-700"
-          }`}
-          onClick={() => navigate("/client")}
-        >
-          Client
-        </button>
+            <button
+      className={`py-2 px-4 font-semibold rounded-md ${
+        activeForm === "client" ? "text-black underline" : "text-gray-700"
+      } ${activeForm === "freelancer" ? "opacity-50 cursor-not-allowed" : ""}`}
+      onClick={() => navigate("/client")}
+      disabled={activeForm === "freelancer"}
+    >
+      Client
+    </button>
       </div>
 
       {activeForm ===  "freelancer" && <FreelancerForm /> }

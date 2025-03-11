@@ -78,7 +78,7 @@ function Footer() {
           <div className="text-2xl">
             <h1>Follow Us</h1>
             <div className="flex gap-5 mt-3">
-              <a href="https://www.instagram.com/digiskyfusion?igsh=d242aTBrNGQzZDR6" target="_blank" className="hover:text-blue-400"><CiInstagram /></a>
+              <a href="https://www.instagram.com/digisky.ai?igsh=d3ExZmlkMjM5Yms4" target="_blank" className="hover:text-blue-400"><CiInstagram /></a>
               <a href="https://www.facebook.com/share/15AWmqvS2x/" target="_blank" className="hover:text-blue-500"><CiFacebook /></a>
               <a href="https://www.linkedin.com/in/digisky-fusion-01a6002b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="hover:text-blue-600"><FaLinkedinIn /></a>
               <a href="https://x.com/digiskyfusion?t=tLHE_G31tsLiB6QpX_XA8Q&s=09" target="_blank" className="hover:text-blue-400"><FaTwitter /></a>

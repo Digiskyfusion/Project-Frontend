@@ -1,16 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import About from "../Components/About";
-import ImageCarousel from "../Components/ImageCarousel";
-import SquareCards from "../Components/SquareCard";
-import Feature from "../Components/Feature";
-import Fourthsectionfour from "../Components/Fourthsectionfour";
-import MeetFreelancer from "../Components/MeetFreelancer";
-import Fourthsectioneight from "../Components/Fourthsectioneight";
-import Calltoaction from "../Components/Calltoaction";
-import SecondReviews from "../Components/SecondReviews";
-import Footer from "../Components/Footer";
-=======
 import Footer from "../Components/Footer/Footer";
 import About from "../Components/AboutusPage/About";
 import Calltoaction from "../Components/AboutusPage/Calltoaction";
@@ -20,7 +8,6 @@ import ImageCarousel from "../Components/AboutusPage/ImageCarousel";
 import SecondReviews from "../Components/AboutusPage/SecondReviews";
 import SquareCards from "../Components/AboutusPage/SquareCard";
 import MeetFreelancer from "../Components/HomePage/MeetFreelancer";
->>>>>>> 5bdeadc (Fresh start with clean code)
 
 function AboutUsPage() {
   return (

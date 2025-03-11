@@ -72,13 +72,15 @@ function Secondsection() {
             > <Link to="/registration"> Create an account at no cost</Link>
              
             </button>
+            <Link to="/discover">
             <button
               className={`px-6 py-3 rounded-full hover:bg-[#004930] border-2 border-[#004930] text-[#004930] hover:text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 ${
                 inView ? 'animate-fadeInUp' : ''
               }`}
             >
-             <Link to="/discover">Discover how to hire</Link> 
+             Discover how to hire
             </button>
+            </Link> 
           </div>
         </div>
 

@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import Subcategory from '../Components/Subcategory'
-import Footer from '../Components/Footer'
-
-function SubCategoryPage() {
-  return (
-    <div>
-      
-      <Subcategory />
-      <Footer />
-    </div>
-  )
-}
-
-export default SubCategoryPage
-=======
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer/Footer';
@@ -41,4 +24,3 @@ function SubCategoryPage() {
 }
 
 export default SubCategoryPage;
->>>>>>> 5bdeadc (Fresh start with clean code)

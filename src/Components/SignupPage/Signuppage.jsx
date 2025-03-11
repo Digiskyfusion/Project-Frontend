@@ -6,7 +6,7 @@ import newpic from "./../../assets/Images/new pic.png";
 function Signuppage() {
 
   const URL= import.meta.env.VITE_API_URL;
-  console.log(URL);
+  // console.log(URL);
   
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +44,7 @@ function Signuppage() {
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/api/auth/signup`, {
+      const response = await fetch(`http://localhost:8000/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

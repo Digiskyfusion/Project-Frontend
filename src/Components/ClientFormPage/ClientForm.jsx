@@ -85,7 +85,7 @@ function ClientForm() {
                             {/* {/ Upload Button /} */}
                             <div className='mt-6'>
                                 <button className='bg-[#004930] text-white px-6 py-2 rounded-full md:px-8 hover:bg-[#003720] transition-all'>
-                              <Link to="/clientDetails" >Upload</Link>  
+                              <Link to="/freelancerDetails" >Upload</Link>  
                                 </button>
                             </div>
             

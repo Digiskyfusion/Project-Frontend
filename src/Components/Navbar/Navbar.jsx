@@ -80,7 +80,7 @@ const Navbar = () => {
             </button>
           ) : (
             <button className="py-2 px-8 border-2 rounded-full" onClick={handleLogout}>
-             <a href=""> Logout</a>
+             <a href="/login"> Logout</a>
             </button>
           )}
         </div>
@@ -114,7 +114,7 @@ const Navbar = () => {
               </button>
             ) : (
               <button className="py-2 px-5 border-2 rounded-full bg-red-600" onClick={handleLogout}>
-                <a href="">Logout</a>
+                <a href="/login">Logout</a>
               </button>
             )}
           </div>

@@ -1,28 +1,9 @@
 import React from 'react'
-<<<<<<< HEAD
-import Advertising from '../Components/Advertising'
-import VideoCarousel from '../Components/VideoCarousel'
 import astha from './../assets/Images/aasta.png';
-import Footer from '../Components/Footer';
-import Ads from '../Components/Ads';
-=======
-
-import astha from './../assets/Images/aasta.png';
-
-
->>>>>>> 5bdeadc (Fresh start with clean code)
-import Video7 from "../assets/Videos/video7.mp4"
-import Video8 from "../assets/Videos/video8.mp4"
-
-import Video10 from "../assets/Videos/video10.mp4"
-import Video11 from "../assets/Videos/video11.mp4"
-<<<<<<< HEAD
-=======
 import Advertising from '../Components/AdvertisingPage/Advertising';
 import VideoCarousel from '../Components/AdvertisingPage/VideoCarousel';
 import Footer from '../Components/Footer/Footer';
 import Ads from '../Components/AdvertisingPage/Ads';
->>>>>>> 5bdeadc (Fresh start with clean code)
 
 function AsthaPage() {
   return (
@@ -31,9 +12,9 @@ function AsthaPage() {
 
 <h1 className='text-sm md:text-xl lg:text-3xl font-bold md:pl-3 '>Top Choice</h1>
   <div className='md:flex'>
-  <VideoCarousel video="Video Ad" contentone="Video ads are telecasted during ad breaks. The minimum duration for a video ad is 10 seconds." contenttwo="These ads are displayed on various platforms and can be skippable or non-skippable depending on the ad format. Advertisers use these ads to reach a larger audience and increase brand awareness." rate="₹9,438 Per Second" linkone={Video7} linktwo={Video8} linkthree={Video7} />
+  <VideoCarousel video="Video Ad" contentone="Video ads are telecasted during ad breaks. The minimum duration for a video ad is 10 seconds." contenttwo="These ads are displayed on various platforms and can be skippable or non-skippable depending on the ad format. Advertisers use these ads to reach a larger audience and increase brand awareness." rate="₹9,438 Per Second" linkone="https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8" linktwo="https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8" linkthree="https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8" />
 
-  <VideoCarousel video="L Band" contentone="Video ads are telecasted during ad breaks. The minimum duration for a video ad is 10 seconds." contenttwo="These ads are displayed on various platforms and can be skippable or non-skippable depending on the ad format. Advertisers use these ads to reach a larger audience and increase brand awareness." rate="₹63,480 Per Second" linkone={Video10} linktwo={{Video11}} linkthree={Video10} />
+  <VideoCarousel video="L Band" contentone="Video ads are telecasted during ad breaks. The minimum duration for a video ad is 10 seconds." contenttwo="These ads are displayed on various platforms and can be skippable or non-skippable depending on the ad format. Advertisers use these ads to reach a larger audience and increase brand awareness." rate="₹63,480 Per Second" linkone="https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8" linktwo='https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8' linkthree="https://youtu.be/uEgbb5VyNmk?si=11_SDCC-Klezjxr8" />
 
 
   </div>

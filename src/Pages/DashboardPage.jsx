@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-
-import Dashboard from '../Components/Dashboard'
-import DashboardSecond from '../Components/DashboardSecond'
-import MainDashboard from '../Components/MainDashboard'
-import Footer from '../Components/Footer'
-
-
-function DashboardPage() {
-  return (
-    <>
-
-   <div className='flex w-full'>
-  <div className=''>
-    <Dashboard />
-  </div>
-  <div className='flex-1'>
-    <DashboardSecond />
-    <MainDashboard />
-  </div>
-</div>
-<Footer />
-      
-    </>
-  )
-}
-
-export default DashboardPage
-=======
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "../Components/DashboardPage/Dashboard";
@@ -63,4 +34,3 @@ function DashboardPage() {
 }
 
 export default DashboardPage;
->>>>>>> 5bdeadc (Fresh start with clean code)

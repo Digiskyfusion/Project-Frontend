@@ -1,11 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-import Starplus from '../Components/Starplus'
-import Confused from '../Components/Confused'
-import Footer from '../Components/Footer'
-
-function StarPlusPage() {
-=======
 
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer/Footer';
@@ -22,7 +15,6 @@ function StarPlusPage() {
       navigate('/login');
     }
   }, [token, navigate]);
->>>>>>> 5bdeadc (Fresh start with clean code)
   return (
     <div>
       <Starplus />

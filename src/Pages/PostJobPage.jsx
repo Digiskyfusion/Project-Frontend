@@ -1,9 +1,4 @@
 import React from 'react'
-<<<<<<< HEAD
-import PostJob from '../Components/PostJob'
-
-function PostJobPage() {
-=======
 import { useNavigate } from 'react-router-dom';
 import PostJob from '../Components/PostJobPage/PostJob';
 
@@ -17,7 +12,6 @@ function PostJobPage() {
       navigate('/login');
     }
   }, [token, navigate]);
->>>>>>> 5bdeadc (Fresh start with clean code)
   return (
     <div>
       <PostJob />

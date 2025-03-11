@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import ProfileCard from '../Components/ProfileCard'
-import Footer from '../Components/Footer'
-
-
-function AllFreelancerPage() {
-  return (
-    <>
-    <div>
-      <ProfileCard />
-    </div>
-    <Footer />
-    </>
-  )
-}
-
-export default AllFreelancerPage
-=======
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProfileCard from "../Components/AllFreelancerPage/ProfileCard";
@@ -44,4 +25,3 @@ function AllFreelancerPage() {
 }
 
 export default AllFreelancerPage;
->>>>>>> 5bdeadc (Fresh start with clean code)

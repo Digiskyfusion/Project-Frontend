@@ -1,20 +1,20 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-import image3 from "./../assets/Images/Ellipse 151.png";
-import imagesss from "./../assets/Images/Ellipse 70.png";
-import women1 from "./../assets/Images/Ellipse 72.png";
-import image0 from "./../assets/Images/Ellipse 161.png";
-import image1 from "./../assets/Images/Ellipse 164.png";
-import image2 from "./../assets/Images/Ellipse 167.png";
-import image5 from "./../assets/Images/Ellipse 173.png";
-import image6 from "./../assets/Images/Ellipse 193.png";
-import image7 from "./../assets/Images/Ellipse 194.png";
-import image8 from "./../assets/Images/Ellipse 190.png";
-import image9 from "./../assets/Images/Ellipse 185.png";
-import image10 from "./../assets/Images/Ellipse 184.png";
-import image11 from "./../assets/Images/Ellipse 181.png";
-import image12 from "./../assets/Images/Ellipse 176.png";
+import image3 from "./../../assets/Images/Ellipse 151.png";
+import imagesss from "./../../assets/Images/Ellipse 70.png";
+import women1 from "./../../assets/Images/Ellipse 72.png";
+import image0 from "./../../assets/Images/Ellipse 161.png";
+import image1 from "./../../assets/Images/Ellipse 164.png";
+import image2 from "./../../assets/Images/Ellipse 167.png";
+import image5 from "./../../assets/Images/Ellipse 173.png";
+import image6 from "./../../assets/Images/Ellipse 193.png";
+import image7 from "./../../assets/Images/Ellipse 194.png";
+import image8 from "./../../assets/Images/Ellipse 190.png";
+import image9 from "./../../assets/Images/Ellipse 185.png";
+import image10 from "./../../assets/Images/Ellipse 184.png";
+import image11 from "./../../assets/Images/Ellipse 181.png";
+import image12 from "./../../assets/Images/Ellipse 176.png";
 
 const detailCards = {
   "TV Channel Ad": [

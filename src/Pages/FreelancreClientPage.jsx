@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-
-import FreelancerClientForm from '../Components/FreelancerClientForm'
-import Footer from '../Components/Footer'
-
-function FreelancreClientPage() {
-=======
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FreelancerClientForm from "../Components/FreelancerClientPage/FreelancerClientForm";
@@ -21,20 +14,12 @@ function FreelancreClientPage() {
     }
   }, [navigate]);
 
->>>>>>> 5bdeadc (Fresh start with clean code)
   return (
     <div>
       <FreelancerClientForm />
       <Footer />
     </div>
-<<<<<<< HEAD
-  )
-}
-
-export default FreelancreClientPage
-=======
   );
 }
 
 export default FreelancreClientPage;
->>>>>>> 5bdeadc (Fresh start with clean code)
