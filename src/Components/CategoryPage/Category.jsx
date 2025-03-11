@@ -49,7 +49,7 @@ function Category() {
                   src={category.img}
                   alt={category.title}
                   className="w-10 h-10 object-contain rounded-full flex-shrink-0"
-                  loading="lazy"
+                  
                 />
               </div>
             </div>
