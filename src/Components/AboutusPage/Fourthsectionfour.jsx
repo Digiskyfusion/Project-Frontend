@@ -37,7 +37,7 @@ function Fourthsectionfour() {
 
         {/* Right Side - Image */}
         <div className=" w-full lg:w-[53.8%] h-full  flex items-center justify-center  ">
-          <img src={image} alt="Office" className="w-full h-full  object-cover   " />
+          <img loading="lazy" src={image} alt="Office" className="w-full h-full  object-cover   " />
         </div>
         
       </div>

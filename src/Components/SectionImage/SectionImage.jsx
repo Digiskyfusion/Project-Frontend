@@ -22,7 +22,7 @@ function SectionImage() {
     <div>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-10 mt-6">
         
-                        <img src={first} alt="" className="w-full rounded-lg shadow-md" />
+                        <img loading="lazy" src={first} alt="" className="w-full rounded-lg shadow-md" />
                         
         
                         {/* {/ Bar Chart Replacing Second Image /} */}
@@ -41,7 +41,7 @@ function SectionImage() {
         
                                     {/* {/ Freelancer Profile Card - Replacing Third Image /} */}
                                         <div className="w-full bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
-                                            <img 
+                                            <img  loading="lazy"
                                             src={profile} // Replace with actual freelancer image
                                             alt="Freelancer Profile"
                                             className="w-24 h-24 rounded-full object-cover mb-3"
@@ -66,7 +66,7 @@ function SectionImage() {
                                             </div>
                                         </div>
         
-                        <img src={fourth} alt="" className="w-full rounded-lg shadow-md" />
+                        <img loading="lazy" src={fourth} alt="" className="w-full rounded-lg shadow-md" />
         
                     </div>
     </div>

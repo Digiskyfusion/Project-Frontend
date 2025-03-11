@@ -95,7 +95,7 @@ function ClientForm() {
                         {/* {/ Freelancer Profile Section /} */}
                         <div className='bg-[#FFFFFF] px-6 py-6 md:py-20 rounded-xl w-full md:w-1/3 text-center shadow-lg'>
                             <div className='border-b-2 border-gray-300 pb-6 md:pb-15'>
-                            <img src={pic} alt='Profile' className='w-24 h-24 mx-auto rounded-full object-cover' />
+                            <img loading="lazy" src={pic} alt='Profile' className='w-24 h-24 mx-auto rounded-full object-cover' />
                             <a href='#' className='mt-3 inline-block' >Chnage Profile Image</a>
                             </div>
             

@@ -84,7 +84,7 @@ function Secondsection() {
 
         {/* Right Section - Image */}
         <div className={`w-full md:w-1/2 flex justify-center ${inView ? 'animate-slideInRight' : ''}`}>
-          <img
+          <img loading="lazy"
             src={professionalteam}
             alt="Professional Team"
             className="max-w-full h-auto rounded-lg shadow-lg transform hover:scale-110 transition duration-300"

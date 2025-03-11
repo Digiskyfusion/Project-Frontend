@@ -22,7 +22,7 @@ function SquareCards() {
           </div>
 
           {/* {/ Image /} */}
-          <img src={step.img} alt={step.title} className="w-16 md:w-20 mb-4" />
+          <img loading="lazy" src={step.img} alt={step.title} className="w-16 md:w-20 mb-4" />
 
           {/* {/ Title /} */}
           <p className="text-lg md:text-2xl font-semibold">{step.title}</p>

@@ -34,7 +34,7 @@ function About() {
 
         {/* {/ Right Image /} */}
         <div className=' flex justify-center mt-10 md:mt-0'>
-          <img src={opo} alt='About Us' className='max-w-xs md:max-w-md lg:max-w-lg rounded-lg ' />
+          <img loading="lazy" src={opo} alt='About Us' className='max-w-xs md:max-w-md lg:max-w-lg rounded-lg ' />
         </div>
 
       </div>

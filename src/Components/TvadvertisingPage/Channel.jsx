@@ -24,7 +24,7 @@ function Channel() {
             key={index} onClick={() => navigate(channel.path)}
             className='flex flex-col items-center p-6 md:p-8 bg-white shadow-xl rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl w-full max-w-xs md:max-w-sm cursor-pointer'
           >
-            <img src={channel.img} alt={channel.name} className='w-full max-w-xs h-40 md:h-48 rounded-lg object-cover' />
+            <img loading="lazy" src={channel.img} alt={channel.name} className='w-full max-w-xs h-40 md:h-48 rounded-lg object-cover' />
             <h1 className='font-bold text-xl md:text-2xl lg:text-3xl mt-4 text-gray-900'>{channel.name}</h1>
             <h2 className='text-md md:text-lg text-gray-600 italic mt-1'>{channel.category}</h2>
             <div className='flex items-center mt-3'>

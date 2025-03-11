@@ -32,7 +32,7 @@ function Education() {
         {/* Profile Section */}
         <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start pb-4 gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <img src={first} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full" />
+            <img loading="lazy" src={first} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full" />
             <div className="text-center sm:text-left">
               <h1 className="text-lg sm:text-xl font-semibold text-gray-900">{user.name}</h1>
               <p className="text-sm text-gray-600">{user.address || 'No address provided'}</p>

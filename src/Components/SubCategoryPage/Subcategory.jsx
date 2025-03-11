@@ -54,7 +54,7 @@ function Subcategory() {
             <p className="text-lg font-semibold mb-3">{item.Tv}</p>
             <div className="flex justify-center gap-2">
               {item.images.map((image, imgIndex) => (
-                <img key={imgIndex} src={image} alt="Ad" className="w-16 h-16 object-cover rounded-md" />
+                <img loading="lazy" key={imgIndex} src={image} alt="Ad" className="w-16 h-16 object-cover rounded-md" />
               ))}
             </div>
             <button className="bg-[#004930] text-white px-5 py-2 rounded-full mt-3 transition-transform transform hover:scale-105">

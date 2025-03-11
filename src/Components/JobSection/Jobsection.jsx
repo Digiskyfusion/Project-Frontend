@@ -22,8 +22,8 @@ function Jobsection() {
         >
           {/* Company Logos - Turn White on Hover */}
           <div className='absolute top-2 right-2 flex gap-2 md:px-5 md:py-2'>
-            <img src={king} alt='Company logo 1' className='w-4 h-4 sm:w-8 sm:h-8 transition duration-300 group-hover:invert ' />
-            <img src={Vector} alt='Company logo 2' className='w-4 h-4 sm:w-8 sm:h-8' />
+            <img loading="lazy" src={king} alt='Company logo 1' className='w-4 h-4 sm:w-8 sm:h-8 transition duration-300 group-hover:invert ' />
+            <img loading="lazy" src={Vector} alt='Company logo 2' className='w-4 h-4 sm:w-8 sm:h-8' />
           </div>
 
           {/* Job Header */}

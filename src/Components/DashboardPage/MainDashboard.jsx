@@ -135,7 +135,7 @@ function MainDashboard() {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="flex items-center gap-4 lg:gap-7 cursor-pointer hover:bg-[#004930] hover:text-white text-[#004930] border-2 border-[#004930] px-1 py-2 lg:px-4 rounded-xl"
                         >
-                            <img src={current.imgae} alt="Overview" className="w-12 h-12 object-cover" />
+                            <img loading="lazy" src={current.imgae} alt="Overview" className="w-12 h-12 object-cover" />
                             <div>
                                 <h1 className="text-lg font-semibold">{current.heading}</h1>
                                 <p>{current.paragraph}</p>
@@ -191,7 +191,7 @@ function MainDashboard() {
                 <h1 className="text-lg font-semibold mb-2">Calendar</h1>
                 <Calendar onChange={setDate} value={date} className="border rounded-lg p-2  hidden sm:block" />
                 <p className="mt-3  text-sm font-medium">Selected Date: {date.toDateString()}</p>
-                <img src="https://img.freepik.com/free-vector/twitter-interface_23-2148607516.jpg?t=st=1740296535~exp=1740300135~hmac=d18e13383721e83d375689d5d09a89f37f022cfc43861a5830197bd75738fb35&w=1380" alt="Calendar details" className='w-full max-w-xs rounded-xl lg:max-w-full object-cover mt-4' />
+                <img loading="lazy" src="https://img.freepik.com/free-vector/twitter-interface_23-2148607516.jpg?t=st=1740296535~exp=1740300135~hmac=d18e13383721e83d375689d5d09a89f37f022cfc43861a5830197bd75738fb35&w=1380" alt="Calendar details" className='w-full max-w-xs rounded-xl lg:max-w-full object-cover mt-4' />
             </motion.div>
 
         </div>

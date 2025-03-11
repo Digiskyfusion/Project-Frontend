@@ -27,7 +27,7 @@ function ProfileCard() {
             className="flex flex-col p-6 bg-gray-100 shadow-md rounded-lg border border-gray-300 hover:shadow-lg transition"
           >
             <div className="flex items-center">
-              <img
+              <img loading="lazy"
                 src={profile.image}
                 alt={profile.name}
                 className="w-16 h-16 rounded-full object-cover mr-4"

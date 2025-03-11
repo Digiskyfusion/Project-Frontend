@@ -56,7 +56,7 @@ function ReviewSection() {
             viewport={{ once: false, amount: 0.2 }} // Re-animates on scroll
             whileHover={{ x: -10 }}
           >
-            <img
+            <img loading="lazy"
               src={review.image}
               alt={review.name}
               className="w-16 h-16 mx-auto rounded-full mb-4"

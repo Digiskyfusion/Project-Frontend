@@ -12,7 +12,7 @@ function Advertising({image,first,firstone,second,secondone,about,para}) {
         
         {/* Image */}
         <div className="flex-shrink-0  mx-auto lg:mx-0">
-          <img src={image} alt="Star Plus Logo" className="w-full h-full object-contain" />
+          <img loading="lazy" src={image} alt="Star Plus Logo" className="w-full h-full object-contain" />
         </div>
 
         {/* First Content Section */}

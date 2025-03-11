@@ -7,7 +7,7 @@ function Thirdsectionfivth() {
 
       {/* Image Section */}
       <div className='w-full lg:w-1/2 flex justify-center items-center   '>
-        <img src={digisky} alt='digisky' className='w-full h-full object-cover rounded-sm lg:rounded-r-none ' />
+        <img loading="lazy" src={digisky} alt='digisky' className='w-full h-full object-cover rounded-sm lg:rounded-r-none ' />
       </div>
 
       {/* Content Section */}

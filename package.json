@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
- 
   "scripts": {
     "build": "vite build",
-  "preview": "vite preview",
-  "start": "vite preview",
+    "preview": "vite preview",
+    "start": "vite preview",
     "lint": "eslint .",
-    "proxy": "http://192.168.29.50:3000"
+    "proxy": "http://192.168.29.50:3000",
+    "optimize-images": "imagemin dist/assets/* --out-dir=dist/assets"
   },
   "dependencies": {
     "@react-three/drei": "^10.0.4",
@@ -48,6 +48,9 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
     "vite": "^6.1.0"
   }
 }

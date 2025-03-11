@@ -55,7 +55,7 @@ function ImageCarousel() {
             className="relative group flex flex-col items-center max-w-5xl bg-[#004930] shadow-lg rounded-3xl overflow-hidden"
           >
             {/* {/ Image /} */}
-            <img
+            <img loading="lazy"
               src={category.img}
               alt={category.title}
               className="w-full object-cover rounded-xl transition-transform transform duration-700 group-hover:scale-120 group-hover:opacity-30"

@@ -93,7 +93,7 @@ function FreelancerNoUpadte() {
             {/* {/ Freelancer Profile Section /} */}
             <div className='bg-[#FFFFFF] px-6 py-6 md:py-20 rounded-xl w-full md:w-1/3 text-center shadow-lg'>
                 <div className='border-b-2 border-gray-300 pb-6'>
-                <img src={pic} alt='Profile' className='w-24 h-24 mx-auto rounded-full object-cover' />
+                <img loading="lazy" src={pic} alt='Profile' className='w-24 h-24 mx-auto rounded-full object-cover' />
                 <address className="p-4 bg-gray-100 rounded-md text-gray-700 max-w-md mx-auto text-center ">
                     <h1 className="text-xl font-bold mb-2">Address:</h1>
                     <p>Phase 8B, Industrial Area, Sector 74, Sahibzada Ajit Singh Nagar, Chandigarh, Punjab 160055</p>

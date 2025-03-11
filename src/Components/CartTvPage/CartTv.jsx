@@ -25,7 +25,7 @@ function CartTv() {
 
 
         <div className='flex gap-6 items-center'>
-          <img 
+          <img  loading="lazy"
             src={product.image} 
             alt={product.name} 
             className='h-40 w-40 object-cover rounded-xl shadow-lg border border-gray-200'

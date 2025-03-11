@@ -82,7 +82,7 @@ function SecondReviews() {
               <IoMdShare onClick={handleShare} className='cursor-pointer' />
             </div>
             <div className='flex justify-center'>
-              <img src={selectedReview.image} alt="Reviewer" className="rounded-full w-24 h-24 object-cover mt-4" />
+              <img loading="lazy" src={selectedReview.image} alt="Reviewer" className="rounded-full w-24 h-24 object-cover mt-4" />
             </div>
             <h2 className="text-xl text-center mt-3">{selectedReview.name}</h2>
             <p className="mt-2 text-center px-10 min-h-[80px]">{selectedReview.text}</p>
@@ -93,10 +93,10 @@ function SecondReviews() {
             {/* {/ Reviewers' Images /} */}
             <div className='md:flex md:items-center'>
               <div className='flex mt-4 relative'>
-                <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-6 lg:left-4 cursor-pointer z-10" onClick={() => setSelectedReview(reviews.female)} />
-                <img src={male} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
-                <img src={girl} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
-                <img src={women } alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
+                <img loading="lazy" src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-6 lg:left-4 cursor-pointer z-10" onClick={() => setSelectedReview(reviews.female)} />
+                <img loading="lazy" src={male} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
+                <img loading="lazy" src={girl} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
+                <img loading="lazy" src={women } alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
                 
               </div>
 

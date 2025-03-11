@@ -18,7 +18,7 @@ function Livechatcomponent() {
       
       {/* Header - Your Profile */}
       <div className="flex items-center gap-3 border-b pb-3 mb-3 border-gray-400">
-        <img src={first} alt="Profile" className="w-10 h-10 rounded-full border" />
+        <img loading="lazy" src={first} alt="Profile" className="w-10 h-10 rounded-full border" />
         <h1 className="text-md font-semibold text-gray-800">Dhruvish</h1>
       </div>
 
@@ -29,7 +29,7 @@ function Livechatcomponent() {
             key={index}
             className="flex items-center gap-3 p-2 bg-white rounded-lg shadow cursor-pointer hover:bg-green-100 transition"
           >
-            <img src={profile.image} alt="Profile" className="w-10 h-10 rounded-full border" />
+            <img loading="lazy" src={profile.image} alt="Profile" className="w-10 h-10 rounded-full border" />
             <h2 className="text-md font-semibold text-gray-800">{profile.name}</h2>
           </div>
         ))}

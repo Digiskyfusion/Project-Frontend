@@ -21,13 +21,13 @@ function FirstSection() {
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}
         >
-          <img 
+          <img  loading="lazy"
             src={male} 
             alt="Male" 
             className="w-full h-full object-cover" 
           />
           {/* Value Image in the Top Right Corner of Male Image */}
-          <img
+          <img loading="lazy"
             src={value}
             alt="Value"
             className="absolute top-20 right-20 md:right-8 md:top-13   lg:top-20 lg:right-20    w-16 lg:w-24 h-16 lg:h-24 object-contain"
@@ -61,7 +61,7 @@ function FirstSection() {
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}
         >
-          <img 
+          <img  loading="lazy"
             src={female} 
             alt="Female" 
             className="w-full h-full object-cover" 

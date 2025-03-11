@@ -16,7 +16,7 @@ function Platform() {
         transition={{ duration: 0.8 }}
         className="md:flex items-center gap-6 w-full"
       >
-        <img src={pic} alt="DigiSky" className="relative top-[6.6px] lg:w-[60%]" />
+        <img loading="lazy" src={pic} alt="DigiSky" className="relative top-[6.6px] lg:w-[60%]" />
         <div className="text-lg relative flex flex-col items-center md:items-start md:right-32 lg:right-26 mt-3 lg:mt-0">
           <p className="text-gray-300 md:text-5xl font-bold">Take job in</p>
           <motion.div 
@@ -38,7 +38,7 @@ function Platform() {
             <span className="text-white font-bold text-xl relative bottom-5">GET JOBS</span>
           </span>
         </div>
-        <img src={vector4} alt="Vector" className="absolute left-[23rem] lg:left-80 xl:left-96 lg:w-[24%] xl:full hidden md:block" />
+        <img loading="lazy" src={vector4} alt="Vector" className="absolute left-[23rem] lg:left-80 xl:left-96 lg:w-[24%] xl:full hidden md:block" />
       </motion.div>
 
       {/* {/ Right Section with Y-axis Animation /} */}

@@ -206,7 +206,7 @@ function Signuppage() {
         </div>
 
         <div className="md:flex justify-center">
-          <img src={newpic} alt="Signup" className="w-full max-w-xl shadow-lg" />
+          <img loading="lazy" src={newpic} alt="Signup" className="w-full max-w-xl shadow-lg" />
         </div>
       </div>
     </div>

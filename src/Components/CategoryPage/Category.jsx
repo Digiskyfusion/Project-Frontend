@@ -45,7 +45,7 @@ function Category() {
           <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-6 rounded-3xl">
             <div className="flex">
               <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-16 h-16 overflow-hidden bg-white">
-                <img
+                <img loading="lazy"
                   src={category.img}
                   alt={category.title}
                   className="w-10 h-10 object-contain rounded-full flex-shrink-0"

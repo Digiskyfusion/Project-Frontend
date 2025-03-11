@@ -30,7 +30,7 @@ function CardsProfile() {
           {/* Profile Section */}
           <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start pb-4 gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <img src={first} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#004930]" />
+              <img loading="lazy" src={first} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#004930]" />
               <div className="text-center sm:text-left">
                 <h1 className="text-lg sm:text-xl font-semibold text-gray-900">Manisha Thakur</h1>
                 <p className="text-sm text-gray-600">Address</p>
@@ -71,7 +71,7 @@ function CardsProfile() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
             {projects.map((project, index) => (
               <div key={index} className="rounded-lg">
-                <img src={project.img} alt={project.title} className="w-full h-auto object-cover rounded-t-lg" />
+                <img loading="lazy" src={project.img} alt={project.title} className="w-full h-auto object-cover rounded-t-lg" />
                 <div className="flex justify-center py-3 bg-[#004930] rounded-b-xl">
                   <button className="px-5 py-2 bg-gradient-to-r from-[#004930] to-[#006f4a] text-white font-medium rounded-lg shadow-md hover:bg-[#006f4a] transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
                     Preview

@@ -38,7 +38,7 @@ const LiveChat = () => {
       
       {/* Header with Image on Left & Call Icons on Right */}
       <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg">
-        <img src={first} alt="Profile" className="w-10 h-10 rounded-full mr-3" />
+        <img loading="lazy" src={first} alt="Profile" className="w-10 h-10 rounded-full mr-3" />
         <h1 className="font-semibold text-lg flex-1">Manisha Thakur</h1>
         <div className="flex gap-3">
           <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">

@@ -6,11 +6,11 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            return 'vendor'; // Move all node_modules to vendor.js
+            return 'vendor'; // Move dependencies to vendor.js
           }
         },
       },
     },
-    chunkSizeWarningLimit: 500, // Set a lower warning limit
+    chunkSizeWarningLimit: 500, // Reduce bundle size warning limit
   },
 });

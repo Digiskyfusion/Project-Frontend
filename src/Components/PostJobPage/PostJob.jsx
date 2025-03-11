@@ -185,7 +185,7 @@ const PostJob = () => {
         {jobData.filePreview && (
           <div className="mt-2">
             <p className="text-sm text-gray-500">File Preview:</p>
-            <img
+            <img loading="lazy"
               src={jobData.filePreview}
               alt="Preview"
               className="w-full h-40 object-cover mt-2 rounded-lg"

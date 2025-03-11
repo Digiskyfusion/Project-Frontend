@@ -120,7 +120,7 @@ function Loginform() {
         </div>
 
         <div className="w-full md:flex justify-center">
-          <img src={newonw} alt="Login" />
+          <img loading="lazy" src={newonw} alt="Login" />
         </div>
       </div>
     </div>

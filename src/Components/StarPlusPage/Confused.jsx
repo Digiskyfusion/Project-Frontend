@@ -28,7 +28,7 @@ function Confused() {
 
         {/* Image Section - Touching the bottom */}
         <div className="md:w-1/2 flex justify-end self-end h-full ">
-          <img 
+          <img  loading="lazy"
             src={confused} 
             alt="Confused" 
             className="h-full max-h-[400px] w-auto object-cover rounded-xl"

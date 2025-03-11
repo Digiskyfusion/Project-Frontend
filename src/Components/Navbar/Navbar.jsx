@@ -55,7 +55,7 @@ const Navbar = () => {
     <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-20">
       <div className="container px-1 xl:px-12 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
-          <img src={Logo} alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
+          <img loading="lazy" src={Logo} alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
         </Link>
 
         <ul className="hidden md:flex space-x-6">

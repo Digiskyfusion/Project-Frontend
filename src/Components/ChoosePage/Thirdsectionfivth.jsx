@@ -4,7 +4,7 @@ function Thirdsectionfivth() {
     <div className='flex flex-col lg:flex-row items-stretch justify-center p-8 md:p-5 w-full gap-5 md:gap-0'>
       {/* Image Section */}
       <div className='w-full lg:w-1/2 flex justify-center items-center   '>
-        <img src={digisky} alt='digisky' className='w-full h-full object-cover rounded-sm lg:rounded-r-none ' />
+        <img loading="lazy" src={digisky} alt='digisky' className='w-full h-full object-cover rounded-sm lg:rounded-r-none ' />
       </div>
       {/* Content Section */}
       <div className='w-full lg:w-1/2 bg-[#004930] p-5 md:p-12 shadow-lg rounded-lg lg:rounded-l-none flex flex-col justify-center'>

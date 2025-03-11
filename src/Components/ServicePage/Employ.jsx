@@ -37,7 +37,7 @@ const Employ = () => {
             </button>
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
-            <img src={flatstyle} alt="flatstyle" className="w-48 md:w-60" />
+            <img loading="lazy" src={flatstyle} alt="flatstyle" className="w-48 md:w-60" />
           </div>
         </div>
 
@@ -60,7 +60,7 @@ const Employ = () => {
             </button>
           </div>
           <div className="w-full md:w-1/2 flex justify-center">
-            <img src={flatstyle} alt="flatstyle" className="w-48 md:w-60" />
+            <img loading="lazy" src={flatstyle} alt="flatstyle" className="w-48 md:w-60" />
           </div>
         </div>
       </div>

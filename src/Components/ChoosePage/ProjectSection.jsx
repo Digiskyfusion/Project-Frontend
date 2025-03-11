@@ -25,11 +25,11 @@ function ProjectSection() {
 
       {/* {/ image section /} */}
       <div className='relative flex justify-center items-center mt-7 md:mt-0 rounded-md'>
-        <img src={pic} alt=' ' className=' absolute rounded-md' />
-        <img src={pic} alt=' ' className=' absolute w-[90%] rounded-md' />
-        <img src={pic} alt=' ' className='absolute w-[80%] rounded-md' />
-        <img src={pic} alt=' ' className='absolute w-[70%] rounded-md' />
-        <img src={pic} alt=' ' className='rounded-md' />
+        <img loading="lazy" src={pic} alt=' ' className=' absolute rounded-md' />
+        <img loading="lazy" src={pic} alt=' ' className=' absolute w-[90%] rounded-md' />
+        <img loading="lazy" src={pic} alt=' ' className='absolute w-[80%] rounded-md' />
+        <img loading="lazy" src={pic} alt=' ' className='absolute w-[70%] rounded-md' />
+        <img loading="lazy" src={pic} alt=' ' className='rounded-md' />
       </div>
     </div>
 

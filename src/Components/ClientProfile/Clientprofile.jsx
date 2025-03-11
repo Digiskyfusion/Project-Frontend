@@ -18,7 +18,7 @@ function ClientProfile() {
         <div key={sectionIndex} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10 max-w-6xl">
           {section.map((_, cardIndex) => (
             <div key={cardIndex} className="bg-white p-6 rounded-2xl shadow-xl text-center">
-              <img src={Ellipse} alt="Profile" className="w-24 h-24 mx-auto rounded-full border-4 border-gray-300" />
+              <img loading="lazy" src={Ellipse} alt="Profile" className="w-24 h-24 mx-auto rounded-full border-4 border-gray-300" />
               <h1 className="text-xl font-semibold mt-4">Name: -----</h1>
               <hr className="border-gray-300 my-2 mt-6" />
 

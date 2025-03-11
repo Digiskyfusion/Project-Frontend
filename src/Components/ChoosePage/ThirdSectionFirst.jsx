@@ -77,7 +77,7 @@ function ThirdSectionFirst() {
 
       {/* {/ Image Section /} */}
       <div className="w-full md:w-1/2 flex justify-center">
-        <img
+        <img loading="lazy"
           src={thirspic}
           alt="Visual representation"
           className="w-full max-w-[80%] sm:max-w-[60%] md:max-w-[50%] object-contain"

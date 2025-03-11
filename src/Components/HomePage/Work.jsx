@@ -66,7 +66,7 @@ function Work() {
             )}
             {index % 2 === 0 ? (
               <div className="flex justify-center mb-4 md:mb-0">
-                <img src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />
+                <img loading="lazy" src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />
               </div>
             ) : null}
             <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all md:ml-6 md:mr-6 relative">
@@ -83,7 +83,7 @@ function Work() {
             </div>
             {index % 2 !== 0 ? (
               <div className="flex justify-center mb-4 md:mb-0">
-                <img src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />
+                <img loading="lazy" src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />
               </div>
             ) : null}
           </div>

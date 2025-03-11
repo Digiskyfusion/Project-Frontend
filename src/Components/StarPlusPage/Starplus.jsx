@@ -33,13 +33,13 @@ function Starplus() {
       <div className='flex flex-col lg:flex-row justify-between items-center gap-8'>
         <div className='flex flex-col-reverse md:flex-row justify-center items-center gap-5'>
           <div className='flex md:flex-col gap-2'>
-            <img 
+            <img  loading="lazy"
               src={tvadd1} 
               alt='Ad 1' 
               className={`cursor-pointer w-30 h-30 md:w-50 md:h-50 rounded-md p-2 ${selectedImage === tvadd1 ? 'border-2' : ''}`} 
               onMouseOver={() => setSelectedImage(tvadd1)}
             />
-            <img 
+            <img loading="lazy"
               src={tvadd2} 
               alt='Ad 2' 
               className={`cursor-pointer w-30 h-30 md:w-50 md:h-50 rounded-md p-2 ${selectedImage === tvadd2 ? 'border-2' : ''}`} 
@@ -47,7 +47,7 @@ function Starplus() {
             />
           </div>
           <div className='border-2 rounded-md p-2'>
-            <img src={selectedImage} alt='Ad Large' className='h-64 md:h-96 w-auto rounded-md' />
+            <img loading="lazy" src={selectedImage} alt='Ad Large' className='h-64 md:h-96 w-auto rounded-md' />
           </div>
         </div>
 

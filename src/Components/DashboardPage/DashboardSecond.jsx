@@ -27,7 +27,7 @@ function DashboardSecond() {
           <div className="flex items-center justify-between flex-wrap gap-2 md:gap-5">
             {/* {/ Profile Section /} */}
             <div className="flex items-center gap-2 bg-gray-100 py-2 px-1 md:px-4 rounded-full cursor-pointer">
-              <img src={pic} alt="Profile" className="h-4 w-4 md:h-8 md:w-8 rounded-full" />
+              <img loading="lazy" src={pic} alt="Profile" className="h-4 w-4 md:h-8 md:w-8 rounded-full" />
               <p className="text-gray-700 text-[10px] md:text-base">Profile</p>
               <IoIosArrowDown className="text-gray-600 text-sm md:text-base" />
             </div>

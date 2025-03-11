@@ -25,7 +25,7 @@ function Ads() {
       
       {/* Image Carousel */}
       <div className="relative">
-        <img src={images[currentImage]} alt="Advertisement" className="w-full h-auto" />
+        <img loading="lazy" src={images[currentImage]} alt="Advertisement" className="w-full h-auto" />
 
         {/* Navigation Buttons Over Image */}
         <button 
