@@ -27,7 +27,6 @@ import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
 import DetailPage from "./Components/SubCategoryPage/DetailPage";
-import TermsAndConditions from "./Components/Termsandcondition";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";

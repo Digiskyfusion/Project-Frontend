@@ -28,7 +28,6 @@ const Navbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     localStorage.removeItem("roleType");
-    
     // Dispatch custom event to notify navbar
     window.dispatchEvent(new Event("authChange"));
   };
@@ -113,7 +112,7 @@ const Navbar = () => {
                 <NavLink to="/registration">Registration</NavLink>
               </button>
             ) : (
-              <button className="py-2 px-5 border-2 rounded-full bg-red-600" onClick={handleLogout}>
+              <button className="py-2 px-5 border-2 rounded-full" onClick={handleLogout}>
                 <a href="/login">Logout</a>
               </button>
             )}

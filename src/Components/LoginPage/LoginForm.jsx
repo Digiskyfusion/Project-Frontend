@@ -22,7 +22,7 @@ function Loginform() {
     e.preventDefault();
     setLoading(true);
     try {
-        const response = await fetch(`http://localhost:3000/api/auth/login`, {
+        const response = await fetch(`${URL}api/auth/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(loginForm),
@@ -36,10 +36,15 @@ function Loginform() {
             localStorage.setItem("roleType", data.user.roleType);
 
             toast.success("Login successful!");
-
             setTimeout(() => {
-                navigate("/dashboard", { replace: true });
-            }, 100);
+              if (data.user.roleType === "freelancer") {
+                  navigate("/FreelancreClientPage", { replace: true });
+              } else if (data.user.roleType === "client") {
+                  navigate("/client-dashboard", { replace: true });
+              } else {
+                  navigate("/ClientForm", { replace: true }); // Default page if roleType is unknown
+              }
+          }, 100);
         } else {
             toast.error("Login failed");
         }
