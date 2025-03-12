@@ -22,17 +22,17 @@ function SecondReviews() {
     },
     male: {
       name: "Mark T., Entrepreneur",
-      image: twomale,
+      image:  male,
       text: "Quality work at an affordable price! The freelancer I hired exceeded my expectations."
     },
     female2: {
       name: "David S., Small Business Owner",
-      image:twomale,
+      image:girl,
       text: "This is my go-to platform for hiring experts. Reliable, easy, and efficient!"
     },
     male2: {
       name: "Amandeep Kaur",
-      image: twomale,
+      image: women,
       text: "This platform has completely transformed my freelancing journey!"
     },
     // female2: {

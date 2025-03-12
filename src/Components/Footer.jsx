@@ -26,9 +26,9 @@ function Footer() {
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3">For Professionals</h1>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/card">Affiliate Marketing</Link></li>
+            <li><Link to="/PrivacyNdPolicy">Privacy And Policy</Link></li>
             <li><Link to="/FullJobCard">Apply as an Agency</Link></li>
-            <li><Link to="/contactus">Build Portfolio</Link></li>
+            <li><Link to="/CancellationNdRefund">Cancellation And Refund</Link></li>
             <li><Link to="/SquareCards">Get Certifications</Link></li>
             <li><Link to="/registration">registration</Link></li>
           </ul>
