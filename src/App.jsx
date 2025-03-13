@@ -1,32 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./Components/Navbar"
-import Signuppage from "./Components/Signuppage"
-import Education from "./Components/Education"
+import Navbar from "./Components/Navbar/Navbar"
+import Signuppage from "./Components/SignupPage/Signuppage"
+import Education from "./Components/EducationPage/Education"
 import LiveChatPage from "./Pages/LiveChatPage"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
-import ScrollToTop from "./Components/ScrollToTop";
-// import Navbar from "./Components/Navbar";
-// import HomePage from "./Pages/HomePage";
-// import AboutUsPage from "./Pages/AboutUsPage";
+import ScrollToTop from "./Components/ScrolltopTop/ScrollToTop";
 import ChooseUSPage from "./Pages/ChooseUSPage";
-// import LiveChatPage from "./Pages/LiveChatPage";
 import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import DashboardPage from "./Pages/DashboardPage";
 import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
 import FreelancerDetails from "./Components/FreelancerDetailPage/FreelancerDetails";
 import FreelancreClientPage from "./Pages/FreelancreClientPage";
 import ClientFormPage from "./Pages/ClientFormPage";
-// import ContactUsPages from "./Pages/ContactUsPage";
-// import Signuppage from "./Components/Signuppage";
 import SubCategoryPage from "./Pages/SubCategoryPage";
 import Services from "./Pages/Services";
-// import Education from "./Components/Education";
-// import AllFreelancerPage from "./Pages/AllFreelancerPage";
-// import ChooseUSPage from "./Pages/ChooseUSPage";
-import CardsProfile from "./Components/CardsProfile";
-import Loginform from "./Components/LoginForm";
+import CardsProfile from "./Components/CardProfilePage/CardsProfile";
+import Loginform from "./Components/LoginPage/LoginForm";
 import Clientformmpage from "./Pages/Clientformmpage";
 import ClientProfile from "./Components/ClientProfile/Clientprofile";
 import StarPlusPage from "./Pages/StarPlusPage";
@@ -35,21 +26,18 @@ import TvAdvertisingPage from "./Pages/TvAdvertisingPage";
 import AjTakPage from "./Pages/AjTakPage";
 import ColorPages from "./Pages/ColorPages";
 import AsthaPage from "./Pages/AsthaPage";
-import DetailPage from "./Components/DetailPage";
-// import SubCategoryPage from "./Pages/SubCategoryPage";
 import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-import DiscoverHire from "./Components/Discoverhire";
-import MembershipPlans from "./Components/Card";
-import FullJOBCard from "./Components/FullJobCard"
-import SquareCards from "./Components/SquareCard";
+// import MembershipPlans from "./Components/Card";
+// import FullJOBCard from "./Components/"
+// import SquareCards from "./Components/SquareCard";
 import TermAndConditionPage from "./Pages/TermAndConditionPage";
-import Content from "./Components/Content";
-import Work from "./Components/Work";
-import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyNdPolicy";
-import CancellationNdRefund from "./Components/CancellationRefund/CancellationNdRefund";
+// import Content from "./Components/Content";
+//  import Work from "./Components/Work";
+// import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyNdPolicy";
+// import CancellationNdRefund from "./Components/CancellationRefund/CancellationNdRefund";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
 
@@ -68,7 +56,7 @@ function App() {
 <Navbar />      
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/MembershipPlans" element={<MembershipPlans />} />
+        {/* <Route path="/MembershipPlans" element={<MembershipPlans />} /> */}
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat" element={<LiveChatPage />} />
@@ -110,14 +98,14 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
-        <Route path="/card" element={<MembershipPlans />} />
-        <Route path="/FullJobCard" element={<FullJOBCard />} />
-        <Route path="/SquareCards" element={<SquareCards />} />
+        {/* <Route path="/card" element={<MembershipPlans />} /> */}
+        {/* <Route path="/FullJobCard" element={<FullJOBCard />} /> */}
+        {/* <Route path="/SquareCards" element={<SquareCards />} /> */}
         <Route path="/TermCondition" element={<TermAndConditionPage />} />
-        <Route path="/Content" element={<Content />} />
-        <Route path="/Work" element={<Work />} />
+        {/* <Route path="/Content" element={<Content />} /> */}
+        {/* <Route path="/Work" element={<Work />} /> */}
         <Route path="/PrivacyNdPolicy" element={<PrivacyNdPolicyPage />} />
-        <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} />
+        {/* <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} /> */}
 
       </Routes>
     </BrowserRouter>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { IoMdDownload, IoMdShare } from "react-icons/io";
 import { CiStar } from "react-icons/ci";
-import twomale from './../assets/Images/a-high-quality--creative-digital-illustration-feat (1) 1.png';
-import male from './../assets/Images/Ellipse 75.png';
-import girl from './../assets/Images/Ellipse 72.png';
-import women from './../assets/Images/Ellipse 73.png';
+import twomale from '../../assets/Images/a-high-quality--creative-digital-illustration-feat1.png';
+import male from '../../assets/Images/Ellipse 75.png';
+import girl from '../../assets/Images/Ellipse 72.png';
+import women from '../../assets/Images/Ellipse 73.png';
 
 function SecondReviews() {
   const [selectedReview, setSelectedReview] = useState({

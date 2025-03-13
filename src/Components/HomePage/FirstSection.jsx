@@ -1,9 +1,9 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import { FaReact } from "react-icons/fa";
 import FirstSectionCarousel from "./FirstSectionCarousel";
-import female from "./../assets/Images/femalefirst.png";
-import value from "./../assets/Images/15k.png";
-import male from "./../assets/Images/malefirst.png";
+import female from "../../assets/Images/femalefirst.png";
+import value from "../../assets/Images/15k.png";
+import male from "../../assets/Images/malefirst.png";
 
 function FirstSection() {
   return (

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import joboffer from './../assets/Images/joboffer.png';
-import workdone from './../assets/Images/workdone.jpg';
-import jobpost from './../assets/Images/jobpost.jpg';
-import first from './../assets/Images/first.png';
+import joboffer from '../../assets/Images/joboffer.png';
+import workdone from '../../assets/Images/workdone.jpg';
+import jobpost from '../../assets/Images/jobpost.jpg';
+import first from '../../assets/Images/first.png';
 
 function Work() {
   const [view, setView] = useState('client');
