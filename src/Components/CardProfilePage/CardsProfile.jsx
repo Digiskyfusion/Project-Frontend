@@ -1,26 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Footer from '../Footer/Footer';
 import first from './../../assets/Images/first.png';
 import secondimage from './../../assets/Images/a-modern-and-elegant-portfolio-website-homepage-fo 2.png';
 import thiredimage from './../../assets/Images/a-modern-and-stylish-e-commerce-fashion-website-ho 1.png';
 import fourthimage from './../../assets/Images/a-modern-and-luxurious-cosmetics-brand-website-hom 2.png';
+
 function CardsProfile() {
   const navigate = useNavigate();
-  
-  // Mock authentication check (Replace this with actual authentication logic)
-  const isAuthenticated = localStorage.getItem("token"); // Example: JWT stored in localStorage
+  const [user, setUser] = useState(null);
 
-  if (!isAuthenticated) {
-    navigate('/login'); // Redirect to login if not authenticated
-    return null; // Prevent rendering of the component
-  }
+  // Check if the user is authenticated
+  const isAuthenticated = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login'); // Redirect if not authenticated
+      return;
+    }
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser && storedUser._id) {
+      fetchUserData(storedUser._id);
+    }
+  }, []);
+
+  // Fetch user data from the backend
+  const fetchUserData = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/getclientprofile/${userId}`);
+      setUser(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
 
   const projects = [
     { img: secondimage, title: 'Project 1' },
     { img: thiredimage, title: 'Project 2' },
     { img: fourthimage, title: 'Project 3' }
   ];
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -32,9 +56,9 @@ function CardsProfile() {
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <img src={first} alt="Profile" className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#004930]" />
               <div className="text-center sm:text-left">
-                <h1 className="text-lg sm:text-xl font-semibold text-gray-900">Manisha Thakur</h1>
-                <p className="text-sm text-gray-600">Address</p>
-                <p className="text-sm text-gray-600">Email</p>
+                <h1 className="text-lg sm:text-xl font-semibold text-gray-900">{user.name}</h1>
+                <p className="text-sm text-gray-600">{user.address || "Address not available"}</p>
+                <p className="text-sm text-gray-600">{user.email}</p>
               </div>
             </div>
             <Link to="/livechat">
@@ -47,19 +71,7 @@ function CardsProfile() {
           {/* Bio Section */}
           <h1 className="text-lg font-semibold text-gray-900 mt-4">Bio</h1>
           <p className="text-sm text-gray-700 mt-2 leading-relaxed">
-            I help home maintenance businesses, like renovation and handyman services, roofers, 
-            plumbers, electricians, landscapers, and real estate agents, promote their products and services on 
-            Facebook, Instagram, LinkedIn, and Google.
-            My goal is to get you more leads, increase website traffic, reach more potential customers, 
-            and boost sales quickly. With over 12 years of experience working with small and medium businesses, 
-            I offer services through my agency, Going Social.
-            <br /><br />
-            These services include managing social media accounts, one-on-one consulting, Facebook and Instagram 
-            advertising, Google Ads, SEO, and Local SEO. Do you need help with Facebook and Instagram ads or SEO? 
-            I can help you reach the right audience, attract qualified leads, and increase sales while reducing ad costs.
-            <br /><br />
-            What I specialize in: Social Media Marketing, Strategy, Account Management, Facebook and Instagram Advertising, 
-            Google Ads, Website Landing Pages, SEO, and Local SEO.
+            {user.bio || "No bio available"}
           </p>
 
           {/* Client's Past Projects */}

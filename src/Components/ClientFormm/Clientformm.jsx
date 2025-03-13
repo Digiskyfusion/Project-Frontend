@@ -1,11 +1,11 @@
-
-import  { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Clientformm() {
-  const [activeForm, setActiveForm] = useState("client"); // Managing form toggl
+  const [activeForm, setActiveForm] = useState("client"); // Managing form toggle
   const [userRole, setUserRole] = useState(""); // Store user role
+  const navigate = useNavigate();
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
@@ -13,7 +13,7 @@ function Clientformm() {
       setUserRole(parsedUser.roleType); // Assuming roleType is stored in user data
     }
   }, []);
-  const navigate= useNavigate()
+
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
       <h1 className="text-center text-xl text-black font-bold md:text-2xl">
@@ -22,17 +22,16 @@ function Clientformm() {
       <p className="text-center">Please sign up to continue</p>
 
       {/* Toggle buttons */}
-      {/* {/ Toggle buttons /} */}
       <div className="flex justify-center space-x-4">
         <button
-          className={`py-2 px-4 font-semibold rounded-md cursor-pointer  ${
+          className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
             activeForm === "freelancer" ? "text-black underline" : "text-gray-700"
           }`}
-          onClick={() => {if (userRole !== "client") {
-
-            
+          onClick={() => {
+            if (userRole !== "client") {
               navigate("/FreelancreClientPage");
-          }}}
+            }
+          }}
           disabled={userRole === "client"}
         >
           Freelancer
@@ -47,7 +46,6 @@ function Clientformm() {
       </div>
 
       {/* Render ClientForm if 'client' is selected */}
-      {/* {/ Render ClientForm if 'client' is selected /} */}
       {activeForm === "client" && <ClientForm />}
     </div>
   );
@@ -55,23 +53,20 @@ function Clientformm() {
 
 // Separate ClientForm component
 function ClientForm() {
-  const URL= import.meta.env.VITE_API_URL
+  const API_URL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
 
-
-const navigate= useNavigate()
   const [clientData, setClientData] = useState({
-    client_id: "",  // Auto-filled later
-    image: "",
+    client_id: "",
+    image: null,
     mobileNumber: "",
-    govt_id_proof: "",
+    govt_id_proof: null,
     govt_id_number: "",
   });
 
   const [previewImage, setPreviewImage] = useState(null);
   const [previewGovtId, setPreviewGovtId] = useState(null);
-  const [loading, setLoading] = useState(false);
 
-  // Fetch logged-in user and set clientId
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
@@ -82,18 +77,12 @@ const navigate= useNavigate()
     }
   }, []);
 
-  // Handle input change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setClientData((prev) => ({ ...prev, [name]: value }));
-  };
-
+  // Handle file inputs
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     if (files.length > 0) {
       setClientData((prev) => ({ ...prev, [name]: files[0] }));
-  
-      // Update preview
+
       if (name === "image") {
         setPreviewImage(URL.createObjectURL(files[0]));
       } else if (name === "govt_id_proof") {
@@ -102,46 +91,38 @@ const navigate= useNavigate()
     }
   };
 
+  // Handle text inputs
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setClientData((prev) => ({ ...prev, [name]: value }));
+  };
+
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user")); // Ensure user data is stored
-    const clientId = user ? user._id : null;
-  
-    if (!clientId) {
-      alert("User ID is missing. Please log in again.");
-      return;
-    }
-  
-    console.log("Client ID:", clientId);
-    console.log("Client Data before sending:", clientData);
-  
+
     const formData = new FormData();
-    formData.append("client_id", clientId);
+    formData.append("client_id", clientData.client_id);
     formData.append("image", clientData.image);
     formData.append("mobileNumber", clientData.mobileNumber);
     formData.append("govt_id_proof", clientData.govt_id_proof);
     formData.append("govt_id_number", clientData.govt_id_number);
-  
-    console.log("FormData before sending:", [...formData.entries()]);
-  
+
     try {
       const response = await fetch(`http://localhost:3000/api/client/createclient`, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` }, // Do NOT set Content-Type here
         body: formData,
       });
-  
+
       const result = await response.json();
-  
+
       if (response.ok) {
         alert("Client added successfully!");
+        navigate("/dashboard"); // Redirect after success
       } else {
-        alert(`Error: ${result.message || "Unknown error"}`);
+        alert(`Error: ${result.message}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -154,67 +135,34 @@ const navigate= useNavigate()
 
       <div>
         <label className="block font-medium">Client ID</label>
-        <input
-          type="text"
-          name="client_id"
-          value={clientData.client_id}
-          readOnly
-          className="w-full p-2 border rounded-md"
-          placeholder="Enter Client ID"
-        />
+        <input type="text" name="client_id" value={clientData.client_id} readOnly className="w-full p-2 border rounded-md" />
       </div>
 
       <div>
         <label className="block font-medium">Image</label>
-        <input
-          type="file"
-          name="image" 
-          onChange={handleFileChange} 
-          className="w-full p-2 border rounded-md"
-        />
-         {previewImage && <img src={previewImage} alt="Preview" className="w-32 h-32 mt-2" />}
+        <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full p-2 border rounded-md" />
+        {previewImage && <img src={previewImage} alt="Preview" className="w-32 h-32 mt-2" />}
       </div>
 
       <div>
         <label className="block font-medium">Mobile Number</label>
-        <input
-          type="tel"
-          name="mobileNumber"
-          value={clientData.mobileNumber}
-          onChange={handleChange}
-          className="w-full p-2 border rounded-md"
-          placeholder="Enter Mobile Number"
-        />
+        <input type="tel" name="mobileNumber" value={clientData.mobileNumber} onChange={handleChange} className="w-full p-2 border rounded-md" />
       </div>
 
       <div>
-        <label className="block font-medium">Govt-Id-Proof</label>
-        <input
-          type="file"
-          name="govt_id_proof"
-          onChange={handleFileChange} 
-          className="w-full p-2 border rounded-md"
-        />
+        <label className="block font-medium">Govt ID Proof</label>
+        <input type="file" name="govt_id_proof" accept="image/*,application/pdf" onChange={handleFileChange} className="w-full p-2 border rounded-md" />
+        {previewGovtId && <img src={previewGovtId} alt="Preview" className="w-32 h-32 mt-2" />}
       </div>
 
       <div>
-        <label className="block font-medium">Govt-Id-Number</label>
-        <input
-          type="text"
-          name="govt_id_number"
-          value={clientData.govt_id_number}
-          onChange={handleChange}
-          className="w-full p-2 border rounded-md"
-          placeholder="Enter Govt ID Number"
-        />
+        <label className="block font-medium">Govt ID Number</label>
+        <input type="text" name="govt_id_number" value={clientData.govt_id_number} onChange={handleChange} className="w-full p-2 border rounded-md" />
       </div>
 
-        <button
-          type="submit"
-          className="bg-[#004930] text-white py-2 px-5 rounded-full font-semibold"
-        >
-          Submit Client Details
-          </button>
+      <button type="submit" className="bg-[#004930] text-white py-2 px-5 rounded-full font-semibold">
+        Submit Client Details
+      </button>
     </form>
   );
 }

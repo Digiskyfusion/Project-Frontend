@@ -95,6 +95,9 @@ function FreelancerForm() {
         "http://localhost:8000/api/freelancer/createfreelancer",
         {
           method: "POST",
+          headers:{
+            "Content-Type": "multipart/form-data",
+          },
           body: formDataToSend,
         }
       );

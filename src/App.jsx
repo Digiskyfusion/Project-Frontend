@@ -35,6 +35,8 @@ import AllJobsPage from "./Pages/AllJobsPage";
 import FreelancerJobs from "./Components/FreelancerJobPage/FreelancerJob";
 import MembershipPlans from "./Components/HomePage/Card";
 import DiscoverHire from "./Components/DiscoverPage/Discoverhire";
+import ReviewForm from "./Components/ReviewForm/ReviewForm";
+import ReviewList from "./Components/ReviewForm/ReviewList";
 
 
 function App() {
@@ -81,6 +83,8 @@ function App() {
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
         <Route path="/freelancerjob" element={<FreelancerJobs />} />
+        <Route path="/createreview" element={<ReviewForm />} />
+        <Route path="/reviewslist" element={<ReviewList />} />
       </Routes>
     </BrowserRouter>
     </>
