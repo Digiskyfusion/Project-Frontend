@@ -1,5 +1,7 @@
 
 import pic from './../../assets/Images/a-creative-e-commerce-concept-featuring-a-miniatur(1) 1.png';
+import React from 'react'
+import { Link } from 'react-router-dom';
 
 function ProjectSection() {
   return (
@@ -17,8 +19,9 @@ function ProjectSection() {
         <button className='md:px-9 px-7 py-1 md:py-2 border-2 border-[#004930] rounded-full mt-5 cursor-pointer 
   transition duration-300 ease-out 
   hover:bg-[#004930] hover:text-white hover:scale-90 hover:shadow-lg'>
-  Explore projects
-</button>
+    <Link to="/ClientProfile">
+    Explore projects</Link>
+    </button>
     </div>
       
 

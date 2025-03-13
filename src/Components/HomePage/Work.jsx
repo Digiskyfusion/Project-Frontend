@@ -23,7 +23,7 @@ function Work() {
       { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/allfreelancer' }
     ],
     freelancer: [
-      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.',route:"/signup" },
+      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.',route:"/registration" },
       { img: workdone, title: 'Find High-Paying Projects', text: 'Apply for jobs that match your expertise and start earning.',route:"/freelancerDetails" },
       { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route:"/discover" }
     ]
@@ -33,7 +33,7 @@ function Work() {
     <div className="bg-gray-100 py-7 px-3">
       <h1 className="text-3xl font-bold mt-3 md:px-5 text-gray-800">How It Works</h1>
       
-      {/* {/ Toggle Buttons /} */}
+      {/* Toggle Buttons */}
       <div className="mb-6 flex md:mt-2 border-b-4 border-gray-300">
         <button
           className={`px-3 py-2 mx-2 text-2xl cursor-pointer text-black ${view === 'client' ? 'border-b-4 border-green-500' : ''}`}
@@ -50,7 +50,7 @@ function Work() {
       </div>
 
       <div className="max-w-6xl mx-auto grid gap-12 relative">
-        {/* {/ Vertical Center Line /} */}
+        {/* Vertical Center Line */}
         <div className="hidden md:block border-r-4 border-gray-300 h-full absolute left-1/2 transform -translate-x-1/2"></div>
 
         {content[view].map((item, index) => (
@@ -64,19 +64,19 @@ function Work() {
               <div className="hidden md:block border-r-4 border-green-500 h-full absolute left-1/2 transform -translate-x-1/2"></div>
             )}
 
-            {/* {/ Image on Left for Even Index, Right for Odd Index /} */}
+            {/* Image on Left for Even Index, Right for Odd Index */}
             {index % 2 === 0 && (
               <div className="flex justify-center mb-4 md:mb-0">
                 <img src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />
               </div>
             )}
 
-            {/* {/ Card Content /} */}
+            {/* Card Content */}
             <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all md:ml-6 md:mr-6 relative">
               <h1 className="text-xl md:text-2xl font-bold text-gray-800">{item.title}</h1>
               <p className="text-gray-600 mt-2">{item.text}</p>
               
-              {/* {/ Button only for client actions /} */}
+              {/* Button only for client actions */}
               {item.route && (
                 <button
                   className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
@@ -87,7 +87,7 @@ function Work() {
               )}
             </div>
 
-            {/* {/ Image on Right for Odd Index /} */}
+            {/* Image on Right for Odd Index */}
             {index % 2 !== 0 && (
               <div className="flex justify-center mb-4 md:mb-0">
                 <img src={item.img} alt={item.title} className="w-32 md:w-40 h-32 md:h-40 rounded-full object-cover" />

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FiPhone, FiVideo } from "react-icons/fi";
-import first from "./../assets/Images/first.png";
+import first from "./../../assets/Images/first.png";
 import Livechatcomponent from "./Livechatcomponent";
 import { MdOutlineSend } from "react-icons/md";
 const LiveChat = () => {

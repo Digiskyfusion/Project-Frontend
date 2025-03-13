@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pencil, Info } from 'lucide-react'; // Importing a pencil and info icon
-// import office from './../assets/Images/office.png';
 import { IoIosArrowDown } from "react-icons/io";
 import image from './../../assets/Images/-a-sleek-and-modern-corporate-office-with-a-premiu (7).png';
 

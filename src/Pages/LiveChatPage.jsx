@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Livechatcomponent from "../Components/LiveChatPage/Livechatcomponent";
-import LiveChat from "../Components/LiveChatPage/Livechatcomponent";
+import LiveChat from "../Components/LiveChatPage/LiveChat";
 import Footer from "../Components/Footer/Footer";
 
 

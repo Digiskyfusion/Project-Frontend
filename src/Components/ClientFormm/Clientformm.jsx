@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 function Clientformm() {
   const [activeForm, setActiveForm] = useState("client"); // Managing form toggle
   const [userRole, setUserRole] = useState(""); // Store user role
@@ -23,19 +23,19 @@ function Clientformm() {
 
       {/* Toggle buttons */}
       <div className="flex justify-center space-x-4">
-        <button
-          className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
-            activeForm === "freelancer" ? "text-black underline" : "text-gray-700"
-          }`}
-          onClick={() => {
-            if (userRole !== "client") {
-              navigate("/FreelancreClientPage");
-            }
-          }}
-          disabled={userRole === "client"}
-        >
-          Freelancer
-        </button>
+      <button
+  className={`py-2 px-4 font-semibold rounded-md ${
+    userRole === "client" ? "opacity-50 cursor-not-allowed text-gray-400" : "cursor-pointer"
+  } ${activeForm === "freelancer" ? "text-black underline" : "text-gray-700"}`}
+  onClick={() => {
+    if (userRole !== "client") {
+      navigate("/FreelancreClientPage");
+    }
+  }}
+  disabled={userRole === "client"}
+>
+  Freelancer
+</button>
         <button
           className={`py-2 px-4 font-semibold rounded-md cursor-pointer ${
             activeForm === "client" ? "text-black underline" : "text-gray-700"
@@ -119,10 +119,10 @@ function ClientForm() {
       const result = await response.json();
 
       if (response.ok) {
-        alert("Client added successfully!");
+        toast.success("Client added successfully!");
         navigate("/dashboard"); // Redirect after success
       } else {
-        alert(`Error: ${result.message}`);
+        toast.error("Error submitting form");
       }
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -22,30 +22,19 @@ function SecondReviews() {
     },
     male: {
       name: "Mark T., Entrepreneur",
-      image: twomale,
+      image:  male,
       text: "Quality work at an affordable price! The freelancer I hired exceeded my expectations."
     },
     female2: {
       name: "David S., Small Business Owner",
-      image:twomale,
+      image:girl,
       text: "This is my go-to platform for hiring experts. Reliable, easy, and efficient!"
     },
     male2: {
       name: "Amandeep Kaur",
-      image: twomale,
+      image: women,
       text: "This platform has completely transformed my freelancing journey!"
     },
-    // female2: {
-    //   name: "Simran Kaur",
-    //   image:girl,
-    //   text: "Simran’s review: Lorem Ipsum is simply dummy text of the printing industry. It has survived not only five centuries but also the leap into electronic typesetting."
-    // },
-    // male2: {
-    //   name: "Rajesh Kumar",
-    //   image: women ,
-    //   text: "Rajesh’s review: Lorem Ipsum is the industry's standard dummy text. It has been used since the 1500s to make a type specimen book."
-
-    // },
   };
 
   const handleDownload = () => {

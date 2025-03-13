@@ -3,7 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 function FreelancerClientForm() {
   const [activeForm, setActiveForm] = useState("freelancer");
+  const [roleType, setRoleType] = useState(""); // State to store roleType
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData?.roleType) {
+      setRoleType(userData.roleType);
+    }
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md space-y-4">
@@ -25,8 +33,9 @@ function FreelancerClientForm() {
         <button
           className={`py-2 px-4 font-semibold rounded-md ${
             activeForm === "client" ? "text-black underline" : "text-gray-700"
-          }`}
-          onClick={() => navigate("/client")}
+          } ${roleType === "freelancer" ? "opacity-50 cursor-not-allowed" : ""}`}
+          onClick={() => roleType !== "freelancer" && navigate("/client")}
+          disabled={roleType === "freelancer"}
         >
           Client
         </button>
@@ -36,7 +45,6 @@ function FreelancerClientForm() {
     </div>
   );
 }
-
 function FreelancerForm() {
   const [formData, setFormData] = useState({
     freelancer_id: "",
