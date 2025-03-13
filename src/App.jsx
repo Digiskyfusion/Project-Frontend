@@ -50,7 +50,6 @@ import Content from "./Components/Content";
 import Work from "./Components/Work";
 import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyNdPolicy";
 import CancellationNdRefund from "./Components/CancellationRefund/CancellationNdRefund";
-import ShippingNdDelivery from "./Components/ShippingDelivery/ShippingNdDelivery";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
 
@@ -112,8 +111,6 @@ function App() {
     </BrowserRouter>
 
    
-    
-    {/* <ShippingNdDelivery /> */}
     
 
   

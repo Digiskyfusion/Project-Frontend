@@ -1,96 +1,40 @@
-import React from 'react';
+import React from "react";
 
-const TermandCondition = () => {
+const TermsAndConditions = () => {
   return (
-    <>
-    <div className='min-h-screen bg-gradient-to-br from-gray-100 to-gray-200'>
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-4 md:p-10">
-      <div className="min-w-full min-h-full"> {/* Removed max-w and added h-full */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 mx-auto max-w-screen-lg"> {/* Added max-w-screen-lg and mx-auto */}
-          <div className="mb-10 text-center">
-            <h1 className="text-4xl font-extrabold text-[#004930]tracking-tight mb-4">
-              Terms & Conditions
-            </h1>
-            <p className="text-black text-lg">
-              Please read these terms carefully.
-            </p>
-          </div>
-          <div className="space-y-6 text-base leading-relaxed text-gray-700">
-            {/* ... (Your Terms and Conditions content here) ... */}
-            <p>
-              <strong>1. Acceptance of Terms</strong>
-            </p>
-            <p>
-              By accessing and using our service, you agree to comply with and be bound by these Terms and Conditions. If you do not agree with any part of these terms, you must not use our service.
-            </p>
+    <div className="max-w-4xl mx-auto p-6 mb-6 bg-white shadow-lg rounded-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center">Terms & Conditions</h1>
+      <p className="mb-4">
+        Welcome to <span className="font-semibold">DigiSky</span>. These Terms and Conditions govern your use of our website and services. By accessing or using the Site, you agree to comply with and be bound by these Terms. If you do not agree with these Terms, please do not use the Site.
+      </p>
 
-            <p>
-              <strong>2. Use of Service</strong>
-            </p>
-            <p>
-              You agree to use our service only for lawful purposes and in a manner that does not infringe the rights of, or restrict or inhibit the use and enjoyment of, the service by any third party.
-            </p>
+      <h2 className="text-xl font-semibold mt-4">1. Acceptance of Terms</h2>
+      <p>By accessing or using the Site, you agree to these Terms and our Privacy Policy. If you do not agree to these Terms, you must not use our Site.</p>
 
-            <p>
-              <strong>3. Intellectual Property</strong>
-            </p>
-            <p>
-              All content provided on our service, including but not limited to text, graphics, logos, and software, is the property of Digisky and is protected by intellectual property laws.
-            </p>
-            <p>
-              <strong>4. Limitation of Liability</strong>
-            </p>
-            <p>
-              Digisky fusion shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of our service.
-            </p>
-            <p>
-              <strong>5. Changes to Terms</strong>
-            </p>
-            <p>
-              We reserve the right to modify these Terms and Conditions at any time. Any changes will be effective immediately upon posting. Your continued use of the service constitutes acceptance of the revised terms.
-            </p>
-           
-            <p>
-              <strong>6. Contact Information</strong>
-            </p>
-            <p>
-              If you have any questions about these Terms and Conditions, please contact us at digiskyhelp@gmail.com.
-            </p>
-            <p>
-              <strong>7. User Accounts</strong>
-            </p>
-            <p>
-              If our service requires you to create an account, you are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.
-            </p>
-            <p>
-              <strong>8. Termination</strong>
-            </p>
-            <p>
-              We may terminate or suspend your access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
-            </p>
-            <p>
-              <strong>9. Third-Party Links</strong>
-            </p>
-            <p>
-              Our service may contain links to third-party websites or services that are not owned or controlled by Digisky. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.
-            </p>
-          </div>
-          {/* <div className="mt-10 flex justify-center">
-            <button
-              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-              onClick={() => {
-                alert('Terms and Conditions Accepted!');
-              }}
-            >
-              Accept & Continue
-            </button>
-          </div> */}
-        </div>
-      </div>
+      <h2 className="text-xl font-semibold mt-4">2. Description of Services</h2>
+      <p>DigiSky is an online platform that connects freelancers with clients seeking various services. We facilitate the interaction and transaction between freelancers and clients, but we do not directly provide freelance services.</p>
+
+      <h2 className="text-xl font-semibold mt-4">3. User Accounts</h2>
+      <p><span className="font-semibold">Registration:</span> To use certain features of the Site, you must create an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete.</p>
+      <p><span className="font-semibold">Account Security:</span> You are responsible for maintaining the confidentiality of your account login information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+
+      <h2 className="text-xl font-semibold mt-4">4. User Conduct</h2>
+      <p>You agree to use the Site in accordance with all applicable laws and regulations. You are responsible for all activity that occurs under your account.</p>
+
+      <h2 className="text-xl font-semibold mt-4">5. Freelance Services</h2>
+      <p><span className="font-semibold">Responsibility:</span> Freelancers are independent contractors and are not employees or agents of DigiSky. Clients and freelancers are solely responsible for the terms and conditions of any transactions between them.</p>
+      <p><span className="font-semibold">Payments:</span> All payments for freelance services are processed through the Site. DigiSky is not responsible for any issues related to payment disputes or non-payment by clients.</p>
+
+      <h2 className="text-xl font-semibold mt-4">6. Intellectual Property</h2>
+      <p><span className="font-semibold">Ownership:</span> The Site and its original content, features, and functionality are owned by DigiSky and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+
+      <h2 className="text-xl font-semibold mt-4">7. Contact Us</h2>
+      <p>If you have any questions about these Terms, please contact us at:</p>
+      <p className="mt-2 font-semibold">DigiSky</p>
+      <p>Email: <a href="digiskyhelp@gmail.com" className="text-blue-600">digiskyhelp@gmail.com</a></p>
+      {/* <p>Address: Mohali,Punjab</p> */}
     </div>
-</div>
-    </>
   );
 };
 
-export default TermandCondition;
+export default TermsAndConditions;
