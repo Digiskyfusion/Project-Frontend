@@ -1,9 +1,9 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import { FaReact } from "react-icons/fa";
-import female from "./../../assets/Images/femalefirst.png";
-import value from "./../../assets/Images/15k.png";
-import male from "./../../assets/Images/malefirst.png";
 import FirstSectionCarousel from "./FirstSectionCarousel";
+import female from "./../assets/Images/femalefirst.png";
+import value from "./../assets/Images/15k.png";
+import male from "./../assets/Images/malefirst.png";
 
 function FirstSection() {
   return (
@@ -21,13 +21,13 @@ function FirstSection() {
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}
         >
-          <img  loading="lazy"
+          <img 
             src={male} 
             alt="Male" 
             className="w-full h-full object-cover" 
           />
           {/* Value Image in the Top Right Corner of Male Image */}
-          <img loading="lazy"
+          <img
             src={value}
             alt="Value"
             className="absolute top-20 right-20 md:right-8 md:top-13   lg:top-20 lg:right-20    w-16 lg:w-24 h-16 lg:h-24 object-contain"
@@ -40,19 +40,26 @@ function FirstSection() {
           initial={{ opacity: 0, y: 50 }} // Start lower on Y-axis
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}
-        >
+        > 
           <FirstSectionCarousel />
           <div className="flex justify-center items-center pb-3 mt-6 sm:mt-0">
-            <div className="border-2 rounded-full border-white px-5 py-3 flex items-center text-white w-full sm:w-auto">
-              <input 
-                type="text" 
-                placeholder="Ask anything, AI is here to help..." 
-                className="outline-0 px-5 w-full sm:w-72"
-              />
-              <FaReact className="text-2xl" />
-            </div>
+          <div className="relative w-full sm:w-auto">
+  <div className="border-2 rounded-full border-white px-5 py-3 flex items-center text-white w-full sm:w-auto backdrop-blur-lg bg-white/20">
+    <input 
+      type="text" 
+      placeholder="" 
+      className="outline-0 px-5 w-full sm:w-72 bg-transparent text-white placeholder-white cursor-not-allowed" 
+      disabled
+    />
+    <FaReact className="text-2xl" />
+  </div>
+  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-cyan-500/30 to-purple-500/30 backdrop-blur-md text-white font-extrabold text-xl rounded-full shadow-xl animate-fade-in">
+    <span className="animate-pulse drop-shadow-lg">Coming Soon</span>
+  </div>
+</div>
+
           </div>
-        </motion.div>
+        </motion.div> 
 
         {/* Right Image */}
         <motion.div
@@ -61,7 +68,7 @@ function FirstSection() {
           whileInView={{ opacity: 1, y: 0 }} // Move up and fade in when in view
           transition={{ duration: 1 }}
         >
-          <img  loading="lazy"
+          <img 
             src={female} 
             alt="Female" 
             className="w-full h-full object-cover" 

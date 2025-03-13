@@ -18,7 +18,7 @@ function HomePage() {
     <div className=''>
         <FirstSection />
         <Secondsection />
-        <MembershipPlans />
+        {/* <Card /> */}
         <SolarSystem />
         <Work />
         <ReviewSection />

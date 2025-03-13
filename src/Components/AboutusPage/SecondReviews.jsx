@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { IoMdDownload, IoMdShare } from "react-icons/io";
 import { CiStar } from "react-icons/ci";
-import twomale from './../../assets/Images/a-high-quality--creative-digital-illustration-feat (1) 1.png';
-import male from './../../assets/Images/Ellipse 75.png';
-import girl from './../../assets/Images/Ellipse 72.png';
-import women from './../../assets/Images/Ellipse 73.png';
+import twomale from './../assets/Images/a-high-quality--creative-digital-illustration-feat (1) 1.png';
+import male from './../assets/Images/Ellipse 75.png';
+import girl from './../assets/Images/Ellipse 72.png';
+import women from './../assets/Images/Ellipse 73.png';
 
 function SecondReviews() {
   const [selectedReview, setSelectedReview] = useState({
@@ -22,17 +22,17 @@ function SecondReviews() {
     },
     male: {
       name: "Mark T., Entrepreneur",
-      image: twomale,
+      image:  male,
       text: "Quality work at an affordable price! The freelancer I hired exceeded my expectations."
     },
     female2: {
       name: "David S., Small Business Owner",
-      image:twomale,
+      image:girl,
       text: "This is my go-to platform for hiring experts. Reliable, easy, and efficient!"
     },
     male2: {
       name: "Amandeep Kaur",
-      image: twomale,
+      image: women,
       text: "This platform has completely transformed my freelancing journey!"
     },
     // female2: {
@@ -82,7 +82,7 @@ function SecondReviews() {
               <IoMdShare onClick={handleShare} className='cursor-pointer' />
             </div>
             <div className='flex justify-center'>
-              <img loading="lazy" src={selectedReview.image} alt="Reviewer" className="rounded-full w-24 h-24 object-cover mt-4" />
+              <img src={selectedReview.image} alt="Reviewer" className="rounded-full w-24 h-24 object-cover mt-4" />
             </div>
             <h2 className="text-xl text-center mt-3">{selectedReview.name}</h2>
             <p className="mt-2 text-center px-10 min-h-[80px]">{selectedReview.text}</p>
@@ -93,10 +93,10 @@ function SecondReviews() {
             {/* {/ Reviewers' Images /} */}
             <div className='md:flex md:items-center'>
               <div className='flex mt-4 relative'>
-                <img loading="lazy" src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-6 lg:left-4 cursor-pointer z-10" onClick={() => setSelectedReview(reviews.female)} />
-                <img loading="lazy" src={male} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
-                <img loading="lazy" src={girl} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
-                <img loading="lazy" src={women } alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
+                <img src={twomale} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-6 lg:left-4 cursor-pointer z-10" onClick={() => setSelectedReview(reviews.female)} />
+                <img src={male} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-14 lg:left-12 cursor-pointer z-20" onClick={() => setSelectedReview(reviews.male)} />
+                <img src={girl} alt='' className="w-12 h-12 mx-1 rounded-full object-cover absolute left-20 lg:left-18 cursor-pointer z-30" onClick={() => setSelectedReview(reviews.female2)} />
+                <img src={women } alt='' className="w-12 h-12 mx-1 rounded-full object-cover relative left-26 lg:left-24 cursor-pointer z-40" onClick={() => setSelectedReview(reviews.male2)} />
                 
               </div>
 
