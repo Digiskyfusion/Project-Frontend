@@ -50,7 +50,7 @@ function Footer() {
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3">Follow Us</h1>
           <div className="flex gap-5 text-2xl">
-            <a href="https://www.instagram.com/digiskyfusion" 
+            <a href="https://www.instagram.com/digisky.ai?igsh=d3ExZmlkMjM5Yms4" 
                target="_blank" 
                rel="noopener noreferrer" 
                aria-label="Instagram"

@@ -48,8 +48,6 @@ import SquareCards from "./Components/SquareCard";
 import TermAndConditionPage from "./Pages/TermAndConditionPage";
 import Content from "./Components/Content";
 import Work from "./Components/Work";
-import PrivacyPolicy from "./Components/PrivacyPolicy/PrivacyNdPolicy";
-import CancellationNdRefund from "./Components/CancellationRefund/CancellationNdRefund";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
 
