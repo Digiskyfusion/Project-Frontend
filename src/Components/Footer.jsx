@@ -28,7 +28,7 @@ function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link to="/PrivacyNdPolicy">Privacy And Policy</Link></li>
             <li><Link to="/FullJobCard">Apply as an Agency</Link></li>
-            <li><Link to="/CancellationNdRefund">Cancellation And Refund</Link></li>
+            <li><Link to="/CancellationNdRefund">Refund Policy</Link></li>
             <li><Link to="/SquareCards">Get Certifications</Link></li>
             <li><Link to="/registration">registration</Link></li>
           </ul>
