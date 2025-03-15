@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar"
 import Signuppage from "./Components/SignupPage/Signuppage"
 import Education from "./Components/EducationPage/Education"
-import LiveChatPage from "./Pages/LiveChatPage"
+import chat from "./Pages/Chat"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
 import ContactUsPages from "./Pages/ContactUsPage"
@@ -59,7 +59,7 @@ function App() {
         {/* <Route path="/MembershipPlans" element={<MembershipPlans />} /> */}
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
-        <Route path="/livechat" element={<LiveChatPage />} />
+        <Route path="/chat" element={<chat />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={ <Services />} /> 
         <Route path="/dashboard" element={ <DashboardPage />} /> 

@@ -21,7 +21,7 @@ function HomePage() {
         {/* <Card /> */}
         <SolarSystem />
         <Work />
-        <ReviewSection />
+        {/* <ReviewSection /> */}
         <CarouselSection />
         <MeetFreelancer />
         <Footer />

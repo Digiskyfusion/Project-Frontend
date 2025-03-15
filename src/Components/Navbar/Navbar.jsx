@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
-import Logo from './../../assets/Images/digilogo12.png';
+import Logo from "./../../assets/Images/digilogo12.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +12,10 @@ const Navbar = () => {
     const handleAuthChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
       const userData = JSON.parse(localStorage.getItem("user"));
-      setRoleType(userData?.roleType || null);
+      setRoleType(userData.roleType || null);
     };
 
-    handleAuthChange(); // Initial check
+    handleAuthChange();
     window.addEventListener("authChange", handleAuthChange);
 
     return () => {
@@ -23,99 +23,135 @@ const Navbar = () => {
     };
   }, []);
 
-  // Logout function
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    localStorage.removeItem("roleType");
-    
-    // Dispatch custom event to notify navbar
-    window.dispatchEvent(new Event("authChange"));
+    if (window.confirm("Are you sure you want to logout?")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("roleType");
+      window.dispatchEvent(new Event("authChange"));
+    }
   };
 
-  const freelancerNav = (
-    <>
-      <li><NavLink to="/FreelancreClientPage">Profile Verification</NavLink></li>
-      <li><NavLink to="/ClientProfile">Client Profile</NavLink></li>
-      <li><NavLink to="/MembershipPlans">Plan Info</NavLink></li>
-      <li><NavLink to="/FreelancerUpadte">Edit Profile</NavLink></li>
-    </>
-  );
-
-  const clientNav = (
-    <>
-      <li><NavLink to="/client">Profile Verification</NavLink></li>
-      <li><NavLink to="/ClientForm">Edit Profile</NavLink></li>
-      <li><NavLink to="/Subcatagory">Subcategory</NavLink></li>
-      <li><NavLink to="/allfreelancer">Freelancer Profile</NavLink></li>
-    </>
-  );
-
   return (
-    <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-20">
-      <div className="container px-1 xl:px-12 flex justify-between items-center">
+    <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-30">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
         <Link to="/" className="text-2xl font-bold">
-          <img loading="lazy" src={Logo} alt="Logo" className="h-10 md:h-14 w-auto object-contain" />
+          <img loading="lazy" src={Logo} alt="Logo" className="h-12 md:h-16 w-auto" />
         </Link>
 
-        <ul className="hidden md:flex space-x-6">
-          {!isLoggedIn || (roleType !== "client" && roleType !== "freelancer") ? (
-            <>
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/aboutus">About Us</NavLink></li>
-              <li><NavLink to="/ChooseUSPage">Choose Us</NavLink></li>
-              <li><NavLink to="/service">Service</NavLink></li>
-              <li><NavLink to="/contactus">Contact Us</NavLink></li>
-            </>
-          ) : null}
-
-          {isLoggedIn && roleType === "freelancer" && freelancerNav}
-          {isLoggedIn && roleType === "client" && clientNav}
-        </ul>
-
-        <div className="hidden md:block">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-6 text-lg">
           {!isLoggedIn ? (
-            <button className="py-2 px-8 border-2 rounded-full">
-              <Link to="/registration"><a href="/registration">Registration</a></Link>
-            </button>
+            <>
+              <NavLink to="/" className="hover:text-yellow-400">Home</NavLink>
+              <NavLink to="/aboutus" className="hover:text-yellow-400">About Us</NavLink>
+              <NavLink to="/ChooseUSPage" className="hover:text-yellow-400">Choose Us</NavLink>
+              <NavLink to="/service" className="hover:text-yellow-400">Service</NavLink>
+              <NavLink to="/contactus" className="hover:text-yellow-400">Contact Us</NavLink>
+            </>
           ) : (
-            <button className="py-2 px-8 border-2 rounded-full" onClick={handleLogout}>
-             <a href=""> Logout</a>
-            </button>
+            <>
+              {roleType === "freelancer" && (
+                <>
+                 <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+ </>
+              )}
+              {roleType === "client" && (
+                <>
+                  <NavLink to="/freelancer-profiles" className="hover:text-yellow-400">Freelancer Profiles</NavLink>
+                  <NavLink to="/client-profiles" className="hover:text-yellow-400">Client Profiles</NavLink>
+                  <NavLink to="/categories" className="hover:text-yellow-400">Categories</NavLink>
+                </>
+              )}
+            </>
           )}
         </div>
 
+        {/* Buttons */}
+        <div className="hidden md:flex gap-4">
+          {isLoggedIn && (
+            <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
+              Chat Now
+            </Link>
+          )}
+          {isLoggedIn ? (
+            <button 
+              className="py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/registration" className="py-2 px-6 border-2 border-white rounded-full hover:bg-white hover:text-green-900 transition duration-300">
+              Register
+            </Link>
+          )}
+        </div>
+
+        {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
 
+      {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-green-900 p-4 text-center">
-          <ul className="space-y-4">
-            {!isLoggedIn || (roleType !== "client" && roleType !== "freelancer") ? (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-[#004930] text-white p-6 shadow-lg">
+          <ul className="flex flex-col space-y-4 text-lg font-semibold">
+            {!isLoggedIn ? (
               <>
-                <li><NavLink to="/" className="block hover:text-gray-300">Home</NavLink></li>
-                <li><NavLink to="/aboutus" className="block hover:text-gray-300">About Us</NavLink></li>
-                <li><NavLink to="/ChooseUSPage" className="block hover:text-gray-300">Choose Us</NavLink></li>
-                <li><NavLink to="/service" className="block hover:text-gray-300">Service</NavLink></li>
-                <li><NavLink to="/contactus" className="block hover:text-gray-300">Contact Us</NavLink></li>
+                <NavLink to="/" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Home</NavLink>
+                <NavLink to="/aboutus" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>About Us</NavLink>
+                <NavLink to="/ChooseUSPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Choose Us</NavLink>
+                <NavLink to="/service" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Service</NavLink>
+                <NavLink to="/contactus" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Contact Us</NavLink>
               </>
-            ) : null}
-
-            {isLoggedIn && roleType === "freelancer" && freelancerNav}
-            {isLoggedIn && roleType === "client" && clientNav}
+            ) : (
+              <>
+                {roleType === "freelancer" && (
+                  <>
+                     <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
+                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                  </>
+                )}
+                {roleType === "client" && (
+                  <>
+                   <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
+                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+ </>
+                )}
+              </>
+            )}
           </ul>
 
-          <div className="mt-4">
-            {!isLoggedIn ? (
-              <button className="py-2 px-5 border-2 rounded-full">
-                <NavLink to="/registration">Registration</NavLink>
+          <div className="mt-4 flex flex-col gap-3">
+            {isLoggedIn && (
+              <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full text-center font-medium hover:bg-green-500 transition duration-300">
+                Chat Now
+              </Link>
+            )}
+            {isLoggedIn ? (
+              <button 
+                className="py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
+                onClick={() => {
+                  handleLogout();
+                  setIsOpen(false);
+                }}
+              >
+                Logout
               </button>
             ) : (
-              <button className="py-2 px-5 border-2 rounded-full bg-red-600" onClick={handleLogout}>
-                <a href="">Logout</a>
-              </button>
+              <Link to="/registration" className="py-2 px-6 border-2 border-white rounded-full text-center hover:bg-white hover:text-green-900 transition duration-300">
+                Register
+              </Link>
             )}
           </div>
         </div>

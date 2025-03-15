@@ -22,7 +22,9 @@ function LoginForm() {
     setLoading(true);
     try {
       const response = await axios.post(`${API_URL}api/auth/login`, loginForm);
-      localStorage.setItem("token", response.data.token);
+      console.log("response");
+      console.log(response);
+      localStorage.setItem("token", response.data.user.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("roleType", response.data.user.roleType);
       toast.success("Login successful!");

@@ -7,6 +7,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+const categoryImages = {
+  "Digital Marketing": "../../assets/Images/digital-marketing.avif",
+  "web-development": "/images/web-development.jpg",
+  "graphic-design": "/images/graphic-design.jpg",
+  "seo": "/images/seo.jpg",
+  "content-writing": "/images/content-writing.jpg",
+  // Add more categories as needed
+};
+
 function Category() {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -21,8 +30,7 @@ function Category() {
           throw new Error("Failed to fetch categories");
         }
         const data = await response.json();
-        console.log("data");
-        console.log(data);
+        console.log("data", data);
         setCategories(data || []);
       } catch (error) {
         setError(error.message);
@@ -63,17 +71,15 @@ function Category() {
           <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-6 rounded-3xl">
             <div className="flex">
               <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-16 h-16 overflow-hidden bg-white">
-                {/* <img
+                <img
                   loading="lazy"
-                  src={category.img || "https://via.placeholder.com/50"}
-                  alt={category.title}
-                  className="w-10 h-10 object-contain rounded-full flex-shrink-0"
-                /> */}
+                  src={categoryImages[category.name.toLowerCase()] || "/images/default.jpg"}
+                  alt={category.name}
+                  className="w-10 h-10 object-cover rounded-full flex-shrink-0"
+                />
               </div>
             </div>
             <h1 className="text-xl text-white font-bold mt-4">{category.name}</h1>
-            {/* <h2 className="text-white mt-0.5">{category.jobs}</h2>
-            <p className="text-white mt-4">{category.desc}</p> */}
           </SwiperSlide>
         ))}
       </Swiper>

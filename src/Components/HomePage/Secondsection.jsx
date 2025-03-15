@@ -1,96 +1,86 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaPencilAlt, FaShieldVirus } from 'react-icons/fa';
 import professionalteam from './../../assets/Images/professionalteam.png';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Secondsection() {
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    // Intersection Observer to detect when the section comes into view
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting); // Set inView to true when the section is in view
-      },
-      { threshold: 0.3 } // Trigger animation when 30% of the section is visible
-    );
-
-    const section = document.getElementById('second-section');
-    if (section) observer.observe(section);
-
-    return () => {
-      if (section) observer.unobserve(section);
-    };
-  }, []);
-
   return (
-    <section
-      id="second-section"
-      className={`container mx-auto px-6 py-12 bg-gray-100 transition-all duration-1000 ease-in-out ${
-        inView ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'
-      }`}
-    >
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+    <section className="container mx-auto px-6 py-12 bg-gray-100">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="flex flex-col md:flex-row items-center justify-between gap-8"
+      >
         {/* Left Section */}
         <div className="w-full md:w-1/2 space-y-6">
-          <h1
-            className={`text-3xl md:text-5xl font-bold text-gray-800 leading-tight ${
-              inView ? 'animate-slideInLeft' : ''
-            }`}
+          <motion.h1
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-5xl font-bold text-gray-800 leading-tight"
           >
             Take your work to the next level, it’s simple
-          </h1>
+          </motion.h1>
 
           {/* Features List */}
           <div className="space-y-6">
-            {[ 
-              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Drop us a message", text: "We’d love to hear from you!" },
-              { icon: <FaPencilAlt className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Let’s work together", text: "Whether you’re hiring or freelancing, we’ve got your back." },
-              { icon: <FaShieldVirus className="text-6xl bg-[#004930] p-4 text-white rounded-full shadow-lg" />, title: "Join a thriving network ", text: "Connect with top talent and game-changing projects" },
+            {[
+              { icon: <FaPencilAlt />, title: 'Drop us a message', text: 'We’d love to hear from you!' },
+              { icon: <FaPencilAlt />, title: 'Let’s work together', text: 'Whether you’re hiring or freelancing, we’ve got your back.' },
+              { icon: <FaShieldVirus />, title: 'Join a thriving network', text: 'Connect with top talent and game-changing projects' },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`flex items-start gap-6 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition duration-300 ${
-                  inView ? '' : ''
-                }`}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="flex items-start gap-6 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition duration-300"
               >
-                {item.icon}
+                <div className="text-4xl p-4 bg-[#004930] text-white rounded-full shadow-lg">
+                  {item.icon}
+                </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-700">{item.title}</h2>
                   <p className="text-gray-600">{item.text}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 mt-6">
-            <button
-              className={`px-6 py-3 rounded-full hover:bg-[#004930] border-2 border-[#004930] text-[#004930] hover:text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 ${
-                inView ? 'animate-fadeInUp' : ''
-              }`}
-            > <Link to="/registration"> Create an account at no cost</Link>
-             
-            </button>
-            <button
-              className={`px-6 py-3 rounded-full hover:bg-[#004930] border-2 border-[#004930] text-[#004930] hover:text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105 ${
-                inView ? 'animate-fadeInUp' : ''
-              }`}
-            >
-             <Link to="/discover">Discover how to hire</Link> 
-            </button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col md:flex-row gap-4 mt-6"
+          >
+            <Link to="/registration" className="px-6 py-3 rounded-full bg-[#004930] text-white font-medium shadow-lg hover:opacity-90 transition duration-300 transform hover:scale-105">
+              Create an account at no cost
+            </Link>
+            <Link to="/aboutus" className="px-6 py-3 rounded-full border-2 border-[#004930] text-[#004930] font-medium shadow-lg hover:bg-[#004930] hover:text-white transition duration-300 transform hover:scale-105">
+              Discover how to hire
+            </Link>
+          </motion.div>
         </div>
 
         {/* Right Section - Image */}
-        <div className={`w-full md:w-1/2 flex justify-center ${inView ? 'animate-slideInRight' : ''}`}>
-          <img loading="lazy"
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full md:w-1/2 flex justify-center"
+        >
+          <img
+            loading="lazy"
             src={professionalteam}
             alt="Professional Team"
             className="max-w-full h-auto rounded-lg shadow-lg transform hover:scale-110 transition duration-300"
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

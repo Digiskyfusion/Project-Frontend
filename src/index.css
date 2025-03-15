@@ -7,7 +7,7 @@
 } */
 
 .active {
-    background-color: gray;
+    background-color: #00a63e;
     padding: 5px 10px;
     border-radius: 20px;
     transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;

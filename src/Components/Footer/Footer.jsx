@@ -1,100 +1,63 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-// Icons
 import { CiInstagram, CiFacebook } from "react-icons/ci";
 import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   return (
     <footer className="bg-[#004930] text-white py-10 px-6 md:px-16">
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-4  gap-8 text-center  md:text-left">
-        {/* First Section - For customers */}
-        <div className="flex flex-col items-start md:justify-start">
-          <h1 className="text-lg  mb-3 poppins-thin">For customers</h1>
-          <ul className="space-y-2 text-sm text-start">
-            <li><Link to="/">How to recruit</Link></li>
-            <li><Link to="/about">Skill Marketplace</Link></li>
-            <li><Link to="/services">Service Directory</Link></li>
-            <li><Link to="/portfolio">Recruit an agency</Link></li>
-            <li><Link to="/ContactUs">Corporation</Link></li>
-            <li><Link to="/ContactUs">Advanced Business</Link></li>
-            <li><Link to="/ContactUs">Any recruitment</Link></li>
-            <li><Link to="/ContactUs">Reach out to hire</Link></li>
-            <li><Link to="/ContactUs">Recruit globally</Link></li>
-          </ul>
-        </div>
-
-        {/* Second Section - For professionals */}
-        <div className="flex flex-col items-start md:justify-start">
-          <h1 className="text-lg font-semibold mb-3">For professionals</h1>
-          <ul className="space-y-2 text-sm text-start">
-            <li><Link to="/">How to recruit</Link></li>
-            <li><Link to="/about">Skill Marketplace</Link></li>
-            <li><Link to="/service">Service Directory</Link></li>
-            <li><Link to="/portfolio">Recruit an agency</Link></li>
-            <li><Link to="/ContactUs">Corporation</Link></li>
-            <li><Link to="/ContactUs">Advanced Business</Link></li>
-            <li><Link to="/ContactUs">Any recruitment</Link></li>
-            <li><Link to="/ContactUs">Reach out to hire</Link></li>
-            <li><Link to="/ContactUs">Recruit globally</Link></li>
-          </ul>
-        </div>
-
-        {/* Third Section - Resources */}
-        {/* <div className="flex flex-col items-start md:justify-start">
-          <h1 className="text-lg font-semibold mb-3">Resources</h1>
-          <ul className="space-y-2 text-sm text-start">
-            <li><Link to="/">How to recruit</Link></li>
-            <li><Link to="/about">Skill Marketplace</Link></li>
-            <li><Link to="/services">Service Directory</Link></li>
-            <li><Link to="/portfolio">Recruit an agency</Link></li>
-            <li><Link to="/ContactUs">Corporation</Link></li>
-            <li><Link to="/ContactUs">Advanced Business</Link></li>
-            <li><Link to="/ContactUs">Any recruitment</Link></li>
-            <li><Link to="/ContactUs">Reach out to hire</Link></li>
-            <li><Link to="/ContactUs">Recruit globally</Link></li>
-          </ul>
-        </div> */}
-
-        {/* Fourth Section - Menu */}
-        <div className="flex flex-col items-start md:justify-start">
-          <h1 className="text-lg font-semibold mb-3">Pages</h1>
-          <ul className="space-y-2 text-sm text-start">
-            <li><Link to="/allfreelancer">ALL Freelancer</Link></li>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/FreelancreClientPage">Freelancre Client Page</Link></li>
-            <li><Link to="/FreelancerUpadte">Freelancer Upadte</Link></li>
-            <li><Link to="/ClientForm">Client Form</Link></li>
-            <li><Link to="/Subcatagory">Sub Catagory</Link></li>
-            <li><Link to="/freelancerDetails">Freelancer Details</Link></li>
-            <li><Link to="/clientDetails">Client Details</Link></li>
-            <li><Link to="/channel">Tv Advertising</Link></li>
-          </ul>
-        </div>
-
-        {/* Fifth Section - Follow Us */}
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+        {/* Menu Section */}
         <div className="flex flex-col items-start">
-          <div className="text-2xl">
-            <h1>Follow Us</h1>
-            <div className="flex gap-5 mt-3">
-              <a href="https://www.instagram.com/digiskyfusion?igsh=d242aTBrNGQzZDR6" target="_blank" className="hover:text-blue-400"><CiInstagram /></a>
-              <a href="https://www.facebook.com/share/15AWmqvS2x/" target="_blank" className="hover:text-blue-500"><CiFacebook /></a>
-              <a href="https://www.linkedin.com/in/digisky-fusion-01a6002b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" className="hover:text-blue-600"><FaLinkedinIn /></a>
-              <a href="https://x.com/digiskyfusion?t=tLHE_G31tsLiB6QpX_XA8Q&s=09" target="_blank" className="hover:text-blue-400"><FaTwitter /></a>
-            </div>
+          <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Menu</h1>
+          <ul className="space-y-2 text-sm">
+            {["Home", "About Us", "Choose Us", "Service", "Contact Us"].map((item, index) => (
+              <li key={index}>
+                <Link to={`/${item.replace(/\s+/g, '').toLowerCase()}`} className="hover:text-yellow-400 transition duration-300">{item}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Follow Us Section */}
+        <div className="flex flex-col items-start">
+          <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Follow Us</h1>
+          <div className="flex gap-5 text-2xl">
+            {[
+              { href: "https://www.instagram.com/digisky.ai?igsh=d3ExZmlkMjM5Yms4", icon: <CiInstagram />, color: "hover:text-pink-500" },
+              { href: "https://www.facebook.com/share/15AWmqvS2x/", icon: <CiFacebook />, color: "hover:text-blue-500" },
+              { href: "https://www.linkedin.com/in/digisky-fusion-01a6002b9", icon: <FaLinkedinIn />, color: "hover:text-blue-600" },
+              { href: "https://x.com/digiskyfusion", icon: <FaTwitter />, color: "hover:text-blue-400" }
+            ].map((social, index) => (
+              <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className={`${social.color} transition duration-300`}>{social.icon}</a>
+            ))}
+          </div>
+        </div>
+        
+        {/* Address Section */}
+        <div className="flex flex-col items-start">
+          <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Address</h1>
+          <p className="text-sm opacity-90">DigiSky Fusion
+          Phase 8B, Industrial Area, Sector 74, Sahibzada Ajit Singh Nagar, Chandigarh, Punjab 160055</p>
+          <p className="text-sm opacity-90">Email: <a href="mailto:support@digisky.com" className="hover:text-yellow-400 transition duration-300">support@digisky.com</a></p>
+        </div>
+        
+        {/* Subscribe Section */}
+        <div className="flex flex-col items-start">
+          <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Subscribe</h1>
+          <div className="flex gap-2">
+            <input type="email" placeholder="Enter your email" className="px-3 py-2 text-white border-2 border-black rounded-md w-full" />
+            <button className="bg-yellow-500 px-4 py-2 rounded-md text-black hover:bg-yellow-400 transition duration-300">Subscribe</button>
           </div>
         </div>
       </div>
-
-      {/* Horizontal Line */}
-      <div className="flex justify-center mt-2 md:mt-4 pt-6 md:pt-10">
-        <hr className="w-full md:w-[99.9%] border-white border-t-2" />
+      
+      <div className="flex justify-center mt-6">
+        <hr className="w-full md:w-[95%] border-white border-t-2" />
       </div>
-
-      {/* Bottom Footer */}
-      <div className="text-center md:flex md:justify-center mt-2 text-sm md:px-16">
-        <p>This is a sample website – cmsmasters ©2024 – All Rights Reserved</p>
+      
+      <div className="text-center text-sm mt-4">
+        <p className="opacity-80">© 2024 DigiSky Fusion. All Rights Reserved.</p>
       </div>
     </footer>
   );
