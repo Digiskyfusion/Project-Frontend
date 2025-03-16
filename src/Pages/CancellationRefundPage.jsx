@@ -1,6 +1,6 @@
 import React from 'react'
-import Footer from '../Components/Footer'
 import CancellationNdRefund from '../Components/CancellationRefund/CancellationNdRefund'
+import Footer from '../Components/Footer/Footer'
 
 
 
@@ -9,7 +9,6 @@ function CancellationRefundPage() {
     <>
     <div>
     <CancellationNdRefund />
-   
     <Footer />
     </div>
       

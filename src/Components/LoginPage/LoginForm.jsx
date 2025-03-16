@@ -21,9 +21,9 @@ function LoginForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`${API_URL}api/auth/login`, loginForm);
+      const response = await axios.post(`http://localhost:3000/api/auth/login`, loginForm);
       console.log("response");
-      console.log(response);
+      // console.log(response);
       localStorage.setItem("token", response.data.user.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("roleType", response.data.user.roleType);

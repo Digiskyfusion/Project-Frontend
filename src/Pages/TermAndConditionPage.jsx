@@ -1,6 +1,6 @@
 import React from 'react'
 import TermandCondition from '../Components/TermNdCondition/TermandCondition'
-import Footer from '../Components/Footer'
+import Footer from '../Components/Footer/Footer'
 
 function TermAndConditionPage() {
   return (

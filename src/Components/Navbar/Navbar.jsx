@@ -12,7 +12,7 @@ const Navbar = () => {
     const handleAuthChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
       const userData = JSON.parse(localStorage.getItem("user"));
-      setRoleType(userData.roleType || null);
+      setRoleType(userData?.roleType || null);
     };
 
     handleAuthChange();
@@ -54,17 +54,21 @@ const Navbar = () => {
             <>
               {roleType === "freelancer" && (
                 <>
-                 <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                <NavLink to="/FreelancreClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                 <NavLink to="/FreelancerUpadte" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profile</NavLink>
+                    <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Sub Categories</NavLink>
  </>
               )}
               {roleType === "client" && (
                 <>
-                  <NavLink to="/freelancer-profiles" className="hover:text-yellow-400">Freelancer Profiles</NavLink>
+                  {/* <NavLink to="/freelancer-profiles" className="hover:text-yellow-400">Freelancer Profiles</NavLink>
                   <NavLink to="/client-profiles" className="hover:text-yellow-400">Client Profiles</NavLink>
-                  <NavLink to="/categories" className="hover:text-yellow-400">Categories</NavLink>
+                  <NavLink to="/categories" className="hover:text-yellow-400">Categories</NavLink> */}
+                  <NavLink to="/client">Profile Verification</NavLink>
+                  <NavLink to="/ClientForm">Edit Profile</NavLink>
+                  <NavLink to="/Subcatagory">Subcategory</NavLink>
+                  <NavLink to="/allfreelancer">Freelancer Profile</NavLink>
                 </>
               )}
             </>

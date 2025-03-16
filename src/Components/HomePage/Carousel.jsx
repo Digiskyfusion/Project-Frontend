@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
@@ -7,6 +8,7 @@ import image from "../../assets/Images/userimage.png";
 
 function Carousel() {
   const [freelancers, setFreelancers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/freelancer/users")
@@ -14,6 +16,17 @@ function Carousel() {
       .then((data) => setFreelancers(data))
       .catch((error) => console.error("Error fetching freelancers:", error));
   }, []);
+
+  const handleSeeDetails = () => {
+    const userRole = localStorage.getItem("user"); // Browser se roleType get karna
+    let userData = JSON.parse(userRole);
+// console.log(userData.roleType)
+    if (userData === "client") {
+      navigate("/freelancerDetails");
+    } else if (userData === "freelancer") {
+      navigate("/clientDetails");
+    }
+  };
 
   const settings = {
     dots: true,
@@ -52,10 +65,11 @@ function Carousel() {
                 className="w-24 h-24 object-cover rounded-full border-2 border-[#004930]"
               />
               <h1 className="text-lg font-semibold text-[#004930] mt-3">{freelancer.name}</h1>
-              <p className="text-sm text-gray-500">{freelancer.role}</p>
+              <p className="text-sm text-gray-500">{freelancer.roleType}</p>
               <motion.button
                 className="mt-4 px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
                 whileHover={{ scale: 1.1 }}
+                onClick={handleSeeDetails} // Button click pr roleType check karna
               >
                 See Details
               </motion.button>

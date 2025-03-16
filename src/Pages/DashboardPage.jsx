@@ -4,7 +4,6 @@ import Dashboard from "../Components/DashboardPage/Dashboard";
 import DashboardSecond from "../Components/DashboardPage/DashboardSecond";
 import MainDashboard from "../Components/DashboardPage/MainDashboard";
 import Footer from "../Components/Footer/Footer";
-import Navbar from "../Components/Navbar/Navbar";
 
 
 function DashboardPage() {
@@ -20,10 +19,10 @@ function DashboardPage() {
   return (
     <>
       <div className="flex w-full">
-        <div>
+        {/* <div>
           <Dashboard />
-        </div>
-        <div className="flex-1">
+        </div> */}
+        <div className="flex-1 ">
           <DashboardSecond />
           <MainDashboard />
         </div>

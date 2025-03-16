@@ -1,6 +1,6 @@
 import React from 'react'
-import Footer from '../Components/Footer'
 import PrivacyPolicy from '../Components/PrivacyPolicy/PrivacyNdPolicy'
+import Footer from '../Components/Footer/Footer'
 
 
 function PrivacyNdPolicyPage() {

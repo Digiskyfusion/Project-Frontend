@@ -28,7 +28,7 @@ function Signuppage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}api/auth/signup`, formData);
+      const response = await axios.post(`http://loacalhost:3000/api/auth/signup`, formData);
       console.log("response");
       console.log(response);
       toast.success("Signup successful!");

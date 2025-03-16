@@ -19,7 +19,7 @@ function Clientformm() {
       <h1 className="text-center text-xl text-black font-bold md:text-2xl">
         Digisky
       </h1>
-      <p className="text-center">Please sign up to continue</p>
+      {/* <p className="text-center">Please sign up to continue</p> */}
 
       {/* Toggle buttons */}
       {/* {/ Toggle buttons /} */}

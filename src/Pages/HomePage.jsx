@@ -1,15 +1,12 @@
-import React from 'react'
-
 import Footer from '../Components/Footer/Footer'
 import FirstSection from '../Components/HomePage/FirstSection'
 import Secondsection from '../Components/HomePage/Secondsection'
-import MembershipPlans from '../Components/HomePage/Card'
 import SolarSystem from '../Components/HomePage/SolarSystem'
 import Work from '../Components/HomePage/Work'
 import ReviewSection from '../Components/HomePage/ReviewSection'
 import CarouselSection from '../Components/HomePage/CarouselSection'
 import MeetFreelancer from '../Components/HomePage/MeetFreelancer'
-import Navbar from '../Components/Navbar/Navbar'
+
 
 function HomePage() {
   return (
@@ -21,7 +18,7 @@ function HomePage() {
         {/* <Card /> */}
         <SolarSystem />
         <Work />
-        {/* <ReviewSection /> */}
+        <ReviewSection />
         <CarouselSection />
         <MeetFreelancer />
         <Footer />

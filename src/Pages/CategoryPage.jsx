@@ -1,4 +1,3 @@
-import React from 'react'
 import CategoryManager from '../Components/CategoryManager'
 
 function CategoryPage() {
