@@ -6,7 +6,7 @@ import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa"
 import newonw from "./../../assets/Images/newonw.jpg";
 
 function LoginForm() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });

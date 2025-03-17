@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 
 const PostJob = () => {
-  const URL= import.meta.env.VITE_API_URL
+  const URL= import.meta.env.REACT_APP_API_URL
 
   const navigate = useNavigate();
   const location = useLocation();

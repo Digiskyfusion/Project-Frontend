@@ -6,7 +6,7 @@ import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlas
 import newpic from "./../../assets/Images/new pic.png";
 
 function Signuppage() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirm_password, setShowconfirm_password] = useState(false);

@@ -3,7 +3,7 @@ import { FaBriefcase, FaMoneyBillWave, FaClipboardList } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 
 const JobSection = () => {
-  const URL = import.meta.env.VITE_API_URL;
+  const URL = import.meta.env.REACT_APP_API_URL;
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
