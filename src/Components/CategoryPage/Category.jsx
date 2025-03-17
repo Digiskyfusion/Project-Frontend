@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import axios from "axios";
 
 const API_URL = import.meta.env.REACT_APP_API_URL;
 
@@ -25,9 +26,12 @@ function Category() {
   useEffect(() => {
     const fetchCategories = async () => {
       const API_URL = import.meta.env.REACT_APP_API_URL;
-
+      console.log("API_URL");
+      console.log(API_URL);
       try {
-        const response = await fetch(`${API_URL}/category/categories`);
+        const response = await axios.get(`${API_URL}/category/categories`);
+        console.log("response");
+        console.log(response);
         if (!response.ok) {
           throw new Error("Failed to fetch categories");
         }

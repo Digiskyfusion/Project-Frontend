@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar"
 import Signuppage from "./Components/SignupPage/Signuppage"
 import Education from "./Components/EducationPage/Education"
@@ -52,7 +52,8 @@ function App() {
 
 <BrowserRouter>
 <ScrollToTop /> 
-<Navbar />      
+<Navbar />   
+  <Router>  
       <Routes>
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/MembershipPlans" element={<MembershipPlans />} /> */}
@@ -107,6 +108,7 @@ function App() {
         {/* <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} /> */}
 
       </Routes>
+      </Router>
     </BrowserRouter>
 
    
