@@ -2,7 +2,7 @@ import  { useState } from "react";
 // import {  useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const URL= import.meta.env.REACT_APP_API_URL
+  const URL= import.meta.env.VITE_API_URL
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

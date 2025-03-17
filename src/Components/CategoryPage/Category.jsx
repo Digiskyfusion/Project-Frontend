@@ -6,7 +6,7 @@ import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import axios from "axios";
 
-const API_URL = import.meta.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 const categoryImages = {
   "Digital Marketing": "../../assets/Images/digital-marketing.avif",
@@ -25,7 +25,7 @@ function Category() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const API_URL = import.meta.env.REACT_APP_API_URL;
+      const API_URL = import.meta.env.VITE_API_URL;
       console.log("API_URL");
       console.log(API_URL);
       try {

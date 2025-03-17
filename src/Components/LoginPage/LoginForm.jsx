@@ -6,7 +6,7 @@ import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa"
 import newonw from "./../../assets/Images/newonw.jpg";
 
 function LoginForm() {
-  const API_URL = import.meta.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
@@ -56,7 +56,7 @@ function LoginForm() {
 
         <p className="text-gray-600 text-sm text-center mt-2">
           Don't have an account? {" "}
-          <a href="/signup" className="text-green-700 font-medium">Sign up</a>
+          <a href="/registration" className="text-green-700 font-medium">Sign up</a>
         </p>
 
         <div className="flex flex-col items-center gap-4 mt-6 w-full">

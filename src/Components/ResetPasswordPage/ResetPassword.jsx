@@ -2,7 +2,7 @@ import  { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
-    const URL= import.meta.env.REACT_APP_API_URL
+    const URL= import.meta.env.VITE_API_URL
 
     const navigate = useNavigate();
     const [password, setPassword] = useState("");

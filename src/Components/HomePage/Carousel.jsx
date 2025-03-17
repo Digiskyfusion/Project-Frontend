@@ -9,7 +9,7 @@ import image from "../../assets/Images/userimage.png";
 function Carousel() {
   const [freelancers, setFreelancers] = useState([]);
   const navigate = useNavigate();
-  const API_URL = import.meta.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetch(`${API_URL}/users/user`)

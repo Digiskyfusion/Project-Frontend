@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Signuppage from "./Components/SignupPage/Signuppage";
 import Education from "./Components/EducationPage/Education";
@@ -35,7 +35,7 @@ import CancellationRefundPage from "./Pages/CancellationRefundPage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <ScrollToTop />
       <Navbar />
       <Routes>
@@ -71,7 +71,7 @@ function App() {
         <Route path="/PrivacyNdPolicy" element={<PrivacyNdPolicyPage />} />
         <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} />
       </Routes>
-    </BrowserRouter>
+      </Router>
   );
 }
 
