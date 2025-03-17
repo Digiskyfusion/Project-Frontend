@@ -11,9 +11,22 @@ const Navbar = () => {
   useEffect(() => {
     const handleAuthChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
-      const userData = JSON.parse(localStorage.getItem("user"));
+    
+      const userDataString = localStorage.getItem("user");
+      let userData = null;
+    
+      try {
+        userData = userDataString ? JSON.parse(userDataString) : null;
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+        localStorage.removeItem("user"); // Remove invalid data to prevent future errors
+      }
+    
       setRoleType(userData?.roleType || null);
     };
+    
+    
+    
 
     handleAuthChange();
     window.addEventListener("authChange", handleAuthChange);

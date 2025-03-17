@@ -9,13 +9,18 @@ import image from "../../assets/Images/userimage.png";
 function Carousel() {
   const [freelancers, setFreelancers] = useState([]);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/freelancer/users")
+    fetch(`${API_URL}/users/user`)
       .then((response) => response.json())
-      .then((data) => setFreelancers(data))
+      .then((data) => {
+        const usersOnly = data.filter(user => user.roleType === "user"); // Sirf users ko filter karna
+        setFreelancers(usersOnly);
+      })
       .catch((error) => console.error("Error fetching freelancers:", error));
   }, []);
+  
 
   const handleSeeDetails = () => {
     const userRole = localStorage.getItem("user"); // Browser se roleType get karna

@@ -24,8 +24,10 @@ function Category() {
 
   useEffect(() => {
     const fetchCategories = async () => {
+      const API_URL = import.meta.env.VITE_API_URL;
+
       try {
-        const response = await fetch(`${API_URL}api/category/getallCategory`);
+        const response = await fetch(`${API_URL}/category/categories`);
         if (!response.ok) {
           throw new Error("Failed to fetch categories");
         }

@@ -10,13 +10,13 @@ const FreelancerJobs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")); // Assuming user object is stored
-    if (!user || user.roleType !== "freelancer") {
-      console.error("Access Denied: Only freelancers can view this page.");
-      navigate("/login"); // Redirect if not a freelancer
-      return;
-    }
-    fetchJobs();
+    const user = JSON.parse(localStorage.getItem("user") || "{}"); // Ensures an empty object if null
+if (user?.roleType !== "freelancer") {
+  console.error("Access Denied: Only freelancers can view this page.");
+  navigate("/login"); // Redirect if not a freelancer
+  return;
+}
+fetchJobs();
   }, []);
 
   const fetchJobs = async () => {
