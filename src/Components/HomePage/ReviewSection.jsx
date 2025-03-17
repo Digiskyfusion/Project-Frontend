@@ -11,7 +11,8 @@ function ReviewSection() {
   useEffect(() => {
     axios.get("http://localhost:3000/api/review/allreview")
       .then((response) => {
-        setReviews(response.data.slice(0, 3)); // Show only first 3 reviews
+        const latestReviews = response.data.reverse().slice(0, 3); // Reverse first, then slice latest 3
+        setReviews(latestReviews);
       })
       .catch((error) => console.error("Error fetching reviews:", error));
   }, []);

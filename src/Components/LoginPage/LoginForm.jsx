@@ -19,11 +19,13 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, loginForm);
-      console.log("response");
-      console.log(response);
+      const response = await axios.post(`http://localhost:3000/api/auth/login`, loginForm);
+      // console.log("response");
+      // console.log(response);
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data));
+      console.log(response.data.token);
+      
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       toast.success(response.data.message);
       setTimeout(() => navigate("/dashboard", { replace: true }), 100);
     } catch (error) {
@@ -56,7 +58,7 @@ function LoginForm() {
 
         <p className="text-gray-600 text-sm text-center mt-2">
           Don't have an account? {" "}
-          <a href="/signup" className="text-green-700 font-medium">Sign up</a>
+          <a href="/registration" className="text-green-700 font-medium">Sign up</a>
         </p>
 
         <div className="flex flex-col items-center gap-4 mt-6 w-full">
