@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite preview",
-    "build": "vite build",
+  "build": "vite build",
+  "serve": "vite preview --port 5000",
     "preview": "vite preview",
-    "dev": "vite",
+    "dev": "vite --host",
     "lint": "eslint .",
     "proxy": "http://192.168.29.50:3000",
     "optimize-images": "imagemin dist/assets/* --out-dir=dist/assets"
