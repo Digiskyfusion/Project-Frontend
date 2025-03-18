@@ -37,8 +37,10 @@ function Signuppage() {
     try {
       const response = await axios.post(`http://localhost:3000/api/auth/signup`, formData);
       toast.success("Signup successful!");
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.token);
+     let b= localStorage.setItem("user", JSON.stringify(response.data.user));
+      let a=localStorage.setItem("token", response.data.token);
+      console.log(a,b);
+      
       navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
       setFormData({ name: "", country: "" , email: "", password: "", confirm_password: "", roleType: "", mobileNumber: "" });
     } catch (error) {

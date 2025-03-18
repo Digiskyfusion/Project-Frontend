@@ -165,8 +165,8 @@ function FreelancerForm() {
       <h2 className="text-2xl font-bold mb-4 text-center">Freelancer Details</h2>
 
       {/* Freelancer ID & Category ID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+        {/* <div>
           <label className="block font-medium">Freelancer ID</label>
           <input
             type="text"
@@ -175,7 +175,7 @@ function FreelancerForm() {
             value={formData.freelancer_id}
             readOnly
           />
-        </div>
+        </div> */}
         <div>
           <label className="block font-medium">Category ID</label>
            <select className="w-full p-2 border rounded-md" name="category" onChange={handleCategoryChange} value={formData.category}>

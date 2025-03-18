@@ -8,11 +8,11 @@ import pic from "./../../assets/Images/Ellipse 70.png";
 
 function ClientForm() {
   const [formData, setFormData] = useState({
-    accountType: "Client",
+    // accountType: "Client",
     fullName: "",
     email: "",
     phoneNumber: "",
-    address: "",
+    // address: "",
     experience: "",
     skills: [""],
     portfolioLinks: [""],
@@ -92,6 +92,8 @@ const removePortfolioField = (index) => {
 
     try {
       const response = await axios.post("http://localhost:3000/createProfile", formDataWithImage);
+      console.log(response);
+      
       alert(response.data.message);
       console.log(formDataWithImage);
     } catch (error) {

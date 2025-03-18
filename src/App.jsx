@@ -53,7 +53,7 @@ function App() {
   return (
     <>
 <BrowserRouter>
-<ScrollToTop /> 
+<ScrollToTop />   
 <Navbar />      
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -73,7 +73,7 @@ function App() {
         <Route path="/ClientForm" element={ <ClientFormPage />} />
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/freelancerDetails" element={<Education  />} />
-        <Route path="/clientDetails" element={<CardsProfile  />} />
+        <Route path="/clientDetails/:id" element={<CardsProfile  />} />
         <Route path="/login" element={<Loginform />} />
         <Route path="/discover" element={<DiscoverHirePage   />} />
         <Route path="/client" element={<Clientformmpage />} />
