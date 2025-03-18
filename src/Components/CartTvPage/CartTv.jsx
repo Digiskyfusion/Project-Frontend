@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaRupeeSign } from "react-icons/fa";
 
 function CartTv() {
@@ -40,12 +40,12 @@ function CartTv() {
         </div>
 
         <button className='mt-8 w-full bg-[#004930] text-white text-lg font-semibold py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.05] transition-all duration-300'>
-          🛍️ Checkout Now
+          <Link to ="/contactus">🛍️ Checkout Now</Link>
         </button>
       </div>
     </div>
     </>
   );
 }
-
+ 
 export default CartTv;

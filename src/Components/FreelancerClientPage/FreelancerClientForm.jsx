@@ -297,6 +297,21 @@ function FreelancerForm() {
                 <option>India</option>
                 <option>UK</option>
                 <option>Canada</option>
+                <option>Australia</option>
+                <option>Italy</option>
+                <option>Kenya</option>
+                <option>Japan</option>
+                <option>Iran</option>
+                <option>Brazil</option>
+                <option>Egypt</option>
+                <option>France</option>
+                <option>Korea</option>
+                <option>Libya</option>
+                <option>Germany</option>
+                <option>Zambia</option>
+                <option>Vietnam</option>
+                <option>Turkey</option>
+
             </select>
         </div>
     
@@ -305,8 +320,8 @@ function FreelancerForm() {
                 <label className="block font-medium">Verification Status</label>
                 <select className="w-full p-2 border rounded-md" name="verified_status" onChange={handleChange} >
                     <option>Pending</option>
-                    <option>Verified</option>
-                    <option>Rejected</option>
+                    {/* <option>Verified</option>
+                    <option>Rejected</option> */}
                 </select>
             </div>
            

@@ -85,7 +85,7 @@ function App() {
         <Route path="/starplus" element={<AdvertisingPage />} />
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
-        <Route path="/astha" element={<AsthaPage />} />s
+        <Route path="/astha" element={<AsthaPage />} />
         <Route path="/detailpage" element={<DetailPage />} />
         <Route path="/solarsystem" element={<SolarSystemPage />} />
         <Route path="/card" element={<MembershipPlans />} />
