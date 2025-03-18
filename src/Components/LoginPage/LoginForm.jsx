@@ -56,7 +56,7 @@ function LoginForm() {
 
         <p className="text-gray-600 text-sm text-center mt-2">
           Don't have an account? {" "}
-          <a href="/registration" className="text-green-700 font-medium">Sign up</a>
+          <Link to="/registration" className="text-green-700 font-medium">Sign up</Link>
         </p>
 
         <div className="flex flex-col items-center gap-4 mt-6 w-full">

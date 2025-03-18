@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";
@@ -111,7 +111,7 @@ function Signuppage() {
 
           <p className="text-gray-600 text-sm text-center mt-2">
             Already have an account?{" "}
-            <a href="/login" className="text-green-700 font-medium">Login</a>
+            <Link to="/login" className="text-green-700 font-medium">Login</Link>
           </p>
         </form>
 
