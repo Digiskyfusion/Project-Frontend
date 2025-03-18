@@ -71,7 +71,7 @@ function App() {
         <Route path="/PrivacyNdPolicy" element={<PrivacyNdPolicyPage />} />
         <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} />
       </Routes>
-      </Router>
+    </Router>
   );
 }
 
