@@ -43,7 +43,7 @@ function Signuppage() {
       toast.success("Signup successful!");
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("token", response.data.token);
-      navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
+      navigate("/");
       setFormData({ name: "", country: "" , email: "", password: "", confirm_password: "", roleType: "", mobileNumber: "" });
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed");

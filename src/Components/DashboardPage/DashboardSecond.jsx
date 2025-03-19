@@ -37,11 +37,11 @@ function DashboardSecond() {
               <CiBellOff className="text-gray-600 " />
             </div>
 
-            <div className="text-[15px] md:text-2xl p-2 md:p-3 bg-gray-100 rounded-full cursor-pointer">
-            <Link to='/FreelancerUpadte'>
+            {/* <div className="text-[15px] md:text-2xl p-2 md:p-3 bg-gray-100 rounded-full cursor-pointer">
+            <Link to=''>
               <GiHamburgerMenu className="text-gray-600" />
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

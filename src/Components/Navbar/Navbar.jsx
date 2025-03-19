@@ -67,7 +67,7 @@ const Navbar = () => {
             <>
               {roleType === "freelancer" && (
                 <>
-                <NavLink to="/FreelancreClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                <NavLink to="/FreelancerClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
                  <NavLink to="/FreelancerUpadte" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
                     <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profile</NavLink>
                     <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Sub Categories</NavLink>

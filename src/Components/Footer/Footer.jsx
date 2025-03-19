@@ -7,42 +7,38 @@ function Footer() {
   return (
     <footer className="bg-[#004930] text-white py-10 px-6 md:px-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
-        {/* Menu Section */}
+        {/* {/ Menu Section /} */}
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Menu</h1>
           <ul className="space-y-2 text-sm">
-            {["Home", "About Us", "Choose Us", "Service", "Contact Us"].map((item, index) => (
-              <li key={index}>
-                <Link to={`/${item.replace(/\s+/g, '').toLowerCase()}`} className="hover:text-yellow-400 transition duration-300">{item}</Link>
-              </li>
-            ))}
+            <li><Link to="/" className="hover:text-yellow-400 transition duration-300">Home</Link></li>
+            <li><Link to="/aboutus" className="hover:text-yellow-400 transition duration-300">About Us</Link></li>
+            <li><Link to="/ChooseUSPage" className="hover:text-yellow-400 transition duration-300">Choose Us</Link></li>
+            <li><Link to="/service" className="hover:text-yellow-400 transition duration-300">Service</Link></li>
+            <li><Link to="/contactus" className="hover:text-yellow-400 transition duration-300">Contact Us</Link></li>
           </ul>
         </div>
         
-        {/* Follow Us Section */}
+        {/* {/ Follow Us Section /} */}
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Follow Us</h1>
           <div className="flex gap-5 text-2xl">
-            {[
-              { href: "https://www.instagram.com/digisky.ai?igsh=d3ExZmlkMjM5Yms4", icon: <CiInstagram />, color: "hover:text-pink-500" },
-              { href: "https://www.facebook.com/share/15AWmqvS2x/", icon: <CiFacebook />, color: "hover:text-blue-500" },
-              { href: "https://www.linkedin.com/in/digisky-fusion-01a6002b9", icon: <FaLinkedinIn />, color: "hover:text-blue-600" },
-              { href: "https://x.com/digiskyfusion", icon: <FaTwitter />, color: "hover:text-blue-400" }
-            ].map((social, index) => (
-              <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className={`${social.color} transition duration-300`}>{social.icon}</a>
-            ))}
+            <a href="https://www.instagram.com/digisky.ai?igsh=d3ExZmlkMjM5Yms4" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition duration-300"><CiInstagram /></a>
+            <a href="https://www.facebook.com/share/15AWmqvS2x/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition duration-300"><CiFacebook /></a>
+            <a href="https://www.linkedin.com/in/digisky-fusion-01a6002b9" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition duration-300"><FaLinkedinIn /></a>
+            <a href="https://x.com/digiskyfusion" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition duration-300"><FaTwitter /></a>
           </div>
         </div>
         
-        {/* Address Section */}
+        {/* {/ Address Section /} */}
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Address</h1>
           <p className="text-sm opacity-90">DigiSky Fusion
           Phase 8B, Industrial Area, Sector 74, Sahibzada Ajit Singh Nagar, Chandigarh, Punjab 160055</p>
-          <p className="text-sm opacity-90">Email: <a href="mailto:support@digisky.com" className="hover:text-yellow-400 transition duration-300">support@digisky.com</a></p>
+          <p className="text-sm opacity-90">Email: <a href="mailto:support@digisky.com" className="hover:text-yellow-400 transition mailto:duration-300">support@digisky.com</a></p>
         </div>
         
-        {/* Subscribe Section */}
+        {/* {/ Subscribe Section /} */}
         <div className="flex flex-col items-start">
           <h1 className="text-lg font-semibold mb-3 uppercase tracking-wide">Subscribe</h1>
           <div className="flex gap-2">

@@ -15,8 +15,9 @@ function Carousel() {
     fetch(`${API_URL}/users/user`)
       .then((response) => response.json())
       .then((data) => {
-        const usersOnly = data.filter(user => user.roleType === "user"); // Sirf users ko filter karna
-        setFreelancers(usersOnly);
+        console.log("data");
+          console.log(data);
+        setFreelancers(data.users);
       })
       .catch((error) => console.error("Error fetching freelancers:", error));
   }, []);
@@ -25,7 +26,6 @@ function Carousel() {
   const handleSeeDetails = () => {
     const userRole = localStorage.getItem("user"); // Browser se roleType get karna
     let userData = JSON.parse(userRole);
-// console.log(userData.roleType)
     if (userData === "client") {
       navigate("/freelancerDetails");
     } else if (userData === "freelancer") {

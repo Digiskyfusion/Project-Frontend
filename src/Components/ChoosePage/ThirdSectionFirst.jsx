@@ -1,6 +1,7 @@
 import  { useState, useEffect } from "react";
 import { MdOutlineHorizontalRule } from "react-icons/md";
 import thirspic from './../../assets/Images/a-young-woman-with-black-hair-and-glasses--sitting 1 (1).png';
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -51,7 +52,7 @@ function ThirdSectionFirst() {
               <h1 className="text-white text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold">{slide.title}</h1>
               <p className="text-white text-sm sm:text-base md:text-xl lg:text-2xl mt-5">{slide.text}</p>
               <div className="flex justify-center md:justify-self-start  px-10">
-              <button className="px-9 py-2 mt-3 rounded-full border-2 border-white text-white">Freelancer</button>
+             <Link to="/allfreelancer"> <button className="px-9 py-2 mt-3 rounded-full border-2 border-white text-white">Freelancer</button></Link>
               </div>
             </div>
           ))}

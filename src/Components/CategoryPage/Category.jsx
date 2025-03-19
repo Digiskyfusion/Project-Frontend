@@ -25,19 +25,9 @@ function Category() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const API_URL = import.meta.env.VITE_API_URL;
-      console.log("API_URL");
-      console.log(API_URL);
       try {
         const response = await axios.get(`${API_URL}/category/categories`);
-        console.log("response");
-        console.log(response);
-        if (!response.ok) {
-          throw new Error("Failed to fetch categories");
-        }
-        const data = await response.json();
-        console.log("data", data);
-        setCategories(data || []);
+        setCategories(response.data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -77,12 +67,12 @@ function Category() {
           <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-6 rounded-3xl">
             <div className="flex">
               <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-16 h-16 overflow-hidden bg-white">
-                <img
-                  loading="lazy"
-                  src={categoryImages[category.name.toLowerCase()] || "/images/default.jpg"}
-                  alt={category.name}
-                  className="w-10 h-10 object-cover rounded-full flex-shrink-0"
-                />
+              <img
+  loading="lazy"
+  src={categoryImages[category.name.toLowerCase().replace(/\s+/g, "-")] || "/images/default.jpg"}
+  alt={category.name}
+  className="w-10 h-10 object-cover rounded-full flex-shrink-0"
+/>
               </div>
             </div>
             <h1 className="text-xl text-white font-bold mt-4">{category.name}</h1>
