@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function DiscoverHire() {
   return (
@@ -20,9 +21,11 @@ function DiscoverHire() {
           Hiring strategically helps build a strong team that propels your business to new heights.
         </p>
         <div className="flex justify-center mt-6">
-          <button className="bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:bg-green-700 hover:scale-110">
+         <Link to="/">
+         <button className="bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg transform transition-all duration-300 hover:bg-green-700 hover:scale-110">
             Start Hiring
           </button>
+         </Link>
         </div>
       </div>
     </div>

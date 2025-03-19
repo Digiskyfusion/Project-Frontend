@@ -72,7 +72,7 @@ function App() {
         <Route path="/Subcatagory" element={<SubCategoryPage />} />
         <Route path="/ClientForm" element={ <ClientFormPage />} />
         <Route path="/contactus" element={<ContactUsPages />} />
-        <Route path="/freelancerDetails" element={<Education  />} />
+        <Route path="/freelancerDetails/:id" element={<Education  />} />
         <Route path="/clientDetails/:id" element={<CardsProfile  />} />
         <Route path="/login" element={<Loginform />} />
         <Route path="/discover" element={<DiscoverHirePage   />} />

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Dashboard from "../DashboardPage/Dashboard";
-import DashboardSecond from "../DashboardPage/DashboardSecond";
+// import DashboardSecond from "../DashboardPage/DashboardSecond";
 import supabase from "../../supabaseClient";
 import pic from "./../../assets/Images/Ellipse 70.png";
-
+import toast, { Toaster } from "react-hot-toast";
 function ClientForm() {
   const [formData, setFormData] = useState({
     // accountType: "Client",
@@ -38,27 +38,24 @@ function ClientForm() {
   };
 
   // Upload image to Supabase
-  const uploadImageToSupabase = async (file) => {
-    if (!file) return null;
+    const uploadImageToSupabase = async (file) => {
+      if (!file) return null;
 
-    const fileExt = file.name.split(".").pop();
-    const fileName = `clientProfile-${Date.now()}.${fileExt}`;
+      const fileExt = file.name.split(".").pop();
+      const fileName = `clientProfile-${Date.now()}.${fileExt}`;
 
-    const { data, error } = await supabase.storage
-      .from("images") // Supabase bucket name
-      .upload(`images/${fileName}`, file);
+      const { data, error } = await supabase.storage
+        .from("images") // Supabase bucket name
+        .upload(`images/${fileName}`, file);
 
-    if (error) {
-      console.error("Error uploading image:", error.message);
-      alert("Failed to upload image");
-      return null;
-    }
+      if (error) {
+        console.error("Error uploading image:", error.message);
+        alert("Failed to upload image");
+        return null;
+      }
 
-    return supabase.storage.from("images").getPublicUrl(`clients/${fileName}`).data.publicUrl;
-  };
-
-
-
+      return supabase.storage.from("images").getPublicUrl(`clients/${fileName}`).data.publicUrl;
+    };
 
  // Handle portfolio links
  const handlePortfolioChange = (index, value) => {
@@ -94,11 +91,11 @@ const removePortfolioField = (index) => {
       const response = await axios.post("http://localhost:3000/createProfile", formDataWithImage);
       console.log(response);
       
-      alert(response.data.message);
+      toast.success("client form successful!");
       console.log(formDataWithImage);
     } catch (error) {
       console.error(error);
-      alert("Error submitting form");
+      toast.success("client form submit already");
     }
   };
 
@@ -106,11 +103,12 @@ const removePortfolioField = (index) => {
     <div className="flex">
       <Dashboard />
       <div className="flex-1">
-        <DashboardSecond />
+        {/* <DashboardSecond /> */}
         <div className="flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6">
           <div className="bg-[#FFFFFF] px-6 py-6 rounded-xl md:px-10 w-full md:w-3/5">
             <h1 className="text-lg md:text-2xl font-semibold">Client Details</h1>
             <form className="mt-4" onSubmit={handleSubmit}>
+              <Toaster />
               <div className="mb-4">
                 <label className="font-medium">Full Name</label>
                 <input type="text" name="fullName" placeholder="John Doe" className="w-full border-2 border-black outline-0 px-5 py-2 rounded-xl" onChange={handleChange} required />

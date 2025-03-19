@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import  supabase  from "../../supabaseClient"; // Import Supabase client
-
+import toast, { Toaster } from "react-hot-toast";
 function Clientformm() {
   const [activeForm, setActiveForm] = useState("client");
   const [userRole, setUserRole] = useState("");
@@ -54,7 +53,7 @@ function ClientForm() {
   const navigate = useNavigate();
 
   const [clientData, setClientData] = useState({
-    client_id: "",
+    // client_id: "",
     image: "",
     mobileNumber: "",
     govt_id_proof: "",
@@ -149,18 +148,19 @@ console.log(result);
         toast.error("Error submitting form");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      toast.error("Error submitting form");
     }
   };
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
+      <Toaster />
       <h2 className="text-2xl font-bold mb-4 text-center">Client Details</h2>
 
-      <div>
+      {/* <div>
         <label className="block font-medium">Client ID</label>
         <input type="text" name="client_id" value={clientData.client_id} readOnly className="w-full p-2 border rounded-md" />
-      </div>
+      </div> */}
 
       <div>
         <label className="block font-medium">Image</label>

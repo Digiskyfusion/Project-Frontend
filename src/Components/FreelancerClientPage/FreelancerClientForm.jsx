@@ -186,17 +186,6 @@ function FreelancerForm() {
             </option>
           ))}
         </select>
-
-
-
-
-          {/* <input
-            type="text"
-            className="w-full p-2 border rounded-md"
-            name="category_id"
-            placeholder="Enter Category ID"
-            onChange={handleChange}
-          />*/}
         </div> 
       </div>
 
@@ -290,13 +279,28 @@ function FreelancerForm() {
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
     
         <div>
-            <label className="block font-medium">Country</label>
+        <label className="block font-medium">Country</label>
             <select className="w-full p-2 border rounded-md" name="country" onChange={handleChange} >
                 <option>Select Country</option>
                 <option>USA</option>
                 <option>India</option>
                 <option>UK</option>
                 <option>Canada</option>
+                <option>Australia</option>
+                <option>Italy</option>
+                <option>Kenya</option>
+                <option>Japan</option>
+                <option>Iran</option>
+                <option>Brazil</option>
+                <option>Egypt</option>
+                <option>France</option>
+                <option>Korea</option>
+                <option>Libya</option>
+                <option>Germany</option>
+                <option>Zambia</option>
+                <option>Vietnam</option>
+                <option>Turkey</option>
+
             </select>
         </div>
     
@@ -305,8 +309,8 @@ function FreelancerForm() {
                 <label className="block font-medium">Verification Status</label>
                 <select className="w-full p-2 border rounded-md" name="verified_status" onChange={handleChange} >
                     <option>Pending</option>
-                    <option>Verified</option>
-                    <option>Rejected</option>
+                    {/* <option>Verified</option>
+                    <option>Rejected</option> */}
                 </select>
             </div>
            

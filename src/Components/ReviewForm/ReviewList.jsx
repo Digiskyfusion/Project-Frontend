@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { motion } from "framer-motion";
 import { FaStar, FaRegStar } from "react-icons/fa"; 
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -15,6 +16,7 @@ const ReviewList = () => {
   }, []);
 
   return (
+    <>
     <div className="w-full bg-gray-50 py-10 px-6 sm:px-12">
       <h1 className="text-center text-sm md:text-xl lg:text-3xl font-bold">
         All Reviews
@@ -59,6 +61,8 @@ const ReviewList = () => {
         ))}
       </div>
     </div>
+<Footer />
+    </>
   );
 };
 

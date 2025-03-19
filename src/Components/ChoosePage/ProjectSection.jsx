@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import pic from './../../assets/Images/a-creative-e-commerce-concept-featuring-a-miniatur(1) 1.png';
 
 function ProjectSection() {
@@ -14,11 +15,11 @@ function ProjectSection() {
         just pick a pre-built project, check out, and get results!</p>
         <p className='mt-8 text-xl lg:w-[80%]'> Like shopping, but for services!</p>
         <p className='mt-8 text-xl lg:w-[80%]'>Instant solutions, no delays!</p>
-        <button className='md:px-9 px-7 py-1 md:py-2 border-2 border-[#004930] rounded-full mt-5 cursor-pointer 
+        <Link to="/all-jobs"><button className='md:px-9 px-7 py-1 md:py-2 border-2 border-[#004930] rounded-full mt-5 cursor-pointer 
   transition duration-300 ease-out 
   hover:bg-[#004930] hover:text-white hover:scale-90 hover:shadow-lg'>
   Explore projects
-</button>
+</button></Link>
     </div>
       
 

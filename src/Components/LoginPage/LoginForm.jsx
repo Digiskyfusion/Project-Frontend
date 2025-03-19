@@ -22,8 +22,8 @@ function LoginForm() {
       const response = await axios.post(`http://localhost:3000/api/auth/login`, loginForm);
       // console.log("response");
       // console.log(response);
-      localStorage.setItem("token", response.data.token);
-      console.log(response.data.token);
+      localStorage.setItem("token", response.data.user.token);
+      // console.log(response.data.user.token);
       
       localStorage.setItem("user", JSON.stringify(response.data.user));
       toast.success(response.data.message);
