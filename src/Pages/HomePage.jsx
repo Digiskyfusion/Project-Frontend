@@ -6,6 +6,9 @@ import Work from '../Components/HomePage/Work'
 import ReviewSection from '../Components/HomePage/ReviewSection'
 import CarouselSection from '../Components/HomePage/CarouselSection'
 import MeetFreelancer from '../Components/HomePage/MeetFreelancer'
+import CardsProfile from '../Components/CardProfilePage/CardsProfile'
+import MembershipPlans from '../Components/HomePage/Card'
+import Cards from '../Components/HomePage/Cards'
 
 
 function HomePage() {
@@ -15,7 +18,9 @@ function HomePage() {
     <div className=''>
         <FirstSection />
         <Secondsection />
-        {/* <Card /> */}
+        {/* <Cards /> */}
+        {/* <MembershipPlans /> */}
+        <Cards />
         <SolarSystem />
         <Work />
         <ReviewSection />

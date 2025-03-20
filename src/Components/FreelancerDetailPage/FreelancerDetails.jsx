@@ -10,6 +10,7 @@ import supabase from "../../supabaseClient";
 function FreelancerDetails() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  // const [userId, setUserId] = useState(null); // New state for user ID
   const [formData, setFormData] = useState({
     accountType: "Freelancer",
     fullName: "",
@@ -25,9 +26,15 @@ function FreelancerDetails() {
   const [errors, setErrors] = useState({});
   const [imagePreview, setImagePreview] = useState(pic);
 
+  const user = JSON.parse(localStorage.getItem("user")); // Convert string to object
+  // console.log(user?._id); // Output: 67dba534cad6ddb11e7ed5d2
+  
+
   // Redirect if not authenticated
   useEffect(() => {
     const token = localStorage.getItem("token");
+   
+
     if (!token) {
       navigate("/login");
     }
@@ -105,7 +112,9 @@ function FreelancerDetails() {
       );
 
       toast.success("freelancer form successful!");
-      console.log(response.data);
+      // console.log(response.data.freelancer.user_id);
+      const userId = response.data.freelancer.user_id; // Assuming this is the correct field
+      navigate(`/freelancerid/${userId}`, { state: { freelancer: response.data.freelancer } });
 
       setFormData({
         accountType: "Freelancer",
@@ -139,6 +148,7 @@ function FreelancerDetails() {
         <div className="flex-1">
           <div className="flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6">
             {/* Freelancer Details Form */}
+            
             <div className="bg-[#FFFFFF] px-6 py-6 rounded-xl md:px-10 w-full md:w-3/5">
               <h1 className="text-lg md:text-2xl font-semibold">Freelancer Details</h1>
               <form className="mt-4" onSubmit={handleSubmit}>
@@ -223,16 +233,25 @@ function FreelancerDetails() {
                 </div>
 
                 {/* Submit Button */}
-                <div className="mt-6">
-                  <button 
-                    type="submit" 
-                    className="w-full bg-[#004930] text-white px-6 py-2 rounded-full md:px-8 hover:bg-[#003720] transition-all"
-                    disabled={loading}
-                  >
-                    {loading ? "Submitting..." : "Submit"}
-                  </button>
-                </div>
+                <div className="mt-6 flex flex-col md:flex-row items-center gap-4">
+  <button 
+    type="submit" 
+    className="w-full md:w-auto bg-[#004930] text-white px-6 py-2 rounded-full hover:bg-[#003720] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+    disabled={loading}
+  >
+    {loading ? "Submitting..." : "Submit"}
+  </button>
+
+  <button 
+    className="w-full md:w-auto px-6 py-2 rounded-full bg-[#004930] text-white hover:bg-[#003720] transition-all"
+    onClick={() => navigate(`/freelancerid/${user._id}`)}
+  >
+    View Profile
+  </button>
+</div>
+
               </form>
+              
             </div>
 
             {/* Freelancer Profile Section */}

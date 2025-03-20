@@ -12,6 +12,8 @@ function AllFreelancers() {
       try {
         const response = await axios.get("http://localhost:3000/api/freelancersP/getallfreelancerprofile");
         setFreelancers(response.data);
+        console.log(response);
+        
       } catch (error) {
         console.error("Error fetching freelancer profiles:", error);
       } finally {
@@ -67,9 +69,9 @@ function AllFreelancers() {
                 <Link to="/livechat">
                   <button className="px-4 py-2 bg-[#004930] text-white rounded-md">Chat Now</button>
                 </Link>
-                <Link to={`/freelancerDetails/${freelancer._id}`}>
-                  <button className="px-4 py-2 bg-[#004930] text-white rounded-md">Details</button>
-                </Link>
+                    <Link to={`/freelancerDetails/${freelancer.user_id}`}>
+                      <button className="px-4 py-2 bg-[#004930] text-white rounded-md">Details</button>
+                    </Link>
               </div>
             </div>
           ))}

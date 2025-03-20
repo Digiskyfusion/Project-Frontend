@@ -37,9 +37,9 @@ function Signuppage() {
     try {
       const response = await axios.post(`http://localhost:3000/api/auth/signup`, formData);
       toast.success("Signup successful!");
-     let b= localStorage.setItem("user", JSON.stringify(response.data.user));
-      let a=localStorage.setItem("token", response.data.token);
-      console.log(a,b);
+     localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.token);
+     
       
       navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
       setFormData({ name: "", country: "" , email: "", password: "", confirm_password: "", roleType: "", mobileNumber: "" });
@@ -89,7 +89,6 @@ function Signuppage() {
               <FaPhone className="absolute right-3 top-3 text-gray-400" />
             </label>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <label className="relative">
               <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} className="w-full p-2 border rounded-lg" />
@@ -103,7 +102,16 @@ function Signuppage() {
               {showconfirm_password ? <FaEyeSlash /> : <FaEye />}
             </button>
           </label>
+          
           </div>
+          <label className="text-sm text-gray-600 text-center block mt-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-md">
+  You have to use <span className="font-semibold text-blue-600">Alphabet</span>, 
+  <span className="font-semibold text-green-600"> Numeric</span>, 
+  <span className="font-semibold text-red-600"> Uppercase</span>, 
+  <span className="font-semibold text-purple-600"> Lowercase</span>, and 
+  <span className="font-semibold text-yellow-600"> Symbol</span> in your password.
+</label>
+
 
           <button className="bg-green-700 text-white py-3 rounded-lg w-full">Sign Up</button>
 
@@ -113,11 +121,11 @@ function Signuppage() {
           </p>
         </form>
 
-        <div className="flex flex-col items-center gap-4 mt-6 w-full">
+        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
           <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
             <FaGoogle className="text-xl" /> Continue with Google
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="hidden md:flex justify-center w-1/2">
         <img loading="lazy" src={newpic} alt="Signup" className="w-full max-w-lg shadow-lg rounded-lg" />

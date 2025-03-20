@@ -91,7 +91,7 @@ const Navbar = () => {
         {/* Buttons */}
         <div className="hidden md:flex gap-4">
           {isLoggedIn && (
-            <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
+            <Link to="/Subcatagory" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
               Chat Now
             </Link>
           )}
@@ -131,18 +131,18 @@ const Navbar = () => {
               <>
                 {roleType === "freelancer" && (
                   <>
-                     <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
-                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                     <NavLink to="/FreelancerUpadte" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/FreelancerClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profiles</NavLink>
+                    <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Sub Categories</NavLink>
                   </>
                 )}
                 {roleType === "client" && (
                   <>
-                   <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
-                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                   <NavLink to="/ClientForm" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/client" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/allfreelancer" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
+                    <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
  </>
                 )}
               </>
@@ -151,7 +151,7 @@ const Navbar = () => {
 
           <div className="mt-4 flex flex-col gap-3">
             {isLoggedIn && (
-              <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full text-center font-medium hover:bg-green-500 transition duration-300">
+              <Link to="/Subcatagory" className="py-2 px-6 bg-green-600 rounded-full text-center font-medium hover:bg-green-500 transition duration-300">
                 Chat Now
               </Link>
             )}
