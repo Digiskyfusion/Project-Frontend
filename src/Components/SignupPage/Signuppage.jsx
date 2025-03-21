@@ -37,7 +37,7 @@ function Signuppage() {
       return toast.error("Passwords do not match!");
     }
     try {
-      const response = await axios.post(`http://localhost:3000/api/auth/signup`, formData);
+      const response = await axios.post(`${API_URL}/api/signup`, formData);
       console.log("response");
       console.log(response);
       toast.success("Signup successful!");
