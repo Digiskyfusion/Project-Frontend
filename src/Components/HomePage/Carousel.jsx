@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
@@ -8,6 +8,8 @@ import image from "../../assets/Images/userimage.png";
 
 function Carousel() {
   const [freelancers, setFreelancers] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const sliderRef = useRef(null);
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -15,30 +17,23 @@ function Carousel() {
     fetch(`${API_URL}/users/user`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("data");
-          console.log(data);
+        console.log("data", data);
         setFreelancers(data.users);
       })
       .catch((error) => console.error("Error fetching freelancers:", error));
   }, []);
-  
 
-  const handleSeeDetails = () => {
-    const userRole = localStorage.getItem("user"); // Browser se roleType get karna
-    let userData = JSON.parse(userRole);
-    if (userData === "client") {
-      navigate("/freelancerDetails");
-    } else if (userData === "freelancer") {
-      navigate("/clientDetails");
-    }
+  const handleSeeDetails = (id) => {
+    navigate(`/profile/${id}`); // Redirect to the freelancer's profile page
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    afterChange: (index) => setCurrentSlide(index + 1),
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 640, settings: { slidesToShow: 1 } },
@@ -52,7 +47,7 @@ function Carousel() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {freelancers.map((freelancer, index) => (
           <motion.div
             key={index}
@@ -74,7 +69,7 @@ function Carousel() {
               <motion.button
                 className="mt-4 px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
                 whileHover={{ scale: 1.1 }}
-                onClick={handleSeeDetails} // Button click pr roleType check karna
+                onClick={() => handleSeeDetails(freelancer._id)} // Redirect to profile page
               >
                 See Details
               </motion.button>
@@ -82,6 +77,21 @@ function Carousel() {
           </motion.div>
         ))}
       </Slider>
+      <div className="text-center mt-4 text-lg font-semibold text-[#004930] flex items-center justify-center gap-4">
+        <button
+          className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+          onClick={() => sliderRef.current?.slickPrev()}
+        >
+          Prev
+        </button>
+        {currentSlide} / {freelancers.length || 1}
+        <button
+          className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+          onClick={() => sliderRef.current?.slickNext()}
+        >
+          Next
+        </button>
+      </div>
     </motion.div>
   );
 }

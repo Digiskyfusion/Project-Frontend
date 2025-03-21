@@ -101,7 +101,7 @@ const removePortfolioField = (index) => {
 
   return (
     <div className="flex">
-      <Dashboard />
+      {/* <Dashboard /> */}
       <div className="flex-1">
         {/* <DashboardSecond /> */}
         <div className="flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6">

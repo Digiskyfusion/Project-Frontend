@@ -17,6 +17,8 @@ const Navbar = () => {
     
       try {
         userData = userDataString ? JSON.parse(userDataString) : null;
+        console.log(userData);
+        
       } catch (error) {
         console.error("Error parsing user data:", error);
         localStorage.removeItem("user"); // Remove invalid data to prevent future errors
@@ -45,6 +47,37 @@ const Navbar = () => {
     }
   };
 
+  const [categoryDropdown, setCategoryDropdown] = useState(false);
+const [selectedCategory, setSelectedCategory] = useState(null);
+
+const categories = [
+  { 
+    name: "Design", 
+    subcategories: ["Logo Design", "UI/UX", "Graphic Design"] 
+  },
+  { 
+    name: "Development", 
+    subcategories: ["Web Development", "Mobile Apps", "Backend Development"] 
+  },
+  { 
+    name: "Marketing", 
+    subcategories: ["SEO", "Social Media", "Email Marketing"] 
+  },
+];
+
+const handleCategoryHover = () => {
+  setCategoryDropdown(true);
+};
+
+const handleCategoryLeave = () => {
+  setCategoryDropdown(false);
+};
+
+const handleCategoryClick = (category) => {
+  setSelectedCategory(category === selectedCategory ? null : category);
+};
+
+
   return (
     <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-30">
       <div className="container mx-auto flex justify-between items-center">
@@ -70,17 +103,95 @@ const Navbar = () => {
                 <NavLink to="/FreelancerClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
                  <NavLink to="/FreelancerUpadte" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
                     <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profile</NavLink>
-                    <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Sub Categories</NavLink>
+                    {/* <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink> */}
+                    <div 
+  className="relative" 
+  onMouseEnter={handleCategoryHover} 
+  onMouseLeave={handleCategoryLeave}
+>
+  <button className="hover:text-yellow-400">Categories</button>
+
+  {categoryDropdown && (
+    <div className="absolute top-full left-0 bg-white text-black shadow-lg rounded-md w-48">
+      {categories.map((category, index) => (
+        <div key={index} className="border-b last:border-0">
+          <button 
+            className="w-full text-left px-4 py-2 hover:bg-gray-200"
+            onClick={() => handleCategoryClick(category.name)}
+          >
+            {category.name}
+          </button>
+          {selectedCategory === category.name && (
+            <div className="bg-gray-100">
+              {category.subcategories.map((sub, i) => (
+                <Link 
+                  key={i} 
+                  to={`/subcategory/${sub.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="block px-6 py-1 hover:bg-gray-300"
+                >
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+                    
  </>
               )}
               {roleType === "client" && (
                 <>
-                  {/* <NavLink to="/freelancer-profiles" className="hover:text-yellow-400">Freelancer Profiles</NavLink>
-                  <NavLink to="/client-profiles" className="hover:text-yellow-400">Client Profiles</NavLink>
-                  <NavLink to="/categories" className="hover:text-yellow-400">Categories</NavLink> */}
                   <NavLink to="/client">Profile Verification</NavLink>
                   <NavLink to="/ClientForm">Edit Profile</NavLink>
-                  <NavLink to="/Subcatagory">Subcategory</NavLink>
+                  {/* <NavLink to="/Subcatagory">Subcategory</NavLink> */}
+                  <div 
+  className="relative group" 
+  onClick={handleCategoryHover} 
+  onMouseEnter={handleCategoryLeave}
+>
+  {/* Main Button */}
+  <button className="px-6 py-2 text-lg font-semibold text-white ">
+    Categories
+  </button>
+
+  {/* Dropdown */}
+  {categoryDropdown && (
+    <div className="absolute top-12 left-0 flex gap-3 bg-white  overflow-hidden ">
+      {categories.map((category, index) => (
+        <div key={index} className="border-b last:border-0 w-48">
+          {/* Category Item */}
+          <button 
+            className="w-full text-left px-5 py-3 text-gray-900 font-medium flex justify-between items-center hover:bg-gray-100 transition-all duration-200"
+            onClick={() => handleCategoryClick(category.name)}
+          >
+            {category.name}
+            <span className="text-gray-400 text-sm">▶</span>
+          </button>
+
+          {/* Subcategory Dropdown */}
+          {selectedCategory === category.name && (
+            <div className="bg-gray-50 p-3 shadow-md rounded-md flex flex-col">
+              {category.subcategories.map((sub, i) => (
+                <Link 
+                  key={i} 
+                  to={`/subcategory/${sub.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
+                >
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+
                   <NavLink to="/allfreelancer">Freelancer Profile</NavLink>
                 </>
               )}
@@ -91,7 +202,7 @@ const Navbar = () => {
         {/* Buttons */}
         <div className="hidden md:flex gap-4">
           {isLoggedIn && (
-            <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
+            <Link to="/Subcatagory" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
               Chat Now
             </Link>
           )}
@@ -131,18 +242,105 @@ const Navbar = () => {
               <>
                 {roleType === "freelancer" && (
                   <>
-                     <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
-                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                     <NavLink to="/FreelancerUpadte" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/FreelancerClientPage" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profiles</NavLink>
+                    {/* <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink> */}
+                    <div 
+  className="relative group" 
+  onMouseEnter={handleCategoryHover} 
+  onMouseLeave={handleCategoryLeave}
+>
+  {/* Main Button */}
+  <button className="px-6 py-2 text-lg font-semibold text-white ">
+    Categories
+  </button>
+
+  {/* Dropdown */}
+  {categoryDropdown && (
+    <div className="absolute top-12 left-0  bg-white  overflow-hidden ">
+      {categories.map((category, index) => (
+        <div key={index} className="border-b last:border-0 w-48">
+          {/* Category Item */}
+          <button 
+            className="w-full text-left px-5 py-3 text-gray-900 font-medium flex justify-between items-center hover:bg-gray-100 transition-all duration-200"
+            onClick={() => handleCategoryClick(category.name)}
+          >
+            {category.name}
+            <span className="text-gray-400 text-sm">▶</span>
+          </button>
+
+          {/* Subcategory Dropdown */}
+          {selectedCategory === category.name && (
+            <div className="bg-gray-50 p-3 shadow-md rounded-md flex flex-col">
+              {category.subcategories.map((sub, i) => (
+                <Link 
+                  key={i} 
+                  to={`/subcategory/${sub.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
+                >
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
                   </>
                 )}
                 {roleType === "client" && (
                   <>
-                   <NavLink to="/edit-profile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
-                    <NavLink to="/freelancer-profiles" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
-                    <NavLink to="/categories" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink>
+                   <NavLink to="/ClientForm" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Edit Profile</NavLink>
+                    <NavLink to="/client" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Profile Verification</NavLink>
+                    <NavLink to="/allfreelancer" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Freelancer Profiles</NavLink>
+                    {/* <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink> */}
+                    <div 
+  className="relative group" 
+  onMouseEnter={handleCategoryHover} 
+  onMouseLeave={handleCategoryLeave}
+>
+  {/* Main Button */}
+  <button className="text-lg font-semibold text-white ">
+    Categories
+  </button>
+
+  {/* Dropdown */}
+  {categoryDropdown && (
+    <div className="absolute top-12 left-0  bg-white  overflow-hidden ">
+      {categories.map((category, index) => (
+        <div key={index} className="border-b last:border-0 w-48">
+          {/* Category Item */}
+          <button 
+            className="w-full text-left px-5 py-3 text-gray-900 font-medium flex justify-between items-center hover:bg-gray-100 transition-all duration-200"
+            onClick={() => handleCategoryClick(category.name)}
+          >
+            {category.name}
+            <span className="text-gray-400 text-sm">▶</span>
+          </button>
+
+          {/* Subcategory Dropdown */}
+          {selectedCategory === category.name && (
+            <div className="bg-gray-50 p-3 shadow-md rounded-md flex flex-col">
+              {category.subcategories.map((sub, i) => (
+                <Link 
+                  key={i} 
+                  to={`/subcategory/${sub.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
+                >
+                  {sub}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+                    
  </>
                 )}
               </>
@@ -151,7 +349,7 @@ const Navbar = () => {
 
           <div className="mt-4 flex flex-col gap-3">
             {isLoggedIn && (
-              <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full text-center font-medium hover:bg-green-500 transition duration-300">
+              <Link to="/Subcatagory" className="py-2 px-6 bg-green-600 rounded-full text-center font-medium hover:bg-green-500 transition duration-300">
                 Chat Now
               </Link>
             )}
