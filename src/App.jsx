@@ -44,7 +44,7 @@ import FullJobCard from "./Components/ServicePage/FullJobCard";
 import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
 import DiscoverHirePage from "./Pages/DiscoverHirePage";
-
+import Subcategory from "./Pages/subactegory";
 
 
 function App() {
@@ -98,6 +98,7 @@ function App() {
         <Route path="/freelancerjob" element={<FreelancerJobs />} />
         <Route path="/createreview" element={<ReviewForm />} />
         <Route path="/reviewslist" element={<ReviewList />} />
+        <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
       </Routes>
     </BrowserRouter>
     
