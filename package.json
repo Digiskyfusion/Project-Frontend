@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "build": "vite build",
-  "serve": "vite preview --port 5000",
+    "build": "vite build",
+    "serve": "vite preview --port 5000",
     "preview": "vite preview",
     "dev": "vite --host",
     "lint": "eslint .",
@@ -21,7 +21,6 @@
     "axios": "^1.8.1",
     "browser-router": "^0.2.0",
     "framer-motion": "^12.4.3",
-    "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",

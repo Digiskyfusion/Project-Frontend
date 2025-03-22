@@ -19,11 +19,12 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, loginForm);
+      // const response = await axios.post(`${API_URL}/api/auth/login`, loginForm); 
+      const response = await axios.post(`http://localhost:3000/api/auth/login`, loginForm);
       console.log("response");
       console.log(response);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.user.token);
       toast.success(response.data.message);
       setTimeout(() => navigate("/dashboard", { replace: true }), 100);
     } catch (error) {

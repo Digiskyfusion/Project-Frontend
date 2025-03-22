@@ -37,13 +37,14 @@ function Signuppage() {
       return toast.error("Passwords do not match!");
     }
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, formData);
+      // const response = await axios.post(`${API_URL}/auth/register`, formData);
+      const response = await axios.post(`http://localhost:3000/api/auth/signup`, formData);
       console.log("response");
       console.log(response);
       toast.success("Signup successful!");
       localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
+      localStorage.setItem("token", response.data.user.token);
+      navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
       setFormData({ name: "", country: "" , email: "", password: "", confirm_password: "", roleType: "", mobileNumber: "" });
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed");
@@ -106,8 +107,15 @@ function Signuppage() {
             </button>
           </label>
           </div>
-
-          <button className="bg-green-700 text-white py-3 rounded-lg w-full">Sign Up</button>
+          <p className="text-sm text-gray-700 font-medium bg-gray-100 p-3 rounded-md border-l-4 border-blue-500">
+      You have to use{" "}
+      <span className="font-bold text-blue-600">Alphabet</span>,{" "}
+      <span className="font-bold text-green-600">Numeric</span>,{" "}
+      <span className="font-bold text-red-600">Symbol</span>,{" "}
+      <span className="font-bold text-purple-600">Uppercase</span>, and{" "}
+      <span className="font-bold text-orange-600">Lowercase</span> in your password.
+    </p>
+           <button className="bg-green-700 text-white py-3 rounded-lg w-full">Sign Up</button>
 
           <p className="text-gray-600 text-sm text-center mt-2">
             Already have an account?{" "}

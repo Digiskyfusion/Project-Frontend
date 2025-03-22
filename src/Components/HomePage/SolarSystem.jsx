@@ -49,7 +49,7 @@ const SolarSystem = () => {
   };
 
   return (
-    <div className="relative  h-screen bg-black flex justify-center items-center">
+    <div className="relative  h-80 md:min-h-screen bg-black flex justify-center items-center">
       <Canvas camera={{ position: [0, 10, 25] }}>
         <Suspense fallback={null}>
           <ambientLight intensity={0.3} />

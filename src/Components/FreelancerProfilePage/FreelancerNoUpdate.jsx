@@ -1,8 +1,7 @@
-import React from 'react'
 import pic from './../../assets/Images/Ellipse 121.png';
-import Dashboard from '../DashboardPage/Dashboard';
-import DashboardSecond from '../DashboardPage/DashboardSecond';
-import SectionImage from '../SectionImage/SectionImage';
+// import Dashboard from '../DashboardPage/Dashboard';
+// import DashboardSecond from '../DashboardPage/DashboardSecond';
+// import SectionImage from '../SectionImage/SectionImage';
 
 
 function FreelancerNoUpadte() {
@@ -11,12 +10,12 @@ function FreelancerNoUpadte() {
 
     <div className='flex '>
 
-        <div className='min-h-screen h-screen'>
-            <Dashboard />
+        <div className=''>
+            {/* <Dashboard /> */}
         </div>
 
         <div className='flex-1'>
-            <DashboardSecond />
+            {/* <DashboardSecond /> */}
 
             {/* {/ Content Section /} */}
             <div className='flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6'>
@@ -111,10 +110,10 @@ function FreelancerNoUpadte() {
             </div>
 
             </div>
-
+{/* 
             <div className="">
             <SectionImage />
-            </div>
+            </div> */}
         </div>
     </div>
       
