@@ -48,6 +48,8 @@ function FreelancerForm() {
     try {
       const response = await axios.get(`${API_URL}/subcategory/subcategories/category/${categoryId}`);
       setSubcategories(response.data);
+      console.log("Fetched Subcategories:", response.data);
+
     } catch (error) {
       console.error("Error fetching subcategories:", error);
     }
@@ -91,7 +93,7 @@ function FreelancerForm() {
       }
     });
     try {
-      const response = await axios.post(`${API_URL}/user/profile`, formDataToSend, {
+      const response = await axios.post(`http://localhost:5000/user/profile`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert(response.status === 200 ? "Freelancer profile created successfully!" : response.data.message || "Error creating profile");
@@ -126,9 +128,11 @@ function FreelancerForm() {
                 <input
                   type="checkbox"
                   value={sub._id}
-                  checked={formData.subcategory.includes(sub._id)}
+                  checked={formData.subcategories.includes(sub._id)} // ✅ Correct
                   onChange={handleSubcategoryChange}
-                  disabled={!formData.subcategory.includes(sub._id) && formData.subcategory.length >= 3}
+                  disabled={!formData.subcategory.includes(sub._id) && formData.subcategory.length >= 3}  
+                  // disabled={!formData.subcategory.includes(sub._id) && formData.subcategory.length >= 3}
+
                 />
                 <span>{sub.name}</span>
               </label>

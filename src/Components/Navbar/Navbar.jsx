@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "./../../assets/Images/digilogo12.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const [roleType, setRoleType] = useState(null);
-
+  const navigate= useNavigate()
   useEffect(() => {
     const handleAuthChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
@@ -44,6 +44,7 @@ const Navbar = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("roleType");
       window.dispatchEvent(new Event("authChange"));
+      navigate("/registration")
     }
   };
 
@@ -105,29 +106,37 @@ const handleCategoryClick = (category) => {
                     <NavLink to="/ClientProfile" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Client Profile</NavLink>
                     {/* <NavLink to="/Subcatagory" className="hover:text-yellow-400" onClick={() => setIsOpen(false)}>Categories</NavLink> */}
                     <div 
-  className="relative" 
-  onMouseEnter={handleCategoryHover} 
-  onMouseLeave={handleCategoryLeave}
+  className="relative group" 
+  onClick={handleCategoryHover} 
+  onDoubleClick={handleCategoryLeave}
 >
-  <button className="hover:text-yellow-400">Categories</button>
+  {/* Main Button */}
+  <button className="text-lg font-semibold text-white ">
+    Categories
+  </button>
 
+  {/* Dropdown */}
   {categoryDropdown && (
-    <div className="absolute top-full left-0 bg-white text-black shadow-lg rounded-md w-48">
+    <div className="absolute top-12 left- flex  bg-white  overflow-hidden ">
       {categories.map((category, index) => (
-        <div key={index} className="border-b last:border-0">
+        <div key={index} className="border-b last:border-0 w-48">
+          {/* Category Item */}
           <button 
-            className="w-full text-left px-4 py-2 hover:bg-gray-200"
+            className="w-full text-left px-5 py-3 text-gray-900 font-medium flex justify-between items-center hover:bg-gray-100 transition-all duration-200"
             onClick={() => handleCategoryClick(category.name)}
           >
             {category.name}
+            <span className="text-gray-400 text-sm">▶</span>
           </button>
+
+          {/* Subcategory Dropdown */}
           {selectedCategory === category.name && (
-            <div className="bg-gray-100">
+            <div className="bg-gray-50 p-3 shadow-md rounded-md flex flex-col">
               {category.subcategories.map((sub, i) => (
                 <Link 
                   key={i} 
                   to={`/subcategory/${sub.replace(/\s+/g, "-").toLowerCase()}`}
-                  className="block px-6 py-1 hover:bg-gray-300"
+                  className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
                 >
                   {sub}
                 </Link>
@@ -147,19 +156,20 @@ const handleCategoryClick = (category) => {
                   <NavLink to="/client">Profile Verification</NavLink>
                   <NavLink to="/ClientForm">Edit Profile</NavLink>
                   {/* <NavLink to="/Subcatagory">Subcategory</NavLink> */}
+                
                   <div 
   className="relative group" 
   onClick={handleCategoryHover} 
-  onMouseEnter={handleCategoryLeave}
+  onDoubleClick={handleCategoryLeave}
 >
   {/* Main Button */}
-  <button className="px-6 py-2 text-lg font-semibold text-white ">
+  <button className="text-lg font-semibold text-white ">
     Categories
   </button>
 
   {/* Dropdown */}
   {categoryDropdown && (
-    <div className="absolute top-12 left-0 flex gap-3 bg-white  overflow-hidden ">
+    <div className="absolute top-12 left-0 flex bg-white  overflow-hidden ">
       {categories.map((category, index) => (
         <div key={index} className="border-b last:border-0 w-48">
           {/* Category Item */}
@@ -191,8 +201,8 @@ const handleCategoryClick = (category) => {
   )}
 </div>
 
-
-                  <NavLink to="/allfreelancer">Freelancer Profile</NavLink>
+<NavLink to="/allfreelancer">Freelancer Profile</NavLink>
+                 
                 </>
               )}
             </>
@@ -252,7 +262,7 @@ const handleCategoryClick = (category) => {
   onMouseLeave={handleCategoryLeave}
 >
   {/* Main Button */}
-  <button className="px-6 py-2 text-lg font-semibold text-white ">
+  <button className=" text-lg font-semibold text-white ">
     Categories
   </button>
 

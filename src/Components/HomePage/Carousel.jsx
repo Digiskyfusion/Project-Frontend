@@ -27,6 +27,12 @@ function Carousel() {
     navigate(`/profile/${id}`); // Redirect to the freelancer's profile page
   };
 
+  const handleGoToSlide = (index) => {
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(index);
+    }
+  };
+
   const settings = {
     dots: false,
     infinite: true,
@@ -69,7 +75,7 @@ function Carousel() {
               <motion.button
                 className="mt-4 px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
                 whileHover={{ scale: 1.1 }}
-                onClick={() => handleSeeDetails(freelancer._id)} // Redirect to profile page
+                onClick={() => handleSeeDetails(freelancer._id)}
               >
                 See Details
               </motion.button>
@@ -77,6 +83,8 @@ function Carousel() {
           </motion.div>
         ))}
       </Slider>
+
+      {/* Custom Pagination */}
       <div className="text-center mt-4 text-lg font-semibold text-[#004930] flex items-center justify-center gap-4">
         <button
           className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
@@ -84,7 +92,25 @@ function Carousel() {
         >
           Prev
         </button>
-        {currentSlide} / {freelancers.length || 1}
+
+        {/* Clickable "1" to go to the first slide */}
+        <span
+          className="cursor-pointer text-[#004930] hover:underline"
+          onClick={() => handleGoToSlide(0)}
+        >
+          1
+        </span>
+
+        <span className="px-2 py-1 bg-gray-200 rounded-lg">{currentSlide}</span> {/* Current Slide */}
+
+        {/* Clickable "Total" to go to the last slide */}
+        <span
+          className="cursor-pointer text-[#004930] hover:underline"
+          onClick={() => handleGoToSlide(freelancers.length - 1)}
+        >
+          {freelancers.length || 1}
+        </span>
+
         <button
           className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
           onClick={() => sliderRef.current?.slickNext()}
