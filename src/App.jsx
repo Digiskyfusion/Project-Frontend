@@ -36,7 +36,7 @@ import ReviewList from "./Components/ReviewForm/ReviewList";
 import TermAndConditionPage from "./Pages/TermAndConditionPage";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
-import Navbar from "./Components/Navbar/Navbar";
+// import Navbar from "./Components/Navbar/Navbar";
 import Content from "./Components/RandomContent/Content";
 import Signuppage from "./Components/SignupPage/Signuppage";
 import Education from "./Components/EducationPage/Education";
@@ -52,7 +52,7 @@ function App() {
     <>
 <BrowserRouter>
 <ScrollToTop />   
-<Navbar />      
+{/* <Navbar />       */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/MembershipPlans" element={<MembershipPlans />} />

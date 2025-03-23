@@ -33,20 +33,35 @@ function Signuppage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirm_password) {
       return toast.error("Passwords do not match!");
     }
+
     try {
-      // const response = await axios.post(`${API_URL}/auth/register`, formData);
       const response = await axios.post(`${API_URL}/auth/register`, formData);
-      console.log("response");
-      console.log(response);
-      toast.success("Signup successful!");
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.user.token);
-      navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
-      setFormData({ name: "", country: "" , email: "", password: "", confirm_password: "", roleType: "", mobileNumber: "" });
+      console.log("Response:", response);
+
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", response.data.token);
+        navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
+
+        setFormData({
+          name: "",
+          country: "",
+          email: "",
+          password: "",
+          confirm_password: "",
+          roleType: "",
+          mobileNumber: "",
+        });
+      } else {
+        toast.error(response.data.message || "Something went wrong!");
+      }
     } catch (error) {
+      console.error("Signup Error:", error);
       toast.error(error.response?.data?.message || "Signup failed");
     }
   };
