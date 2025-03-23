@@ -38,7 +38,7 @@ function Signuppage() {
     }
     try {
       // const response = await axios.post(`${API_URL}/auth/register`, formData);
-      const response = await axios.post(`${API_URL}/api/auth/signup`, formData);
+      const response = await axios.post(`${API_URL}/auth/register`, formData);
       console.log("response");
       console.log(response);
       toast.success("Signup successful!");

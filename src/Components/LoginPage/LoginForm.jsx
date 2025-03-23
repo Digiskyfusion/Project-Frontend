@@ -18,19 +18,39 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if email & password are provided
+    if (!loginForm.email || !loginForm.password) {
+      toast.error("Email and Password are required!");
+      return;
+    }
+  
     try {
-      // const response = await axios.post(`${API_URL}/api/auth/login`, loginForm); 
-      const response = await axios.post(`http://localhost:3000/api/auth/login`, loginForm);
-      console.log("response");
-      console.log(response);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.user.token);
-      toast.success(response.data.message);
-      setTimeout(() => navigate("/dashboard", { replace: true }), 100);
+      const response = await axios.post(`${API_URL}/auth/login`, loginForm);
+      console.log("API Response:", response.data);
+  
+      // Extract data correctly
+      const { userId, token, roleType, email, mobileNumber, name, country, message } = response.data;
+  
+      if (token) {
+        // Store user data correctly
+        const userData = { userId, roleType, email, mobileNumber, name, country };
+  
+        localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("token", token);
+  
+        toast.success(message || "Login successful!");
+        
+        console.log("Navigating to dashboard...");
+        setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
+      } else {
+        toast.error("Token is missing!");
+      }
     } catch (error) {
-      toast.error("Login failed");
+      console.error("Login Error:", error.response?.data || error.message);
+      toast.error(error.response?.data?.message || "Something went wrong!");
     }
   };
+  
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
