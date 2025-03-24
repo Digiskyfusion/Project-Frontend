@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer/Footer';
 import ClientForm from '../Components/ClientFormPage/ClientForm';
-
+import Header2 from "../Components/Client/Header";
 
 function ClientFormPage() {
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ function ClientFormPage() {
 
   return (
     <div>
+    <Header2 />
       <ClientForm />
       <Footer />
     </div>

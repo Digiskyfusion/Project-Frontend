@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Clientformm from '../Components/ClientFormm/Clientformm';
-
+import Header2 from "../Components/Client/Header";
 
 function Clientformmpage() {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ function Clientformmpage() {
 
   return (
     <>
+    <Header2 />
       <Clientformm />
     </>
   );

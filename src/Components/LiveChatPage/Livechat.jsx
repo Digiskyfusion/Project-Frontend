@@ -34,10 +34,10 @@ const LiveChat = () => {
     <div className="">
 
     
-    <div className="w-full   h-screen flex flex-col  shadow-lg rounded-r-lg ">
+    <div className="w-full p-2 md:p-0  h-screen flex flex-col  shadow-lg rounded-r-lg ">
       
       {/* Header with Image on Left & Call Icons on Right */}
-      <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg">
+      <div className="bg-[#004930] text-white p-4 flex items-center ">
         <img loading="lazy" src={first} alt="Profile" className="w-10 h-10 rounded-full mr-3" />
         <h1 className="font-semibold text-lg flex-1">Manisha Thakur</h1>
         <div className="flex gap-3">

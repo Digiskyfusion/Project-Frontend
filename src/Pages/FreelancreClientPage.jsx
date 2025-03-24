@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FreelancerClientForm from "../Components/FreelancerClientPage/FreelancerClientForm";
 import Footer from "../Components/Footer/Footer";
-
+import Header1 from "../Components/Freelancer/Header";
 
 function FreelancreClientPage() {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ function FreelancreClientPage() {
 
   return (
     <div>
+    <Header1 />
       <FreelancerClientForm />
       <Footer />
     </div>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Ellipse from './../../assets/Images/145856997_296fe121-5dfa-43f4-98b5-db50019738a7.jpg';
-
 // Supabase Storage URL
 const SUPABASE_URL = "https://mwjexidlverimqrovedx.supabase.co/storage/v1/object/public/images/";
 
@@ -42,6 +41,8 @@ function ClientProfile() {
   if (error) return <p className="text-center text-lg text-red-500">{error}</p>;
 
   return (
+    <>
+  
     <div>
       <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
         {clients.length === 0 ? (
@@ -112,6 +113,8 @@ function ClientProfile() {
       </div>
       <Footer />
     </div>
+
+    </>
   );
 }
 

@@ -1,21 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardSecond from "../Components/DashboardPage/DashboardSecond";
 import MainDashboard from "../Components/DashboardPage/MainDashboard";
 import Footer from "../Components/Footer/Footer";
-
+import Header1 from "../Components/Freelancer/Header";
+import Header2 from "../Components/Client/Header";
 function DashboardPage() {
-  const navigate = useNavigate();
+ 
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login"); // Redirect to login if no token
-    }
-  }, [navigate]);
-
+   const [roleType, setRoleType] = useState("");
+  
+    // Fetch roleType from user data (localStorage or API)
+    useEffect(() => {
+      const userData = localStorage.getItem("user"); // Get from localStorage
+      if (userData) {
+        try {
+          const parsedData = JSON.parse(userData); // Parse JSON string
+          console.log("parsedData");
+          console.log(parsedData);
+          if (parsedData && parsedData.roleType) {
+            setRoleType(parsedData.roleType); // Set roleType state
+          }
+        } catch (error) {
+          console.error("Error parsing userInfo:", error);
+        }
+      }
+    }, []);
+  
   return (
     <>
+        {/* Conditionally render headers based on roleType */}
+          {roleType === "freelancer" ? <Header1 /> : <Header2 />}
       <div className="relative w-full h-screen overflow-hidden">
         {/* Background Content */}
         <div className="absolute inset-0 z-0 blur-xl">

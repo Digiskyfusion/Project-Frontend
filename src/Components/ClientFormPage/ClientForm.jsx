@@ -100,9 +100,9 @@ const removePortfolioField = (index) => {
   };
 
   return (
-    <div className="flex">
+    <div className="">
       {/* <Dashboard /> */}
-      <div className="flex-1">
+      <div className="">
         {/* <DashboardSecond /> */}
         <div className="flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6">
           <div className="bg-[#FFFFFF] px-6 py-6 rounded-xl md:px-10 w-full md:w-3/5">
@@ -165,16 +165,18 @@ const removePortfolioField = (index) => {
             </form>
           </div>
 
-          <div className="bg-[#FFFFFF] px-6 py-6 md:py-20 rounded-xl w-full md:w-1/3 text-center shadow-lg">
-            <div className="flex flex-col justify-center items-center">
-              <img src={profileImage} alt="Profile" className="w-24 h-24 mx-auto rounded-full object-cover" />
-              <div className="mb-4">
-                <input type="file" onChange={handleImageChange} className="mt-2" />
-              </div>
-            </div>
-            <h1 className="text-lg font-semibold mt-4">Bio</h1>
-            <textarea className="w-full border-2 border-black outline-0 px-5 py-2 rounded-xl mt-2" name="bio" value={formData.bio} onChange={handleChange} />
+         
+      <div className="w-full md:w-1/3 bg-white px-6 py-6  md:mt-0 md:py-20 rounded-xl text-center shadow-lg">
+        <div className="flex flex-col justify-center items-center">
+          <img src={profileImage} alt="Profile" className="w-24 h-24 mx-auto rounded-full object-cover" />
+          <div className="mb-4 mt-5">
+            <input type="file" onChange={handleImageChange} className="hidden" id="fileUpload" />
+            <label htmlFor="fileUpload" className="mt-2 bg-[#004930] text-white px-4 py-2 rounded-full cursor-pointer hover:bg-[#003720] transition-all">Upload Image</label>
           </div>
+        </div>
+        <h1 className="text-lg font-semibold mt-4">Bio</h1>
+        <textarea className="w-full border-2 border-black px-5 py-2 rounded-xl mt-2" name="bio" value={formData.bio} onChange={handleChange} />
+      </div>
         </div>
       </div>
     </div>

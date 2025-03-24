@@ -93,7 +93,7 @@ function FreelancerForm() {
       }
     });
     try {
-      const response = await axios.post(`http://localhost:5000/user/profile`, formDataToSend, {
+      const response = await axios.post(`${API_URL}/user/profile`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert(response.status === 200 ? "Freelancer profile created successfully!" : response.data.message || "Error creating profile");

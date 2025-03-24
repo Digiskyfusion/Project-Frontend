@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProfileCard from "../Components/AllFreelancerPage/ProfileCard";
 import Footer from "../Components/Footer/Footer";
-
+import Header2 from "../Components/Client/Header";
 
 function AllFreelancerPage() {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ function AllFreelancerPage() {
 
   return (
     <>
+    <Header2 />
       <div>
         <ProfileCard />
       </div>

@@ -7,11 +7,12 @@ import axios from 'axios';
 import user1 from "../assets/Images/user1.png";
 import user2 from "../assets/Images/user2.png";
 import user3 from "../assets/Images/user3.svg";
-
+import Header1 from "../Components/Freelancer/Header";
+import Header2 from "../Components/Client/Header";
 
 const FreelancerCard = ({ freelancer }) => {
   const navigate = useNavigate();
-
+  
   const handleSeeAllUsers = () => {
     const subcategoryId = freelancer._id;
     const subcategoryName = freelancer.name;
@@ -84,7 +85,7 @@ const FreelancerPage = () => {
   const [freelancers, setFreelancers] = useState([]);
   const [categoryName, setCategoryName] = useState('');
   const { categoryId } = useParams();
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchFreelancersAndCategoryName = async () => {
       try {
@@ -93,7 +94,7 @@ const FreelancerPage = () => {
         console.log(freelancersResponse);
         setFreelancers(freelancersResponse.data);
 
-        const categoryResponse = await axiosInstance.get(`/category/categories/${categoryId}`);
+        const categoryResponse = await axiosInstance.get(`${API_URL}/category/categories/${categoryId}`);
         setCategoryName(categoryResponse.data.name);
       } catch (error) {
         console.error('Error fetching data:', error);

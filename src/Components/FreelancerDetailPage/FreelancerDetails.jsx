@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import pic from './../../assets/Images/145856997_296fe121-5dfa-43f4-98b5-db50019738a7.jpg';
 import toast, { Toaster } from "react-hot-toast";
-import Dashboard from "../DashboardPage/Dashboard";
+// import Dashboard from "../DashboardPage/Dashboard";
 import Footer from "../Footer/Footer";
-import SectionImage from "../SectionImage/SectionImage";
+// import SectionImage from "../SectionImage/SectionImage";
 import supabase from "../../supabaseClient";
+import Header1 from "../Freelancer/Header";
 function FreelancerDetails() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -129,12 +130,9 @@ function FreelancerDetails() {
 
   return (
     <>
-      <div className="flex">
+    <Header1 />
+      <div className="">
         {/* Sidebar Section */}
-        <div className="min-h-screen h-screen">
-          <Dashboard />
-        </div>
-
         {/* Main Section */}
         <div className="flex-1">
           <div className="flex flex-wrap gap-6 bg-[#EBEEF2] px-6 md:px-10 py-6">
@@ -270,7 +268,7 @@ function FreelancerDetails() {
 </div>
            
           </div>
-          <SectionImage />
+          {/* <SectionImage /> */}
         </div>
       </div>
       <Footer />

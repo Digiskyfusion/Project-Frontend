@@ -45,6 +45,8 @@ import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
 import DiscoverHirePage from "./Pages/DiscoverHirePage";
 import Subcategory from "./Pages/subactegory";
+import ClientProfilePage from "./Pages/ClientProfilePage";
+import Profile from "./Components/Profile/Profile";
 
 
 function App() {
@@ -75,7 +77,7 @@ function App() {
         <Route path="/login" element={<Loginform />} />
         <Route path="/discover" element={<DiscoverHirePage   />} />
         <Route path="/client" element={<Clientformmpage />} />
-        <Route path="/ClientProfile" element={<ClientProfile />} />
+        <Route path="/ClientProfile" element={<ClientProfilePage />} />
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
         <Route path="/channel" element={<TvAdvertisingPage />} />
         <Route path="/starplus" element={<AdvertisingPage />} />
@@ -99,6 +101,7 @@ function App() {
         <Route path="/createreview" element={<ReviewForm />} />
         <Route path="/reviewslist" element={<ReviewList />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
     </BrowserRouter>
     
