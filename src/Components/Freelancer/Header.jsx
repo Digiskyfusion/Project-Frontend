@@ -73,7 +73,7 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center space-x-6 text-lg">
                     {isLoggedIn && (
                         <>
-                            <NavLink to="/profile-verification" className="hover:text-yellow-400">
+                            <NavLink to="/Profileverification" className="hover:text-yellow-400">
                                 Profile Verification
                             </NavLink>
                             <NavLink to="/EditProfile" className="hover:text-yellow-400">
@@ -84,7 +84,7 @@ const Navbar = () => {
                             </NavLink> */}
 
                             {/* Categories Dropdown */}
-                            <div className="relative">
+                            {/* <div className="relative">
                                 <button
                                     className="text-lg font-semibold text-white"
                                     onClick={() => setCategoryDropdown(!categoryDropdown)}
@@ -104,7 +104,7 @@ const Navbar = () => {
                                         ))}
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
                         </>
                     )}
                 </div>
@@ -140,7 +140,7 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
-                    <NavLink to="/profile-verification" className="hover:text-yellow-400">
+                    <NavLink to="/Profileverification" className="hover:text-yellow-400">
                         Profile Verification
                     </NavLink>
                     <NavLink to="/EditProfile" className="hover:text-yellow-400">
@@ -151,7 +151,7 @@ const Navbar = () => {
                     </NavLink> */}
 
                     {/* Categories Dropdown (Mobile) */}
-                    <div className="relative">
+                    {/* <div className="relative">
                         <button
                             className="text-lg font-semibold text-white"
                             onClick={() => setCategoryDropdown(!categoryDropdown)}
@@ -171,7 +171,7 @@ const Navbar = () => {
                                 ))}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     {/* Register & Logout (Mobile) */}
                     {isLoggedIn ? (
