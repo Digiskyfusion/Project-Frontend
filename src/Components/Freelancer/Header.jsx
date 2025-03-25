@@ -82,29 +82,6 @@ const Navbar = () => {
                             {/* <NavLink to="/clients" className="hover:text-yellow-400">
                                 Clients
                             </NavLink> */}
-
-                            {/* Categories Dropdown */}
-                            {/* <div className="relative">
-                                <button
-                                    className="text-lg font-semibold text-white"
-                                    onClick={() => setCategoryDropdown(!categoryDropdown)}
-                                >
-                                    Categories
-                                </button>
-                                {categoryDropdown && (
-                                    <div className="absolute top-12 left-0 bg-white shadow-md rounded-md p-3 w-56 max-h-[300px] overflow-y-auto">
-                                        {categories.map((category, index) => (
-                                            <Link
-                                                key={index}
-                                                to={`/category/${category.id}`}
-                                                className="block px-4 py-2 text-[15px] text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
-                                            >
-                                                {category.name}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div> */}
                         </>
                     )}
                 </div>
@@ -149,29 +126,6 @@ const Navbar = () => {
                     {/* <NavLink to="/clients" className="hover:text-yellow-400">
                         Clients
                     </NavLink> */}
-
-                    {/* Categories Dropdown (Mobile) */}
-                    {/* <div className="relative">
-                        <button
-                            className="text-lg font-semibold text-white"
-                            onClick={() => setCategoryDropdown(!categoryDropdown)}
-                        >
-                            Categories
-                        </button>
-                        {categoryDropdown && (
-                            <div className="bg-white shadow-md rounded-md p-3 w-full max-h-[300px] overflow-y-auto">
-                                {categories.map((category, index) => (
-                                    <Link
-                                        key={index}
-                                        to={`/category/${category.id}`}
-                                        className="block px-4 py-2 text-[15px] text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
-                                    >
-                                        {category.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        )}
-                    </div> */}
 
                     {/* Register & Logout (Mobile) */}
                     {isLoggedIn ? (

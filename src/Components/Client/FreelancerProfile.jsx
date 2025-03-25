@@ -5,7 +5,8 @@ import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import noimage from "../../assets/Images/userimage.png";
-
+import   Header1 from "../Freelancer/Header"
+import Header2 from "../Client/Header";
 const FreelancersProfile = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
@@ -102,6 +103,9 @@ const FreelancersProfile = () => {
     return <div className="flex justify-center items-center h-screen text-red-600">{error}</div>;
 
   return (
+    <>
+        {/* Conditionally render headers based on roleType */}
+            {roleType === "freelancer" ? <Header1 /> : <Header2 />}
     <div className="mx-auto mt-8 w-11/12">
       <div className="flex items-center space-x-4">
         <select
@@ -159,6 +163,8 @@ const FreelancersProfile = () => {
         ))}
       </motion.div>
     </div>
+
+    </>
   );
 };
 

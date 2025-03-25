@@ -23,7 +23,7 @@ const FreelancerCard = ({ freelancer }) => {
   return (
     <motion.div
       onClick={handleSeeAllUsers}
-      className="bg-white shadow-md rounded-lg p-6 m-4 w-72 cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-blue-700 hover:text-white"
+      className="bg-white shadow-md rounded-lg p-6 m-4 w-72 cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#004930] hover:text-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -61,7 +61,7 @@ const FreelancerCard = ({ freelancer }) => {
       </div>
 
       <motion.button
-        className="py-2 px-4 text-lg bg-blue-700 hover:bg-white hover:text-blue-700 text-white rounded-full shadow-lg transform transition-transform"
+        className="py-2 px-4 text-lg bg-[#004930] hover:bg-white hover:text-[#004930] text-white rounded-full shadow-lg transform transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -105,7 +105,7 @@ const FreelancerPage = () => {
       <Header />
       <div className="w-[88%] mx-auto flex flex-row">
         <motion.h1
-          className="text-left text-[24px] font-bold font-[poppins] text-blue-700 mt-8 mb-6"
+          className="text-left text-[24px] font-bold font-[poppins] text-[#004930] mt-8 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}

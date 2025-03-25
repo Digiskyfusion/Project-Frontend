@@ -160,6 +160,28 @@ const Navbar = () => {
           <NavLink to="/" className="hover:text-yellow-400">Home</NavLink>
           <NavLink to="/aboutus" className="hover:text-yellow-400">About</NavLink>
           <NavLink to="/contactus" className="hover:text-yellow-400">Contact</NavLink>
+           {/* Categories Dropdown */}
+           <div className="relative">
+                <button 
+                  className="text-lg font-semibold text-white"
+                  onClick={() => setCategoryDropdown(!categoryDropdown)}
+                >
+                  Categories
+                </button>
+                {categoryDropdown && (
+                  <div className="absolute top-12 left-0 bg-white shadow-md rounded-md p-3 w-56 max-h-[300px] overflow-y-auto">
+                    {categories.map((category, index) => (
+                      <Link 
+                        key={index} 
+                        to={`/CategoryData/${category._id}`} 
+                        className="block px-4 py-2 text-[15px] text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
           {isLoggedIn && (
             <>

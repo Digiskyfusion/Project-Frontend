@@ -39,7 +39,7 @@ function HomePage() {
       <Secondsection />
       <SolarSystem />
       <Work />
-      <ReviewSection />
+      {/* <ReviewSection /> */}
       <CarouselSection />
       <MeetFreelancer />
       <Footer />
