@@ -41,7 +41,7 @@ function LoginForm() {
         toast.success(message || "Login successful!");
         
         console.log("Navigating to dashboard...");
-        setTimeout(() => navigate("/dashboard", { replace: true }), 1000);
+        setTimeout(() => navigate("/", { replace: true }), 1000);
       } else {
         toast.error("Token is missing!");
       }

@@ -46,7 +46,7 @@ function Signuppage() {
         toast.success(response.data.message);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
-        navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
+        navigate(formData.roleType === "freelancer" ? "/" : "/");
 
         setFormData({
           name: "",
