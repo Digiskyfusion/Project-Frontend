@@ -7,6 +7,7 @@ import supabase from "../../supabaseClient";
 import pic from "./../../assets/Images/Ellipse 70.png";
 import toast, { Toaster } from "react-hot-toast";
 function ClientForm() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     // accountType: "Client",
     fullName: "",
@@ -88,7 +89,7 @@ const removePortfolioField = (index) => {
     const formDataWithImage = { ...formData, profileImage: imageUrl };
 
     try {
-      const response = await axios.post("http://localhost:3000/createProfile", formDataWithImage);
+      const response = await axios.post(`${API_URL}/user/profile`, formDataWithImage);
       console.log(response);
       
       toast.success("client form successful!");

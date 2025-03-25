@@ -10,11 +10,11 @@ function ClientProfile() {
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch("http://localhost:3000/getclientprofile");
+        const response = await fetch(`${API_URL}/getclientprofile`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch client data");

@@ -7,6 +7,7 @@ import secondimage from './../../assets/Images/a-modern-and-elegant-portfolio-we
 const SUPABASE_URL = "https://mwjexidlverimqrovedx.supabase.co/storage/v1/object/public/images/";
 
 function CardsProfile() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();  // Get client ID from URL
   const navigate = useNavigate();
   const [client, setClient] = useState(null);
@@ -26,7 +27,7 @@ function CardsProfile() {
     const fetchClientDetails = async () => {
       try {
         console.log(`Fetching client data for ID: ${id}`);
-        const response = await fetch(`http://localhost:3000/getclientprofile/${id}`);
+        const response = await fetch(`${API_URL}/getclientprofile/${id}`);
         const data = await response.json();
         console.log("Fetched Data:", data); // Debugging Output
 

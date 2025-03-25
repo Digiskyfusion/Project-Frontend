@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi"; // Import icons for toggle
 import Logo from "./../../assets/Images/digilogo12.png";
 
 const Navbar = () => {
@@ -8,6 +9,7 @@ const Navbar = () => {
   const [roleType, setRoleType] = useState(null);
   const [categories, setCategories] = useState([]);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile toggle
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,15 +59,22 @@ const Navbar = () => {
           <img loading="lazy" src={Logo} alt="Logo" className="h-12 md:h-16 w-auto" />
         </Link>
 
-        {/* Navbar Links */}
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+        {/* Navbar Links (Desktop) */}
         <div className="hidden md:flex items-center space-x-6 text-lg">
-          {/* Links for Non-Logged-In Users */}
           {!isLoggedIn && (
             <>
               <NavLink to="/" className="hover:text-yellow-400">Home</NavLink>
               <NavLink to="/aboutus" className="hover:text-yellow-400">About</NavLink>
               <NavLink to="/contactus" className="hover:text-yellow-400">Contact</NavLink>
-              
+
               {/* Categories Dropdown */}
               <div className="relative">
                 <button 
@@ -91,14 +100,13 @@ const Navbar = () => {
             </>
           )}
 
-          {/* Links for Logged-In Users */}
           {isLoggedIn && (
             <>
               <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink>
               <NavLink to="/edit-profile" className="hover:text-yellow-400">Edit Profile</NavLink>
               <NavLink to="/freelancers" className="hover:text-yellow-400">Freelancers</NavLink>
 
-              {/* Categories Dropdown (for logged-in users too) */}
+              {/* Categories Dropdown */}
               <div className="relative">
                 <button 
                   className="text-lg font-semibold text-white"
@@ -124,16 +132,13 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Right-Side Buttons */}
+        {/* Right-Side Buttons (Desktop) */}
         <div className="hidden md:flex gap-4">
-          {/* Chat Button (Only for Logged-In Users) */}
           {isLoggedIn && (
             <Link to="/chat" className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300">
               Chat Now
             </Link>
           )}
-
-          {/* Register & Logout Buttons */}
           {isLoggedIn ? (
             <button 
               className="py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
@@ -148,6 +153,34 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
+          <NavLink to="/" className="hover:text-yellow-400">Home</NavLink>
+          <NavLink to="/aboutus" className="hover:text-yellow-400">About</NavLink>
+          <NavLink to="/contactus" className="hover:text-yellow-400">Contact</NavLink>
+
+          {isLoggedIn && (
+            <>
+              <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink>
+              <NavLink to="/edit-profile" className="hover:text-yellow-400">Edit Profile</NavLink>
+              <NavLink to="/freelancers" className="hover:text-yellow-400">Freelancers</NavLink>
+            </>
+          )}
+
+          {/* Register & Logout */}
+          {isLoggedIn ? (
+            <button className="py-2 px-4 border border-white rounded-full hover:bg-red-500 transition duration-300" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/registration" className="py-2 px-4 border-2 border-white rounded-full hover:bg-white hover:text-green-900 transition duration-300">
+              Register
+            </Link>
+          )}
+        </div>
+      )}
     </nav>
   );
 };

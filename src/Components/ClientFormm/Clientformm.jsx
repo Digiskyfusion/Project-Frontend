@@ -4,6 +4,7 @@ import supabase from "../../supabaseClient";
 import toast, { Toaster } from "react-hot-toast";
 
 function ClientForm() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -71,7 +72,7 @@ function ClientForm() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("http://localhost:3000/api/client/createclient", {
+      const response = await fetch(`${API_URL}/user/profile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

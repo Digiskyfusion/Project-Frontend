@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import LiveChatPage from "./Pages/LiveChatPage"
 import HomePage from "./Pages/HomePage"
 import AboutUsPage from "./Pages/AboutUsPage"
@@ -11,7 +12,7 @@ import AllFreelancerPage from "./Pages/AllFreelancerPage";
 import DashboardPage from "./Pages/DashboardPage";
 import FreelancerProfilePage from "./Pages/FreelancerProfilePage";
 import FreelancerDetails from "./Components/FreelancerDetailPage/FreelancerDetails";
-import FreelancreClientPage from "./Pages/FreelancreClientPage";
+import Profileverification from "./Pages/FreelancerProfileVerification";
 import ClientFormPage from "./Pages/ClientFormPage";
 import CardsProfile from "./Components/CardProfilePage/CardsProfile";
 import Loginform from "./Components/LoginPage/LoginForm";
@@ -29,7 +30,7 @@ import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-import FreelancerJobs from "./Components/FreelancerJobPage/FreelancerJob";
+import FreelancerProfiles from "./Components/Client/FreelancerProfile";
 import MembershipPlans from "./Components/HomePage/Card";
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewList from "./Components/ReviewForm/ReviewList";
@@ -63,7 +64,7 @@ function App() {
         <Route path="/service" element={ <Services />} /> 
         <Route path="/dashboard" element={ <DashboardPage />} /> 
         <Route path="/FreelancerNoUpadte" element={  <FreelancerProfilePage />} />
-        <Route path="/FreelancerClientPage" element={ <FreelancreClientPage />} />
+        <Route path="/Profileverification" element={ <Profileverification />} />
         <Route path="/FreelancerUpadte" element={  <FreelancerDetails />} />
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/registration" element={<Signuppage />} />
@@ -95,7 +96,7 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
-        <Route path="/freelancerjob" element={<FreelancerJobs />} />
+        <Route path="/Freelancerprofile" element={<FreelancerProfiles />} />
         <Route path="/createreview" element={<ReviewForm />} />
         <Route path="/reviewslist" element={<ReviewList />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
