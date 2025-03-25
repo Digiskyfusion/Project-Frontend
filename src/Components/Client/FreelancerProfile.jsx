@@ -1,16 +1,13 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import noimage from "../../assets/Images/userimage.png";
-import { UserContext } from "../../Context/UserContext.jsx";
-// import Header from "../../components/Global/Layouts/Header.jsx";
-// import CategoryBar from "../../components/Global/CategoryBar.jsx";
 
 const FreelancersProfile = () => {
-    const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [freelancers, setFreelancers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,14 +15,29 @@ const FreelancersProfile = () => {
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { userInfo } = useContext(UserContext);
+  const [roleType, setRoleType] = useState(null);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData);
+        console.log("parsedData", parsedData);
+        if (parsedData && parsedData.roleType) {
+          setRoleType(parsedData.roleType);
+        }
+      } catch (error) {
+        console.error("Error parsing userInfo:", error);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [freelancersResponse, categoriesResponse] = await Promise.all([
-            axios.get(`${API_URL}/users/user`),
-            axios.get(`${API_URL}/category/categories`),
+          axios.get(`${API_URL}/users/user`),
+          axios.get(`${API_URL}/category/categories`),
         ]);
         setFreelancers(freelancersResponse.data.users || []);
         setCategories(categoriesResponse.data || []);
@@ -56,19 +68,10 @@ const FreelancersProfile = () => {
     fetchSubcategories();
   }, [selectedCategory]);
 
-  const filteredFreelancers = freelancers.filter(
-    (freelancer) =>
-      freelancer.credits > 0 &&
-      freelancer?.profileData?.bio &&
-      freelancer?.profileData?.user_image &&
-      freelancer?.categoryData?.length > 0 &&
-      (selectedCategory ? freelancer?.profileData?.category === selectedCategory : true)
-  );
-
   const enableChat = async (freelancerId, freelancerName, freelancerCredits) => {
     try {
       const token = localStorage.getItem("token");
-      if (!userInfo || !token) {
+      if (!roleType || !token) {
         navigate("/login");
         return;
       }
@@ -99,26 +102,21 @@ const FreelancersProfile = () => {
     return <div className="flex justify-center items-center h-screen text-red-600">{error}</div>;
 
   return (
-    <>
-      {/* <Header />
-      <CategoryBar/> */}
-      <div className="mx-auto mt-8 w-11/12">
-        <div className="flex items-center space-x-4">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="p-3 border border-gray-300 rounded-lg w-1/3"
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category._id} value={category._id}>{category.name}</option>
-            ))}
-          </select>
-        </div>
+    <div className="mx-auto mt-8 w-11/12">
+      <div className="flex items-center space-x-4">
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="p-3 border border-gray-300 rounded-lg w-1/3"
+        >
+          <option value="">Select Category</option>
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>{category.name}</option>
+          ))}
+        </select>
       </div>
-
       <motion.div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-10 w-11/12">
-        {filteredFreelancers.map((freelancer) => (
+        {freelancers.map((freelancer) => (
           <motion.div
             key={freelancer._id}
             className="bg-white shadow-lg border border-gray-200 rounded-lg overflow-hidden"
@@ -160,7 +158,7 @@ const FreelancersProfile = () => {
           </motion.div>
         ))}
       </motion.div>
-    </>
+    </div>
   );
 };
 

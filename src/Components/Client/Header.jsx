@@ -88,7 +88,7 @@ const Navbar = () => {
                     {categories.map((category, index) => (
                       <Link 
                         key={index} 
-                        to={`/category/${category.id}`} 
+                        to={`/CategoryData/${category._id}`} 
                         className="block px-4 py-2 text-[15px] text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
                       >
                         {category.name}
@@ -102,9 +102,9 @@ const Navbar = () => {
 
           {isLoggedIn && (
             <>
-              <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink>
-              <NavLink to="/edit-profile" className="hover:text-yellow-400">Edit Profile</NavLink>
-              <NavLink to="/freelancers" className="hover:text-yellow-400">Freelancers</NavLink>
+              {/* <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink> */}
+              <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
+              <NavLink to="/Freelancerprofile" className="hover:text-yellow-400">Freelancers</NavLink>
 
               {/* Categories Dropdown */}
               <div className="relative">
@@ -119,7 +119,7 @@ const Navbar = () => {
                     {categories.map((category, index) => (
                       <Link 
                         key={index} 
-                        to={`/category/${category.id}`} 
+                        to={`/CategoryData/${category._id}`} 
                         className="block px-4 py-2 text-[15px] text-gray-700 hover:text-blue-600 hover:bg-gray-200 rounded-md transition-all duration-200"
                       >
                         {category.name}
@@ -163,9 +163,9 @@ const Navbar = () => {
 
           {isLoggedIn && (
             <>
-              <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink>
-              <NavLink to="/edit-profile" className="hover:text-yellow-400">Edit Profile</NavLink>
-              <NavLink to="/freelancers" className="hover:text-yellow-400">Freelancers</NavLink>
+              {/* <NavLink to="/profile-verification" className="hover:text-yellow-400">Profile Verification</NavLink> */}
+              <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
+              <NavLink to="/Freelancerprofile" className="hover:text-yellow-400">Freelancers</NavLink>
             </>
           )}
 

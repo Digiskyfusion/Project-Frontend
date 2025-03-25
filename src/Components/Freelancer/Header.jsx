@@ -76,12 +76,12 @@ const Navbar = () => {
                             <NavLink to="/profile-verification" className="hover:text-yellow-400">
                                 Profile Verification
                             </NavLink>
-                            <NavLink to="/edit-profile" className="hover:text-yellow-400">
+                            <NavLink to="/EditProfile" className="hover:text-yellow-400">
                                 Edit Profile
                             </NavLink>
-                            <NavLink to="/clients" className="hover:text-yellow-400">
+                            {/* <NavLink to="/clients" className="hover:text-yellow-400">
                                 Clients
-                            </NavLink>
+                            </NavLink> */}
 
                             {/* Categories Dropdown */}
                             <div className="relative">
@@ -143,12 +143,12 @@ const Navbar = () => {
                     <NavLink to="/profile-verification" className="hover:text-yellow-400">
                         Profile Verification
                     </NavLink>
-                    <NavLink to="/edit-profile" className="hover:text-yellow-400">
+                    <NavLink to="/EditProfile" className="hover:text-yellow-400">
                         Edit Profile
                     </NavLink>
-                    <NavLink to="/clients" className="hover:text-yellow-400">
+                    {/* <NavLink to="/clients" className="hover:text-yellow-400">
                         Clients
-                    </NavLink>
+                    </NavLink> */}
 
                     {/* Categories Dropdown (Mobile) */}
                     <div className="relative">
