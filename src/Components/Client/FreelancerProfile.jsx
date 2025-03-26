@@ -132,11 +132,11 @@ const FreelancersProfile = () => {
                   Chat Now
                 </button>
                 <button
-                  onClick={() => navigate(`/user/${freelancer._id}`)}
-                  className="bg-gray-200 hover:bg-gray-300 px-5 py-2 rounded-lg text-gray-700 font-semibold shadow-md transition duration-300"
-                >
-                  See Details
-                </button>
+  onClick={() => navigate(`/profile/${freelancer._id}`)}
+  className="bg-gray-200 hover:bg-gray-300 px-5 py-2 rounded-lg text-gray-700 font-semibold shadow-md transition duration-300"
+>
+  See Details
+</button>
               </div>
             </motion.div>
           ))}
