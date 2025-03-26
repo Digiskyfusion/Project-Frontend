@@ -76,9 +76,9 @@ const Navbar = () => {
                             <NavLink to="/Profileverification" className="hover:text-yellow-400">
                                 Profile Verification
                             </NavLink>
-                            <NavLink to="/EditProfile" className="hover:text-yellow-400">
-                                Edit Profile
-                            </NavLink>
+                                <NavLink to="/EditProfile" className="hover:text-yellow-400">
+                                    Edit Profile
+                                </NavLink>
                             {/* <NavLink to="/clients" className="hover:text-yellow-400">
                                 Clients
                             </NavLink> */}
@@ -90,7 +90,7 @@ const Navbar = () => {
                 <div className="hidden md:flex gap-4">
                     {isLoggedIn && (
                         <Link
-                            to="/chat"
+                            to="/Freelancerprofile"
                             className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300"
                         >
                             Chat Now
@@ -129,12 +129,21 @@ const Navbar = () => {
 
                     {/* Register & Logout (Mobile) */}
                     {isLoggedIn ? (
+                        <>
+                        <Link
+                            to="/Freelancerprofile"
+                            className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300"
+                        >
+                            Chat Now
+                        </Link>
                         <button
                             className="py-2 px-4 border border-white rounded-full hover:bg-red-500 transition duration-300"
                             onClick={handleLogout}
                         >
                             Logout
                         </button>
+                        </>
+                        
                     ) : (
                         <Link
                             to="/registration"

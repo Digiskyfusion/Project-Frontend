@@ -49,7 +49,7 @@ const SolarSystem = () => {
   };
 
   return (
-    <div className="relative  h-80 md:min-h-screen bg-black flex justify-center items-center">
+    <div className="relative  h-96 lg:min-h-screen bg-black flex justify-center items-center">
       <Canvas camera={{ position: [0, 10, 25] }}>
         <Suspense fallback={null}>
           <ambientLight intensity={0.3} />
@@ -115,7 +115,7 @@ const SolarSystem = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="absolute top-26 right-10 bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg max-w-sm hidden lg:block"
+        className="absolute top-10 right-10 bg-white/20 backdrop-blur-md text-white p-6 rounded-lg shadow-lg max-w-sm hidden lg:block"
       >
         <h1 className="text-2xl font-bold">🚀 Hire Smarter. Scale Faster. Succeed Effortlessly!</h1>
         <p className="text-sm mt-2">

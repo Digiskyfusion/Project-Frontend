@@ -19,7 +19,7 @@ const UserEdit = () => {
   const [mobileNumber, setMobileNumber] = useState(parsed?.mobileNumber || "");
   const [loading, setLoading] = useState(false);
 
-  const rolesval = ["client", "freelancer"];
+  const rolesval = ["client", "freelancer"];  
   const [roleType, setRoleType] = useState(null);
 
   useEffect(() => {
@@ -85,17 +85,18 @@ const UserEdit = () => {
   return (
     <div>
       <Toaster />
-      {roleType !== "freelancer" ? <Header2 /> : <Header1 />}
+    
+         
       <div className="w-[100%] flex flex-col items-center px-4 py-8 bg-gray-100">
         <div className="bg-white shadow-lg rounded-lg p-6 w-full mx-auto">
-          <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">Edit Profile</h1>
+          <h1 className="text-2xl font-bold text-center text-[#004930] mb-6">Edit Profile</h1>
 
           <div className="space-y-4">
             <div>
               <label className="block text-gray-700 font-medium mb-2">Name</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004930]"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
@@ -106,7 +107,7 @@ const UserEdit = () => {
               <label className="block text-gray-700 font-medium mb-2">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004930]"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
@@ -117,7 +118,7 @@ const UserEdit = () => {
               <label className="block text-gray-700 font-medium mb-2">Mobile Number</label>
               <input
                 type="text"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004930]"
                 value={mobileNumber}
                 onChange={(e) => setMobileNumber(e.target.value)}
                 placeholder="Enter your mobile number"
@@ -128,7 +129,7 @@ const UserEdit = () => {
             <div>
               <label className="block text-gray-700 font-medium mb-2">Location</label>
               <select
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004930]"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
               >
@@ -149,7 +150,7 @@ const UserEdit = () => {
             <div>
               <label className="block text-gray-700 font-medium mb-2">Account Type</label>
               <select
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#004930]"
                 value={roleCheck}
                 onChange={(e) => setRoleCheck(e.target.value)}
               >
@@ -165,13 +166,13 @@ const UserEdit = () => {
           <div className="flex justify-between mt-6">
             <button
               onClick={() => navigate(-1)}
-              className="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-100"
+              className="px-4 py-2 text-[#004930] border border-[#004930] rounded-md hover:bg-blue-100"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="px-4 py-2 bg-[#004930] text-white rounded-md hover:bg-[#004930]"
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}

@@ -183,7 +183,7 @@ function FreelancerForm() {
       </div>
 
       {/* Submit Button */}
-      <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-600">
+      <button type="submit" className="w-full bg-[#004930] text-white py-2 px-4 rounded-md font-semibold hover:bg-[#004930]">
         Submit
       </button>
     </form>

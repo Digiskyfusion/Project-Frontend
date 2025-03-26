@@ -8,62 +8,60 @@ import user1 from "../../assets/Images/user1.png";
 import user2 from "../../assets/Images/user2.png";
 import user3 from "../../assets/Images/user3.svg";
 
+// Freelancer Card Component
 const FreelancerCard = ({ freelancer }) => {
   const navigate = useNavigate();
+
   const handleSeeAllUsers = () => {
-    const subcategoryId = freelancer._id;
-    const subcategoryName = freelancer.name;
-    if (subcategoryId) {
-      navigate(`/userProfile/${subcategoryId}`, { state: { subcategoryName } });
-    } else {
-      console.error("Subcategory _id not found!");
-    }
+    navigate(`/userProfile/${freelancer._id}`, { state: { subcategoryName: freelancer.name } });
   };
 
   return (
     <motion.div
       onClick={handleSeeAllUsers}
-      className="bg-white shadow-md rounded-lg p-6 m-4 w-72 cursor-pointer transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-[#004930] hover:text-white"
+      className="relative bg-gradient-to-b from-[#004930] to-[#002f20] text-white shadow-lg rounded-xl p-6 m-4 w-80 cursor-pointer transform transition-all hover:scale-105 hover:shadow-2xl"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.05 }}
     >
-      <h2 className="text-xl font-semibold mb-3">{freelancer.name}</h2>
-
-      <div className="flex items-center mb-4">
-        <span className="text-yellow-400 text-2xl">★</span>
-        <span className="ml-2 text-black group-hover:text-white">4.8 average rating</span>
-      </div>
-
-      <div className="flex items-center space-x-2 mb-4">
+      {/* Profile Image */}
+      <div className="flex justify-center">
         <motion.img
           src={user1}
-          alt="user1"
-          className="w-10 h-10 rounded-full border-2 border-white"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
-        />
-        <motion.img
-          src={user2}
-          alt="user2"
-          className="w-10 h-10 rounded-full border-2 border-white"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
-        />
-        <motion.img
-          src={user3}
-          alt="user3"
-          className="w-10 h-10 rounded-full border-2 border-white"
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
+          alt="Freelancer"
+          className="w-24 h-24 rounded-full border-4 border-[#22c55e] shadow-lg transform transition-transform hover:scale-110"
         />
       </div>
 
+      {/* Freelancer Name & Rating */}
+      <div className="text-center mt-4">
+        <h2 className="text-lg font-semibold">{freelancer.name}</h2>
+        <div className="flex justify-center mt-1 space-x-1">
+          {Array(5).fill().map((_, i) => (
+            <span key={i} className="text-yellow-400 text-lg">★</span>
+          ))}
+        </div>
+        <p className="text-sm text-gray-300 mt-1">4.8 average rating (120 reviews)</p>
+      </div>
+
+      {/* Collaborator Profile Images */}
+      <div className="flex justify-center space-x-2 mt-4">
+        {[user1, user2, user3].map((img, index) => (
+          <motion.img
+            key={index}
+            src={img}
+            alt={`user-${index}`}
+            className="w-10 h-10 rounded-full border-2 border-[#22c55e] transition-transform hover:scale-110"
+          />
+        ))}
+      </div>
+
+      {/* Button */}
       <motion.button
-        className="py-2 px-4 text-lg bg-[#004930] hover:bg-white hover:text-[#004930] text-white rounded-full shadow-lg transform transition-transform"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="w-full py-2 mt-5 text-lg bg-[#22c55e] hover:bg-[#1a7d4e] text-white rounded-full shadow-md transition-transform transform hover:scale-105"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         See Details →
       </motion.button>
@@ -71,6 +69,7 @@ const FreelancerCard = ({ freelancer }) => {
   );
 };
 
+// PropTypes Validation
 FreelancerCard.propTypes = {
   freelancer: PropTypes.shape({
     _id: PropTypes.string.isRequired,
@@ -78,6 +77,7 @@ FreelancerCard.propTypes = {
   }).isRequired,
 };
 
+// Freelancer Page Component
 const FreelancerPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const [freelancers, setFreelancers] = useState([]);
@@ -101,18 +101,19 @@ const FreelancerPage = () => {
   }, [categoryId]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
+    <div className="min-h-screen bg-[#1d4035]">
       <Header />
       <div className="w-[88%] mx-auto flex flex-row">
         <motion.h1
-          className="text-left text-[24px] font-bold font-[poppins] text-[#004930] mt-8 mb-6"
+          className="text-left text-[24px] font-bold font-[poppins] text-[#22c55e] mt-8 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <span className="text-gray-800">Category</span> - {categoryName}
+          <span className="text-gray-300">Category</span> - {categoryName}
         </motion.h1>
       </div>
+
       <div className="flex flex-wrap justify-center">
         {freelancers.map((freelancer, index) => (
           <FreelancerCard key={index} freelancer={freelancer} />
