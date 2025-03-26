@@ -47,8 +47,8 @@ import DiscoverHirePage from "./Pages/DiscoverHirePage";
 import UserProfile from "./Components/Client/UsersProfiles";
 import FreelancerProfileUpdate from "./Pages/FreelancerProfileUpdate";
 import EditProfilePage from "./Pages/EditProfilePage";
-// import Profile from "./Components/UserProfile/Profile";
-// import UsreProfilePage from "./Pages/UsreProfilePage";
+import UserProfileDetals from "./Pages/UserProfileDetals";
+
 
 function App() {
   useEffect(() => {
@@ -110,6 +110,7 @@ function App() {
         <Route path="/EditProfile" element={<EditProfilePage />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
         <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
+        <Route path="/profile/:id" element={<UserProfileDetals  />} />
       </Routes>
     </BrowserRouter>
   );
