@@ -23,50 +23,63 @@ function ProfileDetails() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#004930] to-[#00795F] p-6">
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }} 
-        animate={{ opacity: 1, scale: 1 }} 
-        transition={{ duration: 0.5 }} 
-        className="max-w-lg w-full bg-white shadow-xl rounded-2xl p-6"
-      >
-        {/* Profile Image */}
-        <div className="flex flex-col items-center">
-          <motion.img
-            src={user.user_image || image}
-            alt={user.name || "User"}
-            className="w-28 h-28 rounded-full border-4 border-[#004930] shadow-md"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          />
-          <h1 className="mt-4 text-2xl font-bold text-[#004930]">{user.name || "No Name Available"}</h1>
-          <p className="text-gray-500 text-lg">{user.roleType || "No Role"}</p>
-        </div>
+    <>
+      {/* Back Button */}
+      <div className="p-4 bg-gray-50 flex justify-center">
+        <motion.button
+          onClick={() => window.history.back()}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="px-5 py-2 text-white bg-[#004930] rounded-lg shadow-md hover:bg-[#00795F] transition duration-300"
+        >
+          Go Back
+        </motion.button>
+      </div>
 
-        {/* Profile Details */}
-        <div className="mt-6 bg-gray-100 p-4 rounded-lg shadow-inner">
-          <p className="text-[#004930] text-lg font-semibold mb-2">Contact Info:</p>
-          <div className="text-gray-700 space-y-2">
-            <p><strong>Email:</strong> {user.email || "N/A"}</p>
-            <p><strong>Location:</strong> {user.location || "N/A"}</p>
-            <p><strong>Role Type:</strong> {user.roleType || "N/A"}</p>
-            <p><strong>Mobile Number:</strong> {user.mobileNumber || "N/A"}</p>
+      <div className=" flex items-center justify-center bg-gray-100 p-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden"
+        >
+          {/* Header Section */}
+          <div className="bg-gradient-to-r from-[#004930] to-[#00795F] p-6 text-center text-white">
+            <motion.img
+              src={user.user_image || image}
+              alt={user.name || "User"}
+              className="w-24 h-24 mx-auto rounded-full border-4 border-white shadow-md"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <h1 className="mt-4 text-2xl font-bold">{user.name || "No Name Available"}</h1>
+            <p className="text-gray-200">{user.roleType || "No Role"}</p>
           </div>
-        </div>
 
-        {/* Back Button */}
-        <div className="mt-6 flex justify-center">
-          <motion.button
-            onClick={() => window.history.back()}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="px-5 py-2 text-white bg-[#004930] rounded-full shadow-lg hover:bg-[#00795F] transition duration-300"
-          >
-            Go Back
-          </motion.button>
-        </div>
-      </motion.div>
-    </div>
+          {/* Profile Details */}
+          <div className="p-6">
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <span className="text-gray-600 w-28 font-semibold">Email:</span>
+                <span className="text-gray-800 blur-xs">{user.email || "N/A"}</span>
+              </div>
+              <div className="flex items-center">
+                <span className="text-gray-600 w-28 font-semibold">Location:</span>
+                <span className="text-gray-800">{user.location || "N/A"}</span>
+              </div>
+              <div className="flex items-center">
+                <span className="text-gray-600 w-28 font-semibold">Role:</span>
+                <span className="text-gray-800">{user.roleType || "N/A"}</span>
+              </div>
+              <div className="flex items-center">
+                <span className="text-gray-600 w-28 font-semibold">Mobile:</span>
+                <span className="text-gray-800 blur-xs">{user.mobileNumber || "N/A"}</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </>
   );
 }
 
