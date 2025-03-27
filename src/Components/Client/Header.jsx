@@ -89,7 +89,7 @@ const Navbar = () => {
               {/* Categories Dropdown */}
               <div className="relative">
                 <button
-                  className="text-sm lg:text-xl font-semibold text-white"
+                  className="text-sm lg:text-xl font-semibold text-white hover:text-yellow-400 cursor-pointer"
                   onClick={() => setCategoryDropdown(!categoryDropdown)}
                 >
                   Categories
@@ -129,7 +129,7 @@ const Navbar = () => {
               {/* Categories Dropdown */}
               <div className="relative">
                 <button
-                  className=" text-sm lg:text-xl font-semibold text-white"
+                  className=" text-sm lg:text-xl font-semibold text-white hover:text-yellow-400 cursor-pointer"
                   onClick={() => setCategoryDropdown(!categoryDropdown)}
                 >
                   Categories

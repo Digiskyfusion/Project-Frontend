@@ -5,15 +5,16 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import axios from "axios";
+import image from './../../assets/Images/146880.jpg';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const categoryImages = {
-  "digital-marketing": "/images/digital-marketing.avif",
+  "digital-marketing": image,
   "web-development": "/images/web-development.jpg",
   "graphic-design": "/images/graphic-design.jpg",
   "seo": "/images/seo.jpg",
-  "content-writing": "/images/content-writing.jpg",
+  "content-writing": image,
 };
 
 function Category() {
@@ -68,12 +69,12 @@ function Category() {
         {categories.map((category, index) => (
           <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-4 md:p-6 rounded-3xl">
             <div className="flex">
-              <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-12 md:w-16 h-12 md:h-16 overflow-hidden bg-white">
+              <div className="border-2  rounded-full border-white flex items-center justify-center w-12 md:w-16 h-12 md:h-16 overflow-hidden bg-white">
                 <img
                   loading="lazy"
-                  src={categoryImages[category.name.toLowerCase().replace(/\s+/g, "-")] || "/images/default.jpg"}
+                  src={categoryImages[category.name.toLowerCase().replace(/\s+/g, "-")] || image}
                   alt={category.name}
-                  className="w-8 md:w-10 h-8 md:h-10 object-cover rounded-full flex-shrink-0"
+                  className="w-8 md:w-16 h-8 md:h-16 object-cover rounded-full flex-shrink-0"
                 />
               </div>
             </div>

@@ -89,12 +89,12 @@ const Navbar = () => {
                 {/* Right-Side Buttons (Desktop) */}
                 <div className="hidden md:flex gap-4">
                     {isLoggedIn && (
-                        <Link
-                            to="/Freelancerprofile"
-                            className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300"
-                        >
-                            Chat Now
-                        </Link>
+                            <Link
+                                to="/Freelancerprofile"
+                                className="py-2 px-6 bg-green-600 rounded-full font-medium hover:bg-green-500 transition duration-300"
+                            >
+                                Chat Now
+                            </Link>
                     )}
                     {isLoggedIn ? (
                         <button

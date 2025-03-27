@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 // import LiveChatPage from "./Pages/LiveChatPage";
 import HomePage from "./Pages/HomePage";
 import AboutUsPage from "./Pages/AboutUsPage";
@@ -30,7 +29,6 @@ import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-// import FreelancerProfiles from "./Components/Client/FreelancerProfile";
 import MembershipPlans from "./Components/HomePage/Card";
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import ReviewList from "./Components/ReviewForm/ReviewList";
@@ -39,7 +37,6 @@ import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
 import Content from "./Components/RandomContent/Content";
 import Signuppage from "./Components/SignupPage/Signuppage";
-// import Education from "./Components/EducationPage/Education";
 import FullJobCard from "./Components/ServicePage/FullJobCard";
 import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
@@ -48,6 +45,9 @@ import UserProfile from "./Components/Client/UsersProfiles";
 import FreelancerProfileUpdate from "./Pages/FreelancerProfileUpdate";
 import EditProfilePage from "./Pages/EditProfilePage";
 import UserProfileDetals from "./Pages/UserProfileDetals";
+import UserDetaislPage from "./Pages/UserDetaislPage";
+
+
 
 
 
@@ -112,6 +112,7 @@ function App() {
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
         <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
         <Route path="/profile/:id" element={<UserProfileDetals  />} />
+        <Route path="/user/:userId" element={<UserDetaislPage />} />
       </Routes>
     </BrowserRouter>
   );

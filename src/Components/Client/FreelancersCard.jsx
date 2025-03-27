@@ -39,7 +39,7 @@ export default function FreelancerCard({ userId, bio, category, experience_level
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white shadow-lg rounded-lg p-4 mt-4 flex flex-col items-center border border-gray-300 transition-transform transform hover:scale-105">
+    <div className="w-full max-w-md mx-auto bg-white shadow-lg rounded-lg p-4 mt-4 flex flex-col items-center border border-gray-300 transition-transform transform hover:scale-105 mb-5">
       {error && <p className="text-red-500">{error}</p>} 
       <div className="flex flex-col items-center">
         <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-[#004930] shadow-md">

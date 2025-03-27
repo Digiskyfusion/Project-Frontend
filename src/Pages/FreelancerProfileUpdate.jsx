@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FreelancersProfile from "../Components/Client/FreelancerProfile";
 import Header2 from "../Components/Client/Header.jsx";
-import Header1 from "../Components/Client/Header.jsx";
+import Header1 from "../Components/Freelancer/Header.jsx";
 
 function FreelancerProfileUpdate() {
   const [roleType, setRoleType] = useState("");
@@ -26,8 +26,9 @@ function FreelancerProfileUpdate() {
     <div>
     
     {roleType === "freelancer" ? <Header1 /> :<Header2 /> }
-      {/* <Header1 />  */}
       <FreelancersProfile />
+
+      
     </div>
   );
 }

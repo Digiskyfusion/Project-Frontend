@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast"; 
 import states from "../../States.js";
-import Header1 from '../Components/Client/Header.jsx';
-import Header2 from "../Components/Freelancer/Header.jsx";
-import Footer from "../Components/Footer/Footer.jsx";
 
 const UserEdit = () => {
   const navigate = useNavigate();
@@ -180,7 +177,6 @@ const UserEdit = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

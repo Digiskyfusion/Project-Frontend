@@ -31,7 +31,7 @@ function EditProfilePage() {
       {/* Conditionally render headers based on roleType */}
       {roleType === "freelancer" ? <Header1 /> : <Header2 />}
       <UserEdit />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
