@@ -61,7 +61,8 @@ function ProfileDetails() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <span className="text-gray-600 w-28 font-semibold">Email:</span>
-                <span className="text-gray-800 blur-xs">{user.email || "N/A"}</span>
+                {/* <span className="text-gray-800 blur-xs">{user.email || "N/A"}</span> */}
+                <span className="text-gray-800 blur-xs"> ***********</span>
               </div>
               <div className="flex items-center">
                 <span className="text-gray-600 w-28 font-semibold">Location:</span>
@@ -73,7 +74,8 @@ function ProfileDetails() {
               </div>
               <div className="flex items-center">
                 <span className="text-gray-600 w-28 font-semibold">Mobile:</span>
-                <span className="text-gray-800 blur-xs">{user.mobileNumber || "N/A"}</span>
+                <span className="text-gray-800 blur-xs"> ***********</span>
+                {/* <span className="text-gray-800 blur-xs">{user.mobileNumber || "N/A"}</span> */}
               </div>
             </div>
           </div>
