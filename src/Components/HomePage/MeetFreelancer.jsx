@@ -10,7 +10,7 @@ function Component() {
     if (!token) {
       navigate("/login"); // Redirect to login if no token
     } else {
-      navigate("/allfreelancer"); // Navigate to all freelancers if token exists
+      navigate("/Freelancerprofile"); // Navigate to all freelancers if token exists
     }
   };
 

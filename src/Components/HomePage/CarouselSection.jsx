@@ -10,7 +10,7 @@ function CarouselSection() {
     if (!token) {
       navigate("/login"); // Redirect to login if no token
     } else {
-      navigate("/Subcatagory"); // Navigate to category page if token exists
+      navigate("/Freelancerprofile"); // Navigate to category page if token exists
     }
   };
 

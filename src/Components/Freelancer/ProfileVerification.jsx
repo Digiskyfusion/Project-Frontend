@@ -92,16 +92,21 @@ function FreelancerForm() {
         }
       }
     });
+  
     try {
-      const response = await axios.post(`http://localhost:5000/user/profile`, formDataToSend, {
+      const response = await axios.post(`${API_URL}/user/profile`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log("Response:", response);
+      
       alert(response.status === 200 ? "Freelancer profile created successfully!" : response.data.message || "Error creating profile");
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong, please try again.");
+      console.error("Error Response:", error.response); // Log full error details
+      alert(error.response?.data?.message || "Something went wrong, please try again.");
     }
   };
+  
 
   return (
     <form className="bg-white p-6 rounded-lg shadow-md space-y-4" onSubmit={handleSubmit}>
@@ -183,7 +188,7 @@ function FreelancerForm() {
       </div>
 
       {/* Submit Button */}
-      <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-600">
+      <button type="submit" className="w-full bg-[#004930] text-white py-2 px-4 rounded-md font-semibold hover:bg-[#004930]">
         Submit
       </button>
     </form>

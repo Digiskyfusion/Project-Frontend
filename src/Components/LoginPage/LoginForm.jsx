@@ -98,11 +98,11 @@ function LoginForm() {
           </Link>
         </p>
 
-        <div className="flex flex-col items-center gap-4 mt-6 w-full">
+        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
           <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
             <FaGoogle className="text-xl" /> Continue with Google
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="hidden md:flex justify-center w-1/2">
         <img

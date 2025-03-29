@@ -33,13 +33,15 @@ function skill() {
         <ChevronLeft size={24} color="black" />
       </button>
 
+      {/* Swiper Component */}
       <Swiper
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView={1}
         breakpoints={{
-          540: { slidesPerView: 1.2 },
-          640: { slidesPerView: 2 },
+          360: { slidesPerView: 1.1 },
+          540: { slidesPerView: 1.3 },
+          640: { slidesPerView: 1.5 },
           1024: { slidesPerView: 3 },
           1280: { slidesPerView: 3 },
         }}
@@ -61,6 +63,7 @@ function skill() {
         ))}
       </Swiper>
 
+      {/* Right Arrow Button */}
       <button
         className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-200 p-3 rounded-full hover:bg-gray-300 shadow-md hidden md:flex"
         aria-label="Next Slide"

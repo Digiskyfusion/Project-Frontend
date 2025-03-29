@@ -25,11 +25,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-30">
+    <nav className="bg-[#004930] text-white px-3 lg:px-6 py-4 shadow-md sticky top-0 z-30">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold">
-          <img loading="lazy" src={Logo} alt="Logo" className="h-12 md:h-16 w-auto" />
+          <img
+            loading="lazy"
+            src={Logo}
+            alt="Logo"
+            className="h-12 md:h-16 w-auto"
+          />
         </Link>
 
         {/* Desktop Menu Centered */}
