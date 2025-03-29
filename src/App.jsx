@@ -44,6 +44,7 @@ import DiscoverHirePage from "./Pages/DiscoverHirePage";
 import UserProfile from "./Components/Client/UsersProfiles";
 import SkillPage from "./Components/skillspage";
 import EditProfilePage from "./Pages/EditProfile";
+import SkillsCardPage from "./Pages/SkillsCardPage";
 
 function App() {
   useEffect(() => {
@@ -105,7 +106,7 @@ function App() {
         <Route path="/EditProfile" element={<EditProfilePage />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
         <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
-        <Route path="/skills/:skillName" element={<SkillPage />} />
+        <Route path="/skills/:skillName" element={<SkillsCardPage />} />
       </Routes>
     </BrowserRouter>
   );
