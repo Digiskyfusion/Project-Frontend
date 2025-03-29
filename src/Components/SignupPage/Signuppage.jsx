@@ -39,7 +39,7 @@ function Signuppage() {
     }
 
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, formData);
+      const response = await axios.post(`${API_URL}/user/register`, formData);
       console.log("Response:", response);
 
       if (response.status === 200) {

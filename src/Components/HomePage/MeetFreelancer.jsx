@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Carousel from "./Carousel";
 
-function MeetFreelancer() {
+function Component() {
   const navigate = useNavigate();
 
   const handleDetailsClick = () => {
@@ -72,4 +72,4 @@ function MeetFreelancer() {
   );
 }
 
-export default MeetFreelancer;
+export default Component;

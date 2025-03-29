@@ -1,62 +1,80 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast"; 
+import toast, { Toaster } from "react-hot-toast";
 import states from "../../States.js";
-import Header1 from '../Components/Client/Header.jsx';
-import Header2 from "../Components/Freelancer/Header.jsx";
+import Header1 from "../Components/Freelancer/Header";
+import Header2 from "../Components/Client/Header";
+import HeaderGlobal from "../Components/Header";
 import Footer from "../Components/Footer/Footer.jsx";
 
 const UserEdit = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
-  const parsed = JSON.parse(localStorage.getItem("user")) || {};
 
-  const [name, setName] = useState(parsed?.name || "");
-  const [email, setEmail] = useState(parsed?.email || "");
-  const [location, setLocation] = useState(parsed?.location || "");
-  const [roleCheck, setRoleCheck] = useState(parsed?.roleType || "");
-  const [mobileNumber, setMobileNumber] = useState(parsed?.mobileNumber || "");
+  // State variables
+  const [userId, setUserId] = useState(null);
+  const [roleType, setRoleType] = useState("");
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const rolesval = ["client", "freelancer"];
-  const [roleType, setRoleType] = useState(null);
-
+  // Fetch userId and roleType from localStorage
   useEffect(() => {
-    const storedRoleType = localStorage.getItem("roleType");
-    if (storedRoleType) {
-      setRoleType(storedRoleType);
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData);
+        console.log(parsedData);
+
+        if (parsedData?._id) {
+          setUserId(parsedData._id);
+        }
+        if (parsedData?.roleType) {
+          setRoleType(parsedData.roleType);
+        }
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+      }
     }
   }, []);
 
+  // Fetch user details from API
   useEffect(() => {
-    setName(parsed?.name || "");
-    setEmail(parsed?.email || "");
-    setLocation(parsed?.location || ""); // Ensure location is a valid string
-    setRoleCheck(parsed?.roleType || "");
-    setMobileNumber(parsed?.mobileNumber || "");
-  }, []);
+    const fetchUserData = async () => {
+      if (!userId) return;
 
+      try {
+        const response = await axios.get(`${API_URL}/user/${userId}`);
+        console.log(response.data);
+        setUser(response.data);
+      } catch (error) {
+        toast.error("Failed to fetch user data");
+      }
+    };
+
+    fetchUserData();
+  }, [API_URL, userId]);
+
+  // Handle form submission
   const handleSave = async () => {
     const mobileRegex = /^[0-9]{10}$/;
-    if (!mobileRegex.test(mobileNumber)) {
+    if (!mobileRegex.test(user.mobileNumber)) {
       toast.error("Please enter a valid 10-digit mobile number.");
       return;
     }
 
     setLoading(true);
-
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         toast.error("Authentication token not found. Please log in again.");
-        navigate("/login"); // Redirect user to login page
+        navigate("/login");
         return;
       }
 
       const response = await axios.put(
-        `${API_URL}/userInfo/edit`,
-        { name, email, location, roleType: roleCheck, mobileNumber },
+        `${API_URL}/user/${userId}`,
+        user,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -73,7 +91,7 @@ const UserEdit = () => {
       if (error.response?.status === 401) {
         toast.error("Session expired. Please log in again.");
         localStorage.removeItem("token");
-        navigate("/login"); // Redirect to login
+        navigate("/login");
       } else {
         toast.error("Error updating profile: " + (error.response?.data?.message || error.message));
       }
@@ -83,95 +101,81 @@ const UserEdit = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col bg-green-100">
       <Toaster />
-      {roleType !== "freelancer" ? <Header2 /> : <Header1 />}
-      <div className="w-[100%] flex flex-col items-center px-4 py-8 bg-gray-100">
-        <div className="bg-white shadow-lg rounded-lg p-6 w-full mx-auto">
-          <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">Edit Profile</h1>
+      {roleType === "freelancer" ? <Header1 /> : roleType === "client" ? <Header2 /> : <HeaderGlobal />}
 
-          <div className="space-y-4">
+      <div className="flex flex-grow justify-center items-center px-6 py-10">
+        <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-4xl">
+          <h1 className="text-3xl font-semibold text-center text-green-600 mb-8">Edit Profile</h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700 font-medium mb-2">Name</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your name"
+              <input 
+                type="text" 
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500" 
+                value={user.name || ""} 
+                onChange={(e) => setUser({...user, name: e.target.value})} 
+                placeholder="Enter your name" 
               />
             </div>
-
             <div>
               <label className="block text-gray-700 font-medium mb-2">Email</label>
-              <input
-                type="email"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+              <input 
+                type="email" 
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500" 
+                value={user.email || ""} 
+                onChange={(e) => setUser({...user, email: e.target.value})} 
+                placeholder="Enter your email" 
               />
             </div>
-
             <div>
               <label className="block text-gray-700 font-medium mb-2">Mobile Number</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value)}
-                placeholder="Enter your mobile number"
+              <input 
+                type="text" 
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500" 
+                value={user.mobileNumber || ""} 
+                onChange={(e) => setUser({...user, mobileNumber: e.target.value})} 
+                placeholder="Enter your mobile number" 
               />
             </div>
-
-            {/* Location Dropdown */}
             <div>
-              <label className="block text-gray-700 font-medium mb-2">Location</label>
-              <select
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+              <label className="block text-gray-700 font-medium mb-2">State</label>
+              <select 
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500" 
+                value={user.state || ""} 
+                onChange={(e) => setUser({...user, state: e.target.value})}
               >
-                <option value="">Select your location</option>
-                {states && states.length > 0 ? (
-                  states.map((state, index) => (
-                    <option key={index} value={state}>
-                      {state}
-                    </option>
-                  ))
-                ) : (
-                  <option disabled>No states available</option>
-                )}
-              </select>
-            </div>
-
-            {/* Role Dropdown */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">Account Type</label>
-              <select
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={roleCheck}
-                onChange={(e) => setRoleCheck(e.target.value)}
-              >
-                {rolesval.map((role, index) => (
-                  <option key={index} value={role}>
-                    {role}
-                  </option>
+                <option value="">Select your state</option>
+                {states.map((state, index) => (
+                  <option key={index} value={state}>{state}</option>
                 ))}
               </select>
             </div>
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">Account Type</label>
+              <select 
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500" 
+                value={roleType || ""} 
+                onChange={(e) => setRoleType(e.target.value)}
+              >
+                <option value="client">Client</option>
+                <option value="freelancer">Freelancer</option>
+              </select>
+            </div>
           </div>
-
-          <div className="flex justify-between mt-6">
-            <button
-              onClick={() => navigate(-1)}
-              className="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-100"
+          
+          <div className="flex justify-between mt-8">
+            <button 
+              onClick={() => navigate(-1)} 
+              className="px-6 py-2 text-green-600 border border-green-600 rounded-md hover:bg-green-100"
             >
               Cancel
             </button>
-            <button
-              onClick={handleSave}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            <button 
+              onClick={handleSave} 
+              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" 
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}
@@ -179,6 +183,7 @@ const UserEdit = () => {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

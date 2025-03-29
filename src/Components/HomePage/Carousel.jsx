@@ -14,24 +14,26 @@ function Carousel() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`${API_URL}/users/user`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("data", data);
-        setFreelancers(data.users);
-      })
-      .catch((error) => console.error("Error fetching freelancers:", error));
-  }, []);
+    const fetchFreelancers = async () => {
+      try {
+        const response = await fetch(`${API_URL}/user/all`);
+        const data = await response.json();
+        console.log("data");
+        console.log(data);
+        if (data && Array.isArray(data)) {
+          setFreelancers(data);
+        } else {
+          console.error("Invalid user data format", data);
+        }
+      } catch (error) {
+        console.error("Error fetching freelancers:", error);
+      }
+    };
+    fetchFreelancers();
+  }, [API_URL]);
 
-  const handleSeeDetails = (id) => {
-    navigate(`/profile/${id}`); // Redirect to the freelancer's profile page
-  };
-
-  const handleGoToSlide = (index) => {
-    if (sliderRef.current) {
-      sliderRef.current.slickGoTo(index);
-    }
-  };
+  const handleSeeDetails = (id) => navigate(`/profile/${id}`);
+  const handleGoToSlide = (index) => sliderRef.current?.slickGoTo(index);
 
   const settings = {
     dots: false,
@@ -54,9 +56,9 @@ function Carousel() {
       transition={{ duration: 0.5 }}
     >
       <Slider ref={sliderRef} {...settings}>
-        {freelancers.map((freelancer, index) => (
+        {freelancers.map(({ _id, name, roleType, user_image }, index) => (
           <motion.div
-            key={index}
+            key={_id || index}
             className="p-4"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -66,16 +68,16 @@ function Carousel() {
           >
             <div className="flex flex-col items-center bg-white shadow-lg rounded-2xl p-5">
               <img
-                src={freelancer.user_image || image}
-                alt={freelancer.name}
+                src={user_image || image}
+                alt={name}
                 className="w-24 h-24 object-cover rounded-full border-2 border-[#004930]"
               />
-              <h1 className="text-lg font-semibold text-[#004930] mt-3">{freelancer.name}</h1>
-              <p className="text-sm text-gray-500">{freelancer.roleType}</p>
+              <h1 className="text-lg font-semibold text-[#004930] mt-3">{name}</h1>
+              <p className="text-sm text-gray-500">{roleType}</p>
               <motion.button
                 className="mt-4 px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
                 whileHover={{ scale: 1.1 }}
-                onClick={() => handleSeeDetails(freelancer._id)}
+                onClick={() => handleSeeDetails(_id)}
               >
                 See Details
               </motion.button>
@@ -84,40 +86,22 @@ function Carousel() {
         ))}
       </Slider>
 
-      {/* Custom Pagination */}
-      <div className="text-center mt-4 text-lg font-semibold text-[#004930] flex items-center justify-center gap-4">
-        <button
-          className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
-          onClick={() => sliderRef.current?.slickPrev()}
-        >
-          Prev
-        </button>
+     {/* Custom Pagination */}
+<div className="text-center mt-4 text-lg font-semibold text-[#004930] flex items-center justify-center gap-4">
+  <button
+    className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+    onClick={() => sliderRef.current?.slickPrev()}
+  >
+    Prev
+  </button>
+  <button
+    className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+    onClick={() => sliderRef.current?.slickNext()}
+  >
+    Next
+  </button>
+</div>
 
-        {/* Clickable "1" to go to the first slide */}
-        <span
-          className="cursor-pointer text-[#004930] hover:underline"
-          onClick={() => handleGoToSlide(0)}
-        >
-          1
-        </span>
-
-        <span className="px-2 py-1 bg-gray-200 rounded-lg">{currentSlide}</span> {/* Current Slide */}
-
-        {/* Clickable "Total" to go to the last slide */}
-        <span
-          className="cursor-pointer text-[#004930] hover:underline"
-          onClick={() => handleGoToSlide(freelancers.length - 1)}
-        >
-          {freelancers.length || 1}
-        </span>
-
-        <button
-          className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
-          onClick={() => sliderRef.current?.slickNext()}
-        >
-          Next
-        </button>
-      </div>
     </motion.div>
   );
 }
