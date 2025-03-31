@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { motion } from "framer-motion";
 import { FaStar, FaRegStar } from "react-icons/fa"; 
 import axios from "axios";
-import Footer from "../Footer/Footer";
 
 const ReviewList = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -62,7 +61,6 @@ const ReviewList = () => {
         ))}
       </div>
     </div>
-<Footer />
     </>
   );
 };
