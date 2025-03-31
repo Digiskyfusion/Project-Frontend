@@ -76,7 +76,7 @@ const UserSkillsEdit = () => {
       <div className="flex flex-grow justify-center items-center">
         <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-6xl transform hover:scale-[1.02] transition-all duration-300">
           <h1 className="text-4xl font-bold text-center text-[#004930] mb-6 animate-fade-in">
-            Edit Your Profile
+            Edit Your Skills
           </h1>
 
           <div className="grid grid-cols-1 gap-6">

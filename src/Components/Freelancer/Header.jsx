@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* Desktop Menu (Centered) */}
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
-          <NavLink to="/AddSkills" className="hover:text-yellow-400">Add Skills</NavLink>
+          {/* <NavLink to="/AddSkills" className="hover:text-yellow-400">Add Skills</NavLink> */}
           <NavLink to="/UserSkills" className="hover:text-yellow-400">User Skills</NavLink>
           {/* <NavLink to="/chat" className="hover:text-yellow-400">Chat Now</NavLink> */}
         </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
-          <NavLink to="/AddSkills" className="hover:text-yellow-400">Add Skills</NavLink>
+          {/* <NavLink to="/AddSkills" className="hover:text-yellow-400">Add Skills</NavLink> */}
           <NavLink to="/UserSkills" className="hover:text-yellow-400">User Skills</NavLink>
           {/* <NavLink to="/chat" className="hover:text-yellow-400">Chat Now</NavLink> */}
 

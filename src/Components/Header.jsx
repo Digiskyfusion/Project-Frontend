@@ -66,7 +66,7 @@ const NavbarAlt = () => {
         {/* Register & Login (At End) */}
         <div className="hidden md:flex space-x-4">
           <NavLink to="/register" className="py-2 px-4 border border-white rounded-full hover:bg-green-500 transition duration-300">
-            Register
+          registration
           </NavLink>
           <NavLink to="/login" className="py-2 px-4 border border-white rounded-full hover:text-yellow-400 transition duration-300">
             Login

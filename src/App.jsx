@@ -70,45 +70,45 @@ function App() {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         {/* <Route path="/livechat" element={<LiveChatPage />} /> */}
-        <Route path="/allfreelancer" element={<AllFreelancerPage />} />
+        {/* <Route path="/allfreelancer" element={<AllFreelancerPage />} /> */}
         <Route path="/service" element={<Services />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} />
-        <Route path="/Profileverification" element={<Profileverification />} />
-        <Route path="/FreelancerUpadte" element={<FreelancerDetails />} />
+        {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
+        {/* <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} /> */}
+        {/* <Route path="/Profileverification" element={<Profileverification />} /> */}
+        {/* <Route path="/FreelancerUpadte" element={<FreelancerDetails />} /> */}
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/registration" element={<Signuppage />} />
-        <Route path="/ClientForm" element={<ClientFormPage />} />
-        <Route path="/clientDetails/:id" element={<CardsProfile />} />
+        {/* <Route path="/ClientForm" element={<ClientFormPage />} /> */}
+        {/* <Route path="/clientDetails/:id" element={<CardsProfile />} /> */}
         <Route path="/login" element={<Loginform />} />
         <Route path="/discover" element={<DiscoverHirePage />} />
-        <Route path="/client" element={<Clientformmpage />} />
-        <Route path="/ClientProfile" element={<ClientProfile />} />
+        {/* <Route path="/client" element={<Clientformmpage />} /> */}
+        {/* <Route path="/ClientProfile" element={<ClientProfile />} /> */}
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
         <Route path="/channel" element={<TvAdvertisingPage />} />
         <Route path="/starplus" element={<AdvertisingPage />} />
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
         <Route path="/astha" element={<AsthaPage />} />
-        <Route path="/detailpage" element={<DetailPage />} />
+        {/* <Route path="/detailpage" element={<DetailPage />} /> */}
         <Route path="/solarsystem" element={<SolarSystemPage />} />
         <Route path="/card" element={<MembershipPlans />} />
-        <Route path="/FullJobCard" element={<FullJobCard />} />
+        {/* <Route path="/FullJobCard" element={<FullJobCard />} /> */}
         <Route path="/SquareCards" element={<SquareCards />} />
-        <Route path="/TermCondition" element={<TermAndConditionPage />} />
-        <Route path="/Content" element={<Content />} />
+        {/* <Route path="/TermCondition" element={<TermAndConditionPage />} /> */}
+        {/* <Route path="/Content" element={<Content />} /> */}
         <Route path="/Work" element={<Work />} />
-        <Route path="/PrivacyNdPolicy" element={<PrivacyNdPolicyPage />} />
-        <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} />
-        <Route path="/cart" element={<CartTvPage />} />
-        <Route path="/postjob" element={<PostJobPage />} />
-        <Route path="/all-jobs" element={<AllJobsPage />} />
+        {/* <Route path="/PrivacyNdPolicy" element={<PrivacyNdPolicyPage />} />
+        <Route path="/CancellationNdRefund" element={<CancellationRefundPage />} /> */}
+        {/* <Route path="/cart" element={<CartTvPage />} /> */}
+        {/* <Route path="/postjob" element={<PostJobPage />} /> */}
+        {/* <Route path="/all-jobs" element={<AllJobsPage />} /> */}
         {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
         <Route path="/createreview" element={<ReviewForm />} />
         <Route path="/reviewslist" element={<ReviewList />} />
         <Route path="/EditProfile" element={<EditProfilePage />} />
-        <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
-        <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
+        {/* <Route path="/CategoryData/:categoryId" element={<Subcategory />} /> */}
+        {/* <Route path="/userprofile/:subCategoryId" element={<UserProfile />} /> */}
         <Route path="/skills/:skillName" element={<SkillsCardPage />} />
         <Route path="/UserSkills" element={<UserSkillPage />} />
         <Route path="/profile/:id" element={<UserProfileDetals />} />
