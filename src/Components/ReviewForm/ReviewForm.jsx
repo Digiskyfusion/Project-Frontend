@@ -4,6 +4,7 @@ import axios from "axios";
 import { Star } from "lucide-react";
 
 const ReviewForm = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [name, setName] = useState("");
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
@@ -15,7 +16,7 @@ const ReviewForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/review/createreview", {
+      await axios.post(`${API_URL}/review/createreview`, {
         name,
         rating,
         comment,

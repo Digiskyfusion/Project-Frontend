@@ -6,11 +6,12 @@ import axios from "axios";
 import Footer from "../Footer/Footer";
 
 const ReviewList = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [reviews, setReviews] = useState([]);
   const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
-    axios.get("http://localhost:5000/review/allreview").then((response) => {
+    axios.get(`${API_URL}/review/allreview`).then((response) => {
       setReviews(response.data);
     });
   }, []);

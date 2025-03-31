@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ReviewSection() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/review/allreview")
+    axios.get(`${API_URL}/review/allreview`)
       .then((response) => {
         const latestReviews = response.data.reverse().slice(0, 3); // Reverse first, then slice latest 3
         setReviews(latestReviews);
