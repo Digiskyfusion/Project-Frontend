@@ -119,27 +119,46 @@ const UserSkillsEdit = () => {
       <div className="flex flex-grow justify-center items-center">
         <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-6xl transform hover:scale-[1.02] transition-all duration-300">
           <h1 className="text-4xl font-bold text-center text-[#004930] mb-6 animate-fade-in">
-            Edit Your Profile
+           Add skills
           </h1>
 
           <div className="grid grid-cols-1 gap-6">
             {/* Skills Dropdown */}
-            <div className="relative animate-fade-in delay-100">
-              <label className="block text-[#004930] font-medium mb-2">Skills</label>
-              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
-                <span className="px-3 text-[#004930]"><FaUser /></span>
-                <select
-                  className="w-full p-3 border-none bg-transparent text-gray-700 outline-0 cursor-pointer"
-                  value={user.skills}
-                  onChange={(e) => setUser({ ...user, skills: e.target.value })}
-                >
-                  <option value="" disabled>Select a skill</option>
-                  {skillsOptions.map((skill, index) => (
-                    <option key={index} value={skill}>{skill}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
+            {/* Skills Selection */}
+<div className="relative animate-fade-in delay-100">
+  <label className="block text-[#004930] font-medium mb-2">Skills (Max 3)</label>
+  <div className="border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
+    {skillsOptions.map((skill, index) => (
+      <label key={index} className="flex items-center gap-2 mb-2">
+        <input
+          type="checkbox"
+          value={skill}
+          checked={user.skills.includes(skill)}
+          onChange={(e) => {
+            const selectedSkill = e.target.value;
+            if (user.skills.includes(selectedSkill)) {
+              // Remove skill if already selected
+              setUser({
+                ...user,
+                skills: user.skills.filter((s) => s !== selectedSkill),
+              });
+            } else if (user.skills.length < 3) {
+              // Add skill if less than 3 are selected
+              setUser({
+                ...user,
+                skills: [...user.skills, selectedSkill],
+              });
+            } else {
+              toast.error("You can select up to 3 skills only.");
+            }
+          }}
+        />
+        {skill}
+      </label>
+    ))}
+  </div>
+</div>
+
 
             {/* Bio */}
             <div className="relative animate-fade-in delay-100">
