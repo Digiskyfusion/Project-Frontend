@@ -7,33 +7,46 @@ import "slick-carousel/slick/slick-theme.css";
 import image from "../../assets/Images/userimage.png";
 
 function Carousel() {
-  const [freelancers, setFreelancers] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
   const sliderRef = useRef(null);
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    const fetchFreelancers = async () => {
+    const fetchUsers = async () => {
       try {
         const response = await fetch(`${API_URL}/user/all`);
         const data = await response.json();
-        console.log("data");
-        console.log(data);
+
         if (data && Array.isArray(data)) {
-          setFreelancers(data);
+          const storedUser = JSON.parse(localStorage.getItem("user"));
+          console.log("Stored User:", storedUser);
+
+          if (storedUser) {
+            setCurrentUser(storedUser);
+
+            // Filter users based on logged-in user's role
+            const filteredUsers = data.filter(user => 
+              storedUser.roleType === "freelancer" ? user.roleType === "client" : user.roleType === "freelancer"
+            );
+            setUsers(filteredUsers);
+          } else {
+            // If no user is logged in, show all users
+            setUsers(data);
+          }
         } else {
           console.error("Invalid user data format", data);
         }
       } catch (error) {
-        console.error("Error fetching freelancers:", error);
+        console.error("Error fetching users:", error);
       }
     };
-    fetchFreelancers();
+
+    fetchUsers();
   }, [API_URL]);
 
   const handleSeeDetails = (id) => navigate(`/profile/${id}`);
-  const handleGoToSlide = (index) => sliderRef.current?.slickGoTo(index);
 
   const settings = {
     dots: false,
@@ -41,7 +54,6 @@ function Carousel() {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    afterChange: (index) => setCurrentSlide(index + 1),
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 640, settings: { slidesToShow: 1 } },
@@ -56,7 +68,7 @@ function Carousel() {
       transition={{ duration: 0.5 }}
     >
       <Slider ref={sliderRef} {...settings}>
-        {freelancers.map(({ _id, name, roleType, user_image }, index) => (
+        {users.map(({ _id, name, roleType, user_image }, index) => (
           <motion.div
             key={_id || index}
             className="p-4"
@@ -86,22 +98,21 @@ function Carousel() {
         ))}
       </Slider>
 
-     {/* Custom Pagination */}
-<div className="text-center mt-4 text-lg font-semibold text-[#004930] flex items-center justify-center gap-4">
-  <button
-    className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
-    onClick={() => sliderRef.current?.slickPrev()}
-  >
-    Prev
-  </button>
-  <button
-    className="px-3 py-1 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
-    onClick={() => sliderRef.current?.slickNext()}
-  >
-    Next
-  </button>
-</div>
-
+      {/* Prev & Next Buttons */}
+      <div className="text-center mt-4 flex justify-center gap-4">
+        <button
+          className="px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+          onClick={() => sliderRef.current?.slickPrev()}
+        >
+          Prev
+        </button>
+        <button
+          className="px-4 py-2 bg-[#004930] text-white rounded-full text-sm font-medium shadow-md hover:bg-teal-700 transition duration-300"
+          onClick={() => sliderRef.current?.slickNext()}
+        >
+          Next
+        </button>
+      </div>
     </motion.div>
   );
 }

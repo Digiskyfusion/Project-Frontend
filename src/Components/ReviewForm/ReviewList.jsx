@@ -10,7 +10,7 @@ const ReviewList = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/review/allreview").then((response) => {
+    axios.get("http://localhost:5000/review/allreview").then((response) => {
       setReviews(response.data);
     });
   }, []);

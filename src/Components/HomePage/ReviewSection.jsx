@@ -9,7 +9,7 @@ function ReviewSection() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/review/allreview")
+    axios.get("http://localhost:5000/review/allreview")
       .then((response) => {
         const latestReviews = response.data.reverse().slice(0, 3); // Reverse first, then slice latest 3
         setReviews(latestReviews);

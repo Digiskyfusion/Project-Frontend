@@ -2,8 +2,16 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { FaUser, FaBriefcase, FaPen } from "react-icons/fa";
-
+import { FaUser, FaBriefcase, FaPen, FaImage } from "react-icons/fa";
+import supabase from "../../supabaseClient";
+const skillsOptions = [
+  "Digital Marketing",
+  "Graphic Designing",
+  "Video Editing",
+  "Development",
+  "Content Writing",
+  "Influencer Marketing",
+];
 
 const UserSkillsEdit = () => {
   const navigate = useNavigate();
@@ -11,8 +19,9 @@ const UserSkillsEdit = () => {
 
   const [userId, setUserId] = useState(null);
   const [roleType, setRoleType] = useState("");
-  const [user, setUser] = useState({ skills: "", bio: "", experience: "" });
+  const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "" });
   const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -32,13 +41,47 @@ const UserSkillsEdit = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`${API_URL}/user/${userId}`);
-        setUser(response.data);
+        setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "" });
+        setImagePreview(response.data.image || null);
       } catch (error) {
         toast.error("Failed to fetch user data");
       }
     };
     fetchUserData();
   }, [API_URL, userId]);
+
+
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+  
+    // Show a temporary local preview
+    const fileReader = new FileReader();
+    fileReader.onload = () => setImagePreview(fileReader.result);
+    fileReader.readAsDataURL(file);
+  
+    setLoading(true);
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${userId}-${Date.now()}.${fileExt}`;
+    const filePath = `images/${fileName}`;
+  
+    try {
+      const { data, error } = await supabase.storage.from("images").upload(filePath, file);
+      if (error) throw error;
+  
+      const { data: publicUrlData } = supabase.storage.from("images").getPublicUrl(filePath);
+      const imageUrl = publicUrlData.publicUrl;
+  
+      setUser({ ...user, image: imageUrl });
+      toast.success("Image uploaded successfully!");
+    } catch (error) {
+      toast.error("Failed to upload image: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  
 
   const handleSave = async () => {
     setLoading(true);
@@ -57,7 +100,7 @@ const UserSkillsEdit = () => {
       if (response.status === 200) {
         toast.success("Profile updated successfully!");
         setTimeout(() => {
-          navigate("/");
+          navigate("/UserSkills");
           window.location.reload();
         }, 500);
       } else {
@@ -80,37 +123,74 @@ const UserSkillsEdit = () => {
           </h1>
 
           <div className="grid grid-cols-1 gap-6">
-            {[
-              { label: "Skills", value: "skills", placeholder: "Enter your skills", icon: <FaUser /> },
-              { label: "Bio", value: "bio", placeholder: "Write a short bio", textarea: true, icon: <FaPen /> },
-              { label: "Experience", value: "experience", placeholder: "Years of experience", icon: <FaBriefcase /> },
-            ].map((field, index) => (
-              <div key={index} className="relative animate-fade-in delay-100">
-                <label className="block text-[#004930] font-medium mb-2">{field.label}</label>
-                <div className="flex items-center border border-[#004930] rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-[#004930] bg-gray-50">
-                  <span className="px-3 text-[#004930]">{field.icon}</span>
-                  {field.textarea ? (
-                    <textarea
-                      className="w-full p-3 h-32 border-none focus:ring-0 bg-transparent text-gray-700 outline-0 resize-none overflow-auto"
-                      value={user[field.value] || ""}
-                      onChange={(e) => setUser({ ...user, [field.value]: e.target.value })}
-                      placeholder={field.placeholder}
-                    ></textarea>
-                  ) : (
-                    <input
-                      type="text"
-                      className="w-full p-3 border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
-                      value={user[field.value] || ""}
-                      onChange={(e) => setUser({ ...user, [field.value]: e.target.value })}
-                      placeholder={field.placeholder}
-                    />
-                  )}
-                </div>
+            {/* Skills Dropdown */}
+            <div className="relative animate-fade-in delay-100">
+              <label className="block text-[#004930] font-medium mb-2">Skills</label>
+              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
+                <span className="px-3 text-[#004930]"><FaUser /></span>
+                <select
+                  className="w-full p-3 border-none bg-transparent text-gray-700 outline-0 cursor-pointer"
+                  value={user.skills}
+                  onChange={(e) => setUser({ ...user, skills: e.target.value })}
+                >
+                  <option value="" disabled>Select a skill</option>
+                  {skillsOptions.map((skill, index) => (
+                    <option key={index} value={skill}>{skill}</option>
+                  ))}
+                </select>
               </div>
-            ))}
+            </div>
+
+            {/* Bio */}
+            <div className="relative animate-fade-in delay-100">
+              <label className="block text-[#004930] font-medium mb-2">Bio</label>
+              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
+                <span className="px-3 text-[#004930]"><FaPen /></span>
+                <textarea
+                  className="w-full p-3 h-32 border-none focus:ring-0 bg-transparent text-gray-700 outline-0 resize-none"
+                  value={user.bio}
+                  onChange={(e) => setUser({ ...user, bio: e.target.value })}
+                  placeholder="Write a short bio"
+                />
+              </div>
+            </div>
+
+            {/* Experience */}
+            <div className="relative animate-fade-in delay-100">
+              <label className="block text-[#004930] font-medium mb-2">Experience</label>
+              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
+                <span className="px-3 text-[#004930]"><FaBriefcase /></span>
+                <input
+                  type="text"
+                  className="w-full p-3 border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
+                  value={user.experience}
+                  onChange={(e) => setUser({ ...user, experience: e.target.value })}
+                  placeholder="Years of experience"
+                />
+              </div>
+            </div>
+
+            {/* Image Upload */}
+            <div className="relative animate-fade-in delay-100">
+              <label className="block text-[#004930] font-medium mb-2">Upload Image</label>
+              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
+                <span className="px-3 text-[#004930]"><FaImage /></span>
+                <input
+                  type="file"
+                  className="w-full border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+              </div>
+              {imagePreview && (
+                <div className="mt-4 flex justify-center">
+                  <img src={imagePreview} alt="Preview" className="w-32 h-32 rounded-lg shadow-md" />
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className=" w-full md:flex gap-3 justify-between mt-8">
+          <div className="w-full md:flex gap-3 justify-between mt-8">
             <button
               onClick={() => navigate(-1)}
               className="px-6 py-2 w-full text-[#004930] border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
@@ -119,9 +199,7 @@ const UserSkillsEdit = () => {
             </button>
             <button
               onClick={handleSave}
-              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] text-white rounded-lg ${
-                loading ? "opacity-75" : "hover:bg-[#00371f]"
-              } transition-all`}
+              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}

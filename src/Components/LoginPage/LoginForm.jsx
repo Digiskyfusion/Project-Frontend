@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import newonw from "./../../assets/Images/newonw.jpg";
 
 function LoginForm() {
@@ -28,16 +28,25 @@ function LoginForm() {
       console.log("API Response:", response.data);
 
       const { token, message, user } = response.data;
-      
+
       if (token && user) {
         const { _id, roleType, email, mobileNumber, name, state } = user;
 
-        localStorage.setItem("user", JSON.stringify({ _id, roleType, email, mobileNumber, name, state }));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ _id, roleType, email, mobileNumber, name, state })
+        );
         localStorage.setItem("token", token);
 
         toast.success(message || "Login successful!");
 
-        setTimeout(() => navigate("/", { replace: true }), 1000);
+        setTimeout(() => {
+          if (roleType === "freelancer") {
+            navigate("/UserSkills", { replace: true }); // Redirect freelancers
+          } else {
+            navigate("/", { replace: true }); // Default redirection
+          }
+        }, 1000);
       } else {
         toast.error("Invalid response from server!");
       }
@@ -97,12 +106,6 @@ function LoginForm() {
             Sign up
           </Link>
         </p>
-
-        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
-          <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
-            <FaGoogle className="text-xl" /> Continue with Google
-          </button>
-        </div> */}
       </div>
       <div className="hidden md:flex justify-center w-1/2">
         <img

@@ -43,7 +43,7 @@ function Signuppage() {
       console.log("Response:", response);
 
       if (response.status === 200) {
-        toast.success(response.data.message);
+        toast.success("user register successfully");
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
         navigate(formData.roleType === "freelancer" ? "/" : "/");
@@ -58,7 +58,7 @@ function Signuppage() {
           mobileNumber: "",
         });
       } else {
-        toast.error(response.data.message || "Something went wrong!");
+        toast.success("user register successfully");
       }
     } catch (error) {
       console.error("Signup Error:", error);

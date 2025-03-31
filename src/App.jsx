@@ -30,8 +30,6 @@ import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
 import MembershipPlans from "./Components/HomePage/Card";
-import ReviewForm from "./Components/ReviewForm/ReviewForm";
-import ReviewList from "./Components/ReviewForm/ReviewList";
 import TermAndConditionPage from "./Pages/TermAndConditionPage";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
@@ -42,12 +40,14 @@ import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
 import DiscoverHirePage from "./Pages/DiscoverHirePage";
 import UserProfile from "./Components/Client/UsersProfiles";
-import SkillPage from "./Components/skillspage";
+
 import EditProfilePage from "./Pages/EditProfile";
 import SkillsCardPage from "./Pages/SkillsCardPage";
-import UserSkillsEdit from "./Components/UserSkills/UserSkillsEdit";
+
 import UserSkillPage from "./Pages/UserSkillPage";
 import UserProfileDetals from "./Pages/UserProfileDetals";
+import WriteReviewPage from "./Pages/WriteReviewPage";
+import AllReviewPage from "./Pages/AllReviewPage";
 
 function App() {
   useEffect(() => {
@@ -104,8 +104,8 @@ function App() {
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
         {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
-        <Route path="/createreview" element={<ReviewForm />} />
-        <Route path="/reviewslist" element={<ReviewList />} />
+        <Route path="/createreview" element={<WriteReviewPage />} />
+        <Route path="/reviewslist" element={<AllReviewPage />} />
         <Route path="/EditProfile" element={<EditProfilePage />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
         <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
