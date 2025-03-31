@@ -23,7 +23,7 @@ function Work() {
       { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/Freelancerprofile' }
     ],
     freelancer: [
-      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/Profileverification" },
+      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/" },
       { img: workdone, title: 'Stay Active on the Platform', text: 'Be online frequently to increase visibility and get more job invitations.', route: "/Freelancerprofile" },
       { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route: "/chat" }
     ]

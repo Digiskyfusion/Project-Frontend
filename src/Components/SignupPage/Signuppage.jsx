@@ -18,12 +18,13 @@ function Signuppage() {
     password: "",
     confirm_password: "",
     roleType: "",
-    country: "",
+    state: "",
     mobileNumber: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value); // Debugging
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -35,7 +36,7 @@ function Signuppage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Form Data:", formData); // Check if state is included pr
     if (formData.password !== formData.confirm_password) {
       return toast.error("Passwords do not match!");
     }
@@ -52,7 +53,7 @@ function Signuppage() {
 
         setFormData({
           name: "",
-          country: "",
+          state: "",
           email: "",
           password: "",
           confirm_password: "",
