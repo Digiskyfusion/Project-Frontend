@@ -58,7 +58,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
-          <NavLink to="/freelancerSkill" className="hover:text-yellow-400">Requirement</NavLink>
+          <NavLink to="/freelancerSkill" className="hover:text-yellow-400">Add Skills</NavLink>
 
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
