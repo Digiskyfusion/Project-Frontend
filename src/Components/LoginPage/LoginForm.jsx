@@ -41,11 +41,7 @@ function LoginForm() {
         toast.success(message || "Login successful!");
 
         setTimeout(() => {
-          if (roleType === "freelancer") {
-            navigate("/UserSkills", { replace: true }); // Redirect freelancers
-          } else {
-            navigate("/", { replace: true }); // Default redirection
-          }
+            navigate("/EditProfile", { replace: true }); // Redirect freelancers
         }, 1000);
       } else {
         toast.error("Invalid response from server!");

@@ -40,14 +40,14 @@ import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
 import DiscoverHirePage from "./Pages/DiscoverHirePage";
 import UserProfile from "./Components/Client/UsersProfiles";
-
 import EditProfilePage from "./Pages/EditProfile";
 import SkillsCardPage from "./Pages/SkillsCardPage";
-
 import UserSkillPage from "./Pages/UserSkillPage";
 import UserProfileDetals from "./Pages/UserProfileDetals";
 import WriteReviewPage from "./Pages/WriteReviewPage";
 import AllReviewPage from "./Pages/AllReviewPage";
+import FreelancerSkillsPage from "./Pages/FreelancerSkillsPage";
+
 
 function App() {
   useEffect(() => {
@@ -111,7 +111,9 @@ function App() {
         <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
         <Route path="/skills/:skillName" element={<SkillsCardPage />} />
         <Route path="/UserSkills" element={<UserSkillPage />} />
+        <Route path="/freelancerSkill" element={<FreelancerSkillsPage />} />
         <Route path="/profile/:id" element={<UserProfileDetals />} />
+      
       </Routes>
     </BrowserRouter>
   );

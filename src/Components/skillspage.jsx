@@ -1,7 +1,7 @@
   import { useEffect, useState } from "react";
   import { useParams } from "react-router-dom";
   import { motion, useAnimation } from "framer-motion";
-  import { FaEnvelope, FaUser, FaTools } from "react-icons/fa";
+  import { FaEnvelope, FaUser, FaTools, FaUserFriends } from "react-icons/fa";
   import defaultImage from "../assets/Images/userimage.png";
 
   const SkillPage = () => {
@@ -12,6 +12,10 @@
     const controls = useAnimation();
     const [scrollDirection, setScrollDirection] = useState("down");
 
+    // Get logged-in user role from localStorage or your context/state
+    const loggedInUserRole = JSON.parse(localStorage.getItem('user'))?.roleType || "guest"; // Ensure roleType is accessed properly
+    console.log("Logged-in user role:", loggedInUserRole);
+
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -19,23 +23,37 @@
           const response = await fetch(
             `${API_URL}/user/skills?skill=${encodeURIComponent(decodedSkill)}`
           );
-
+      
           if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
           }
-
+      
           const data = await response.json();
-          setUsers(data);
+      
+          // Filter users based on logged-in user's role
+          if (loggedInUserRole.toLowerCase() === "client") {
+            // Client only sees freelancers
+            const clientUsers = data.filter(user => user.roleType === "freelancer");
+            setUsers(clientUsers);
+          } else if (loggedInUserRole.toLowerCase() === "freelancer") {
+            // Freelancer only sees clients
+            const freelancerUsers = data.filter(user => user.roleType === "client");
+            setUsers(freelancerUsers);
+          } else {
+            // Show all users if not a client or freelancer
+            setUsers(data);
+          }
         } catch (error) {
           console.error("Error fetching users:", error);
         } finally {
           setLoading(false);
         }
       };
-
+      
+    
       fetchUsers();
-    }, [skillName]);
-
+    }, [skillName, loggedInUserRole]);
+    
     useEffect(() => {
       let lastScrollY = window.scrollY;
       const handleScroll = () => {
@@ -49,7 +67,7 @@
     }, []);
 
     return (
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -68,9 +86,7 @@
             No users found with this skill.
           </p>
         ) : (
-          <>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-       
             {users.map((user, index) => (
               <motion.div
                 key={user._id}
@@ -79,9 +95,8 @@
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 whileHover={{ scale: 1.05, boxShadow: "0px 5px 15px rgba(0,255,159,0.4)" }}
-                className="relative bg-[#004930] shadow-lg rounded-xl overflow-hidden border border-gray-200 transition-all hover:scale-105  transform hover:border-[#00ff9f] group"
+                className="relative bg-[#004930] shadow-lg rounded-xl overflow-hidden border border-gray-200 transition-all hover:scale-105 transform hover:border-[#00ff9f] group"
               >
-           
                 {/* Profile Image */}
                 <motion.div whileHover={{ scale: 1.1 }} className="flex justify-center pt-6">
                   <div className="w-24 h-24 rounded-full border-4 border-[#ffffff] overflow-hidden shadow-md transition-all duration-300 group-hover:border-[#00ff9f]">
@@ -101,6 +116,9 @@
                   <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
                     <FaEnvelope className="mr-2 text-[#00ff9f]" /> {user.email}
                   </p>
+                  <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
+                    <FaUserFriends className="mr-2 text-[#00ff9f]" /> {user.roleType}
+                  </p>
                   <p className="text-sm mt-3 flex items-center justify-center transition-all duration-300 group-hover:text-[#00ff9f]">
                     <FaTools className="mr-2 text-[#00ff9f]" />
                     {user.skills?.length ? user.skills.join(", ") : "N/A"}
@@ -108,7 +126,7 @@
                 </div>
 
                 {/* Subtle Bottom Glow */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -117,11 +135,8 @@
               </motion.div>
             ))}
           </div>
-          </>
         )}
-        
       </motion.div>
-      
     );
   };
 

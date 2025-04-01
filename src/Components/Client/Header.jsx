@@ -50,8 +50,8 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
-          <NavLink to="/Freelancerprofile" className="hover:text-yellow-400">Freelancers</NavLink>
-          <NavLink to="/UserSkills" className="hover:text-yellow-400">User Skills</NavLink>
+          {/* <NavLink to="/Freelancerprofile" className="hover:text-yellow-400">Freelancers</NavLink> */}
+          <NavLink to="/UserSkills" className="hover:text-yellow-400">Add Requirement</NavLink>
           
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
@@ -99,7 +99,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
-          <NavLink to="/Freelancerprofile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink>
+          {/* <NavLink to="/Freelancerprofile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink> */}
           <NavLink to="/UserSkills" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>User Skills</NavLink>
           
           {/* Skills Dropdown for Mobile */}
