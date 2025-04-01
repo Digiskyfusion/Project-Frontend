@@ -49,7 +49,7 @@ function Signuppage() {
         toast.success("user register successfully");
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
-        navigate(formData.roleType === "freelancer" ? "/" : "/");
+        navigate(formData.roleType === "freelancer" ? "/login" : "/login");
 
         setFormData({
           name: "",
