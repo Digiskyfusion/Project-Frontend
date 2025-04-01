@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import newonw from "./../../assets/Images/newonw.jpg";
+import Logo from '../../assets/Images/digilogo12.png';
 
 function LoginForm() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -28,21 +29,16 @@ function LoginForm() {
       console.log("API Response:", response.data);
 
       const { token, message, user } = response.data;
-
+      
       if (token && user) {
         const { _id, roleType, email, mobileNumber, name, state } = user;
 
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ _id, roleType, email, mobileNumber, name, state })
-        );
+        localStorage.setItem("user", JSON.stringify({ _id, roleType, email, mobileNumber, name, state }));
         localStorage.setItem("token", token);
 
         toast.success(message || "Login successful!");
 
-        setTimeout(() => {
-            navigate("/EditProfile", { replace: true }); // Redirect freelancers
-        }, 1000);
+        setTimeout(() => navigate("/", { replace: true }), 1000);
       } else {
         toast.error("Invalid response from server!");
       }
@@ -56,7 +52,11 @@ function LoginForm() {
     <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
       <Toaster />
       <div className="p-8 bg-white shadow-lg rounded-lg w-full md:w-1/2 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-green-700 mb-4">DIGISKY</h1>
+      <Link to="/" className="text-2xl font-bold">
+                 <img src={Logo} alt="Logo" className="bg-black h-12  md:h-16 rounded-md" />
+               </Link>
+        
+       
         <p className="text-gray-600 mb-6">Please login to continue</p>
 
         <form className="w-full flex flex-col space-y-4" onSubmit={handleSubmit}>
@@ -102,6 +102,12 @@ function LoginForm() {
             Sign up
           </Link>
         </p>
+
+        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
+          <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
+            <FaGoogle className="text-xl" /> Continue with Google
+          </button>
+        </div> */}
       </div>
       <div className="hidden md:flex justify-center w-1/2">
         <img

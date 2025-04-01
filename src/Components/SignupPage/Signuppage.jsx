@@ -4,6 +4,8 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";
 import newpic from "./../../assets/Images/new pic.png";
+import Logo from '../../assets/Images/digilogo12.png';
+
 
 function Signuppage() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -73,7 +75,10 @@ function Signuppage() {
     <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
       <Toaster />
       <div className="p-8 bg-white shadow-lg rounded-lg w-full md:w-1/2 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-green-700 mb-4">DIGISKY</h1>
+      <Link to="/" className="text-2xl font-bold">
+                 <img src={Logo} alt="Logo" className="bg-black h-12  md:h-16 rounded-md " />
+               </Link>
+        
         <p className="text-gray-600 mb-6">Create an account to continue</p>
 
         <div className="w-full mb-4">
