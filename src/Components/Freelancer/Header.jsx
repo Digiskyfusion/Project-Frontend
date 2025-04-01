@@ -100,7 +100,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
-          <NavLink to="/freelancerSkill" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Requirement</NavLink>
+          <NavLink to="/freelancerSkill" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Add Skills</NavLink>
 
           {/* Skills Dropdown for Mobile */}
           <div className="relative">
