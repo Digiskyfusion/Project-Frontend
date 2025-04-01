@@ -86,7 +86,7 @@
                 <motion.div whileHover={{ scale: 1.1 }} className="flex justify-center pt-6">
                   <div className="w-24 h-24 rounded-full border-4 border-[#ffffff] overflow-hidden shadow-md transition-all duration-300 group-hover:border-[#00ff9f]">
                     <img
-                      src={user.profileImage || defaultImage}
+                      src={user.image || defaultImage}
                       alt={user.name}
                       className="w-full h-full object-cover object-center aspect-square rounded-full"
                     />
