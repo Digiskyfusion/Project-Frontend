@@ -21,7 +21,8 @@ const MembershipPlans = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center p-8 min-h-screen bg-gray-900">
+    <div className="relative flex flex-col items-center justify-center p-8 min-h-screen bg-gray-900">
+
       {/* Background Blur Effect */}
       <div className="absolute inset-0 bg-[url('https://source.unsplash.com/random/1600x900/?technology')] bg-cover bg-center blur-xl opacity-40"></div>
 

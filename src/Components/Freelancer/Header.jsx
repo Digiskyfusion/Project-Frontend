@@ -59,6 +59,7 @@ const Navbar = () => {
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
           <NavLink to="/freelancerSkill" className="hover:text-yellow-400">Add Skills</NavLink>
+          <NavLink to="/clientlist" className="hover:text-yellow-400">Clients</NavLink>
 
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
@@ -101,6 +102,7 @@ const Navbar = () => {
         <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
           <NavLink to="/freelancerSkill" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Add Skills</NavLink>
+          <NavLink to="/clientlist" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Client</NavLink>
 
           {/* Skills Dropdown for Mobile */}
           <div className="relative">

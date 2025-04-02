@@ -47,6 +47,12 @@ import UserProfileDetals from "./Pages/UserProfileDetals";
 import WriteReviewPage from "./Pages/WriteReviewPage";
 import AllReviewPage from "./Pages/AllReviewPage";
 import FreelancerSkillsPage from "./Pages/FreelancerSkillsPage";
+import ClientListPage from "./Pages/ClientListPage";
+import FreelancerListPage from "./Pages/FreelancerListPage";
+import FreelancerDetailsPage from "./Pages/FreelancerDetailsPage";
+import ClientDetailPage from "./Pages/ClientDetailPage";
+import UserDetail from "./Components/UserDetail/UserDetail";
+import UserDetalPage from "./Pages/UserDetalPage";
 
 
 function App() {
@@ -113,6 +119,11 @@ function App() {
         <Route path="/UserSkills" element={<UserSkillPage />} />
         <Route path="/freelancerSkill" element={<FreelancerSkillsPage />} />
         <Route path="/profile/:id" element={<UserProfileDetals />} />
+        <Route path="/clientlist" element={<ClientListPage />} />
+        <Route path="/freelancerlist" element={<FreelancerListPage />} />
+        <Route path="/freelancer/:id" element={<FreelancerDetailsPage />} />
+        <Route path="/client/:id" element={<ClientDetailPage />} />
+        <Route path="/user/:id" element={<UserDetalPage />} />
       
       </Routes>
     </BrowserRouter>

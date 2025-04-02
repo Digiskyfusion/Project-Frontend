@@ -50,6 +50,7 @@ const FreelancerSkills = () => {
     fetchUserData();
   }, [API_URL, userId]);
 
+  
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -65,13 +66,17 @@ const FreelancerSkills = () => {
     const filePath = `images/${fileName}`;
   
     try {
+      // Upload the file to Supabase storage
       const { data, error } = await supabase.storage.from("images").upload(filePath, file);
       if (error) throw error;
   
-      const { publicUrl } = supabase.storage.from("images").getPublicUrl(filePath);
+      // Get the public URL correctly
+      const publicUrl = supabase.storage.from("images").getPublicUrl(filePath).data.publicUrl;
+      
+      console.log("Public URL:", publicUrl);
   
-      setUser({ ...user, image: publicUrl });
-      setImagePreview(publicUrl); // Update preview to show uploaded image
+      setUser((prevUser) => ({ ...prevUser, image: publicUrl }));
+      setImagePreview(publicUrl);
       toast.success("Image uploaded successfully!");
     } catch (error) {
       toast.error("Failed to upload image: " + error.message);
@@ -79,6 +84,7 @@ const FreelancerSkills = () => {
       setLoading(false);
     }
   };
+  
   
   
 

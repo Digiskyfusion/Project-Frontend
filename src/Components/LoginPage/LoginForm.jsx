@@ -23,22 +23,33 @@ function LoginForm() {
       toast.error("Email and Password are required!");
       return;
     }
-
+  
     try {
       const response = await axios.post(`${API_URL}/user/login`, loginForm);
       console.log("API Response:", response.data);
-
+  
       const { token, message, user } = response.data;
-      
+  
       if (token && user) {
         const { _id, roleType, email, mobileNumber, name, state } = user;
-
-        localStorage.setItem("user", JSON.stringify({ _id, roleType, email, mobileNumber, name, state }));
+  
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ _id, roleType, email, mobileNumber, name, state })
+        );
         localStorage.setItem("token", token);
-
+  
         toast.success(message || "Login successful!");
-
-        setTimeout(() => navigate("/", { replace: true }), 1000);
+  
+        setTimeout(() => {
+          if (roleType === "freelancer") {
+            navigate("/freelancerSkill", { replace: true });
+          } else if (roleType === "client") {
+            navigate("/UserSkills", { replace: true });
+          } else {
+            navigate("/", { replace: true });
+          }
+        }, 1000);
       } else {
         toast.error("Invalid response from server!");
       }
@@ -47,7 +58,7 @@ function LoginForm() {
       toast.error(error.response?.data?.message || "Something went wrong!");
     }
   };
-
+  
   return (
     <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
       <Toaster />

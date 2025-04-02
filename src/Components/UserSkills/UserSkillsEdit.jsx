@@ -65,13 +65,17 @@ const UserSkillsEdit = () => {
     const filePath = `images/${fileName}`;
   
     try {
+      // Upload the file to Supabase storage
       const { data, error } = await supabase.storage.from("images").upload(filePath, file);
       if (error) throw error;
   
-      const { publicUrl } = supabase.storage.from("images").getPublicUrl(filePath);
+      // Get the public URL correctly
+      const publicUrl = supabase.storage.from("images").getPublicUrl(filePath).data.publicUrl;
+      
+      console.log("Public URL:", publicUrl);
   
-      setUser({ ...user, image: publicUrl });
-      setImagePreview(publicUrl); // Update preview to show uploaded image
+      setUser((prevUser) => ({ ...prevUser, image: publicUrl }));
+      setImagePreview(publicUrl);
       toast.success("Image uploaded successfully!");
     } catch (error) {
       toast.error("Failed to upload image: " + error.message);
@@ -79,6 +83,7 @@ const UserSkillsEdit = () => {
       setLoading(false);
     }
   };
+  
   
   
   
@@ -96,6 +101,8 @@ const UserSkillsEdit = () => {
       const response = await axios.put(`${API_URL}/user/${userId}`, user, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      // console.log("hello",user);
+      
 
       if (response.status === 200) {
         toast.success("Profile updated successfully!");
