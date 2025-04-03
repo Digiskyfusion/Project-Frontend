@@ -5,6 +5,7 @@ import { FaEnvelope, FaUser, FaTools, FaArrowLeft } from "react-icons/fa";
 import defaultImage from "./../../assets/Images/userimage.png";
 
 const FreelancerDetail = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [freelancer, setFreelancer] = useState(null);
@@ -14,7 +15,7 @@ const FreelancerDetail = () => {
   useEffect(() => {
     const fetchFreelancer = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/freelancer/${id}`);
+        const response = await axios.get(`${API_URL}/freelancer/${id}`);
         setFreelancer(response.data.data);
       } catch (err) {
         setError("Failed to fetch freelancer details");

@@ -5,6 +5,7 @@ import { FaEnvelope, FaUserFriends, FaTools, FaArrowLeft } from "react-icons/fa"
 import defaultImage from "./../../assets/Images/userimage.png";
 
 const UserDetail = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -14,7 +15,7 @@ const UserDetail = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/user/${id}`);
+        const response = await axios.get(`${API_URL}/user/${id}`);
         setUser(response.data|| {}); // ✅ Ensure user is at least an empty object
         console.log(response.data.data);
         

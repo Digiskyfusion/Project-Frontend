@@ -6,6 +6,7 @@ import defaultImage from "./../../assets/Images/userimage.png";
 import { motion } from "framer-motion";
 
 const ClientDetail = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [client, setClient] = useState(null);
@@ -15,7 +16,7 @@ const ClientDetail = () => {
   useEffect(() => {
     const fetchClientDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/client/${id}`);
+        const response = await axios.get(`${API_URL}/client/${id}`);
         setClient(response.data.data);
       } catch (err) {
         setError("Failed to fetch client details");

@@ -6,6 +6,7 @@ import defaultImage from "./../../assets/Images/userimage.png";
 import { useNavigate } from "react-router-dom";
 
 const FreelancerList = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,7 +15,7 @@ const navigate= useNavigate()
     const fetchClients = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/freelancer/all"
+          `${API_URL}/freelancer/all`
         );
         setClients(response.data.data.reverse());
       } catch (err) {
