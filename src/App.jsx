@@ -54,6 +54,7 @@ import ClientDetailPage from "./Pages/ClientDetailPage";
 import UserDetalPage from "./Pages/UserDetalPage";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ReceiptPage from './Pages/ReceiptPage';
+import PalnsPage from "./Pages/PalnsPage";
 
 
 function App() {
@@ -125,7 +126,7 @@ function App() {
         <Route path="/freelancer/:id" element={<FreelancerDetailsPage />} />
         <Route path="/client/:id" element={<ClientDetailPage />} />
         <Route path="/user/:id" element={<UserDetalPage />} />
-        <Route path="/MembershipPlans" element={<MembershipPlans />} />
+        <Route path="/MembershipPlans" element={<PalnsPage />} />
         <Route path="/reciept" element={<ReceiptPage />} />
       </Routes>
     </BrowserRouter>

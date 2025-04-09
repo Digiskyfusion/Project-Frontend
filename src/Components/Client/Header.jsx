@@ -52,6 +52,7 @@ const Navbar = () => {
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
           <NavLink to="/freelancerlist" className="hover:text-yellow-400">Freelancers</NavLink>
           <NavLink to="/UserSkills" className="hover:text-yellow-400">Add Requirement</NavLink>
+          <NavLink to="/MembershipPlans" className="hover:text-yellow-400">Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
           
           {/* Skills Dropdown (Desktop) */}
@@ -102,6 +103,7 @@ const Navbar = () => {
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
           <NavLink to="/freelancerlist" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink>
           <NavLink to="/UserSkills" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>User Skills</NavLink>
+          <NavLink to="/MembershipPlans" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>reciept</NavLink>
           
           {/* Skills Dropdown for Mobile */}

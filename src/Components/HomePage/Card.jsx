@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
+import { FaIndianRupeeSign } from "react-icons/fa6";
 const MembershipPlans = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
   const plans = [
-    { name: "Basic", credit: 10, amount: 1 },
-    { name: "Standard", credit: 25, amount: 39.99 },
-    { name: "Premium", credit: 50, amount: 59.99 },
+    { name: "Basic", credit: 10, amount: 200 },
+    { name: "Standard", credit: 25, amount: 400 },
+    { name: "Premium", credit: 50, amount: 600},
   ];
 
   const navigate = useNavigate();
@@ -154,7 +154,7 @@ const MembershipPlans = () => {
             onClick={() => handleSelectPlan(plan)}
           >
             <h2 className="text-xl font-semibold mb-2">{plan.name} Plan</h2>
-            <h3 className="text-3xl font-bold mt-4">${plan.amount}/month</h3>
+            <h3 className="text-3xl font-bold mt-4 flex items-center"><p className="text-xl"><FaIndianRupeeSign /></p>{plan.amount}/month</h3>
             <p className="text-sm mt-2">
               Get {plan.credit} credits per month. Upgrade anytime.
             </p>
