@@ -198,7 +198,7 @@ const UserSkillsEdit = () => {
 
             {/* Image Upload */}
             <div className="relative animate-fade-in delay-100">
-              <label className="block text-[#004930] font-medium mb-2">Upload Image</label>
+              <label className="block text-[#004930] font-medium mb-2">Upload Profile Image</label>
               <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
                 <span className="px-3 text-[#004930]"><FaImage /></span>
                 <input
