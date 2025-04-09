@@ -72,6 +72,7 @@ const ReceiptsPage = () => {
                 <p><strong>Name:</strong> {receipt.name}</p>
                 <p><strong>Email:</strong> {receipt.email}</p>
                 <p><strong>Contact:</strong> {receipt.mobileNumber}</p>
+                <p><strong>Plan:</strong> {receipt.planName}</p>
                 <p><strong>Credits Added:</strong> {receipt.creditsAdded}</p>
                 {/* <p><strong>Total Credits:</strong> {receipt.totalCredits}</p> */}
                 <p><strong>Payment ID:</strong> <span className="break-all">{receipt.paymentId}</span></p>
