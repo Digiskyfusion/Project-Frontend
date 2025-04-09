@@ -74,8 +74,11 @@ const navigate= useNavigate()
                                 <h3 className="text-xl font-bold flex items-center justify-center transition-all duration-300 group-hover:text-[#00ff9f]">
                                     <FaUser className="mr-2 text-[#00ff9f]" /> {client.name}
                                 </h3>
-                                <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
+                                {/* <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
                                     <FaEnvelope className="mr-2 text-[#00ff9f]" /> {client.email}
+                                </p> */}
+                                <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
+                                    <FaEnvelope className="mr-2 text-[#00ff9f]" /> Email:- <p className="blur-xs ml-3">**********</p>
                                 </p>
                                 <p className="flex items-center justify-center mt-2 text-sm transition-all duration-300 group-hover:text-[#00ff9f]">
                                   <FaUserFriends className="mr-2 text-[#00ff9f]" /> {client.roleType}

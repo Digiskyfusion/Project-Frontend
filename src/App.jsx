@@ -51,8 +51,8 @@ import ClientListPage from "./Pages/ClientListPage";
 import FreelancerListPage from "./Pages/FreelancerListPage";
 import FreelancerDetailsPage from "./Pages/FreelancerDetailsPage";
 import ClientDetailPage from "./Pages/ClientDetailPage";
-import UserDetail from "./Components/UserDetail/UserDetail";
 import UserDetalPage from "./Pages/UserDetalPage";
+import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 
 
 function App() {
@@ -87,6 +87,7 @@ function App() {
         <Route path="/ClientForm" element={<ClientFormPage />} />
         <Route path="/clientDetails/:id" element={<CardsProfile />} />
         <Route path="/login" element={<Loginform />} />
+        <Route path="/forget" element={<ForgetPasswordPage />} />
         <Route path="/discover" element={<DiscoverHirePage />} />
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />

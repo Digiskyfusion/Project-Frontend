@@ -105,6 +105,7 @@ function LoginForm() {
           <button className="bg-green-700 text-white py-3 rounded-lg w-full hover:bg-green-800 transition">
             Login
           </button>
+          <a href="/forget">Forget Password?</a>
         </form>
 
         <p className="text-gray-600 text-sm text-center mt-2">
