@@ -155,7 +155,7 @@
                   ))}
                 </select>
               </div>
-              <div>
+              <div className="">
                 <label className="block text-gray-700 font-medium mb-2">Account Type</label>
                 {/* <select 
                   className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500 bg-gray-200" 
@@ -169,19 +169,26 @@
   {user.roleType}
 </p>
 
+
+              </div>
+              <div>
+              <label className="block text-gray-700 font-medium mb-2">Your Credits</label>
+              <p className="text-lg font-semibold text-gray-800 bg-gray-200 px-4 py-2 rounded-md">
+  {user.credits}
+</p>
               </div>
             </div>
             
-            <div className="flex justify-between mt-8">
+            <div className="md:flex justify-between gap-6  mt-8">
               <button 
                 onClick={() => navigate(-1)} 
-                className="px-6 py-2 text-green-600 border border-green-600 rounded-md hover:bg-green-100"
+                className="px-6 py-2 w-full text-green-600 border border-green-600 rounded-md hover:bg-green-100"
               >
                 Cancel
               </button>
               <button 
                 onClick={handleSave} 
-                className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" 
+                className="px-6 py-2 w-full bg-green-600 mt-4 md:mt-0 text-white rounded-md hover:bg-green-700" 
                 disabled={loading}
               >
                 {loading ? "Saving..." : "Save Changes"}
