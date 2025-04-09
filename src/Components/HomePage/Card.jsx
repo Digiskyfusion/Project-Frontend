@@ -100,7 +100,7 @@ const MembershipPlans = () => {
 
           setMessage(verifyData.message);
           setSelectedPlan(null);
-          navigate("/receipt");
+          navigate("/reciept");
         },
         prefill: {
           name: userDetails.name || "User Name",
