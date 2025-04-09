@@ -45,7 +45,7 @@ function HomePage() {
       <FirstSection />
       <Secondsection />
       <SolarSystem />
-      <MembershipPlans />
+      {/* <MembershipPlans /> */}
       <Work />
       <ReviewSection />
       <CarouselSection />
