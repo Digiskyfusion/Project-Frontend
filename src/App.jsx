@@ -53,6 +53,7 @@ import FreelancerDetailsPage from "./Pages/FreelancerDetailsPage";
 import ClientDetailPage from "./Pages/ClientDetailPage";
 import UserDetalPage from "./Pages/UserDetalPage";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
+import ReceiptPage from './Pages/ReceiptPage';
 
 
 function App() {
@@ -72,7 +73,6 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/MembershipPlans" element={<MembershipPlans />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         {/* <Route path="/livechat" element={<LiveChatPage />} /> */}
@@ -125,7 +125,8 @@ function App() {
         <Route path="/freelancer/:id" element={<FreelancerDetailsPage />} />
         <Route path="/client/:id" element={<ClientDetailPage />} />
         <Route path="/user/:id" element={<UserDetalPage />} />
-      
+        <Route path="/MembershipPlans" element={<MembershipPlans />} />
+        <Route path="/reciept" element={<ReceiptPage />} />
       </Routes>
     </BrowserRouter>
   );
