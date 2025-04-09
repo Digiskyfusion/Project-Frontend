@@ -64,6 +64,7 @@ function Signuppage() {
         });
       } else {
         toast.success("user register successfully");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Signup Error:", error);
