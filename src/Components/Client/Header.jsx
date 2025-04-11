@@ -54,6 +54,7 @@ const Navbar = () => {
           <NavLink to="/UserSkills" className="hover:text-yellow-400">Add Requirement</NavLink>
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400">Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400">Tv Channels</NavLink>
           
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
@@ -105,6 +106,7 @@ const Navbar = () => {
           <NavLink to="/UserSkills" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>User Skills</NavLink>
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>reciept</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Tv Channels</NavLink>
           
           {/* Skills Dropdown for Mobile */}
           <div className="relative">

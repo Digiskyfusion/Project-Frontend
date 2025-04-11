@@ -2,11 +2,11 @@ import React from "react";
 import star from "./../../assets/Images/starplus.png";
 import { LuPhoneCall } from "react-icons/lu";
 
-function Advertising({image,first,firstone,second,secondone,about,para}) {
+function Advertising({image,first,firstone,second,secondone,about,para,name}) {
   return (
     <>
     <div className="p-3">
-    <h1 className="text-sm md:text-xl lg:text-3xl font-bold text-center">Advertising in STAR Plus</h1>
+    <h1 className="text-sm md:text-xl lg:text-3xl font-bold text-center">Advertising in {name}</h1>
     <div className="mt-4">
       <div className="p-4 bg-[#004930] rounded-t-2xl flex flex-col lg:flex-row gap-5 text-white items-center ">
         
