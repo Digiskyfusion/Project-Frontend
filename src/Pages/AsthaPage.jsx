@@ -35,7 +35,8 @@ function AsthaPage() {
         ) : (
           <HeaderGlobal />
         )}
-    <Advertising name="Astha" image={astha} first="138M" firstone="MONTHLY CUME REACH" second="HINDI" secondone="LANGUAGE OF ASTHA" about="About Advertising in Astha" para="India’s leading socio-spiritual-cultural TV channel, Aastha TV, has extensive viewership across every age group. It involves spiritual disclosure programs, religious events, Ayurveda, Yoga, and Astrology that keep the audience engaged with the channel. Advertising here strategically creates a lasting impact on audiences and builds awareness for your brand." />
+    <Advertising name="Astha" image={astha} first="138M" firstone="MONTHLY CUME REACH" second="HINDI" secondone="LANGUAGE OF ASTHA" about="About Advertising in Astha" para="Faith meets opportunity! Reach a devoted and spiritual audience through Aastha TV with DigiSkyFusion. Take your brand closer to hearts, minds—and homes. Start your digital journey today!
+" />
 
 <h1 className='text-sm md:text-xl lg:text-3xl font-bold md:pl-3 '>Top Choice</h1>
   <div className='md:flex'>
