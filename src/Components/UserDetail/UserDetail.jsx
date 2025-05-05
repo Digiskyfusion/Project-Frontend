@@ -11,6 +11,18 @@ const UserDetail = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [credits, setCredits] = useState(0);
+  const [showEmail, setShowEmail] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+   
+    const c = JSON.parse(localStorage.getItem("user"));
+    if (c) {
+      setUserId(c._id);
+    }
+  }, []);
+  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,8 +38,35 @@ const UserDetail = () => {
       }
     };
 
+    const fetchUserDetails = async () => {
+      if (userId) {
+        try {
+          const response = await axios.get(`${API_URL}/user/${userId}`);
+          let getCredits= response.data.credits
+          setCredits(getCredits);
+          console.log("tis ",credits);
+          
+        } catch (err) {
+          console.error("Failed to fetch user details", err);
+        }
+      }
+    };
+    fetchUserDetails()
     fetchUser();
-  }, [id]);
+  }, [API_URL, id, userId,credits]);
+
+  const handleRevealEmail = () => {
+    let token= localStorage.getItem("token")
+    // Get user ID from localStorage
+   if(!token){
+    navigate("/login")
+   }
+    else if (credits > 0) {
+      setShowEmail(true);
+    } else {
+      navigate("/MembershipPlans");
+    }
+  };
 
   if (loading)
     return <p className="text-center text-lg font-semibold animate-pulse text-[#004930]">Loading...</p>;
@@ -85,6 +124,25 @@ const UserDetail = () => {
           </div>
         )}
       </div>
+      <div className="mt-6">
+          <button
+            onClick={handleRevealEmail}
+            className="bg-[#004930] text-white cursor-pointer font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-[#003822] hover:scale-105 transition-all duration-300"
+          >
+            Reveal Email
+          </button>
+          {showEmail && (
+  <p className="mt-4 text-lg text-[#004930] font-semibold flex items-center justify-center gap-2">
+    <FaEnvelope />
+    <a
+      href={`mailto:${user?.email}`}
+      className="underline hover:text-[#002d1e] transition"
+    >
+      {user?.email}
+    </a>
+  </p>
+)}
+        </div>
     </div>
   );
 };
