@@ -59,6 +59,7 @@ const ClientDetail = () => {
         <p className="text-gray-600 mt-2 flex items-center justify-center gap-2 text-lg font-medium">
           <FaUser className="text-[#00ff9f]" /> {client?.roleType}
         </p>
+       
 
         {/* Skills */}
         <p className="mt-4 text-gray-700 flex items-center justify-center gap-2 text-lg">
@@ -72,6 +73,7 @@ const ClientDetail = () => {
         {client?.bio && (
           <div className="mt-6 bg-gray-50 p-5 rounded-lg shadow-md border-l-4 border-[#004930]">
             <p className="text-gray-700 italic font-medium">"{client?.bio}"</p>
+            
           </div>
         )}
       </div>
