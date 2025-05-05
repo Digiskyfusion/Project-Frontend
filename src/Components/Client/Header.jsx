@@ -83,7 +83,7 @@ const Navbar = () => {
 
         {/* Logout Button (Desktop) */}
         <button
-          className="hidden md:block py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
+          className="hidden md:block py-2 px-6 border cursor-pointer border-white rounded-full hover:bg-red-500 transition duration-300"
           onClick={handleLogout}
         >
           Logout

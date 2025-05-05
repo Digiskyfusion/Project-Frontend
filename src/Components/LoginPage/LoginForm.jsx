@@ -95,14 +95,14 @@ function LoginForm() {
             <FaLock className="absolute left-3 top-3 text-gray-400" />
             <button
               type="button"
-              className="absolute right-3 top-3 text-gray-400"
+              className="absolute right-3 cursor-pointer top-3 text-gray-400"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </label>
 
-          <button className="bg-green-700 text-white py-3 rounded-lg w-full hover:bg-green-800 transition">
+          <button className="bg-green-700 cursor-pointer text-white py-3 rounded-lg w-full hover:bg-green-800 transition">
             Login
           </button>
           <a href="/forget">Forget Password?</a>

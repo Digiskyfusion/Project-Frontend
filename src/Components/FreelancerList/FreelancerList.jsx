@@ -98,7 +98,7 @@ const navigate= useNavigate()
                 </p>
                 <button
               onClick={() => navigate(`/freelancer/${client._id}`)}
-              className="bg-white text-black px-4 py-2 rounded-lg mt-4"
+              className="bg-white text-black cursor-pointer px-4 py-2 rounded-lg mt-4"
             >
               See Details
             </button>

@@ -9,10 +9,21 @@ const ClientDetail = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
+  const [userId, setUserId] = useState(null);
   const [client, setClient] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [loading, setLoading] = useState(true);
+  const [credits, setCredits] = useState(0);
+  const [showEmail, setShowEmail] = useState(false);
+  
+  useEffect(() => {
+    // Get user ID from localStorage
+    const c = JSON.parse(localStorage.getItem("user"));
+    if (c) {
+      setUserId(c._id);
+    }
+  }, []);
+  
   useEffect(() => {
     const fetchClientDetails = async () => {
       try {
@@ -24,10 +35,35 @@ const ClientDetail = () => {
         setLoading(false);
       }
     };
+  
+    const fetchUserDetails = async () => {
+      if (userId) {
+        try {
+          const response = await axios.get(`${API_URL}/user/${userId}`);
+          let getCredits= response.data.credits
+          setCredits(getCredits);
+          console.log("tis ",credits);
+          
+        } catch (err) {
+          console.error("Failed to fetch user details", err);
+        }
+      }
+    };
+  
+    fetchUserDetails();  // Call to fetch user details
+    fetchClientDetails();  // Call to fetch client details
+  
+  }, [API_URL, id, userId,credits]); // Only run this effect when API_URL, id, or userId changes
+  
 
-    fetchClientDetails();
-  }, [id]);
 
+  const handleRevealEmail = () => {
+    if (credits > 0) {
+      setShowEmail(true);
+    } else {
+      navigate("/MembershipPlans");
+    }
+  };
   if (loading)
     return <p className="text-center text-lg font-semibold animate-pulse text-[#004930]">Loading...</p>;
   if (error)
@@ -59,7 +95,6 @@ const ClientDetail = () => {
         <p className="text-gray-600 mt-2 flex items-center justify-center gap-2 text-lg font-medium">
           <FaUser className="text-[#00ff9f]" /> {client?.roleType}
         </p>
-       
 
         {/* Skills */}
         <p className="mt-4 text-gray-700 flex items-center justify-center gap-2 text-lg">
@@ -73,10 +108,29 @@ const ClientDetail = () => {
         {client?.bio && (
           <div className="mt-6 bg-gray-50 p-5 rounded-lg shadow-md border-l-4 border-[#004930]">
             <p className="text-gray-700 italic font-medium">"{client?.bio}"</p>
-            
           </div>
         )}
       </div>
+      <div className="mt-6">
+          <button
+            onClick={handleRevealEmail}
+            className="bg-[#004930] text-white cursor-pointer font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-[#003822] hover:scale-105 transition-all duration-300"
+          >
+            Reveal Email
+          </button>
+
+          {showEmail && (
+  <p className="mt-4 text-lg text-[#004930] font-semibold flex items-center justify-center gap-2">
+    <FaEnvelope />
+    <a
+      href={`mailto:${client?.email}`}
+      className="underline hover:text-[#002d1e] transition"
+    >
+      {client?.email}
+    </a>
+  </p>
+)}
+        </div>
     </div>
   );
 };

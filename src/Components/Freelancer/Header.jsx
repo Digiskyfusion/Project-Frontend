@@ -92,7 +92,7 @@ const Navbar = () => {
         {/* Logout Button (Desktop) */}
         <div className="hidden md:flex">
           <button
-            className="py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
+            className="py-2 px-6 border border-white rounded-full cursor-pointer hover:bg-red-500 transition duration-300"
             onClick={handleLogout}
           >
             Logout
