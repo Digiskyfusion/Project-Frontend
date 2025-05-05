@@ -219,13 +219,13 @@ const UserSkillsEdit = () => {
           <div className="w-full md:flex gap-3 justify-between mt-8">
             <button
               onClick={() => navigate(-1)}
-              className="px-6 py-2 w-full text-[#004930] border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
+              className="px-6 py-2 w-full text-[#004930] cursor-pointer border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
+              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] cursor-pointer text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}
