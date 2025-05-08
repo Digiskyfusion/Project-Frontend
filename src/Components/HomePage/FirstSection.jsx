@@ -45,7 +45,7 @@ function FirstSection() {
           
           <div className="flex justify-center items-center pb-3 mt-6 sm:mt-0">
           <div className="mt-6 sm:mt-0 text-white font-bold text-xl bg-white/20 px-6 text-center py-1 md:py-3 rounded-full shadow-lg">
-            Exciting Features Coming Soon!
+             Features Coming Soon!
           </div>
   {/* <div className="relative w-full sm:w-auto"> */}
          
