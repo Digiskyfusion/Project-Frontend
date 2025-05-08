@@ -1,94 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import axios from "axios";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import Digitalmarketing from "../../assets/Images/digital-marketing.avif";
+import Graphicdesigning from "../../assets/Images/graphic-designing.avif";
+import Videoeditor from "../../assets/Images/video-editor.avif";
+import Development from "../../assets/Images/development.jpg";
+import Contentwriter from "../../assets/Images/content-writing.avif";
+import InfulancerMarketing from "../../assets/Images/infulancer-marketing.avif";
+import { Link } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const skills = [
+  { name: "Digital Marketing", image: Digitalmarketing },
+  { name: "Graphic Designing", image: Graphicdesigning },
+  { name: "Video Editing", image: Videoeditor },
+  { name: "Development", image: Development },
+  { name: "Content Writing", image: Contentwriter },
+  { name: "Influencer Marketing", image: InfulancerMarketing },
+];
 
-const categoryImages = {
-  "Digital Marketing": "../../assets/Images/digital-marketing.avif",
-  "web-development": "/images/web-development.jpg",
-  "graphic-design": "/images/graphic-design.jpg",
-  "seo": "/images/seo.jpg",
-  "content-writing": "/images/content-writing.jpg",
-  // Add more categories as needed
-};
-
-function Category() {
-  const [swiperInstance, setSwiperInstance] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/category/categories`);
-        setCategories(response.data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCategories();
-  }, []);
-
-  if (loading) return <p className="text-center text-white">Loading categories...</p>;
-  if (error) return <p className="text-center text-red-500">{error}</p>;
-
+function SkillCarousel() {
   return (
-    <div className="relative px-6 md:px-10 lg:px-20 py-10">
-      <button
-        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
-        aria-label="Previous Slide"
-        onClick={() => swiperInstance?.slidePrev()}
-      >
-        <ChevronLeft size={24} color="white" />
-      </button>
-
+    <div className="relative px-4 sm:px-6 md:px-10 lg:px-28 bg-white overflow-hidden mt-4 lg:mt-10">
+      {/* Swiper Component with Pagination Dots */}
       <Swiper
-        modules={[Navigation]}
-        spaceBetween={30}
+        modules={[Pagination]}
+        spaceBetween={20}
         slidesPerView={1}
+        pagination={{ clickable: true }}
         breakpoints={{
-          540: { slidesPerView: 1.2 },
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 3 },
+          360: { slidesPerView: 1.2, spaceBetween: 10 },
+          480: { slidesPerView: 1, spaceBetween: 15 },
+          640: { slidesPerView: 2, spaceBetween: 15 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 30 }, 
+          1280: { slidesPerView: 3, spaceBetween: 40 }, 
         }}
-        onSwiper={setSwiperInstance}
-        className="w-full"
+        className="w-full mb-10" // Added padding-bottom for space
       >
-        {categories.map((category, index) => (
-          <SwiperSlide key={index} className="flex flex-col items-center bg-[#004930] shadow-lg p-6 rounded-3xl">
-            <div className="flex">
-              <div className="border-2 p-2 rounded-full border-white flex items-center justify-center w-16 h-16 overflow-hidden bg-white">
+        {skills.map((skill, index) => (
+          <SwiperSlide
+            key={index}
+            className="mb-4 md:mb-15 flex flex-col items-center bg-white shadow-lg p-6 rounded-3xl border border-gray-200 hover:scale-105 transition-transform duration-300 "
+          >
+          <Link to={`/skills/${encodeURIComponent(skill.name)}`}>
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[16/9] overflow-hidden rounded-xl shadow-md" >
               <img
-  loading="lazy"
-  src={categoryImages[category.name.toLowerCase().replace(/\s+/g, "-")] || "/images/default.jpg"}
-  alt={category.name}
-  className="w-10 h-10 object-cover rounded-full flex-shrink-0"
-/>
-              </div>
+                loading="lazy"
+                src={skill.image}
+                alt={skill.name}
+                className="object-cover w-full h-full"
+              />
             </div>
-            <h1 className="text-xl text-white font-bold mt-4">{category.name}</h1>
+            </Link>
+            <h1 className="text-lg lg:text-xl text-gray-900 font-semibold mt-3 text-center">
+              {skill.name}
+            </h1>
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <button
-        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-[#004930] p-3 rounded-full hover:bg-opacity-80 hidden md:flex"
-        aria-label="Next Slide"
-        onClick={() => swiperInstance?.slideNext()}
-      >
-        <ChevronRight size={24} color="white" />
-      </button>
     </div>
   );
 }
 
-export default Category;
+export default SkillCarousel;

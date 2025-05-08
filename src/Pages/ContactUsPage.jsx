@@ -8,6 +8,8 @@ import Footer from '../Components/Footer/Footer'
 import Secondsection from '../Components/HomePage/Secondsection'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
+import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HiddenContContact from "../Components/ContactusPage/HiddenContContact";
 
 function ContactUsPages() {
    const [roleType, setRoleType] = useState("");
@@ -30,11 +32,16 @@ function ContactUsPages() {
     }, []);
   
     return (
-      <div>
-        {/* Conditionally render headers based on roleType */}
-        {roleType === "freelancer" ? <Header1 /> : <Header2 />}
-
+       <div>
+             {roleType === "freelancer" ? (
+          <Header1 />
+        ) : roleType === "client" ? (
+          <Header2 />
+        ) : (
+          <HeaderGlobal />
+        )}
         <ContactUs />
+        <HiddenContContact />
         <Secondsection />
         <div className='md:flex md:justify-between '>
 

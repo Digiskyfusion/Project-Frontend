@@ -10,32 +10,42 @@ import SquareCards from "../Components/AboutusPage/SquareCard";
 import MeetFreelancer from "../Components/HomePage/MeetFreelancer";
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
+import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HiddenConOne from "../Components/AboutusPage/HiddenConOne";
+import HiddenFooterCon from "../Components/Footer/HiddenFooterCon";
+
 function AboutUsPage() {
- const [roleType, setRoleType] = useState("");
-   
-     // Fetch roleType from user data (localStorage or API)
-     useEffect(() => {
-       const userData = localStorage.getItem("user"); // Get from localStorage
-       if (userData) {
-         try {
-           const parsedData = JSON.parse(userData); // Parse JSON string
-           console.log("parsedData");
-           console.log(parsedData);
-           if (parsedData && parsedData.roleType) {
-             setRoleType(parsedData.roleType); // Set roleType state
-           }
-         } catch (error) {
-           console.error("Error parsing userInfo:", error);
-         }
-       }
-     }, []);
-   
-     return (
-       <div>
-         {/* Conditionally render headers based on roleType */}
-         {roleType === "freelancer" ? <Header1 /> : <Header2 />}
+  const [roleType, setRoleType] = useState(null);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user"); // Get from localStorage
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData); // Parse JSON string
+        console.log(parsedData);
+        
+        if (parsedData && parsedData.roleType) {
+          setRoleType(parsedData.roleType); // Set roleType state
+        }
+      } catch (error) {
+        console.error("Error parsing userInfo:", error);
+      }
+    }
+  }, []);
+
+  return (
+    <div>
+     {roleType === "freelancer" ? (
+  <Header1 />
+) : roleType === "client" ? (
+  <Header2 />
+) : (
+  <HeaderGlobal />
+)}
     <main className="">
       <About />
+      <HiddenConOne />
+      <HiddenFooterCon />
       <ImageCarousel />
 
       {/* How it Works Section */}

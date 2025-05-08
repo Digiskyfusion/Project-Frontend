@@ -1,10 +1,9 @@
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import LiveChatPage from "./Pages/LiveChatPage"
-import HomePage from "./Pages/HomePage"
-import AboutUsPage from "./Pages/AboutUsPage"
-import ContactUsPages from "./Pages/ContactUsPage"
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+// import LiveChatPage from "./Pages/LiveChatPage";
+import HomePage from "./Pages/HomePage";
+import AboutUsPage from "./Pages/AboutUsPage";
+import ContactUsPages from "./Pages/ContactUsPage";
 import ScrollToTop from "./Components/ScrolltopTop/ScrollToTop";
 import Services from "./Pages/Services";
 import ChooseUSPage from "./Pages/ChooseUSPage";
@@ -16,7 +15,7 @@ import Profileverification from "./Pages/FreelancerProfileVerification";
 import ClientFormPage from "./Pages/ClientFormPage";
 import CardsProfile from "./Components/CardProfilePage/CardsProfile";
 import Loginform from "./Components/LoginPage/LoginForm";
-import SubCategoryPage from "./Pages/SubCategoryPage";
+import Subcategory from "./Components/Client/subactegory";
 import Clientformmpage from "./Pages/Clientformmpage";
 import ClientProfile from "./Components/ClientProfile/Clientprofile";
 import StarPlusPage from "./Pages/StarPlusPage";
@@ -30,51 +29,68 @@ import SolarSystemPage from "./Pages/SolarSystemPage";
 import CartTvPage from "./Pages/CartTvPage";
 import PostJobPage from "./Pages/PostJobPage";
 import AllJobsPage from "./Pages/AllJobsPage";
-import FreelancerProfiles from "./Components/Client/FreelancerProfile";
 import MembershipPlans from "./Components/HomePage/Card";
-import ReviewForm from "./Components/ReviewForm/ReviewForm";
-import ReviewList from "./Components/ReviewForm/ReviewList";
 import TermAndConditionPage from "./Pages/TermAndConditionPage";
 import PrivacyNdPolicyPage from "./Pages/PrivacyNdPolicyPage";
 import CancellationRefundPage from "./Pages/CancellationRefundPage";
-// import Navbar from "./Components/Navbar/Navbar";
 import Content from "./Components/RandomContent/Content";
 import Signuppage from "./Components/SignupPage/Signuppage";
-import Education from "./Components/EducationPage/Education";
 import FullJobCard from "./Components/ServicePage/FullJobCard";
 import SquareCards from "./Components/AboutusPage/SquareCard";
 import Work from "./Components/HomePage/Work";
 import DiscoverHirePage from "./Pages/DiscoverHirePage";
-import Subcategory from "./Pages/subactegory";
-
+import UserProfile from "./Components/Client/UsersProfiles";
+import EditProfilePage from "./Pages/EditProfile";
+import SkillsCardPage from "./Pages/SkillsCardPage";
+import UserSkillPage from "./Pages/UserSkillPage";
+import UserProfileDetals from "./Pages/UserProfileDetals";
+import WriteReviewPage from "./Pages/WriteReviewPage";
+import AllReviewPage from "./Pages/AllReviewPage";
+import FreelancerSkillsPage from "./Pages/FreelancerSkillsPage";
+import ClientListPage from "./Pages/ClientListPage";
+import FreelancerListPage from "./Pages/FreelancerListPage";
+import FreelancerDetailsPage from "./Pages/FreelancerDetailsPage";
+import ClientDetailPage from "./Pages/ClientDetailPage";
+import UserDetalPage from "./Pages/UserDetalPage";
+import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
+import ReceiptPage from './Pages/ReceiptPage';
+import PalnsPage from "./Pages/PalnsPage";
 
 function App() {
+  
+
+  useEffect(() => {
+    const removeToken = () => {
+      localStorage.removeItem("token");
+      console.log("Token removed after 2 hours");
+    };
+
+    const timeout = setTimeout(removeToken, 2 * 60 * 60 * 1000); // 2 hours
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <>
-<BrowserRouter>
-<ScrollToTop />   
-{/* <Navbar />       */}
+    <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/MembershipPlans" element={<MembershipPlans />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
-        <Route path="/livechat" element={<LiveChatPage />} />
+        {/* <Route path="/livechat" element={<LiveChatPage />} /> */}
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
-        <Route path="/service" element={ <Services />} /> 
-        <Route path="/dashboard" element={ <DashboardPage />} /> 
-        <Route path="/FreelancerNoUpadte" element={  <FreelancerProfilePage />} />
-        <Route path="/Profileverification" element={ <Profileverification />} />
-        <Route path="/FreelancerUpadte" element={  <FreelancerDetails />} />
+        <Route path="/service" element={<Services />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} />
+        <Route path="/Profileverification" element={<Profileverification />} />
+        <Route path="/FreelancerUpadte" element={<FreelancerDetails />} />
         <Route path="/contactus" element={<ContactUsPages />} />
         <Route path="/registration" element={<Signuppage />} />
-        <Route path="/Subcatagory" element={<SubCategoryPage />} />
-        <Route path="/ClientForm" element={ <ClientFormPage />} />
-        <Route path="/contactus" element={<ContactUsPages />} />
-        <Route path="/freelancerDetails/:id" element={<Education  />} />
-        <Route path="/clientDetails/:id" element={<CardsProfile  />} />
+        <Route path="/ClientForm" element={<ClientFormPage />} />
+        <Route path="/clientDetails/:id" element={<CardsProfile />} />
         <Route path="/login" element={<Loginform />} />
-        <Route path="/discover" element={<DiscoverHirePage   />} />
+        <Route path="/forget" element={<ForgetPasswordPage />} />
+        <Route path="/discover" element={<DiscoverHirePage />} />
         <Route path="/client" element={<Clientformmpage />} />
         <Route path="/ClientProfile" element={<ClientProfile />} />
         <Route path="/ADCDPAGE" element={<StarPlusPage />} />
@@ -82,7 +98,7 @@ function App() {
         <Route path="/starplus" element={<AdvertisingPage />} />
         <Route path="/ajtak" element={<AjTakPage />} />
         <Route path="/colors" element={<ColorPages />} />
-        <Route path="/astha" element={<AsthaPage />} />s
+        <Route path="/astha" element={<AsthaPage />} />
         <Route path="/detailpage" element={<DetailPage />} />
         <Route path="/solarsystem" element={<SolarSystemPage />} />
         <Route path="/card" element={<MembershipPlans />} />
@@ -96,17 +112,26 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
-        <Route path="/Freelancerprofile" element={<FreelancerProfiles />} />
-        <Route path="/createreview" element={<ReviewForm />} />
-        <Route path="/reviewslist" element={<ReviewList />} />
+        {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
+        <Route path="/createreview" element={<WriteReviewPage />} />
+        <Route path="/reviewslist" element={<AllReviewPage />} />
+        <Route path="/EditProfile" element={<EditProfilePage />} />
         <Route path="/CategoryData/:categoryId" element={<Subcategory />} />
+        <Route path="/userprofile/:subCategoryId" element={<UserProfile />} />
+        <Route path="/skills/:skillName" element={<SkillsCardPage />} />
+        <Route path="/UserSkills" element={<UserSkillPage />} />
+        <Route path="/freelancerSkill" element={<FreelancerSkillsPage />} />
+        <Route path="/profile/:id" element={<UserProfileDetals />} />
+        <Route path="/clientlist" element={<ClientListPage />} />
+        <Route path="/freelancerlist" element={<FreelancerListPage />} />
+        <Route path="/freelancer/:id" element={<FreelancerDetailsPage />} />
+        <Route path="/client/:id" element={<ClientDetailPage />} />
+        <Route path="/user/:id" element={<UserDetalPage />} />
+        <Route path="/MembershipPlans" element={<PalnsPage />} />
+        <Route path="/reciept" element={<ReceiptPage />} />
       </Routes>
     </BrowserRouter>
-    
-
-  
-    </>
-  )
+  );
 }
 
 export default App;
