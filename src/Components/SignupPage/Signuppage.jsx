@@ -3,7 +3,10 @@ import { useNavigate , Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";
-import newpic from "./../../assets/Images/new pic.png";
+// import newpic from "./../../assets/Images/new pic.png";
+import Logo from '../../assets/Images/digilogo12.png';
+import newpic from '../../assets/Images/signupnew.png';
+
 
 function Signuppage() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -18,39 +21,42 @@ function Signuppage() {
     password: "",
     confirm_password: "",
     roleType: "",
-    country: "",
+    state: "",
     mobileNumber: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value); // Debugging
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleRoleChange = (role) => {
+    // console.log(role);
+    
     setFormData((prevData) => ({ ...prevData, roleType: role }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Form Data:", formData); // Check if state is included pr
     if (formData.password !== formData.confirm_password) {
       return toast.error("Passwords do not match!");
     }
 
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, formData);
+      const response = await axios.post(`${API_URL}/user/register`, formData);
       console.log("Response:", response);
 
       if (response.status === 200) {
-        toast.success(response.data.message);
+        toast.success("user register successfully");
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
-        navigate(formData.roleType === "freelancer" ? "/FreelancerClientPage" : "/client");
+        navigate("/login");
 
         setFormData({
           name: "",
-          country: "",
+          state: "",
           email: "",
           password: "",
           confirm_password: "",
@@ -58,7 +64,8 @@ function Signuppage() {
           mobileNumber: "",
         });
       } else {
-        toast.error(response.data.message || "Something went wrong!");
+        toast.success("user register successfully");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Signup Error:", error);
@@ -67,10 +74,14 @@ function Signuppage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
+    <>
+    <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 ">
       <Toaster />
       <div className="p-8 bg-white shadow-lg rounded-lg w-full md:w-1/2 flex flex-col items-center">
-        <h1 className="text-4xl font-bold text-green-700 mb-4">DIGISKY</h1>
+      <Link to="/" className="text-2xl font-bold">
+                 <img src={Logo} alt="Logo" className="bg-black h-12  md:h-16 rounded-md " />
+               </Link>
+        
         <p className="text-gray-600 mb-6">Create an account to continue</p>
 
         <div className="w-full mb-4">
@@ -91,10 +102,53 @@ function Signuppage() {
               <input type="text" name="name" placeholder="Enter name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded-lg" />
               <FaUser className="absolute right-3 top-3 text-gray-400" />
             </label>
-            <label className="relative">
-              <input type="text" name="country" placeholder="Enter country" value={formData.country} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-              <FaGlobe className="absolute right-3 top-3 text-gray-400" />
-            </label>
+            <label className="relative w-full">
+  <select
+    name="state"
+    value={formData.state}
+    onChange={handleChange}
+    className="w-full p-2 border rounded-lg appearance-none bg-white"
+  >
+    <option value="">Select a state</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Ladakh">Ladakh</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+  </select>
+</label>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -138,16 +192,64 @@ function Signuppage() {
           </p>
         </form>
 
-        <div className="flex flex-col items-center gap-4 mt-6 w-full">
+        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
           <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
             <FaGoogle className="text-xl" /> Continue with Google
           </button>
-        </div>
+        </div> */}
       </div>
       <div className="hidden md:flex justify-center w-1/2">
         <img loading="lazy" src={newpic} alt="Signup" className="w-full max-w-lg shadow-lg rounded-lg" />
       </div>
     </div>
+
+
+
+    <div className="bg-gray-100 py-8 px-4">
+       <h1 className="text-center text-xl md:text-3xl font-bold italic text-gray-800 mb-8 underline decoration-green-700 decoration-2">
+         Explore Ours
+       </h1>
+     
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+   {/* Client Demo */}
+   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
+     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
+       Client Demo
+     </p>
+     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+       <iframe
+       src="https://www.youtube.com/embed/cGP8DunjPys"
+          title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         className="absolute top-0 left-0 w-full h-full object-cover"
+       >
+       </iframe>
+     </div>
+   </div>
+ 
+   {/* Freelancer Demo */}
+   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
+     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
+       Freelancer Demo
+     </p>
+     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+       <iframe
+         className="absolute top-0 left-0 w-full h-full object-cover"
+         src="https://www.youtube.com/embed/41FH3-GKPcI" 
+          title="YouTube video player"
+       >
+       </iframe>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+    </>
   );
 }
 

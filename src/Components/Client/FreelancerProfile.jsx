@@ -1,31 +1,43 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import noimage from "../../assets/Images/userimage.png";
-import { UserContext } from "../../Context/UserContext.jsx";
-// import Header from "../../components/Global/Layouts/Header.jsx";
-// import CategoryBar from "../../components/Global/CategoryBar.jsx";
+import Header1 from "../Freelancer/Header";
+import Header2 from "../Client/Header";
 
 const FreelancersProfile = () => {
-    const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [freelancers, setFreelancers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { userInfo } = useContext(UserContext);
+  const [roleType, setRoleType] = useState(null);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData);
+        if (parsedData?.roleType) {
+          setRoleType(parsedData.roleType);
+        }
+      } catch (error) {
+        console.error("Error parsing userInfo:", error);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [freelancersResponse, categoriesResponse] = await Promise.all([
-            axios.get(`${API_URL}/users/user`),
-            axios.get(`${API_URL}/category/categories`),
+          axios.get(`${API_URL}/users/user`),
+          axios.get(`${API_URL}/category/categories`),
         ]);
         setFreelancers(freelancersResponse.data.users || []);
         setCategories(categoriesResponse.data || []);
@@ -38,37 +50,10 @@ const FreelancersProfile = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchSubcategories = async () => {
-      if (!selectedCategory) {
-        setSubcategories([]);
-        return;
-      }
-      try {
-        const response = await axios.get(
-          `${API_URL}/subcategory/subcategories/category/${selectedCategory}`
-        );
-        setSubcategories(response.data || []);
-      } catch {
-        setError("Failed to load subcategories.");
-      }
-    };
-    fetchSubcategories();
-  }, [selectedCategory]);
-
-  const filteredFreelancers = freelancers.filter(
-    (freelancer) =>
-      freelancer.credits > 0 &&
-      freelancer?.profileData?.bio &&
-      freelancer?.profileData?.user_image &&
-      freelancer?.categoryData?.length > 0 &&
-      (selectedCategory ? freelancer?.profileData?.category === selectedCategory : true)
-  );
-
   const enableChat = async (freelancerId, freelancerName, freelancerCredits) => {
     try {
       const token = localStorage.getItem("token");
-      if (!userInfo || !token) {
+      if (!roleType || !token) {
         navigate("/login");
         return;
       }
@@ -93,21 +78,20 @@ const FreelancersProfile = () => {
   };
 
   if (loading)
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return <div className="flex justify-center items-center h-screen text-[#004930] font-bold text-2xl">Loading...</div>;
 
   if (error)
-    return <div className="flex justify-center items-center h-screen text-red-600">{error}</div>;
+    return <div className="flex justify-center items-center h-screen text-red-600 text-lg">{error}</div>;
 
   return (
     <>
-      {/* <Header />
-      <CategoryBar/> */}
+          
       <div className="mx-auto mt-8 w-11/12">
         <div className="flex items-center space-x-4">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="p-3 border border-gray-300 rounded-lg w-1/3"
+            className="p-3 border border-gray-300 rounded-lg w-1/3 text-[#004930] font-semibold shadow-md hover:border-[#003420] transition duration-300"
           >
             <option value="">Select Category</option>
             {categories.map((category) => (
@@ -115,51 +99,49 @@ const FreelancersProfile = () => {
             ))}
           </select>
         </div>
+        <motion.div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-10 w-11/12">
+          {freelancers.map((freelancer) => (
+            <motion.div
+              key={freelancer._id}
+              className="bg-white shadow-xl border border-[#004930] rounded-xl overflow-hidden transform transition duration-300 hover:shadow-2xl hover:scale-105"
+            >
+              <div className="p-6 text-center">
+                <img
+                  className="mx-auto mb-4 rounded-full w-24 h-24 border-4 border-[#004930] shadow-lg"
+                  src={freelancer?.profileData?.user_image || noimage}
+                  alt={freelancer.name || "N/A"}
+                />
+                <h2 className="font-bold text-xl text-[#004930]">{freelancer.name || "N/A"}</h2>
+                <p className="text-gray-500 text-sm">{freelancer?.location || "Location not provided"}</p>
+              </div>
+              <div className="px-6 py-4 bg-gray-50">
+                <p className="text-gray-700 text-sm">
+                  <span className="font-bold text-[#004930]">Bio: </span>
+                  {freelancer?.profileData?.bio?.split(" ").slice(0, 20).join(" ") || "Bio Not Added"}...
+                </p>
+                <p className="text-gray-700 text-sm">
+                  <span className="font-bold text-[#004930]">Skillset: </span>
+                  {freelancer?.categoryData[0]?.name || "Skillset not added"}
+                </p>
+              </div>
+              <div className="flex justify-between p-4 border-t bg-white">
+                <button
+                  onClick={() => enableChat(freelancer._id, freelancer.name, freelancer.credits)}
+                  className="bg-[#004930] hover:bg-green-800 px-5 py-2 rounded-lg text-white font-semibold shadow-md transition duration-300"
+                >
+                  Chat Now
+                </button>
+                <button
+  onClick={() => navigate(`/profile/${freelancer._id}`)}
+  className="bg-gray-200 hover:bg-gray-300 px-5 py-2 rounded-lg text-gray-700 font-semibold shadow-md transition duration-300"
+>
+  See Details
+</button>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-
-      <motion.div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-10 w-11/12">
-        {filteredFreelancers.map((freelancer) => (
-          <motion.div
-            key={freelancer._id}
-            className="bg-white shadow-lg border border-gray-200 rounded-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="p-6 text-center">
-              <img
-                className="mx-auto mb-4 rounded-full w-20 h-20"
-                src={freelancer?.profileData?.user_image || noimage}
-                alt={freelancer.name || "N/A"}
-              />
-              <h2 className="font-bold text-lg">{freelancer.name || "N/A"}</h2>
-              <p className="text-gray-500 text-sm">{freelancer?.location || "Location not provided"}</p>
-            </div>
-            <div className="px-6 py-4">
-              <p className="text-gray-700 text-sm truncate-text">
-                <span className="font-bold">Bio: </span>
-                {freelancer?.profileData?.bio?.split(" ").slice(0, 20).join(" ") || "Bio Not Added"}...
-              </p>
-              <p className="text-gray-700 text-sm">
-                <span className="font-bold">Skillset: </span>
-                {freelancer?.categoryData[0]?.name || "Skillset not added"}
-              </p>
-            </div>
-            <div className="flex justify-between p-4 border-t">
-              <button
-                onClick={() => enableChat(freelancer._id, freelancer.name, freelancer.credits)}
-                className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-white"
-              >
-                Chat Now
-              </button>
-              <button
-                onClick={() => navigate(`/user/${freelancer._id}`)}
-                className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg text-gray-700"
-              >
-                See Details
-              </button>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
     </>
   );
 };

@@ -2,17 +2,40 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Carousel from "./Carousel";
 
-function MeetFreelancer() {
+function Component() {
   const navigate = useNavigate();
-
   const handleDetailsClick = () => {
     const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user"); // Retrieve user object
+  
     if (!token) {
       navigate("/login"); // Redirect to login if no token
+      return;
+    }
+  
+    if (user) {
+      try {
+        const parsedUser = JSON.parse(user); // Parse stored user object
+        const roleType = parsedUser?.roleType; // Get role safely
+  
+        // console.log("User Role:", roleType); // Debugging
+        
+        if (roleType === "client") {
+          navigate("/freelancerlist"); // Navigate to client list
+        } else if (roleType === "freelancer") {
+          navigate("/clientlist"); // Navigate to freelancer list
+        } else {
+          navigate("/login"); // Default fallback
+        }
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+        navigate("/login"); // Fallback navigation
+      }
     } else {
-      navigate("/allfreelancer"); // Navigate to all freelancers if token exists
+      navigate("/login"); // If no user is found
     }
   };
+  
 
   return (
     <motion.div
@@ -72,4 +95,4 @@ function MeetFreelancer() {
   );
 }
 
-export default MeetFreelancer;
+export default Component;

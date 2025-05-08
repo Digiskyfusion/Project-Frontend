@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { motion } from "framer-motion";
 import { FaStar, FaRegStar } from "react-icons/fa"; 
 import axios from "axios";
-import Footer from "../Footer/Footer";
 
 const ReviewList = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [reviews, setReviews] = useState([]);
   const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/review/allreview").then((response) => {
+    axios.get(`${API_URL}/review/allreview`).then((response) => {
       setReviews(response.data);
     });
   }, []);
@@ -61,7 +61,6 @@ const ReviewList = () => {
         ))}
       </div>
     </div>
-<Footer />
     </>
   );
 };

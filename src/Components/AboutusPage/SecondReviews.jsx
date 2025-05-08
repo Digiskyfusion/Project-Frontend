@@ -86,9 +86,9 @@ function SecondReviews() {
             </div>
             <h2 className="text-xl text-center mt-3">{selectedReview.name}</h2>
             <p className="mt-2 text-center px-10 min-h-[80px]">{selectedReview.text}</p>
-            <button className='bg-[#004930] rounded-full text-white px-5 py-2 mt-4 block mx-auto'>
+            {/* <button className='bg-[#004930] rounded-full text-white px-5 py-2 mt-4 block mx-auto'>
               Read Review
-            </button>
+            </button> */}
 
             {/* {/ Reviewers' Images /} */}
             <div className='md:flex md:items-center'>

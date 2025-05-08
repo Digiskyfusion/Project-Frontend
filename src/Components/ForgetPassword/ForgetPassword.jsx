@@ -9,7 +9,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`"${URL}api/auth/forget-password"`, {
+      const response = await fetch(`http://localhost:5000/api/auth/forget-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -22,7 +22,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center pt-9 pb-10 bg-gray-100">
       <div className="p-6 bg-white rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-semibold mb-4">Forgot Password</h2>
         <form onSubmit={handleSubmit}>
