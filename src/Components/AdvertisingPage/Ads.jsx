@@ -58,9 +58,9 @@ function Ads() {
           <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
            <Link to="/ADCDPAGE">Execution Detail</Link> 
           </button>
-          <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
+          {/* <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
             Execution Detail
-          </button>
+          </button> */}
         </div>
       </div>
 

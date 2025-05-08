@@ -13,7 +13,7 @@ const skillsOptions = [
   "Influencer Marketing",
 ];
 
-const UserSkillsEdit = () => {
+const FreelancerSkills = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -50,6 +50,7 @@ const UserSkillsEdit = () => {
     fetchUserData();
   }, [API_URL, userId]);
 
+  
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -86,29 +87,29 @@ const UserSkillsEdit = () => {
   
   
   
-  
 
   const handleSave = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        toast.error("Authentication token not found. Please log in again.");
-        navigate("/login");
-        return;
-      }
-
+  
       const response = await axios.put(`${API_URL}/user/${userId}`, user, {
-        headers: { Authorization: `Bearer ${token}` },
       });
-      // console.log("hello",user);
-      
-
+  
       if (response.status === 200) {
         toast.success("Profile updated successfully!");
+  
+        // Update the user state with the latest saved data to persist it in inputs
+        setUser({
+          ...user,
+          bio: response.data.bio || user.bio,
+          experience: response.data.experience || user.experience,
+          skills: response.data.skills || user.skills,
+          image: response.data.image || user.image,
+        });
+  
         setTimeout(() => {
           navigate("/UserSkills");
-          window.location.reload();
+          window.location.reload(); // Reload to reflect updated data
         }, 500);
       } else {
         toast.error(response?.data?.message || "Failed to update profile.");
@@ -119,6 +120,7 @@ const UserSkillsEdit = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="flex flex-col bg-green-100 p-4 md:p-8">
@@ -126,7 +128,7 @@ const UserSkillsEdit = () => {
       <div className="flex flex-grow justify-center items-center">
         <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-6xl transform hover:scale-[1.02] transition-all duration-300">
           <h1 className="text-4xl font-bold text-center text-[#004930] mb-6 animate-fade-in">
-           Requirement 
+       Add Skills
           </h1>
 
           <div className="grid grid-cols-1 gap-6">
@@ -182,7 +184,7 @@ const UserSkillsEdit = () => {
             </div>
 
             {/* Experience */}
-            {/* <div className="relative animate-fade-in delay-100">
+            <div className="relative animate-fade-in delay-100">
               <label className="block text-[#004930] font-medium mb-2">Experience</label>
               <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
                 <span className="px-3 text-[#004930]"><FaBriefcase /></span>
@@ -194,7 +196,7 @@ const UserSkillsEdit = () => {
                   placeholder="Years of experience"
                 />
               </div>
-            </div> */}
+            </div>
 
             {/* Image Upload */}
             <div className="relative animate-fade-in delay-100">
@@ -219,13 +221,13 @@ const UserSkillsEdit = () => {
           <div className="w-full md:flex gap-3 justify-between mt-8">
             <button
               onClick={() => navigate(-1)}
-              className="px-6 py-2 w-full text-[#004930] cursor-pointer border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
+              className="px-6 py-2 w-full text-[#004930] border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] cursor-pointer text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
+              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}
@@ -237,4 +239,4 @@ const UserSkillsEdit = () => {
   );
 };
 
-export default UserSkillsEdit;
+export default FreelancerSkills;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import joboffer from '../../assets/Images/joboffer.png';
 import workdone from '../../assets/Images/workdone.jpg';
@@ -6,9 +6,20 @@ import jobpost from '../../assets/Images/jobpost.jpg';
 import first from '../../assets/Images/first.png';
 
 function Work() {
-  const [view, setView] = useState('client');
+  const [view, setView] = useState("client");
   const [hoverIndex, setHoverIndex] = useState(null);
+  const [roleType, setRoleType] = useState(null); // State to hold role type  
   const navigate = useNavigate();
+// Fetch the role from localStorage when the component mounts
+useEffect(() => {
+  const storedRole = JSON.parse(localStorage.getItem('user'));
+
+  if (storedRole && storedRole.roleType) {
+    setRoleType(storedRole.roleType);  // Update roleType state with stored value
+  } else {
+    console.log("No roleType found in stored data");
+  }
+}, []);
 
   // Generic function for navigation
   const handleNavigation = (route) => {
@@ -18,14 +29,14 @@ function Work() {
 
   const content = {
     client: [
-      { img: joboffer, title: 'Search Freelancer', text: 'Search freelancers by category, describe your project, set your budget, and hire the best talent.', route: '/Freelancerprofile' },
-      { img: jobpost, title: 'Connect with Experts', text: 'Browse top-rated freelancers, check their work, and hire with confidence.', route: '/Freelancerprofile' },
-      { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/Freelancerprofile' }
+      { img: joboffer, title: 'Search Freelancer', text: 'Search freelancers by category, describe your project, set your budget, and hire the best talent.', route: '/freelancerlist' },
+      { img: jobpost, title: 'Connect with Experts', text: 'Browse top-rated freelancers, check their work, and hire with confidence.', route: '/freelancerlist' },
+      { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/freelancerlist' }
     ],
     freelancer: [
-      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/Profileverification" },
-      { img: workdone, title: 'Stay Active on the Platform', text: 'Be online frequently to increase visibility and get more job invitations.', route: "/Freelancerprofile" },
-      { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route: "/chat" }
+      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/clientlist" },
+      { img: workdone, title: 'Stay Active on the Platform', text: 'Be online frequently to increase visibility and get more job invitations.', route: "/clientlist" },
+      { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route: "/clientlist" }
     ]
   };
 
@@ -33,17 +44,19 @@ function Work() {
     <div className="bg-gray-100 py-7 px-3">
       <h1 className="text-3xl font-bold mt-3 md:px-5 text-gray-800">How It Works</h1>
 
-      {/* Toggle Buttons */}
+        {/* Toggle Buttons */}
       <div className="mb-6 flex md:mt-2 border-b-4 border-gray-300">
         <button
           className={`px-3 py-2 mx-2 text-2xl cursor-pointer text-black ${view === 'client' ? 'border-b-4 border-green-500' : ''}`}
           onClick={() => setView('client')}
+          disabled={roleType === 'freelancer'} // Disable if roleType is freelancer
         >
           Client
         </button>
         <button
           className={`px-6 py-2 mx-2 text-2xl cursor-pointer text-black ${view === 'freelancer' ? 'border-b-4 border-green-500' : ''}`}
           onClick={() => setView('freelancer')}
+          disabled={roleType === 'client'} // Disable if roleType is client
         >
           Freelancer
         </button>
@@ -53,7 +66,7 @@ function Work() {
         {/* Vertical Center Line */}
         <div className="hidden md:block border-r-4 border-gray-300 h-full absolute left-1/2 transform -translate-x-1/2"></div>
 
-        {content[view].map((item, index) => (
+        {content[view]?.map((item, index) => (
           <div
             key={index}
             className="grid grid-cols-1 md:grid-cols-2 items-center relative text-center md:text-left"

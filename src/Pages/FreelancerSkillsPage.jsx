@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../Components/Footer/Footer'
-import CartTv from '../Components/CartTvPage/CartTv'
+import FreelancerSkills from '../Components/FreelancerSkill/FreelancerSkills'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
-import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HeaderGlobal from "../Components/Header"; // Import Global Head
+function FreelancerSkillsPage() {
 
-function CartTvPage() {
-   const [roleType, setRoleType] = useState(null);
+    const [roleType, setRoleType] = useState(null);
         
-          useEffect(() => {
+          useEffect (() => {
             const userData = localStorage.getItem("user"); // Get from localStorage
             if (userData) {
               try {
@@ -23,19 +23,20 @@ function CartTvPage() {
               }
             }
           }, []);
+        
   return (
     <div>
         {roleType === "freelancer" ? (
-      <Header1 />
-    ) : roleType === "client" ? (
-      <Header2 />
-    ) : (
-      <HeaderGlobal />
-    )}
-      <CartTv />
+  <Header1 />
+) : roleType === "client" ? (
+  <Header2 />
+) : (
+  <HeaderGlobal />
+)}
+      <FreelancerSkills />
       <Footer />
     </div>
   )
 }
 
-export default CartTvPage
+export default FreelancerSkillsPage

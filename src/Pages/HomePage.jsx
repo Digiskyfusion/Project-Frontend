@@ -10,6 +10,8 @@ import MeetFreelancer from "../Components/HomePage/MeetFreelancer";
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Header
+// import MembershipPlans from "../Components/HomePage/Card";
+// import MembershipPlans from "../Components/HomePage/Card";
 
 function HomePage() {
   const [roleType, setRoleType] = useState(null);
@@ -43,6 +45,7 @@ function HomePage() {
       <FirstSection />
       <Secondsection />
       <SolarSystem />
+      {/* <MembershipPlans /> */}
       <Work />
       <ReviewSection />
       <CarouselSection />

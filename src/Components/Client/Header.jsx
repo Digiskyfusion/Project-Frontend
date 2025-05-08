@@ -50,8 +50,11 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
-          <NavLink to="/Freelancerprofile" className="hover:text-yellow-400">Freelancers</NavLink>
-          <NavLink to="/UserSkills" className="hover:text-yellow-400">User Skills</NavLink>
+          <NavLink to="/freelancerlist" className="hover:text-yellow-400">Freelancers</NavLink>
+          <NavLink to="/UserSkills" className="hover:text-yellow-400">Add Requirement</NavLink>
+          <NavLink to="/MembershipPlans" className="hover:text-yellow-400">Plans</NavLink>
+          <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400">Tv Channels</NavLink>
           
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
@@ -80,7 +83,7 @@ const Navbar = () => {
 
         {/* Logout Button (Desktop) */}
         <button
-          className="hidden md:block py-2 px-6 border border-white rounded-full hover:bg-red-500 transition duration-300"
+          className="hidden md:block py-2 px-6 border cursor-pointer border-white rounded-full hover:bg-red-500 transition duration-300"
           onClick={handleLogout}
         >
           Logout
@@ -99,8 +102,11 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
-          <NavLink to="/Freelancerprofile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink>
+          <NavLink to="/freelancerlist" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink>
           <NavLink to="/UserSkills" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>User Skills</NavLink>
+          <NavLink to="/MembershipPlans" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Plans</NavLink>
+          <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>reciept</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Tv Channels</NavLink>
           
           {/* Skills Dropdown for Mobile */}
           <div className="relative">
