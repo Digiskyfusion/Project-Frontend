@@ -3,8 +3,9 @@ import { useNavigate , Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";
-import newpic from "./../../assets/Images/new pic.png";
+// import newpic from "./../../assets/Images/new pic.png";
 import Logo from '../../assets/Images/digilogo12.png';
+import newpic from '../../assets/Images/signupnew.png';
 
 
 function Signuppage() {
@@ -73,7 +74,8 @@ function Signuppage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 min-h-screen">
+    <>
+    <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 ">
       <Toaster />
       <div className="p-8 bg-white shadow-lg rounded-lg w-full md:w-1/2 flex flex-col items-center">
       <Link to="/" className="text-2xl font-bold">
@@ -200,6 +202,52 @@ function Signuppage() {
         <img loading="lazy" src={newpic} alt="Signup" className="w-full max-w-lg shadow-lg rounded-lg" />
       </div>
     </div>
+
+
+ <div className="bg-gray-100 py-8 px-4">
+       <h1 className="text-center text-xl md:text-3xl font-bold italic text-gray-800 mb-8 underline decoration-green-700 decoration-2">
+         Explore Ours
+       </h1>
+     
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+   {/* Client Demo */}
+   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
+     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
+       Client Demo
+     </p>
+     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+       <iframe
+       src="https://www.youtube.com/embed/cGP8DunjPys"
+          title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         className="absolute top-0 left-0 w-full h-full object-cover"
+       >
+       </iframe>
+     </div>
+   </div>
+ 
+   {/* Freelancer Demo */}
+   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
+     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
+       Freelancer Demo
+     </p>
+     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+       <iframe
+         className="absolute top-0 left-0 w-full h-full object-cover"
+         src="https://www.youtube.com/embed/41FH3-GKPcI" 
+          title="YouTube video player"
+       >
+       </iframe>
+     </div>
+   </div>
+ </div>
+ 
+     </div>
+
+
+
+
+    </>
   );
 }
 

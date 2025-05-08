@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CiInstagram, CiFacebook } from "react-icons/ci";
 import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import HiddenFooterCon from "./HiddenFooterCon";
 
 function Footer() {
   return (
@@ -52,7 +51,6 @@ function Footer() {
       <div className="flex justify-center mt-6">
         <hr className="w-full md:w-[95%] border-white border-t-2" />
       </div>
-      <HiddenFooterCon />
       
       <div className="text-center text-sm mt-4">
         <p className="opacity-80">© 2024 DigiSky Fusion. All Rights Reserved.</p>
