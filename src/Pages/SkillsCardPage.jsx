@@ -4,6 +4,7 @@ import Footer from '../Components/Footer/Footer'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HiddenSkillContent from '../Components/SkillsHiddenContent/HiddenSkillContent';
 function SkillsCardPage() {
 
      const [roleType, setRoleType] = useState(null);
@@ -32,7 +33,9 @@ function SkillsCardPage() {
 ) : (
   <HeaderGlobal />
 )}
+ <HiddenSkillContent />
       <SkillPage />
+     
       <Footer />
     </div>
   )
