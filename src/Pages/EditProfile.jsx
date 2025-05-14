@@ -7,6 +7,7 @@
   import Header2 from "../Components/Client/Header";
   import HeaderGlobal from "../Components/Header";
   import Footer from "../Components/Footer/Footer.jsx";
+import EditProfileHiddenContent from "../Components/EditProfileHidden/EditProfileHiddenContent.jsx";
 
   const UserEdit = () => {
     const navigate = useNavigate();
@@ -110,6 +111,7 @@
       <div className="min-h-screen flex flex-col bg-green-100">
         <Toaster />
         {roleType === "freelancer" ? <Header1 /> : roleType === "client" ? <Header2 /> : <HeaderGlobal />}
+        <EditProfileHiddenContent />
 
         <div className="flex flex-grow justify-center items-center px-6 py-10">
           <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-4xl">
