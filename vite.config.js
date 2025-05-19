@@ -8,4 +8,7 @@ export default defineConfig({
   server: {
     historyApiFallback: true, // Enables routing fallback for React Router
   },
+  build: {
+    outDir: "dist", // required by Vercel if not default
+  }
 });
