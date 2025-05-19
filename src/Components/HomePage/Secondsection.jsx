@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 function Secondsection() {
   const features = [
-    { icon: <FaPencilAlt />, title: 'Drop us a message', text: 'We’d love to hear from you!' },
+    { icon: <FaPencilAlt />, title: 'Drop us a text', text: 'We’d love to hear from you!' },
     { icon: <FaPencilAlt />, title: 'Let’s work together', text: 'Whether you’re hiring or freelancing, we’ve got your back.' },
     { icon: <FaShieldVirus />, title: 'Join a thriving network', text: 'Connect with top talent and game-changing projects' },
   ];
