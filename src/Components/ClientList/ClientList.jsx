@@ -87,12 +87,21 @@ const navigate= useNavigate()
                                                     <FaTools className="mr-2 text-[#00ff9f]" />
                                                     {client.skills?.length ? client.skills.join(", ") : "N/A"}
                                                   </p>
-                                                  <button
+                                                 <div className="flex flex-col lg:flex-row gap-2 justify-center items-center lg:items-start">
+                                                     <button
                 onClick={() => navigate(`/client/${client._id}`)}
                 className="bg-white text-black px-4 py-2 rounded-lg mt-4 cursor-pointer"
                 >
                 See Details
                 </button>
+
+                                      <button
+                className="bg-white text-black px-10 py-2 rounded-lg lg:mt-4 cursor-pointer"
+                >
+                Chat
+                </button>
+
+                                                 </div>
                             </div> 
                          
                             
