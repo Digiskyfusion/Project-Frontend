@@ -139,11 +139,20 @@ const SkillPage = () => {
                   <FaTools className="mr-2 text-[#00ff9f]" />
                   {user.skills?.length ? user.skills.join(", ") : "N/A"}
                 </p>
-                <Link to={`/user/${user._id}`}>
-                <button className="mt-6 px-6 py-3 bg-white text-black cursor-pointer font-semibold rounded-lg shadow-md transition duration-300">
-                  See Details
-                </button>
-              </Link>
+               <div className="flex flex-col lg:flex-row gap-2 justify-center items-center lg:items-start">
+  <Link to={`/user/${user._id}`}>
+    <button className="w-full sm:w-auto px-6 py-3 mt-4 sm:mt-6 bg-white text-black cursor-pointer font-semibold rounded-lg shadow-md transition duration-300">
+      See Details
+    </button>
+  </Link>
+
+  <Link to="">
+    <button className="w-full sm:w-auto px-12 py-3 mt-2 lg:mt-6 bg-white text-black cursor-pointer font-semibold rounded-lg shadow-md transition duration-300">
+      Chat
+    </button>
+  </Link>
+</div>
+
               </div>
 
               {/* Subtle Bottom Glow */}

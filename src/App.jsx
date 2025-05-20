@@ -55,6 +55,7 @@ import UserDetalPage from "./Pages/UserDetalPage";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ReceiptPage from './Pages/ReceiptPage';
 import PalnsPage from "./Pages/PalnsPage";
+import LiveChatPage from "./Pages/LiveChatPage";
 
 function App() {
   
@@ -77,7 +78,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
-        {/* <Route path="/livechat" element={<LiveChatPage />} /> */}
+        <Route path="/livechat" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
         <Route path="/dashboard" element={<DashboardPage />} />
