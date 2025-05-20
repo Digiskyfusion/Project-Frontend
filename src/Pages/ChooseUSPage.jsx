@@ -9,6 +9,7 @@ import Fourthsectionfour from '../Components/AboutusPage/Fourthsectionfour'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HiddenCont from "../Components/ChoosePage/HiddenCont";
 
 function ChooseUSPage() {
    const [roleType, setRoleType] = useState(null);
@@ -39,6 +40,7 @@ function ChooseUSPage() {
     <HeaderGlobal />
   )}
     <ThirdSectionFirst />
+    <HiddenCont />
       <MeetFreelancer />
       <ProjectSection />
       <Thirdsection />

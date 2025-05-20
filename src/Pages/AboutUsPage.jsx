@@ -11,6 +11,8 @@ import MeetFreelancer from "../Components/HomePage/MeetFreelancer";
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Header
+import HiddenConOne from "../Components/AboutusPage/HiddenConOne";
+import HiddenFooterCon from "../Components/Footer/HiddenFooterCon";
 
 function AboutUsPage() {
   const [roleType, setRoleType] = useState(null);
@@ -42,6 +44,8 @@ function AboutUsPage() {
 )}
     <main className="">
       <About />
+      <HiddenConOne />
+      <HiddenFooterCon />
       <ImageCarousel />
 
       {/* How it Works Section */}

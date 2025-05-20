@@ -4,6 +4,7 @@ import FreelancerSkills from '../Components/FreelancerSkill/FreelancerSkills'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Head
+import FreelancerHiddenContent from '../Components/FreelancerSkill/FreelancerHiddenContent';
 function FreelancerSkillsPage() {
 
     const [roleType, setRoleType] = useState(null);
@@ -33,6 +34,7 @@ function FreelancerSkillsPage() {
 ) : (
   <HeaderGlobal />
 )}
+<FreelancerHiddenContent />
       <FreelancerSkills />
       <Footer />
     </div>

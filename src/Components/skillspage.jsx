@@ -24,6 +24,8 @@ const SkillPage = () => {
         const response = await fetch(
           `${API_URL}/user/skills?skill=${encodeURIComponent(decodedSkill)}`
         );
+        console.log("hello",response);
+        
 
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);

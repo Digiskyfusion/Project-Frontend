@@ -56,7 +56,7 @@ function Ads() {
         
         <div className="flex flex-col gap-3 mt-4">
           <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
-           <Link to="/ADCDPAGE">Execution Detail</Link> 
+           <Link to="/contactus">Execution Detail</Link> 
           </button>
           {/* <button className="hover:bg-[#004930] cursor-pointer hover:text-white px-3 py-2 border-2 rounded-md border-[#004930]">
             Execution Detail

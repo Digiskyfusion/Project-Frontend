@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import LiveChatPage from "./Pages/LiveChatPage";
 import HomePage from "./Pages/HomePage";
 import AboutUsPage from "./Pages/AboutUsPage";
