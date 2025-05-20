@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
-// import LiveChatPage from "./Pages/LiveChatPage";
+import LiveChatPage from "./Pages/LiveChatPage";
 import HomePage from "./Pages/HomePage";
 import AboutUsPage from "./Pages/AboutUsPage";
 import ContactUsPages from "./Pages/ContactUsPage";
@@ -77,7 +77,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
-        {/* <Route path="/livechat" element={<LiveChatPage />} /> */}
+        <Route path="/livechat" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
         <Route path="/dashboard" element={<DashboardPage />} />
