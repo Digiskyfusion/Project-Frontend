@@ -9,7 +9,7 @@ import Platform from "../Components/ServicePage/Platform"
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header"; // Import Global Header
-import HiddenCont from "../Components/ServicePage/hiddenCont";
+import HiddenCont from "../Components/ServicePage/HiddenCont";
 
 
 function Services() {
