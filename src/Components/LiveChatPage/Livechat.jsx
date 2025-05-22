@@ -3,6 +3,7 @@ import { FiPhone, FiVideo } from 'react-icons/fi';
 import { MdOutlineSend } from 'react-icons/md';
 import { initializeSocket } from '../../utils/socket';
 import defaultAvatar from '../../assets/Images/userimage.png';
+import toast, { Toaster } from "react-hot-toast";
 
 const LiveChat = ({ recipientId }) => {
  const [messages, setMessages] = useState([]);
@@ -32,6 +33,7 @@ const LiveChat = ({ recipientId }) => {
 
     socket.on('receive_message', (message) => {
       setMessages(prev => [...prev, message]);
+      // toast.success('message recieved');
     });
 
     socket.on('message_delivered', (message) => {
@@ -108,9 +110,17 @@ const LiveChat = ({ recipientId }) => {
     }
   };
 
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+ useEffect(() => {
+  const chatContainer = chatEndRef.current?.parentNode;
+
+  if (chatContainer && chatContainer.scrollHeight > chatContainer.clientHeight) {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+}, [messages]);
+
+  if (loading && !recipientId) {
+    return <div className="flex-1 flex items-center justify-center"></div>;
+  }
 
   if (loading) {
     return <div className="flex-1 flex items-center justify-center">Loading chat...</div>;
@@ -118,6 +128,7 @@ const LiveChat = ({ recipientId }) => {
 
   return (
     <div className="w-full h-screen flex flex-col shadow-lg rounded-r-lg">
+      {/* <Toaster/> */}
       {/* Header with recipient info */}
       <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg">
         <img 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Livechatcomponent from "../Components/LiveChatPage/Livechatcomponent";
 import LiveChat from "../Components/LiveChatPage/Livechat";
 import Footer from "../Components/Footer/Footer";
@@ -7,9 +7,8 @@ import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header";
 
-function LiveChatPage() {
+function InboxPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
  const [roleType, setRoleType] = useState(null);
    
       
@@ -36,8 +35,8 @@ function LiveChatPage() {
     }
   }, [navigate]);
 
-  return (
-    <div className="flex flex-col min-h-screen">
+   return (
+  <div className="flex flex-col min-h-screen">
     {roleType === "freelancer" ? (
        <Header1 />
     ) : roleType === "client" ? (
@@ -52,13 +51,13 @@ function LiveChatPage() {
          <Livechatcomponent />
        </div>
        <div className="flex-1">
-         <LiveChat recipientId={id} />
+         <LiveChat recipientId={null} />
        </div>
      </div>
 
      <Footer />
    </div>
-  );
+ );
 }
 
-export default LiveChatPage;
+export default InboxPage;

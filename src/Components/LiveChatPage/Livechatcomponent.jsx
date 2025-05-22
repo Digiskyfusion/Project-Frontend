@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import defaultAvatar from "../../assets/Images/userimage.png";
 
-const Livechatcomponent = ({ currentUserId }) => {
+const Livechatcomponent = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem('user'));
+  const currentUserId = user?._id;
   useEffect(() => {
     const fetchConversations = async () => {
       try {
