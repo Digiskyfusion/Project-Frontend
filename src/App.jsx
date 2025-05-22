@@ -132,7 +132,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Toaster position="top-right" /> {/* ✅ Needed to show toasts */}
+    {/*  <Toaster position="top-right" />  ✅ Needed to show toasts */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
