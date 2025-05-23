@@ -36,28 +36,28 @@ function InboxPage() {
   }, [navigate]);
 
    return (
-  <div className="flex flex-col min-h-screen">
-    {roleType === "freelancer" ? (
-       <Header1 />
-    ) : roleType === "client" ? (
-      <Header2 />
-     ) : (
-       <HeaderGlobal />
-     )}
+     <div className="flex flex-col min-h-screen">
+       {roleType === "freelancer" ? (
+         <Header1 />
+       ) : roleType === "client" ? (
+         <Header2 />
+       ) : (
+         <HeaderGlobal />
+       )}
 
-     {/* Make this grow to fill all remaining space */}
-     <div className="flex flex-1 px-6 overflow-hidden">
-       <div className="w-1/4 shadow-md hidden md:flex flex-col">
+       {/* Make this grow to fill all remaining space */}
+       <div className="flex flex-1 px-6 overflow-hidden">
+         <div className="w-1/4 shadow-md hidden md:flex flex-col">
          <Livechatcomponent />
-       </div>
-       <div className="flex-1">
+         </div>
+         <div className="flex-1">
          <LiveChat recipientId={null} />
+         </div>
        </div>
-     </div>
 
-     <Footer />
-   </div>
- );
+       <Footer />
+     </div>
+   );
 }
 
 export default InboxPage;

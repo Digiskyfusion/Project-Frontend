@@ -59,16 +59,33 @@ const LiveChat = ({ recipientId }) => {
           `${API_URL}/chat/conversation/${currentUserId}/${recipientId}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
         );
         const data = await response.json();
         setConversation(data.data);
         setMessages(data.data.messages);
-        setRecipient(data.data.participants.find(p => p._id !== currentUserId));
+        setRecipient(
+          data.data.participants.find((p) => p._id !== currentUserId)
+        );
+
+        // 🔥 Mark messages as read
+       await fetch(`${API_URL}/chat/mark-as-read`, {
+         method: "PATCH",
+         headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${localStorage.getItem("token")}`,
+         },
+         body: JSON.stringify({
+           conversationId: data.data._id,
+           userId: currentUserId,
+         }),
+       });
+
+
       } catch (err) {
-        console.error('Error fetching conversation:', err);
+        console.error("Error fetching conversation:", err);
       } finally {
         setLoading(false);
       }
@@ -111,12 +128,11 @@ const LiveChat = ({ recipientId }) => {
   };
 
  useEffect(() => {
-  const chatContainer = chatEndRef.current?.parentNode;
-
-  if (chatContainer && chatContainer.scrollHeight > chatContainer.clientHeight) {
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+  if (chatEndRef.current) {
+    chatEndRef.current.scrollIntoView({ behavior: "smooth" });
   }
 }, [messages]);
+
 
   if (loading && !recipientId) {
     return <div className="flex-1 flex items-center justify-center"></div>;
@@ -127,10 +143,10 @@ const LiveChat = ({ recipientId }) => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-col shadow-lg rounded-r-lg">
+    <div className="w-full flex flex-col h-full shadow-lg rounded-r-lg">
       {/* <Toaster/> */}
       {/* Header with recipient info */}
-      <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg">
+       <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg shrink-0">
         <img 
           src={recipient?.image || defaultAvatar} 
           alt="Profile" 
@@ -171,7 +187,7 @@ const LiveChat = ({ recipientId }) => {
       </div>
 
       {/* Chat Input Box */}
-      <div className="p-3 bg-white flex items-center gap-2 border-t">
+      <div className="p-3 bg-white flex items-center gap-2 border-t shrink-0">
         <input
           type="text"
           placeholder="Type a message..."
