@@ -56,6 +56,7 @@ import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ReceiptPage from './Pages/ReceiptPage';
 import PalnsPage from "./Pages/PalnsPage";
 
+
 function App() {
   
 
