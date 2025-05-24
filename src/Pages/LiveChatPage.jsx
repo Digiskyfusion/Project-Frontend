@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Livechatcomponent from "../Components/LiveChatPage/Livechatcomponent";
 import LiveChat from "../Components/LiveChatPage/Livechat";
 import Footer from "../Components/Footer/Footer";
@@ -8,7 +8,6 @@ import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header";
 
 function LiveChatPage() {
-  const navigate = useNavigate();
   const { id } = useParams();
  const [roleType, setRoleType] = useState(null);
    
@@ -28,13 +27,6 @@ function LiveChatPage() {
             }
           }
         }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -1,9 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
-import { FiPhone, FiVideo } from 'react-icons/fi';
 import { MdOutlineSend } from 'react-icons/md';
 import { initializeSocket } from '../../utils/socket';
 import defaultAvatar from '../../assets/Images/userimage.png';
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
+
+// Add the CSS styles for hiding scrollbar here or in your global CSS file
+const styles = `
+  .messages-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .messages-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+`;
+
+// Inject styles dynamically
+if (typeof document !== 'undefined') {
+  const styleTag = document.createElement('style');
+  styleTag.innerHTML = styles;
+  document.head.appendChild(styleTag);
+}
 
 const LiveChat = ({ recipientId }) => {
   const [messages, setMessages] = useState([]);
@@ -17,6 +35,8 @@ const LiveChat = ({ recipientId }) => {
   const API_URL = import.meta.env.VITE_API_URL;
   const user = JSON.parse(localStorage.getItem('user'));
   const currentUserId = user?._id;
+  const [UserCredits, setUserCredits] = useState(null);
+  const [newChat, setNewChat] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -69,18 +89,36 @@ const LiveChat = ({ recipientId }) => {
           data.data.participants.find((p) => p._id !== currentUserId)
         );
 
+        const UserResponse = await fetch(
+          `${API_URL}/user/${currentUserId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        if (UserResponse.status === 200) {
+          const jsonData = await UserResponse.json();
+          setUserCredits(jsonData.credits); 
+          if(data.data.messages?.length < 1){
+            setNewChat(true);
+          }
+        }
+
         // Mark messages as read
-        await fetch(`${API_URL}/chat/mark-as-read`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            conversationId: data.data._id,
-            userId: currentUserId,
-          }),
-        });
+       await fetch(`${API_URL}/chat/mark-as-read`, {
+         method: "PATCH",
+         headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${localStorage.getItem("token")}`,
+         },
+         body: JSON.stringify({
+           conversationId: data.data._id,
+           userId: currentUserId,
+         }),
+       });
+
       } catch (err) {
         console.error("Error fetching conversation:", err);
       } finally {
@@ -119,6 +157,21 @@ const LiveChat = ({ recipientId }) => {
           text: input
         })
       });
+
+      if(newChat){
+        const response = await axios.put(
+          `${API_URL}/user/credits/${currentUserId}`,
+          { credits: (UserCredits - 1) },
+          { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        );
+
+        if (response.status === 200) {
+          toast.success("Your credits are reduced by one.");
+        }
+        setNewChat(false);
+      }
+
+      console.log(messages,"right");
     } catch (err) {
       console.error('Error sending message:', err);
     }
@@ -152,22 +205,14 @@ const LiveChat = ({ recipientId }) => {
           className="w-10 h-10 rounded-full mr-3" 
         />
         <h1 className="font-semibold text-lg flex-1">
-          {recipient?.name || 'Loading...'}
+          {recipient?.name || "Loading..."}
         </h1>
-        <div className="flex gap-3">
-          <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">
-            <FiVideo size={20} />
-          </button>
-          <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">
-            <FiPhone size={20} />
-          </button>
-        </div>
       </div>
 
       {/* Messages */}
       <div 
         ref={messagesContainerRef}
-        className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50"
+        className="messages-container flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50"
       >
         {messages.map((msg, index) => (
           <div
@@ -195,7 +240,7 @@ const LiveChat = ({ recipientId }) => {
         <input
           type="text"
           placeholder="Type a message..."
-          className="flex-1 p-2 outline-0  "
+          className="flex-1 p-2 outline-0"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
