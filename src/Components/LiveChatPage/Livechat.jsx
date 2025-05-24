@@ -1,43 +1,159 @@
-import React, { useState, useRef } from "react";
-import { FiPhone, FiVideo } from "react-icons/fi";
-import first from "./../../assets/Images/first.png";
-import { MdOutlineSend } from "react-icons/md";
+import { useState, useEffect, useRef } from 'react';
+import { FiPhone, FiVideo } from 'react-icons/fi';
+import { MdOutlineSend } from 'react-icons/md';
+import { initializeSocket } from '../../utils/socket';
+import defaultAvatar from '../../assets/Images/userimage.png';
+import toast, { Toaster } from "react-hot-toast";
 
-const LiveChat = () => {
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hello! How can I help you?", timestamp: new Date() },
-  ]);
-  const [input, setInput] = useState("");
+const LiveChat = ({ recipientId }) => {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [conversation, setConversation] = useState(null);
+  const [recipient, setRecipient] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [socket, setSocket] = useState(null);
+  const chatEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
+  const API_URL = import.meta.env.VITE_API_URL;
+  const user = JSON.parse(localStorage.getItem('user'));
+  const currentUserId = user?._id;
 
-  const sendMessage = () => {
-    if (input.trim() === "") return;
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const newSocket = initializeSocket(token);
+    setSocket(newSocket);
+    return () => {
+      newSocket.disconnect();
+    };
+  }, []);
 
-    setMessages((prev) => [
-      ...prev,
-      { sender: "user", text: input, timestamp: new Date() },
-    ]);
-    setInput("");
+  useEffect(() => {
+    if (!socket || !conversation) return;
 
-    // Simulate bot response
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: "Thanks for your message!", timestamp: new Date() },
-      ]);
-    }, 1000);
+    socket.emit('join_conversation', conversation._id);
+
+    socket.on('receive_message', (message) => {
+      setMessages(prev => [...prev, message]);
+    });
+
+    socket.on('message_delivered', () => {});
+
+    socket.on('message_error', (error) => {
+      console.error('Message error:', error);
+    });
+
+    return () => {
+      socket.off('receive_message');
+      socket.off('message_delivered');
+      socket.off('message_error');
+    };
+  }, [socket, conversation]);
+
+  useEffect(() => {
+    if (!currentUserId || !recipientId) return;
+
+    const fetchConversation = async () => {
+      try {
+        const response = await fetch(
+          `${API_URL}/chat/conversation/${currentUserId}/${recipientId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        const data = await response.json();
+        setConversation(data.data);
+        setMessages(data.data.messages);
+        setRecipient(
+          data.data.participants.find((p) => p._id !== currentUserId)
+        );
+
+        // Mark messages as read
+        await fetch(`${API_URL}/chat/mark-as-read`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            conversationId: data.data._id,
+            userId: currentUserId,
+          }),
+        });
+      } catch (err) {
+        console.error("Error fetching conversation:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchConversation();
+  }, [currentUserId, recipientId]);
+
+  const sendMessage = async () => {
+    if (input.trim() === '' || !conversation || !currentUserId) return;
+
+    const messageData = {
+      conversationId: conversation._id,
+      senderId: currentUserId,
+      text: input,
+      timestamp: new Date()
+    };
+
+    try {
+      setMessages(prev => [...prev, messageData]);
+      setInput('');
+
+      socket.emit('send_message', messageData);
+
+      await fetch(`${API_URL}/chat/message`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          conversationId: conversation._id,
+          senderId: currentUserId,
+          text: input
+        })
+      });
+    } catch (err) {
+      console.error('Error sending message:', err);
+    }
   };
 
+  // Scroll only if messages overflow the container height
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    if (container.scrollHeight > container.clientHeight) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  if (loading && !recipientId) {
+    return <div className="flex-1 flex items-center justify-center"></div>;
+  }
+
+  if (loading) {
+    return <div className="flex-1 flex items-center justify-center">Loading chat...</div>;
+  }
+
   return (
-    <div className="w-full h-screen flex flex-col shadow-lg rounded-r-lg">
+    <div className="w-full h-screen flex flex-col min-h-screen rounded-lg">
       {/* Header */}
-      <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg">
-        <img
-          loading="lazy"
-          src={first}
-          alt="Profile"
-          className="w-10 h-10 rounded-full mr-3"
+      <div className="bg-[#004930] text-white p-4 flex items-center rounded-t-lg shrink-0">
+        <img 
+          src={recipient?.image || defaultAvatar} 
+          alt="Profile" 
+          className="w-10 h-10 rounded-full mr-3" 
         />
-        <h1 className="font-semibold text-lg flex-1">Manisha Thakur</h1>
+        <h1 className="font-semibold text-lg flex-1">
+          {recipient?.name || 'Loading...'}
+        </h1>
         <div className="flex gap-3">
           <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">
             <FiVideo size={20} />
@@ -48,35 +164,50 @@ const LiveChat = () => {
         </div>
       </div>
 
-      {/* Chat Messages (scrollable but no auto-scroll) */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-2 ">
+      {/* Messages */}
+      <div 
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50"
+      >
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`p-2 max-w-xs rounded-lg ${
-              msg.sender === "user"
-                ? "bg-[#004930] text-white ml-auto"
-                : "bg-gray-300 text-gray-800"
+            className={`p-3 max-w-xs rounded-lg break-words whitespace-pre-wrap ${
+              (msg.sender?._id || msg.senderId) === currentUserId
+                ? 'bg-[#004930] text-white ml-auto'
+                : 'bg-gray-300 text-gray-800'
             }`}
           >
             {msg.text}
+            <div className="text-xs mt-1 opacity-70">
+              {new Date(msg.timestamp).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </div>
           </div>
         ))}
+        <div ref={chatEndRef} />
       </div>
 
-      {/* Chat Input */}
-      <div className="p-3 bg-white flex items-center gap-2 border-t">
+      {/* Input */}
+      <div className="p-3 bg-white flex items-center gap-2 outline-1 shrink-0 hover:outline-1 rounded-2xl">
         <input
           type="text"
           placeholder="Type a message..."
-          className="flex-1 p-2 outline-0"
+          className="flex-1 p-2 outline-0  "
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <p className="px-4 py-2 text-4xl text-black" onClick={sendMessage}>
-          <MdOutlineSend className="cursor-pointer" />
-        </p>
+        <button 
+          onClick={sendMessage}
+          className="p-2 text-green-600 hover:text-green-800"
+        >
+          <MdOutlineSend size={24} />
+        </button>
       </div>
+      <Toaster />
     </div>
   );
 };

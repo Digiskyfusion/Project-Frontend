@@ -63,6 +63,7 @@ const Navbar = () => {
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400">Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400">Tv Channels</NavLink>
+          <NavLink to={`/inbox`} className="hover:text-yellow-400">Inbox</NavLink>
 
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>

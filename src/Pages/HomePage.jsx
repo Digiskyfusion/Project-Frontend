@@ -15,6 +15,7 @@ import HeaderGlobal from "../Components/Header"; // Import Global Header
 
 function HomePage() {
   const [roleType, setRoleType] = useState(null);
+  
 
   useEffect(() => {
     const userData = localStorage.getItem("user"); // Get from localStorage

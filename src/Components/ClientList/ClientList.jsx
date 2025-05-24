@@ -96,6 +96,7 @@ const navigate= useNavigate()
                 </button>
 
                                       <button
+                                       onClick={() => navigate(`/livechat/${client._id}`)}
                 className="bg-white text-black px-10 py-2 rounded-lg lg:mt-4 cursor-pointer"
                 >
                 Chat

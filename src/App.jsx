@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-import LiveChatPage from "./Pages/LiveChatPage";
 import HomePage from "./Pages/HomePage";
 import AboutUsPage from "./Pages/AboutUsPage";
 import ContactUsPages from "./Pages/ContactUsPage";
@@ -55,10 +54,42 @@ import UserDetalPage from "./Pages/UserDetalPage";
 import ForgetPasswordPage from "./Pages/ForgetPasswordPage";
 import ReceiptPage from './Pages/ReceiptPage';
 import PalnsPage from "./Pages/PalnsPage";
-
+import LiveChatPage from "./Pages/LiveChatPage";
+import InboxPage from "./Pages/InboxPage";
+import { initializeSocket } from "./utils/socket";
+import { requestFCMToken } from "./utils/firebaseUtils";
 
 function App() {
-  
+
+  const[fcmToken, setFcmToken] = useState(null);
+
+
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/firebase-messaging-sw.js')
+    .then((registration) => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch((err) => {
+      console.log('Service Worker registration failed:', err);
+    });
+}
+
+
+  useEffect(()=>{
+    const fetchFCMToken = async () => {
+      try {
+        const token = await requestFCMToken();
+        setFcmToken(token);
+        console.log(token)
+      }
+      catch (err) {
+        console.log("Error getting FCM token, ",err);
+      }
+    }
+
+    fetchFCMToken();
+  })
 
   useEffect(() => {
     const removeToken = () => {
@@ -71,14 +102,40 @@ function App() {
     return () => clearTimeout(timeout);
   }, []);
 
+
+   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const socket = initializeSocket(token);
+
+      // 📥 Global receive message listener
+      socket.on("receive_message", (message) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const currentPath = window.location.pathname;
+
+        const isChatOpen = currentPath.includes(`/livechat/${message.senderId}`);
+
+        if (!isChatOpen) {
+          // toast.success(`📨 New message from ${message.senderName || 'someone'}`);
+        }
+      });
+
+      // 🔁 Cleanup listener when App unmounts (not typical, but safe)
+      return () => {
+        socket.off("receive_message");
+      };
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
+    {/*  <Toaster position="top-right" />  ✅ Needed to show toasts */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
-        <Route path="/livechat" element={<LiveChatPage />} />
+        <Route path="/livechat/:id" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
         <Route path="/dashboard" element={<DashboardPage />} />
@@ -130,6 +187,7 @@ function App() {
         <Route path="/user/:id" element={<UserDetalPage />} />
         <Route path="/MembershipPlans" element={<PalnsPage />} />
         <Route path="/reciept" element={<ReceiptPage />} />
+        <Route path="/inbox" element={<InboxPage />} />
       </Routes>
     </BrowserRouter>
   );
