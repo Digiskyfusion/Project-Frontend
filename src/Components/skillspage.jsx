@@ -146,7 +146,7 @@ const SkillPage = () => {
     </button>
   </Link>
 
-  <Link to="">
+  <Link to={`/livechat/${user._id}`}>
     <button className="w-full sm:w-auto px-12 py-3 mt-2 lg:mt-6 bg-white text-black cursor-pointer font-semibold rounded-lg shadow-md transition duration-300">
       Chat
     </button>
