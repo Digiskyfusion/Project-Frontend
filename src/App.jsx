@@ -58,6 +58,8 @@ import LiveChatPage from "./Pages/LiveChatPage";
 import InboxPage from "./Pages/InboxPage";
 import { initializeSocket } from "./utils/socket";
 import { requestFCMToken } from "./utils/firebaseUtils";
+import Blogpage from "./Pages/Blogpage";
+
 function App() {
 
   const[fcmToken, setFcmToken] = useState(null);
@@ -137,6 +139,7 @@ function App() {
         <Route path="/livechat/:id" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
+        <Route path="/blog" element={<Blogpage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} />
         <Route path="/Profileverification" element={<Profileverification />} />

@@ -49,14 +49,14 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white text-2xl"
+          className="lg:hidden text-white text-2xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <FiX /> : <FiMenu />}
         </button>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
+        <div className="hidden lg:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/EditProfile" className="hover:text-yellow-400">Edit Profile</NavLink>
           <NavLink to="/freelancerSkill" className="hover:text-yellow-400">Add Skills</NavLink>
           <NavLink to="/clientlist" className="hover:text-yellow-400">Clients</NavLink>
@@ -91,7 +91,7 @@ const Navbar = () => {
         </div>
 
         {/* Logout Button (Desktop) */}
-        <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <button
             className="py-2 px-6 border border-white rounded-full cursor-pointer hover:bg-red-500 transition duration-300"
             onClick={handleLogout}
@@ -103,7 +103,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
+        <div className="lg:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/EditProfile" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Edit Profile</NavLink>
           <NavLink to="/freelancerSkill" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Add Skills</NavLink>
           <NavLink to="/clientlist" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Client</NavLink>
