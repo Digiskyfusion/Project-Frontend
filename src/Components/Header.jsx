@@ -26,17 +26,18 @@
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white text-2xl"
+            className="lg:hidden text-white text-2xl"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
 
           {/* Desktop Menu (Centered) */}
-          <div className="hidden md:flex flex-grow justify-center items-center space-x-6 text-lg">
+          <div className="hidden lg:flex flex-grow justify-center items-center space-x-6 text-lg">
           <NavLink to="/aboutus" className="hover:text-yellow-400">About Us</NavLink>
             <NavLink to="/ChooseUSPage" className="hover:text-yellow-400">Choose Us</NavLink>
             <NavLink to="/service" className="hover:text-yellow-400">Services</NavLink>
+            <NavLink to="/blog" className="hover:text-yellow-400">Blog</NavLink>
             <NavLink to="/contactus" className="hover:text-yellow-400">Contact Us</NavLink>
             {/* Skills Dropdown */}
             <div className="relative">
@@ -64,7 +65,7 @@
           </div>
 
           {/* Register & Login (At End) */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden lg:flex space-x-4">
             <NavLink to="/registration" className="py-2 px-4 border cursor-pointer border-white rounded-full hover:bg-green-500 transition duration-300">
               Register
             </NavLink>
@@ -76,10 +77,11 @@
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
+          <div className="lg:hidden flex flex-col bg-[#004930] text-white py-4 px-6 space-y-4">
           <NavLink to="/aboutus" className="hover:text-yellow-400">About Us</NavLink>
             <NavLink to="/ChooseUSPage" className="hover:text-yellow-400">Choose Us</NavLink>
             <NavLink to="/service" className="hover:text-yellow-400">Services</NavLink>
+            <NavLink to="/blog" className="hover:text-yellow-400">Blog</NavLink>
             <NavLink to="/contactus" className="hover:text-yellow-400">Contact Us</NavLink>
             {/* Skills Dropdown for Mobile */}
             <div className="relative">

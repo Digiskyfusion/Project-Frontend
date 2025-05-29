@@ -60,6 +60,7 @@ import InboxPage from "./Pages/InboxPage";
 import { initializeSocket } from "./utils/socket";
 // import toast, { Toaster } from "react-hot-toast";
 import { requestFCMToken } from "./utils/firebaseUtils";
+import BlogPage from "./Components/BlogPage/Blog";
 
 function App() {
 
@@ -140,6 +141,7 @@ function App() {
         <Route path="/livechat/:id" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} />
         <Route path="/Profileverification" element={<Profileverification />} />
