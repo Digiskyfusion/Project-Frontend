@@ -58,8 +58,6 @@ import LiveChatPage from "./Pages/LiveChatPage";
 import InboxPage from "./Pages/InboxPage";
 import { initializeSocket } from "./utils/socket";
 import { requestFCMToken } from "./utils/firebaseUtils";
-import TestPage from "./Pages/TestPage";
-
 function App() {
 
   const[fcmToken, setFcmToken] = useState(null);
@@ -134,7 +132,6 @@ function App() {
     {/*  <Toaster position="top-right" />  ✅ Needed to show toasts */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/new" element={<TestPage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat/:id" element={<LiveChatPage />} />
