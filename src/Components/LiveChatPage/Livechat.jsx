@@ -4,6 +4,7 @@ import { initializeSocket } from '../../utils/socket';
 import defaultAvatar from '../../assets/Images/userimage.png';
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { Upload } from 'lucide-react';
 
 // Add the CSS styles for hiding scrollbar here or in your global CSS file
 const styles = `
@@ -129,6 +130,38 @@ const LiveChat = ({ recipientId }) => {
     fetchConversation();
   }, [currentUserId, recipientId]);
 
+
+  const handleFileUpload = async (file) => {
+  if (!file || !conversation || !currentUserId) return;
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("conversationId", conversation._id);
+  formData.append("senderId", currentUserId);
+
+  try {
+    const response = await axios.post(`${API_URL}/chat/file`, formData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+    });
+
+    const fileMessage = response.data.data;
+
+    // Emit and update local messages
+    socket.emit("send_message", fileMessage);
+    setMessages((prev) => [...prev, fileMessage]);
+
+    const fileInput = document.getElementById('fileInput');
+    console.log(fileInput,"hello");
+    if (fileInput) fileInput.value = '';
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    toast.error("File upload failed");
+  }
+};
+
+
   const sendMessage = async () => {
     if (input.trim() === '' || !conversation || !currentUserId) return;
 
@@ -218,12 +251,23 @@ const LiveChat = ({ recipientId }) => {
           <div
             key={index}
             className={`p-3 max-w-xs rounded-lg break-words whitespace-pre-wrap ${
-              (msg.sender?._id || msg.senderId) === currentUserId
+              (msg.sender?._id || msg.senderId || msg.sender) === currentUserId
                 ? 'bg-[#004930] text-white ml-auto'
                 : 'bg-gray-300 text-gray-800'
             }`}
           >
-            {msg.text}
+            {msg.text && <div>{msg.text}</div>}
+{msg.fileUrl && (
+  <div className="mt-2">
+    {msg.fileType?.startsWith("image") ? (
+      <img src={msg.fileUrl} alt="Shared File" className="w-40 rounded" />
+    ) : (
+      <a href={msg.fileUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+        {msg.originalname}
+      </a>
+    )}
+  </div>
+)}
             <div className="text-xs mt-1 opacity-70">
               {new Date(msg.timestamp).toLocaleTimeString([], {
                 hour: '2-digit',
@@ -245,13 +289,26 @@ const LiveChat = ({ recipientId }) => {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
+        <label htmlFor="fileInput" className="cursor-pointer text-green-600 hover:text-green-800">
+  <Upload size={20} />
+</label>
         <button 
           onClick={sendMessage}
           className="p-2 text-green-600 hover:text-green-800"
         >
           <MdOutlineSend size={24} />
         </button>
+           <input
+  type="file"
+  accept="image/*,application/pdf,.doc,.docx"
+  onChange={(e) => handleFileUpload(e.target.files[0])}
+  className="hidden"
+  id="fileInput"
+/>
+
       </div>
+   
+
       <Toaster />
     </div>
   );

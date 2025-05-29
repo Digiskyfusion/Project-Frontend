@@ -42,8 +42,8 @@ const Livechatcomponent = () => {
 
   // Helper to truncate text to 5 words
   const truncateText = (text) => {
-    const words = text.split(" ");
-    return words.length > 5 ? words.slice(0, 5).join(" ") + "..." : text;
+    const words = text?.split(" ");
+    return words?.length > 5 ? words?.slice(0, 5)?.join(" ") + "..." : text;
   };
 
   return (
