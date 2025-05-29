@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Livechatcomponent from "../Components/LiveChatPage/Livechatcomponent";
 import LiveChat from "../Components/LiveChatPage/Livechat";
 import Footer from "../Components/Footer/Footer";
@@ -8,7 +8,6 @@ import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header";
 
 function LiveChatPage() {
-  const navigate = useNavigate();
   const { id } = useParams();
  const [roleType, setRoleType] = useState(null);
    
@@ -29,13 +28,6 @@ function LiveChatPage() {
           }
         }, []);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
-
   return (
     <div className="flex flex-col min-h-screen">
     {roleType === "freelancer" ? (
@@ -47,11 +39,11 @@ function LiveChatPage() {
      )}
 
      {/* Make this grow to fill all remaining space */}
-     <div className="flex flex-1 px-6 overflow-hidden">
-       <div className="w-1/4 shadow-md hidden md:flex flex-col">
+     <div className="flex flex-1 px-6 overflow-hidden  py-2">
+       <div className="w-1/4  hidden  md:flex flex-col">
          <Livechatcomponent />
        </div>
-       <div className="flex-1">
+       <div className="flex-1 ">
          <LiveChat recipientId={id} />
        </div>
      </div>

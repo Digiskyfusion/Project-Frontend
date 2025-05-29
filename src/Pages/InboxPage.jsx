@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Livechatcomponent from "../Components/LiveChatPage/Livechatcomponent";
 import LiveChat from "../Components/LiveChatPage/Livechat";
 import Footer from "../Components/Footer/Footer";
@@ -8,7 +7,6 @@ import Header2 from "../Components/Client/Header";
 import HeaderGlobal from "../Components/Header";
 
 function InboxPage() {
-  const navigate = useNavigate();
  const [roleType, setRoleType] = useState(null);
    
       
@@ -27,13 +25,6 @@ function InboxPage() {
             }
           }
         }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
 
    return (
      <div className="flex flex-col min-h-screen">

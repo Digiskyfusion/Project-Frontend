@@ -10,6 +10,7 @@ const Livechatcomponent = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const currentUserId = user?._id;
+
   useEffect(() => {
     const fetchConversations = async () => {
       try {
@@ -39,8 +40,14 @@ const Livechatcomponent = () => {
     return participants.find(participant => participant._id !== currentUserId);
   };
 
+  // Helper to truncate text to 5 words
+  const truncateText = (text) => {
+    const words = text.split(" ");
+    return words.length > 5 ? words.slice(0, 5).join(" ") + "..." : text;
+  };
+
   return (
-    <div className="p-4 overflow-y-auto">
+    <div className="p-4"> {/* Removed overflow-y-auto */}
       <h2 className="text-xl font-bold text-[#004930] mb-4">Chats</h2>
       
       {loading ? (
@@ -48,7 +55,7 @@ const Livechatcomponent = () => {
       ) : conversations.length === 0 ? (
         <div className="text-center text-gray-500">No conversations yet</div>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-2 ">
           {conversations.map((conversation) => {
             const otherUser = getOtherParticipant(conversation.participants);
             const lastMessage = conversation.messages[conversation.messages.length - 1];
@@ -56,7 +63,7 @@ const Livechatcomponent = () => {
             return (
               <div
                 key={conversation._id}
-                className="flex items-center p-2 hover:bg-gray-100 rounded-lg cursor-pointer"
+                className="flex items-center p-2 hover:bg-gray-100 rounded-md  cursor-pointer border-b-2 border-gray-500 "
                 onClick={() => navigate(`/livechat/${otherUser._id}`)}
               >
                 <img
@@ -69,7 +76,7 @@ const Livechatcomponent = () => {
                   {lastMessage && (
                     <p className="text-sm text-gray-500 truncate">
                       {lastMessage.sender._id === currentUserId ? "You: " : ""}
-                      {lastMessage.text}
+                      {truncateText(lastMessage.text)}
                     </p>
                   )}
                 </div>

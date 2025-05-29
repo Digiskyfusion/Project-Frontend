@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-// import LiveChatPage from "./Pages/LiveChatPage";
 import HomePage from "./Pages/HomePage";
 import AboutUsPage from "./Pages/AboutUsPage";
 import ContactUsPages from "./Pages/ContactUsPage";
@@ -58,9 +57,9 @@ import PalnsPage from "./Pages/PalnsPage";
 import LiveChatPage from "./Pages/LiveChatPage";
 import InboxPage from "./Pages/InboxPage";
 import { initializeSocket } from "./utils/socket";
-// import toast, { Toaster } from "react-hot-toast";
 import { requestFCMToken } from "./utils/firebaseUtils";
 import BlogPage from "./Components/BlogPage/Blog";
+import Blogpage from "./Pages/Blogpage";
 
 function App() {
 
@@ -141,7 +140,7 @@ function App() {
         <Route path="/livechat/:id" element={<LiveChatPage />} />
         <Route path="/allfreelancer" element={<AllFreelancerPage />} />
         <Route path="/service" element={<Services />} />
-        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog" element={<Blogpage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/FreelancerNoUpadte" element={<FreelancerProfilePage />} />
         <Route path="/Profileverification" element={<Profileverification />} />

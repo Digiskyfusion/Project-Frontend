@@ -1,28 +1,49 @@
 import { useState, useEffect, useRef } from 'react';
-import { FiPhone, FiVideo } from 'react-icons/fi';
 import { MdOutlineSend } from 'react-icons/md';
 import { initializeSocket } from '../../utils/socket';
 import defaultAvatar from '../../assets/Images/userimage.png';
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
+
+// Add the CSS styles for hiding scrollbar here or in your global CSS file
+const styles = `
+  .messages-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .messages-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+`;
+
+// Inject styles dynamically
+if (typeof document !== 'undefined') {
+  const styleTag = document.createElement('style');
+  styleTag.innerHTML = styles;
+  document.head.appendChild(styleTag);
+}
 
 const LiveChat = ({ recipientId }) => {
- const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [conversation, setConversation] = useState(null);
   const [recipient, setRecipient] = useState(null);
   const [loading, setLoading] = useState(true);
   const [socket, setSocket] = useState(null);
   const chatEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const API_URL = import.meta.env.VITE_API_URL;
   const user = JSON.parse(localStorage.getItem('user'));
   const currentUserId = user?._id;
+  const [UserCredits, setUserCredits] = useState(null);
+  const [newChat, setNewChat] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const newSocket = initializeSocket(token);
     setSocket(newSocket);
-
     return () => {
+      newSocket.disconnect();
     };
   }, []);
 
@@ -33,11 +54,9 @@ const LiveChat = ({ recipientId }) => {
 
     socket.on('receive_message', (message) => {
       setMessages(prev => [...prev, message]);
-      // toast.success('message recieved');
     });
 
-    socket.on('message_delivered', (message) => {
-    });
+    socket.on('message_delivered', () => {});
 
     socket.on('message_error', (error) => {
       console.error('Message error:', error);
@@ -70,7 +89,24 @@ const LiveChat = ({ recipientId }) => {
           data.data.participants.find((p) => p._id !== currentUserId)
         );
 
-        // 🔥 Mark messages as read
+        const UserResponse = await fetch(
+          `${API_URL}/user/${currentUserId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+
+        if (UserResponse.status === 200) {
+          const jsonData = await UserResponse.json();
+          setUserCredits(jsonData.credits); 
+          if(data.data.messages?.length < 1){
+            setNewChat(true);
+          }
+        }
+
+        // Mark messages as read
        await fetch(`${API_URL}/chat/mark-as-read`, {
          method: "PATCH",
          headers: {
@@ -82,7 +118,6 @@ const LiveChat = ({ recipientId }) => {
            userId: currentUserId,
          }),
        });
-
 
       } catch (err) {
         console.error("Error fetching conversation:", err);
@@ -122,17 +157,35 @@ const LiveChat = ({ recipientId }) => {
           text: input
         })
       });
+
+      if(newChat){
+        const response = await axios.put(
+          `${API_URL}/user/credits/${currentUserId}`,
+          { credits: (UserCredits - 1) },
+          { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        );
+
+        if (response.status === 200) {
+          toast.success("Your credits are reduced by one.");
+        }
+        setNewChat(false);
+      }
+
+      console.log(messages,"right");
     } catch (err) {
       console.error('Error sending message:', err);
     }
   };
 
- useEffect(() => {
-  if (chatEndRef.current) {
-    chatEndRef.current.scrollIntoView({ behavior: "smooth" });
-  }
-}, [messages]);
+  // Scroll only if messages overflow the container height
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
 
+    if (container.scrollHeight > container.clientHeight) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   if (loading && !recipientId) {
     return <div className="flex-1 flex items-center justify-center"></div>;
@@ -143,51 +196,47 @@ const LiveChat = ({ recipientId }) => {
   }
 
   return (
-    <div className="w-full flex flex-col h-full shadow-lg rounded-r-lg">
-      {/* <Toaster/> */}
-      {/* Header with recipient info */}
-       <div className="bg-[#004930] text-white p-4 flex items-center rounded-r-lg shrink-0">
+    <div className="w-full h-screen flex flex-col min-h-screen rounded-lg">
+      {/* Header */}
+      <div className="bg-[#004930] text-white p-4 flex items-center rounded-t-lg shrink-0">
         <img 
           src={recipient?.image || defaultAvatar} 
           alt="Profile" 
           className="w-10 h-10 rounded-full mr-3" 
         />
         <h1 className="font-semibold text-lg flex-1">
-          {recipient?.name || 'Loading...'}
+          {recipient?.name || "Loading..."}
         </h1>
-        <div className="flex gap-3">
-          <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">
-            <FiVideo size={20} />
-          </button>
-          <button className="p-2 bg-white rounded-full text-green-600 hover:bg-green-200">
-            <FiPhone size={20} />
-          </button>
-        </div>
       </div>
 
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-2">
+      {/* Messages */}
+      <div 
+        ref={messagesContainerRef}
+        className="messages-container flex-1 overflow-y-auto p-4 space-y-2 bg-gray-50"
+      >
         {messages.map((msg, index) => (
-         <div
-  key={index}
-  className={`p-3 max-w-xs rounded-lg ${
-    (msg.sender?._id || msg.senderId) === currentUserId
-      ? 'bg-[#004930] text-white ml-auto'
-      : 'bg-gray-300 text-gray-800'
-  }`}
->
-  {msg.text}
-  <div className="text-xs mt-1 opacity-70">
-    {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-  </div>
-</div>
-
+          <div
+            key={index}
+            className={`p-3 max-w-xs rounded-lg break-words whitespace-pre-wrap ${
+              (msg.sender?._id || msg.senderId) === currentUserId
+                ? 'bg-[#004930] text-white ml-auto'
+                : 'bg-gray-300 text-gray-800'
+            }`}
+          >
+            {msg.text}
+            <div className="text-xs mt-1 opacity-70">
+              {new Date(msg.timestamp).toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </div>
+          </div>
         ))}
-        <div ref={chatEndRef}></div>
+        <div ref={chatEndRef} />
       </div>
 
-      {/* Chat Input Box */}
-      <div className="p-3 bg-white flex items-center gap-2 border-t shrink-0">
+      {/* Input */}
+      <div className="p-3 bg-white flex items-center gap-2 outline-1 shrink-0 hover:outline-1 rounded-2xl">
         <input
           type="text"
           placeholder="Type a message..."
@@ -203,6 +252,7 @@ const LiveChat = ({ recipientId }) => {
           <MdOutlineSend size={24} />
         </button>
       </div>
+      <Toaster />
     </div>
   );
 };

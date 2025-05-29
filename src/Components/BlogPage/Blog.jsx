@@ -27,7 +27,6 @@ const BlogPage = () => {
 
   return (
     <>
-      <NavbarAlt />
       <div className="bg-white text-gray-800">
         {/* Hero Section */}
         <section className="text-center py-20 bg-gradient-to-r from-[#d1fae5] to-[#f0fdfa] px-6">
@@ -74,7 +73,6 @@ const BlogPage = () => {
           ))}
         </section>
       </div>
-      <Footer />
     </>
   );
 };
