@@ -278,28 +278,44 @@ const LiveChat = ({ recipientId }) => {
         ))}
         <div ref={chatEndRef} />
       </div>
+      
 
       {/* Input */}
       <div className="p-3 bg-white flex items-center gap-2 outline-1 shrink-0 hover:outline-1 rounded-2xl">
         <input
+          disabled={messages?.length === 0 && UserCredits === 0}
           type="text"
           placeholder="Type a message..."
-          className="flex-1 p-2 outline-0"
+          className={`flex-1 p-2 outline-0 ${
+        messages?.length === 0 && UserCredits === 0
+          ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-300'
+          : 'border-gray-300'
+      }` }
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <label htmlFor="fileInput" className="cursor-pointer text-green-600 hover:text-green-800">
+        {/* <label htmlFor="fileInput" className={`text-green-600 hover:text-green-800 ${
+        messages?.length === 0 && UserCredits === 0
+          ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-300'
+          : 'border-gray-300 focus:ring-2 focus:ring-green-500 cursor-pointer'
+      }`}>
   <Upload size={20} />
-</label>
+</label> */}
         <button 
+          disabled={messages?.length === 0 && UserCredits === 0}
           onClick={sendMessage}
-          className="p-2 text-green-600 hover:text-green-800"
+          className={`p-2 text-green-600 hover:text-green-800 ${
+        messages?.length === 0 && UserCredits === 0
+          ? 'text-gray-400 cursor-not-allowed'
+          : 'text-green-600 hover:text-green-800'
+      }`}
         >
           <MdOutlineSend size={24} />
         </button>
            <input
   type="file"
+  disabled={messages?.length === 0 && UserCredits === 0}
   accept="image/*,application/pdf,.doc,.docx"
   onChange={(e) => handleFileUpload(e.target.files[0])}
   className="hidden"
@@ -307,7 +323,11 @@ const LiveChat = ({ recipientId }) => {
 />
 
       </div>
-   
+    {messages?.length === 0 && UserCredits === 0 && (
+    <div className="mt-2 px-2 py-1 bg-red-50 text-red-600 text-sm rounded-md border border-red-200">
+      You have <strong>zero credits</strong>. Please <a href="/MembershipPlans" className="underline hover:text-red-800">upgrade</a>.
+    </div>
+  )}
 
       <Toaster />
     </div>
