@@ -74,10 +74,9 @@ const BlogsPage = () => {
 
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed max-w-3xl">
-           Online jobs have become the go-to career path for students, freshers, and professionals seeking flexibility and real income. Whether you’re 10th or 12th pass, a college student, or simply looking for remote work, freelancing is now a trusted way to earn. Platforms like <strong>DigiSky.ai</strong>,make it easy to get started—even with zero experience.
+  Online jobs have become the go-to career path for students, freshers, and professionals seeking flexibility and real income. Whether you’re a 10th or 12th pass student, in college, or simply looking for remote work, freelancing is now a trusted way to earn. Platforms like <a href="https://www.digisky.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-semibold underline">DigiSky.ai</a> make it easy to get started—even with zero experience.
+</p>
 
-
-          </p>
         </section>
 
         {/* Job Cards */}
