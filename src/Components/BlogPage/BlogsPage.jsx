@@ -60,11 +60,11 @@ const BlogsPage = () => {
             📝 Best Online Jobs & Freelance Platforms in 2025 – Start Earning on DigiSky.ai
 
           </h1>
-          <p className="text-sm text-gray-500 max-w-xl mx-auto">
+          {/* <p className="text-sm text-gray-500 max-w-xl mx-auto">
             <strong>Meta Title:</strong> Best Online Jobs & Freelancing in 2025 <br />
             <strong>Meta Description:</strong>Explore top online jobs & freelance platforms for 2025. Work from home and earn with DigiSky.ai—perfect for students, freshers, and beginners.
 
-          </p>
+          </p> */}
         </header>
 
         {/* Intro Section */}
