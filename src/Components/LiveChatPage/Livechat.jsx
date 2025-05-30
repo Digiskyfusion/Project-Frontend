@@ -295,13 +295,13 @@ const LiveChat = ({ recipientId }) => {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <label htmlFor="fileInput" className={`text-green-600 hover:text-green-800 ${
+        {/* <label htmlFor="fileInput" className={`text-green-600 hover:text-green-800 ${
         messages?.length === 0 && UserCredits === 0
           ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-300'
           : 'border-gray-300 focus:ring-2 focus:ring-green-500 cursor-pointer'
       }`}>
   <Upload size={20} />
-</label>
+</label> */}
         <button 
           disabled={messages?.length === 0 && UserCredits === 0}
           onClick={sendMessage}
