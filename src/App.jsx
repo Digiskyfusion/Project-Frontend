@@ -59,6 +59,12 @@ import InboxPage from "./Pages/InboxPage";
 import { initializeSocket } from "./utils/socket";
 import { requestFCMToken } from "./utils/firebaseUtils";
 import Blogpage from "./Pages/Blogpage";
+import BlogZeroPage from "./Pages/BlogZeroPage";
+import BlogOnePage from "./Pages/BlogOnePage";
+import BlogTwoPage from "./Pages/BlogTwoPage";
+import BlogThreePage from "./Pages/BlogThreePage";
+import BlogFourPage from "./Pages/BlogFourPage";
+import BlogFivePage from "./Pages/BlogFivePage";
 
 function App() {
 
@@ -190,6 +196,13 @@ function App() {
         <Route path="/MembershipPlans" element={<PalnsPage />} />
         <Route path="/reciept" element={<ReceiptPage />} />
         <Route path="/inbox" element={<InboxPage />} />
+        <Route path="/blog/0" element={<BlogZeroPage />} />
+        <Route path="/blog/1" element={<BlogOnePage />} />
+        <Route path="/blog/2" element={<BlogTwoPage />} />
+        <Route path="/blog/3" element={<BlogThreePage />} />
+        <Route path="/blog/4" element={<BlogFourPage />} />
+        <Route path="/blog/5" element={<BlogFivePage />} />
+        <Route path="/blog/6" element={<BlogOnePage />} />
       </Routes>
     </BrowserRouter>
   );
