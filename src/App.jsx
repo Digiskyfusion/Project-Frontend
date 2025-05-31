@@ -196,13 +196,13 @@ function App() {
         <Route path="/MembershipPlans" element={<PalnsPage />} />
         <Route path="/reciept" element={<ReceiptPage />} />
         <Route path="/inbox" element={<InboxPage />} />
-        <Route path="/blog/0" element={<BlogZeroPage />} />
-        <Route path="/blog/1" element={<BlogOnePage />} />
-        <Route path="/blog/2" element={<BlogTwoPage />} />
-        <Route path="/blog/3" element={<BlogThreePage />} />
-        <Route path="/blog/4" element={<BlogFourPage />} />
-        <Route path="/blog/5" element={<BlogFivePage />} />
-        <Route path="/blog/6" element={<BlogOnePage />} />
+        <Route path="/blog/top-online-jobs-2025" element={<BlogZeroPage />} />
+        <Route path="/blog/online-jobs-12th-pass" element={<BlogOnePage />} />
+        <Route path="/blog/freelance-platforms-2025" element={<BlogTwoPage />} />
+        <Route path="/blog/freelance-platforms-2025" element={<BlogThreePage />} />
+        <Route path="/blog/online-jobs-10th-pass" element={<BlogFourPage />} />
+        {/* <Route path="/blog/5" element={<BlogFivePage />} />
+        <Route path="/blog/6" element={<BlogOnePage />} /> */}
       </Routes>
     </BrowserRouter>
   );
