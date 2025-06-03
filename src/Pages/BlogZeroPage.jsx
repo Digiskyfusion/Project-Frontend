@@ -9,7 +9,7 @@ function BlogZeroPage() {
   return (
     <>
     <NavbarAlt />
-   <BlogsPage Heading="Why Online Jobs Are Booming in 2025" bottom="The future of work is online—and it's here to stay. Whether you're a student, beginner, or small business owner, DigiSky.ai helps you find legit work-from-home jobs and freelance projects easily. Sign up today, create your profile, and take your first step toward a flexible, fulfilling career." bottomText="Launch Your Online Career with DigiSky.ai" para={
+   <BlogsPage title="Discover the best online jobs in 2025. Work from home, earn real income, and find freelancing opportunities with platforms like DigiSky.ai." Heading="Why Online Jobs Are Booming in 2025" bottom="The future of work is online—and it's here to stay. Whether you're a student, beginner, or small business owner, DigiSky.ai helps you find legit work-from-home jobs and freelance projects easily. Sign up today, create your profile, and take your first step toward a flexible, fulfilling career." bottomText="Launch Your Online Career with DigiSky.ai" para={
     <>
       Online jobs have become the go-to career path for students, freshers, and professionals seeking flexibility and real income. Whether you’re a 10th or 12th pass student, in college, or simply looking for remote work, freelancing is now a trusted way to earn. Platforms like{" "}
       <a 

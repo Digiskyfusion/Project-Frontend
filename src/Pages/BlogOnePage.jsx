@@ -7,7 +7,7 @@ function BlogOnePage() {
   return (
     <>
      <NavbarAlt />
-       <BlogsPage Heading=" Can You Get Online Jobs After 12th? Yes – Here's How" bottom={
+       <BlogsPage title="Find the best online jobs for 12th pass students in 2025. Work from home, earn money, and build your career with freelancing platforms like DigiSky.ai" Heading=" Can You Get Online Jobs After 12th? Yes – Here's How" bottom={
   <>
     Online jobs are a real opportunity for 12th pass students to earn and gain experience. Use trusted platforms like{" "}
     <a

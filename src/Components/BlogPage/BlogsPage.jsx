@@ -19,7 +19,7 @@ const jobIcons = [
 ];
 
 
-const BlogsPage = ({jobSections, Heading,para, bottomText,bottom}) => {
+const BlogsPage = ({jobSections, Heading,para, bottomText,bottom,title}) => {
   return (
     <div className="bg-gradient-to-br from-[#ecfdf5] via-[#f0fdfa] to-[#fefce8] min-h-screen py-12 px-4">
       <div className="max-w-6xl mx-auto">
@@ -36,7 +36,7 @@ const BlogsPage = ({jobSections, Heading,para, bottomText,bottom}) => {
         {/* Header */}
         <header className="text-center mb-14">
           <h1 className="text-xl lg:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#065f46] via-[#059669] to-[#10b981] bg-clip-text text-transparent leading-tight mb-5">
-            📝 Best Online Jobs & Freelance Platforms in 2025 – Start Earning on DigiSky.ai
+            📝{title}
           </h1>
         </header>
 
