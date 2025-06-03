@@ -38,6 +38,7 @@ const LiveChat = ({ recipientId }) => {
   const currentUserId = user?._id;
   const [UserCredits, setUserCredits] = useState(null);
   const [newChat, setNewChat] = useState(false);
+  const [fileUploading, setFileUploading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -133,7 +134,7 @@ const LiveChat = ({ recipientId }) => {
 
   const handleFileUpload = async (file) => {
   if (!file || !conversation || !currentUserId) return;
-
+  setFileUploading(true);
   const formData = new FormData();
   formData.append("file", file);
   formData.append("conversationId", conversation._id);
@@ -159,6 +160,9 @@ const LiveChat = ({ recipientId }) => {
   } catch (error) {
     console.error("Error uploading file:", error);
     toast.error("File upload failed");
+  }
+  finally{
+    setFileUploading(false);
   }
 };
 
@@ -277,6 +281,13 @@ const LiveChat = ({ recipientId }) => {
             </div>
           </div>
         ))}
+        {fileUploading && (
+  <div className="flex items-center space-x-2 max-w-xs ml-auto mt-4">
+    <div className="w-6 h-6 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+    <span className="text-sm text-gray-500">Uploading file...</span>
+  </div>
+)}
+
         <div ref={chatEndRef} />
       </div>
       
