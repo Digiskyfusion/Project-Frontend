@@ -149,8 +149,8 @@ const LiveChat = ({ recipientId }) => {
     const fileMessage = response.data.data;
 
     // Emit and update local messages
-    socket.emit("send_message", fileMessage);
     setMessages((prev) => [...prev, fileMessage]);
+    socket.emit('send_message', fileMessage);
 
     const fileInput = document.getElementById('fileInput');
     console.log(fileInput,"hello");
