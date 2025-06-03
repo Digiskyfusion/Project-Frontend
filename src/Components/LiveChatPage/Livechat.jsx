@@ -149,9 +149,9 @@ const LiveChat = ({ recipientId }) => {
     const fileMessage = response.data.data;
 
     // Emit and update local messages
-    
-    socket.emit('send_message', fileMessage);
     setMessages((prev) => [...prev, fileMessage]);
+    socket.emit('send_message', fileMessage);
+
     const fileInput = document.getElementById('fileInput');
     console.log(fileInput,"hello");
     if (fileInput) fileInput.value = '';
@@ -256,7 +256,7 @@ const LiveChat = ({ recipientId }) => {
                 : 'bg-gray-300 text-gray-800'
             }`}
           >
-            {msg.text && <div>{msg.text}</div>}
+            {msg.text && !msg.fileUrl && <div>{msg.text}</div>}
 {msg.fileUrl && (
   <div className="mt-2">
     {msg.fileType?.startsWith("image") ? (
