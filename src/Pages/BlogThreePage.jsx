@@ -6,7 +6,7 @@ function BlogThreePage() {
   return (
     <>
      <NavbarAlt />
-  <BlogsPage Heading=" Can 10th Pass Students Work Online? Yes – Here's How
+  <BlogsPage  Heading=" Can 10th Pass Students Work Online? Yes – Here's How
 " bottom="Don’t wait for the “perfect job.” Start with small online jobs, build your skills, and gradually move to better-paying work. Platforms like *DigiSky.ai* give 10th pass students a chance to earn and grow from home.
 " bottomText="Start Small, Grow Big – Your Online Career Begins Now"  para="Yes, even if you’ve completed only your 10th standard, there are many real online jobs you can start from home. Thanks to freelancing platforms like DigiSky.ai, students, job seekers, and homemakers can earn a stable income without needing a higher degree.
 

@@ -6,7 +6,7 @@ function BlogFourPage() {
   return (
     <>
      <NavbarAlt />
-   <BlogsPage
+   <BlogsPage title="Find genuine online jobs for 10th pass students in 2025. No degree required. Start earning from home with easy freelance and work-from-home opportunities."
   jobSections={[
     {
       title: "1.Freelance Writing – Start with Words",

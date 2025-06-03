@@ -6,7 +6,7 @@ function BlogTwoPage() {
   return (
     <>
      <NavbarAlt />
-  <BlogsPage Heading=" Freelancing in 2025 – A Booming Online Career Option
+  <BlogsPage title="Discover the best freelancing platforms in 2025. Find jobs, earn from home, and grow your career online with trusted websites like DigiSky.ai." Heading=" Freelancing in 2025 – A Booming Online Career Option
 " bottom={ 
   <>
     Whether you're just starting out or an experienced professional, there’s a freelance platform for you. For Indian freelancers,{" "}
