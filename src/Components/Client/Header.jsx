@@ -108,6 +108,7 @@ const Navbar = () => {
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Plans</NavLink>
           <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>reciept</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Tv Channels</NavLink>
+          <NavLink to="/inbox" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Inbox</NavLink>
           
           {/* Skills Dropdown for Mobile */}
           <div className="relative">
