@@ -64,7 +64,9 @@ import BlogOnePage from "./Pages/BlogOnePage";
 import BlogTwoPage from "./Pages/BlogTwoPage";
 import BlogThreePage from "./Pages/BlogThreePage";
 import BlogFourPage from "./Pages/BlogFourPage";
-import BlogFivePage from "./Pages/BlogFivePage";
+import NewHomePage from './Pages/NewHomePage';
+
+
 
 function App() {
 
@@ -139,7 +141,8 @@ function App() {
       <ScrollToTop />
     {/*  <Toaster position="top-right" />  ✅ Needed to show toasts */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
+        <Route path="/" element={<NewHomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat/:id" element={<LiveChatPage />} />
@@ -203,8 +206,15 @@ function App() {
         <Route path="/blog/online-jobs-10th-pass" element={<BlogFourPage />} />
         {/* <Route path="/blog/5" element={<BlogFivePage />} />
         <Route path="/blog/6" element={<BlogOnePage />} /> */}
+        {/* <Route path="/newHomepage" element={<NewHomePage />} /> */}
       </Routes>
+
+     
+    
+    
+    
     </BrowserRouter>
+    
   );
 }
 

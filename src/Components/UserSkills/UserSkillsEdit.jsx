@@ -89,6 +89,16 @@ const UserSkillsEdit = () => {
   
 
   const handleSave = async () => {
+     if (!user.bio || user.bio.trim().length < 300) {
+      toast.error("Please enter a bio of at least 300 characters.");
+      return;
+    }
+
+    if (!user.image) {
+      toast.error("Please upload a profile image.");
+      return;
+    }
+
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
@@ -176,7 +186,7 @@ const UserSkillsEdit = () => {
                   className="w-full p-3 h-32 border-none focus:ring-0 bg-transparent text-gray-700 outline-0 resize-none"
                   value={user.bio}
                   onChange={(e) => setUser({ ...user, bio: e.target.value })}
-                  placeholder="Write a short bio"
+                  placeholder="Write a bio with minimum 300 characters."
                 />
               </div>
             </div>

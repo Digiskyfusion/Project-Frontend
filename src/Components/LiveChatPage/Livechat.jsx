@@ -38,6 +38,7 @@ const LiveChat = ({ recipientId }) => {
   const currentUserId = user?._id;
   const [UserCredits, setUserCredits] = useState(null);
   const [newChat, setNewChat] = useState(false);
+  const [fileUploading, setFileUploading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -133,7 +134,7 @@ const LiveChat = ({ recipientId }) => {
 
   const handleFileUpload = async (file) => {
   if (!file || !conversation || !currentUserId) return;
-
+  setFileUploading(true);
   const formData = new FormData();
   formData.append("file", file);
   formData.append("conversationId", conversation._id);
@@ -149,8 +150,9 @@ const LiveChat = ({ recipientId }) => {
     const fileMessage = response.data.data;
 
     // Emit and update local messages
-    socket.emit("send_message", fileMessage);
-    setMessages((prev) => [...prev, fileMessage]);
+   
+    socket.emit('send_message', fileMessage);
+    // setMessages((prev) => [...prev, fileMessage]);
 
     const fileInput = document.getElementById('fileInput');
     console.log(fileInput,"hello");
@@ -158,6 +160,9 @@ const LiveChat = ({ recipientId }) => {
   } catch (error) {
     console.error("Error uploading file:", error);
     toast.error("File upload failed");
+  }
+  finally{
+    setFileUploading(false);
   }
 };
 
@@ -256,7 +261,7 @@ const LiveChat = ({ recipientId }) => {
                 : 'bg-gray-300 text-gray-800'
             }`}
           >
-            {msg.text && <div>{msg.text}</div>}
+            {msg.text && !msg.fileUrl && <div>{msg.text}</div>}
 {msg.fileUrl && (
   <div className="mt-2">
     {msg.fileType?.startsWith("image") ? (
@@ -276,6 +281,13 @@ const LiveChat = ({ recipientId }) => {
             </div>
           </div>
         ))}
+        {fileUploading && (
+  <div className="flex items-center space-x-2 max-w-xs ml-auto mt-4">
+    <div className="w-6 h-6 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+    <span className="text-sm text-gray-500">Uploading file...</span>
+  </div>
+)}
+
         <div ref={chatEndRef} />
       </div>
       
@@ -295,13 +307,13 @@ const LiveChat = ({ recipientId }) => {
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        {/* <label htmlFor="fileInput" className={`text-green-600 hover:text-green-800 ${
+        <label htmlFor="fileInput" className={`text-green-600 hover:text-green-800 ${
         messages?.length === 0 && UserCredits === 0
           ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-300'
           : 'border-gray-300 focus:ring-2 focus:ring-green-500 cursor-pointer'
       }`}>
   <Upload size={20} />
-</label> */}
+</label>
         <button 
           disabled={messages?.length === 0 && UserCredits === 0}
           onClick={sendMessage}
