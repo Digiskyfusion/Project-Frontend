@@ -65,11 +65,6 @@ import BlogTwoPage from "./Pages/BlogTwoPage";
 import BlogThreePage from "./Pages/BlogThreePage";
 import BlogFourPage from "./Pages/BlogFourPage";
 import BlogFivePage from "./Pages/BlogFivePage";
-import NewHomeSix from "./Components/NewHomePage/NewHomeSix";
-import NewHomeFour from "./Components/NewHomePage/NewHomeFour";
-import NewHomeFive from "./Components/NewHomePage/NewHomeFive";
-import NewHomeTwo from "./Components/NewHomePage/NewHomeTwo";
-
 
 
 function App() {
@@ -211,8 +206,8 @@ function App() {
         <Route path="/blog/6" element={<BlogOnePage />} /> */}
       </Routes>
 
-       {/* <NewHomeSix /> */}
-    <NewHomeTwo />
+     
+    
     
     
     </BrowserRouter>
