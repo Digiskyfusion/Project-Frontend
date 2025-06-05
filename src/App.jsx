@@ -65,6 +65,7 @@ import BlogTwoPage from "./Pages/BlogTwoPage";
 import BlogThreePage from "./Pages/BlogThreePage";
 import BlogFourPage from "./Pages/BlogFourPage";
 import BlogFivePage from "./Pages/BlogFivePage";
+import NewHomeSix from "./Components/NewHomePage/NewHomeSix";
 
 
 function App() {
@@ -205,6 +206,8 @@ function App() {
         {/* <Route path="/blog/5" element={<BlogFivePage />} />
         <Route path="/blog/6" element={<BlogOnePage />} /> */}
       </Routes>
+
+
 
      
     
