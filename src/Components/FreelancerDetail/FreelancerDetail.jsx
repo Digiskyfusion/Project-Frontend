@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaEnvelope, FaUser, FaTools, FaArrowLeft } from "react-icons/fa";
+import { FaEnvelope, FaUser, FaTools, FaArrowLeft, FaCalendar } from "react-icons/fa";
 import defaultImage from "./../../assets/Images/userimage.png";
 
 const FreelancerDetail = () => {
@@ -107,12 +107,44 @@ const FreelancerDetail = () => {
           </span>
         </p>
 
+        {/* Experience */}
+        {freelancer.experience?.length > 0 && (<p className="mt-4 text-gray-700 flex items-center justify-center gap-2 text-lg">
+          <FaCalendar className="text-[#00ff9f]" />
+          <span className="font-semibold">
+            {'Years of Experience: '+freelancer.experience}
+          </span>
+        </p>)}
+
         {/* Bio */}
         {freelancer.bio && (
           <div className="mt-6 bg-gray-50 p-5 rounded-lg shadow-md border-l-4 border-[#004930]">
             <p className="text-gray-700 italic font-medium">"{freelancer.bio}"</p>
           </div>
         )}
+
+        {/* Showcase Links */}
+{freelancer.showcaseLinks?.length > 0 && (
+  <div className="mt-6 w-full flex flex-col items-center">
+    <h3 className="text-xl font-semibold text-[#004930] mb-2">Showcase Links</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {freelancer.showcaseLinks.map((link, idx) => {
+        const validLink = link.startsWith("http://") || link.startsWith("https://") ? link : `https://${link}`;
+        return (
+        <a
+          key={idx}
+          href={validLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white/70 border border-[#004930] text-[#004930] px-4 py-2 rounded-lg shadow-md font-medium hover:bg-[#004930] hover:text-white transition-all duration-300"
+        >
+          {validLink.length > 40 ? validLink.slice(0, 37) + "..." : validLink}
+        </a>
+        )
+})}
+    </div>
+  </div>
+)}
+
       </div>
       <div className="mt-6">
           <button

@@ -19,7 +19,7 @@ const FreelancerSkills = () => {
 
   const [userId, setUserId] = useState(null);
   const [roleType, setRoleType] = useState("");
-  const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "" });
+  const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "", showcaseLinks: [""] });
   const [loading, setLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -41,7 +41,7 @@ const FreelancerSkills = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`${API_URL}/user/${userId}`);
-        setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "" });
+        setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "", showcaseLinks: response.data.showcaseLinks || [""] });
         setImagePreview(response.data.image || null);
       } catch (error) {
         toast.error("Failed to fetch user data");
@@ -89,6 +89,22 @@ const FreelancerSkills = () => {
   
 
   const handleSave = async () => {
+
+    if (!user.bio || user.bio.trim().length < 300) {
+      toast.error("Please enter a bio of at least 300 characters.");
+      return;
+    }
+
+     if (!user.skills || user.skills.length < 2) {
+      toast.error("Please select at least one skill.");
+      return;
+    }
+
+    if (!user.image) {
+      toast.error("Please upload a profile image.");
+      return;
+    }
+
     setLoading(true);
     try {
   
@@ -108,7 +124,7 @@ const FreelancerSkills = () => {
         });
   
         setTimeout(() => {
-          navigate("/UserSkills");
+          navigate("/freelancerSkill");
           window.location.reload(); // Reload to reflect updated data
         }, 500);
       } else {
@@ -178,7 +194,7 @@ const FreelancerSkills = () => {
                   className="w-full p-3 h-32 border-none focus:ring-0 bg-transparent text-gray-700 outline-0 resize-none"
                   value={user.bio}
                   onChange={(e) => setUser({ ...user, bio: e.target.value })}
-                  placeholder="Write a short bio"
+                  placeholder="Write a bio with minimum 300 characters."
                 />
               </div>
             </div>
@@ -216,6 +232,46 @@ const FreelancerSkills = () => {
                 </div>
               )}
             </div>
+            <div className="relative animate-fade-in delay-100">
+  <label className="block text-[#004930] font-medium mb-2">Showcase Links (e.g. GitHub, Portfolio)</label>
+  {user.showcaseLinks.map((link, index) => (
+    <div key={index} className="flex items-center mb-2">
+      <input
+        type="url"
+        placeholder="https://..."
+        value={link}
+        onChange={(e) => {
+          const updatedLinks = [...user.showcaseLinks];
+          updatedLinks[index] = e.target.value;
+          setUser({ ...user, showcaseLinks: updatedLinks });
+        }}
+        className="flex-1 p-2 border border-[#004930] rounded-lg bg-gray-50 text-gray-700 mr-2"
+      />
+      {index > 0 && (
+        <button
+          type="button"
+          onClick={() => {
+            const updatedLinks = user.showcaseLinks.filter((_, i) => i !== index);
+            setUser({ ...user, showcaseLinks: updatedLinks });
+          }}
+          className="text-red-500 text-sm"
+        >
+          Remove
+        </button>
+      )}
+    </div>
+  ))}
+  {user.showcaseLinks.length < 5 && (
+    <button
+      type="button"
+      onClick={() => setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] })}
+      className="mt-2 text-[#004930] text-sm hover:underline"
+    >
+      + Add another link
+    </button>
+  )}
+</div>
+
           </div>
 
           <div className="w-full md:flex gap-3 justify-between mt-8">
