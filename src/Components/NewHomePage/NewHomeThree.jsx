@@ -69,10 +69,10 @@ const NewHomeThree = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="py-12 px-6 bg-white"
+      className="py-12 px-6 bg-white eb-garamond"
     >
       <h2 className="text-3xl font-semibold text-green-900 mb-2">Popular Skills</h2>
-      <p className="text-black mb-8">2025 jobs live - 200+ added today</p>
+      <p className="text-black mb-8 font-medium text-xl">2025 jobs live - 200+ added today</p>
 
       <Swiper
         breakpoints={{

@@ -66,7 +66,7 @@ function NewHomeZero() {
   }, []);
 
   return (
-    <div className="relative h-[50rem] sm:h-[50rem] lg:min-h-screen flex items-center justify-start text-white overflow-hidden">
+    <div className="relative h-[50rem] sm:h-[50rem] lg:min-h-screen flex items-center justify-start text-white overflow-hidden eb-garamond">
       {/* Videos in background */}
       {videos.map((src, idx) => (
         <video

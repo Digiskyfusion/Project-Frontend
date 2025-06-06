@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function NewHomeSix() {
   return (
-    <div className="bg-green-950 py-7 px-4 sm:px-8 md:px-16 lg:py-20 lg:px-30 text-white">
+    <div className="bg-green-950 py-7 px-4 sm:px-8 md:px-16 lg:py-20 lg:px-30 text-white eb-garamond">
       <div className="flex flex-col md:flex-row gap-10">
 
         {/* Left: Image + animated words */}

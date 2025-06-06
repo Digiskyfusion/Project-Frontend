@@ -64,7 +64,7 @@ export default function NewHomeone() {
   }, [isInView, controls]);
 
   return (
-    <div className="flex items-center justify-center px-6 py-12 bg-white overflow-hidden">
+    <div className="flex items-center justify-center px-6 py-12 bg-white overflow-hidden eb-garamond">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl">
 
         {/* ✅ Left Section (Cards) */}
@@ -95,7 +95,7 @@ export default function NewHomeone() {
                 <h3 className="text-lg font-bold text-gray-800 group-hover:text-green-700">
                   {card.title}
                 </h3>
-                <p className="text-sm mt-2 text-gray-600 group-hover:text-green-600">
+                <p className="text-sm mt-2 font-medium text-gray-600 group-hover:text-green-600">
                   {card.desc}
                 </p>
               </div>
