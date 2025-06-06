@@ -3,11 +3,7 @@ import { Typewriter } from 'react-simple-typewriter';
 
 const carouselData = [
  
-  {
-    heading: 'Discover the Best Freelancers Instantly',
-    paragraph: 'Hire professionals from around the world at your fingertips.',
-    buttonText: 'Exciting Features Coming Soon!',
-  },
+  
   {
     heading: 'Grow Your Career with Our Platform',
     paragraph: 'Find exciting opportunities that match your skills and passion.',
@@ -16,6 +12,11 @@ const carouselData = [
    {
     heading: 'Bridging people To turn dreams into achievements',
     paragraph: 'Use AI to find skilled professionals or list jobs while staying in control.',
+    buttonText: 'Exciting Features Coming Soon!',
+  },
+  {
+    heading: 'Discover the Best Freelancers Instantly',
+    paragraph: 'Hire professionals from around the world at your fingertips.',
     buttonText: 'Exciting Features Coming Soon!',
   },
 ];
