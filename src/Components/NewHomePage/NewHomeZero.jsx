@@ -6,12 +6,12 @@ const carouselData = [
   {
     heading: 'Discover the Best Freelancers Instantly',
     paragraph: 'Hire professionals from around the world at your fingertips.',
-    buttonText: 'Join Now!',
+    buttonText: 'Exciting Features Coming Soon!',
   },
   {
     heading: 'Grow Your Career with Our Platform',
     paragraph: 'Find exciting opportunities that match your skills and passion.',
-    buttonText: 'Get Started Today!',
+    buttonText: 'Exciting Features Coming Soon!',
   },
    {
     heading: 'Bridging people To turn dreams into achievements',
