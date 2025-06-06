@@ -2,11 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 
 const carouselData = [
-  {
-    heading: 'Bridging people To turn dreams into achievements',
-    paragraph: 'Use AI to find skilled professionals or list jobs while staying in control.',
-    buttonText: 'Exciting Features Coming Soon!',
-  },
+ 
   {
     heading: 'Discover the Best Freelancers Instantly',
     paragraph: 'Hire professionals from around the world at your fingertips.',
@@ -17,11 +13,17 @@ const carouselData = [
     paragraph: 'Find exciting opportunities that match your skills and passion.',
     buttonText: 'Get Started Today!',
   },
+   {
+    heading: 'Bridging people To turn dreams into achievements',
+    paragraph: 'Use AI to find skilled professionals or list jobs while staying in control.',
+    buttonText: 'Exciting Features Coming Soon!',
+  },
 ];
 
 const videos = [
    "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/video-1749102334380.mp4?alt=media&token=a0c3d45a-8032-47ab-9f12-2cd7fd18ad7c",
-   "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/homepagevideo1.mp4?alt=media&token=dcdcdbd4-16b9-4d7b-aabc-0b066e2ef8d3",
+   "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/video-1749102789504.mp4?alt=media&token=aac76658-533b-4976-b135-9dd0f2ecd51f",
+  //  "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/homepagevideo1.mp4?alt=media&token=dcdcdbd4-16b9-4d7b-aabc-0b066e2ef8d3",
    "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/video4.mp4?alt=media&token=d326bb66-986d-478a-ab53-7ada55312b88",
   // "https://firebasestorage.googleapis.com/v0/b/digisky-25d9e.firebasestorage.app/o/homepagevideo2.mp4?alt=media&token=12b09ca3-a1f5-471a-9db1-4eddc042da97",
 ];
@@ -57,7 +59,7 @@ function NewHomeZero() {
   }, [currentIndex]);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-start text-white overflow-hidden">
+    <div className="relative h-[50rem] sm:h-[50rem] lg:min-h-screen flex items-center justify-start text-white overflow-hidden">
       {/* All background videos mounted */}
       {videos.map((src, idx) => (
         <video
