@@ -45,7 +45,7 @@ function NewHomeZero() {
   }, [currentIndex]);
 
   return (
-    <div className="relative h-[45rem] lg:min-h-screen flex items-center justify-start  text-white overflow-hidden">
+    <div className="relative h-[50rem] lg:min-h-screen flex items-center justify-start  text-white overflow-hidden">
       {/* Background Video */}
       <video
         ref={videoRef}
