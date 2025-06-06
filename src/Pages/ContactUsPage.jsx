@@ -40,7 +40,8 @@ function ContactUsPages() {
         ) : (
           <HeaderGlobal />
         )}
-        <ContactUs />
+       <div className="mt-20">
+         <ContactUs />
         <HiddenContContact />
         <Secondsection />
         <div className='md:flex md:justify-between '>
@@ -54,6 +55,7 @@ function ContactUsPages() {
             </div>
         </div>
         <Support />
+       </div>
 
       <Footer />
       </div>

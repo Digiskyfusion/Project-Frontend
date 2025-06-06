@@ -42,7 +42,7 @@ function AboutUsPage() {
 ) : (
   <HeaderGlobal />
 )}
-    <main className="">
+    <main className="mt-20">
       <About />
       <HiddenConOne />
       <HiddenFooterCon />

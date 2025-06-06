@@ -7,23 +7,27 @@ import HeaderGlobal from "../Components/Header"; // Import Global Header
 import HiddenSkillContent from '../Components/SkillsHiddenContent/HiddenSkillContent';
 function SkillsCardPage() {
 
-     const [roleType, setRoleType] = useState(null);
-    
-      useEffect(() => {
-        const userData = localStorage.getItem("user"); // Get from localStorage
-        if (userData) {
-          try {
-            const parsedData = JSON.parse(userData); // Parse JSON string
-            console.log(parsedData);
-            
-            if (parsedData && parsedData.roleType) {
-              setRoleType(parsedData.roleType); // Set roleType state
-            }
-          } catch (error) {
-            console.error("Error parsing userInfo:", error);
-          }
+    const [roleType, setRoleType] = useState(null);
+  const [hasToken, setHasToken] = useState(false);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user"); // Get from localStorage
+    const token = localStorage.getItem("token");    // Assuming token is stored here
+    setHasToken(!!token); // true if token exists, false otherwise
+
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData); // Parse JSON string
+        console.log(parsedData);
+
+        if (parsedData && parsedData.roleType) {
+          setRoleType(parsedData.roleType); // Set roleType state
         }
-      }, []);
+      } catch (error) {
+        console.error("Error parsing userInfo:", error);
+      }
+    }
+  }, []);
   return (
     <div>
      {roleType === "freelancer" ? (
@@ -33,9 +37,10 @@ function SkillsCardPage() {
 ) : (
   <HeaderGlobal />
 )}
+<div className={hasToken ? 'mt-0' : 'mt-20'}>
  <HiddenSkillContent />
       <SkillPage />
-     
+     </div>
       <Footer />
     </div>
   )

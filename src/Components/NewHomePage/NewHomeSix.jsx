@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom';
 
 function NewHomeSix() {
   return (
-    <div className="bg-green-950 py-7 px-4 sm:px-8 md:px-16 lg:px-24 text-white">
+    <div className="bg-green-950 py-7 px-4 sm:px-8 md:px-16 lg:py-20 lg:px-30 text-white">
       <div className="flex flex-col md:flex-row gap-10">
 
         {/* Left: Image + animated words */}
         <div className="flex flex-col items-center w-full md:w-1/2 h-auto">
-          <div className="relative w-full h-[200px] sm:h-[400px] md:h-[300px] lg:h-[500px] flex items-start justify-center sm:justify-start">
+          <div className="relative w-full h-[200px] sm:h-[400px] md:h-[300px] lg:h-[350px] flex items-start justify-center sm:justify-start">
             <img
               src={bigc}
               alt="Big C"
-              className="w-[180px] sm:w-[250px] md:w-[320px] lg:w-[380px] object-contain opacity-90"
+              className="w-[180px] sm:w-[250px] md:w-[320px] lg:w-[280px] object-contain opacity-90"
             />
-            <div className="absolute top-12 left-[150px] sm:left-[150px] md:left-[50px] lg:top-32 lg:left-[70px] flex flex-col items-start text-left space-y-1 sm:space-y-6 md:space-y-1 px-2 sm:px-4 lg:pl-16">
+            <div className="absolute top-12 left-[150px] sm:left-[150px] md:left-[50px] lg:top-20 lg:left-[50px] flex flex-col items-start text-left space-y-1 sm:space-y-6 md:space-y-1 px-2 sm:px-4 lg:pl-16">
               <motion.h2
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -54,7 +54,7 @@ function NewHomeSix() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
           viewport={{ once: false }}
-          className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left"
+          className="w-full lg:w-1/2 flex flex-col justify-center  text-center lg:text-left"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Build Your Dream Team

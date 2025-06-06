@@ -39,6 +39,8 @@ function ChooseUSPage() {
   ) : (
     <HeaderGlobal />
   )}
+  <div className="mt-20">
+    
     <ThirdSectionFirst />
     <HiddenCont />
       <MeetFreelancer />
@@ -46,6 +48,7 @@ function ChooseUSPage() {
       <Thirdsection />
       <Fourthsectionfour />
       <Thirdsectionfivth />
+  </div>
       <Footer />
     </div>
   )

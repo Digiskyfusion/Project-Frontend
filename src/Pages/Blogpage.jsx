@@ -8,7 +8,9 @@ function Blogpage() {
   return (
     <>
     <NavbarAlt />
-    <BlogPage />
+   <div className='mt-20'>
+     <BlogPage />
+   </div>
     {/* <BlogsPage/> */}
     <Footer />
       
