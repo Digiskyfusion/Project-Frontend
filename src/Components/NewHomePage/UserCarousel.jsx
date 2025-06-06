@@ -66,9 +66,12 @@ function UserCarousel() {
       ref={sectionRef}
       className="bg-gradient-to-b from-green-950 to-black py-10 px-4 sm:px-8 md:px-13 lg:px-8 text-white relative"
     >
-      <h2 className="text-3xl font-bold text-center mb-10 tracking-wide">
-        🌟 Meet Our Talent 🌟
+      <div className="text-center space-y-5 mb-10">
+        <h2 className="text-3xl font-bold text-center  tracking-wide">
+        🌟 Connect. Collaborate. Create. 🌟
       </h2>
+      <p className="text-sm md:text-xl">Your dream team is just a click away! Build your Virtual Talent Bench™ with top-tier freelancers who bring skill, speed, and creativity to your projects.</p>
+      </div>
 
       {/* Carousel */}
       <div ref={scrollRef} className="overflow-x-auto scroll-smooth no-scrollbar">

@@ -92,12 +92,10 @@ function NewHomeFour() {
             🚀 Hire Smarter. Scale Faster. Succeed Effortlessly!
           </h1>
           <p className="text-sm md:text-base text-gray-100">
-            Freelancing isn’t just work—it’s freedom. Work with dream clients, set your own schedule, and earn on your terms.
-            No office politics, no limits—just you, your skills, and endless opportunities. Whether you’re a designer,
-            writer, coder, or marketer, your next big project is waiting.
+          Great businesses are built with great talent. Why struggle with hiring when you can access top-tier freelancers in just a few clicks? Get experts who deliver quality, speed, and innovation—without the overhead. Whether you need a designer, developer, marketer, or strategist, your perfect match is just a tap away.
           </p>
           <h3 className="text-green-300 italic font-medium">
-            Why wait? The future of work is here, and it’s calling your name.
+            Build your dream team today!
           </h3>
           <Link to="/registration">
             <button

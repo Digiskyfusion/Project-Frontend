@@ -60,11 +60,11 @@ function ReviewCarouselSection() {
       ref={ref}
       animate={animationControls}
       initial={{ opacity: 0, y: 50 }}
-      className="bg-[#003B2F] text-white py-16 px-4 sm:px-6 md:px-10 lg:px-20"
+      className="bg-[#003B2F] text-white py-13 px-4 sm:px-6 md:px-10 lg:px-20"
     >
       {/* Heading */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-4">How It Works?</h1>
+        <h1 className="text-3xl md:text-4xl font-semibold mb-4">What Our Customers Say?</h1>
         <p className="max-w-2xl mx-auto text-sm md:text-base text-gray-200">
           Your success is our priority! See what our users love about working with us: Seamless and efficient!
           Finding the right projects has never been this easy. Highly recommended!
