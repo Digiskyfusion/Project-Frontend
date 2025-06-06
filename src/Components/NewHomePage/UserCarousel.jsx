@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const fallbackImage =
   "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg?semt=ais_hybrid&w=740";
@@ -8,8 +8,9 @@ const fallbackImage =
 function UserCarousel() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [scrollDirection, setScrollDirection] = useState(null);
   const scrollRef = useRef(null);
+  const sectionRef = useRef(null); // for in-view detection
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 }); // triggers when 30% is visible
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -45,21 +46,26 @@ function UserCarousel() {
   const scroll = (direction) => {
     const scrollAmount = direction === "left" ? -300 : 300;
     scrollRef.current?.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    setScrollDirection(direction);
   };
 
   const handleSeeDetails = (id) => {
     navigate(`/profile/${id}`);
   };
 
-  // Animation variants for each card
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
-    <div className="bg-gradient-to-b from-green-950 to-black py-10 px-4 sm:px-8 md:px-13 lg:px-8 text-white relative">
+    <div
+      ref={sectionRef}
+      className="bg-gradient-to-b from-green-950 to-black py-10 px-4 sm:px-8 md:px-13 lg:px-8 text-white relative"
+    >
       <h2 className="text-3xl font-bold text-center mb-10 tracking-wide">
         🌟 Meet Our Talent 🌟
       </h2>
@@ -69,11 +75,11 @@ function UserCarousel() {
         <div className="flex gap-8 min-w-max snap-x snap-mandatory px-2">
           {[...users].reverse().map((user, index) => (
             <motion.div
-              key={`${user._id}-${scrollDirection || "init"}`} // changing key triggers remount
+              key={user._id}
               className="relative snap-start shrink-0 w-56 text-center p-6 rounded-3xl border border-green-700 shadow-2xl transition-transform overflow-hidden bg-green-900 flex flex-col items-center"
               variants={cardVariants}
               initial="hidden"
-              animate="visible"
+              animate={isInView ? "visible" : "hidden"}
             >
               <div className="w-28 h-28 rounded-xl border-2 border-green-700 flex items-center justify-center overflow-hidden bg-green-800 mb-4">
                 <img

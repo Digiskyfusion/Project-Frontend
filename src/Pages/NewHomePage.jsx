@@ -10,6 +10,7 @@ import NewHomeTwo from './../Components/NewHomePage/NewHomeTwo';
 import NewHomeFive from '../Components/NewHomePage/NewHomeFive';
 import NewHomeSix from '../Components/NewHomePage/NewHomeSix';
 import UserCarousel from '../Components/NewHomePage/UserCarousel';
+import NewHomeThree from '../Components/NewHomePage/NewHomeThree';
 function NewHomePage() {
       const [roleType, setRoleType] = useState(null);
       
@@ -42,6 +43,7 @@ function NewHomePage() {
       <NewHomeZero />
       <NewHomeone />
       {/* <NewHomeTwo /> */}
+      <NewHomeThree />
       <NewHomeFour />
     <NewHomeFive />
     <NewHomeSix />
