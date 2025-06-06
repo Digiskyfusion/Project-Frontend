@@ -91,3 +91,11 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+
+.eb-garamond {
+  font-family: "EB Garamond";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
