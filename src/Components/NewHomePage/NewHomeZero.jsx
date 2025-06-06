@@ -57,7 +57,7 @@ function NewHomeZero() {
   }, [currentIndex]);
 
   return (
-    <div className="relative h-[40rem] md:min-h-screen flex items-center justify-start text-white overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-start text-white overflow-hidden">
       {/* All background videos mounted */}
       {videos.map((src, idx) => (
         <video
