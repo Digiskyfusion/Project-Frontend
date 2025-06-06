@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 
 const carouselData = [
@@ -7,17 +8,17 @@ const carouselData = [
   {
     heading: 'Grow Your Career with Our Platform',
     paragraph: 'Find exciting opportunities that match your skills and passion.',
-    buttonText: 'Exciting Features Coming Soon!',
+    buttonText: 'Join Now',
   },
    {
     heading: 'Bridging people To turn dreams into achievements',
     paragraph: 'Use AI to find skilled professionals or list jobs while staying in control.',
-    buttonText: 'Exciting Features Coming Soon!',
+    buttonText: 'Join Now',
   },
   {
     heading: 'Discover the Best Freelancers Instantly',
     paragraph: 'Hire professionals from around the world at your fingertips.',
-    buttonText: 'Exciting Features Coming Soon!',
+    buttonText: 'Join Now',
   },
 ];
 
@@ -109,7 +110,8 @@ function NewHomeZero() {
           />
         </p>
 
-        <button
+        <Link to="/registration">
+          <button
           type="button"
           className={`text-white w-[250px] sm:w-[400px] px-2 py-2 rounded-lg border border-gray-300
           shadow-[0_4px_0_#a0aec0] transform transition-all duration-200 ease-in-out
@@ -119,6 +121,7 @@ function NewHomeZero() {
         >
           {carouselData[currentIndex].buttonText}
         </button>
+        </Link>
 
         <div className="flex justify-center sm:justify-start mt-8 space-x-2">
           {carouselData.map((_, idx) => (
