@@ -13,13 +13,20 @@ function Work() {
 // Fetch the role from localStorage when the component mounts
 useEffect(() => {
   const storedRole = JSON.parse(localStorage.getItem('user'));
+  console.log("roleType", storedRole?.roleType);
 
-  if (storedRole && storedRole.roleType) {
-    setRoleType(storedRole.roleType);  // Update roleType state with stored value
+  if (storedRole && storedRole.roleType === "client") {
+    setView("freelancer");
+    setRoleType("freelancer")
+  } else if (storedRole && storedRole.roleType === "freelancer") {
+    setView("client");
+    setRoleType("client")
   } else {
     console.log("No roleType found in stored data");
+    setView("client");
   }
 }, []);
+
 
   // Generic function for navigation
   const handleNavigation = (route) => {
