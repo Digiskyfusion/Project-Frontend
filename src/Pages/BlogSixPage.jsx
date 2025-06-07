@@ -23,7 +23,7 @@ function BlogSixPage() {
             .
           </>
         }
-        bottomText="Final Thoughts – Start Your Earning Journey Today"
+        bottomText="Start Your Earning Journey Today"
         para={
           <>
             Gone are the days when you had to wait for a degree to start earning. Today, the internet offers thousands of legit opportunities to earn online after 12th, even without experience or investment. If you're wondering how to make money online as a 12th pass student, you're in the right place.
