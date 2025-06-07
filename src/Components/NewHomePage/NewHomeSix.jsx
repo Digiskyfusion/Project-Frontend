@@ -56,10 +56,10 @@ function NewHomeSix() {
           viewport={{ once: false }}
           className="w-full lg:w-1/2 flex flex-col justify-center  text-center lg:text-left"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
             Build Your Dream Team
           </h2>
-          <p className="text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed text-green-100 mb-6 tracking-wide">
+          <p className="text-base md:text-lg max-w-lg leading-relaxed text-green-100 mb-6 tracking-wide">
             Your dream team is just a click away! Build your Virtual Talent Bench™ with top-tier freelancers who bring skill, speed, and creativity to your projects.
           </p>
           <Link to="/registration">

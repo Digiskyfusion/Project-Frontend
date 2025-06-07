@@ -65,6 +65,9 @@ import BlogTwoPage from "./Pages/BlogTwoPage";
 import BlogThreePage from "./Pages/BlogThreePage";
 import BlogFourPage from "./Pages/BlogFourPage";
 import NewHomePage from './Pages/NewHomePage';
+import BlogFivePage from "./Pages/BlogFivePage";
+import BlogSixPage from "./Pages/BlogSixPage";
+
 
 
 
@@ -205,10 +208,12 @@ function App() {
         <Route path="/blog/freelance-platforms-2025" element={<BlogTwoPage />} />
         <Route path="/blog/freelance-platforms-2025" element={<BlogThreePage />} />
         <Route path="/blog/online-jobs-10th-pass" element={<BlogFourPage />} />
-        {/* <Route path="/blog/5" element={<BlogFivePage />} />
-        <Route path="/blog/6" element={<BlogOnePage />} /> */}
+        <Route path="/blog/trusted-freelancing-platform-for-beginners" element={<BlogFivePage />} />
+        <Route path="/blog/how-to-earn-online-after-12th" element={<BlogSixPage />} />
         {/* <Route path="/newHomepage" element={<NewHomePage />} /> */}
       </Routes>
+
+
 
      
     

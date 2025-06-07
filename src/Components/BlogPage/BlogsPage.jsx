@@ -21,7 +21,7 @@ const jobIcons = [
 
 const BlogsPage = ({jobSections, Heading,para, bottomText,bottom,title}) => {
   return (
-    <div className="bg-gradient-to-br from-[#ecfdf5] via-[#f0fdfa] to-[#fefce8] min-h-screen py-12 px-4">
+    <div className="bg-gradient-to-br from-[#ecfdf5] via-[#f0fdfa] to-[#fefce8] min-h-screen py-12 px-4 mt-20">
       <div className="max-w-6xl mx-auto">
         
         {/* Top Left Back Button */}
