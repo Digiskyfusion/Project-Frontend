@@ -17,7 +17,7 @@ const ReviewList = () => {
 
   return (
     <>
-    <div className="w-full bg-gray-50 py-10 px-6 sm:px-12">
+    <div className="w-full bg-gray-50 mt-3 py-10 px-6 sm:px-12">
       <h1 className="text-center text-sm md:text-xl lg:text-3xl font-bold">
         All Reviews
       </h1>

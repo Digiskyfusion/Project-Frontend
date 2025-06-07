@@ -59,7 +59,7 @@ function ProfileDetails() {
           <div className="bg-gradient-to-r from-[#004930] to-[#00795F] p-6 text-center text-white">
             <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
               <img
-                src={user.user_image || image}
+                src={user.image || image}
                 alt={user.name || "User"}
                 className="w-24 h-24 mx-auto rounded-full border-4 border-white shadow-md"
               />

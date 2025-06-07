@@ -1,10 +1,11 @@
 import React from 'react';
 import vector3 from '../../assets/Images/3d-vector-illustration-of-a-happy-freelancer-worki (1) 3 (1).png';
 import vector4 from '../../assets/Images/3d-vector-illustration-of-a-happy-freelancer-worki (1) 4.png';
+import { Link } from 'react-router-dom';
 
 function NewHomeFour() {
   return (
-    <div className="py-20 px-4 sm:px-8 md:px-7 lg:px-10 bg-[#fefce8] space-y-32 relative overflow-visible">
+    <div className="py-7 sm:py-20 px-4 sm:px-8 md:px-7 lg:px-5  bg-[#fefce8] space-y-32 relative overflow-visible">
       <style>
         {`
           @keyframes float {
@@ -52,7 +53,8 @@ function NewHomeFour() {
           <h3 className="text-green-300 italic font-medium">
             Why wait? The future of work is here, and it’s calling your name.
           </h3>
-          <button
+        <Link to="/registration">
+            <button
             className="bg-white text-gray-800 px-4 py-2 rounded-lg font-semibold border border-gray-300
                        shadow-[0_4px_0_#a0aec0] transform transition-all duration-200 ease-in-out
                        hover:-translate-y-1 hover:shadow-[0_6px_0_#a0aec0]
@@ -60,6 +62,7 @@ function NewHomeFour() {
           >
             Get Started
           </button>
+        </Link>
         </div>
       </div>
 
@@ -89,14 +92,13 @@ function NewHomeFour() {
             🚀 Hire Smarter. Scale Faster. Succeed Effortlessly!
           </h1>
           <p className="text-sm md:text-base text-gray-100">
-            Freelancing isn’t just work—it’s freedom. Work with dream clients, set your own schedule, and earn on your terms.
-            No office politics, no limits—just you, your skills, and endless opportunities. Whether you’re a designer,
-            writer, coder, or marketer, your next big project is waiting.
+          Great businesses are built with great talent. Why struggle with hiring when you can access top-tier freelancers in just a few clicks? Get experts who deliver quality, speed, and innovation—without the overhead. Whether you need a designer, developer, marketer, or strategist, your perfect match is just a tap away.
           </p>
           <h3 className="text-green-300 italic font-medium">
-            Why wait? The future of work is here, and it’s calling your name.
+            Build your dream team today!
           </h3>
-          <button
+          <Link to="/registration">
+            <button
             className="bg-white text-gray-800 px-4 py-2 rounded-lg font-semibold border border-gray-300
                        shadow-[0_4px_0_#a0aec0] transform transition-all duration-200 ease-in-out
                        hover:-translate-y-1 hover:shadow-[0_6px_0_#a0aec0]
@@ -104,6 +106,7 @@ function NewHomeFour() {
           >
             Get Started
           </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -42,7 +42,48 @@
   }
 
 
+  /* @keyframes rotateOnce {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.rotate-once {
+  animation: rotateOnce 1s ease-in-out forwards;
+} */
+
+
+@keyframes smoothSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.box-rotate {
+  animation: smoothSpin 6s linear infinite;
+  /* 6s for one full rotation */
+  transform-origin: center center;
+  will-change: transform;
   /* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+}
+
+/* Hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
