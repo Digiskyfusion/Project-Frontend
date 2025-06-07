@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { FaEnvelope, FaUserFriends, FaTools, FaArrowLeft } from "react-icons/fa";
 import defaultImage from "./../../assets/Images/userimage.png";
@@ -124,7 +124,7 @@ const UserDetail = () => {
           </div>
         )}
       </div>
-      <div className="mt-6">
+      {/* <div className="mt-6">
           <button
             onClick={handleRevealEmail}
             className="bg-[#004930] text-white cursor-pointer font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-[#003822] hover:scale-105 transition-all duration-300"
@@ -142,6 +142,13 @@ const UserDetail = () => {
     </a>
   </p>
 )}
+        </div> */}
+        <div className="mt-6">
+        <Link to={`/livechat/${user._id}`}>
+          <button className="bg-[#004930] text-white cursor-pointer font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-[#003822] hover:scale-105 transition-all duration-300">
+            Chat Now
+          </button>
+          </Link>
         </div>
     </div>
   );

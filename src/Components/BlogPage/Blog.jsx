@@ -39,18 +39,18 @@ const BlogPage = () => {
     },
    {
   picture: 'https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg',
-  title: 'Build Your Portfolio and Get Hired: DIGISKY.ai for New Freelancers',
+  title: 'No Laptop? No Problem! Start Freelancing From Your Phone',
   date: 'May 15, 2025',
   tag: 'Freelancing',
-  text: "Starting as a freelancer can be overwhelming, but with DIGISKY.ai, beginners can showcase their talents, land meaningful gigs, and develop a strong online presence.",
+  text: "you think you need a fancy setup to begin freelancing? Wrong! Learn how to kickstart your journey with just a smartphone and simple skills. DIGISKY.ai makes it possible—anywhere, anytime.",
   link: '/blog/trusted-freelancing-platform-for-beginners'
 },
 {
   picture: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg',
-  title: 'Earn From Home After 12th: Start Your Freelance Journey Today',
+  title: 'Freelancing vs Office Jobs: Which One’s Better for You?',
   date: 'May 18, 2025',
   tag: 'Freelancing',
-  text: "No college degree",
+  text: "Confused between freelancing and a 9–5 job? Let’s break down the pros, cons, income potential, and flexibility of both — so you can choose your perfect path.",
   link: '/blog/how-to-earn-online-after-12th'
 }
 
