@@ -37,6 +37,24 @@ const BlogPage = () => {
       text: "Freelancing is not just a side hustle anymore—it's a career. DIGISKY.ai provides a platform where new freelancers can find projects that suit their skills and grow their portfolio while earning fair pay.",
          link: '/blog/online-jobs-10th-pass'
     },
+   {
+  picture: 'https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg',
+  title: 'Build Your Portfolio and Get Hired: DIGISKY.ai for New Freelancers',
+  date: 'May 15, 2025',
+  tag: 'Freelancing',
+  text: "Starting as a freelancer can be overwhelming, but with DIGISKY.ai, beginners can showcase their talents, land meaningful gigs, and develop a strong online presence.",
+  link: '/blog/trusted-freelancing-platform-for-beginners'
+},
+{
+  picture: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg',
+  title: 'Earn From Home After 12th: Start Your Freelance Journey Today',
+  date: 'May 18, 2025',
+  tag: 'Freelancing',
+  text: "No college degree",
+  link: '/blog/how-to-earn-online-after-12th'
+}
+
+
   ];
 
   return (

@@ -13,13 +13,20 @@ function Work() {
 // Fetch the role from localStorage when the component mounts
 useEffect(() => {
   const storedRole = JSON.parse(localStorage.getItem('user'));
+  console.log("roleType", storedRole?.roleType);
 
-  if (storedRole && storedRole.roleType) {
-    setRoleType(storedRole.roleType);  // Update roleType state with stored value
+  if (storedRole && storedRole.roleType === "client") {
+    setView("freelancer");
+    setRoleType("freelancer")
+  } else if (storedRole && storedRole.roleType === "freelancer") {
+    setView("client");
+    setRoleType("client")
   } else {
     console.log("No roleType found in stored data");
+    setView("client");
   }
 }, []);
+
 
   // Generic function for navigation
   const handleNavigation = (route) => {
@@ -41,7 +48,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="bg-gray-100 py-7 px-3">
+    <div className="bg-gray-100 py-7 px-3 eb-garamond">
       <h1 className="text-3xl font-bold mt-3 md:px-5 text-gray-800">How It Works</h1>
 
         {/* Toggle Buttons */}
@@ -94,7 +101,7 @@ useEffect(() => {
             {/* Card Content */}
             <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all md:ml-6 md:mr-6 relative">
               <h1 className="text-xl md:text-2xl font-bold text-gray-800">{item.title}</h1>
-              <p className="text-gray-600 mt-2">{item.text}</p>
+              <p className="text-gray-600 mt-2 font-medium">{item.text}</p>
 
               {/* Button only for client actions */}
               {item.route && (

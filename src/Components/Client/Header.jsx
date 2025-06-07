@@ -6,7 +6,8 @@ import Logo from "./../../assets/Images/digilogo12.png";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
-  const [mobileCategoryDropdown, setMobileCategoryDropdown] = useState(false); // Separate state for mobile dropdown
+  const [mobileCategoryDropdown, setMobileCategoryDropdown] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -34,13 +35,23 @@ const Navbar = () => {
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className="bg-[#004930] text-white px-4 lg:px-6 py-4 shadow-md sticky top-0 z-30">
+    <nav
+      className={`text-white px-4 lg:px-6 py-4 shadow-md sticky top-0  z-30 transition-all duration-300 ${
+        isScrolled ? "bg-[#004930]" : "bg-black/30 backdrop-blur-sm"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold">
@@ -53,10 +64,10 @@ const Navbar = () => {
           <NavLink to="/freelancerlist" className="hover:text-yellow-400">Freelancers</NavLink>
           <NavLink to="/UserSkills" className="hover:text-yellow-400">Add Requirement</NavLink>
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400">Plans</NavLink>
-          <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
-          <NavLink to="/channel" className="hover:text-yellow-400">Tv Channels</NavLink>
-          <NavLink to={`/inbox`} className="hover:text-yellow-400">Inbox</NavLink>
-          
+          <NavLink to="/reciept" className="hover:text-yellow-400">Receipt</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400">TV Channels</NavLink>
+          <NavLink to="/inbox" className="hover:text-yellow-400">Inbox</NavLink>
+
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
             <button
@@ -106,10 +117,10 @@ const Navbar = () => {
           <NavLink to="/freelancerlist" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Freelancers</NavLink>
           <NavLink to="/UserSkills" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>User Skills</NavLink>
           <NavLink to="/MembershipPlans" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Plans</NavLink>
-          <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>reciept</NavLink>
-          <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Tv Channels</NavLink>
+          <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Receipt</NavLink>
+          <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Inbox</NavLink>
-          
+
           {/* Skills Dropdown for Mobile */}
           <div className="relative">
             <button

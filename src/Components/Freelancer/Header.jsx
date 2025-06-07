@@ -9,6 +9,7 @@ const Navbar = () => {
   const [mobileCategoryDropdown, setMobileCategoryDropdown] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+    const [isScrolled, setIsScrolled] = useState(false);
 
   const skills = [
     "Digital Marketing",
@@ -39,8 +40,21 @@ const Navbar = () => {
     };
   }, []);
 
+   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
-    <nav className="bg-[#004930] text-white px-6 py-4 shadow-md sticky top-0 z-30">
+  <nav
+      className={`text-white px-4 lg:px-6 py-4 shadow-md sticky top-0  z-30 transition-all duration-300 ${
+        isScrolled ? "bg-[#004930]" : "bg-black/30 backdrop-blur-sm"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold">

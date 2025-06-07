@@ -13,10 +13,10 @@
     transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 }
 
-.active:hover {
+/* .active:hover {
     background-color: darkgray; 
      padding: 5px 10px;
-}
+} */
 
 
 
@@ -90,4 +90,18 @@
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
+}
+
+
+.eb-garamond {
+  font-family: "EB Garamond";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.elsie-regular {
+  font-family: "Elsie", serif;
+  font-weight: 500;
+  font-style: normal;
 }

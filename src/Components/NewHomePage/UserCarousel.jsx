@@ -64,7 +64,7 @@ function UserCarousel() {
   return (
     <div
       ref={sectionRef}
-      className="bg-gradient-to-b from-green-950 to-black py-10 px-4 sm:px-8 md:px-13 lg:px-8 text-white relative"
+      className="bg-gradient-to-b from-green-950 to-black py-10 px-4 sm:px-8 md:px-13 lg:px-8 text-white relative eb-garamond"
     >
       <div className="text-center space-y-5 mb-10">
         <h2 className="text-3xl font-bold text-center  tracking-wide">
@@ -79,7 +79,7 @@ function UserCarousel() {
           {[...users].reverse().map((user, index) => (
             <motion.div
               key={user._id}
-              className="relative snap-start shrink-0 w-56 text-center p-6 rounded-3xl border border-green-700 shadow-2xl transition-transform overflow-hidden bg-green-900 flex flex-col items-center"
+              className="relative snap-start shrink-0 w-64 text-center p-6 rounded-3xl border border-green-700 shadow-2xl transition-transform overflow-hidden bg-green-900 flex flex-col items-center"
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -91,8 +91,8 @@ function UserCarousel() {
                   className="w-full h-full object-fill opacity-80"
                 />
               </div>
-              <h3 className="font-semibold text-lg">{user.name}</h3>
-              <p className="text-green-300 mb-6 text-sm italic">{user.roleType}</p>
+              <h3 className="font-semibold text-xl">{user.name}</h3>
+              <p className="text-green-300 mb-6 text-lg">{user.roleType}</p>
               <button
                 onClick={() => handleSeeDetails(user._id)}
                 className="px-6 py-2 text-sm bg-gradient-to-r from-green-600 to-green-800 cursor-pointer text-white rounded-full hover:from-green-500 hover:to-green-700 transition-all"
