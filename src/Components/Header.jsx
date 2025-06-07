@@ -30,7 +30,7 @@ const NavbarAlt = () => {
     <nav
       className={`fixed top-0 w-full z-30 transition-all duration-300 elsie-regular  ${
         isScrolled ? "bg-[#004930] shadow-md" : ""
-      } text-white  py-4 backdrop-blur-md`}
+      } text-white  py-4 bg-[#004930]`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
