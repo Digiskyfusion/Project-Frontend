@@ -15,12 +15,13 @@ const PostJob = () => {
     title: "",
     skills: "",
     budget: "",
-    currency: "INR",
+    currency: "",
     description: "",
     experience: "",
   });
 
   useEffect(() => {
+    
     if (location.state?.job) {
       setJobData(location.state.job);
     }
@@ -52,7 +53,7 @@ const PostJob = () => {
     });
 
     try {
-      const res = await fetch(`${URL}/api/jobs`, {
+      const res = await fetch(`${URL}/api/jobs/`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

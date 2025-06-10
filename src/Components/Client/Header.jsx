@@ -73,7 +73,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
           <NavLink to="/inbox" className="hover:text-yellow-400">Inbox</NavLink>
           {/* Jobs Dropdown (Desktop) */}
 
-<div className="relative " ref={dropdownRef}>
+{/* <div className="relative " ref={dropdownRef}>
   <button
     className="flex items-center gap-1 cursor-pointer text-lg font-semibold text-white hover:text-yellow-400 transition"
     onClick={() => setActiveDropdown(activeDropdown === "jobs" ? null : "jobs")}
@@ -106,7 +106,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
       </NavLink>
     </div>
   )}
-</div>
+</div> */}
 
 
           {/* Skills Dropdown (Desktop) */}
@@ -162,7 +162,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
           <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Inbox</NavLink>
           {/* Jobs Dropdown (Mobile) */}
-<div className="relative">
+{/* <div className="relative">
   <button
     className="flex items-center gap-1 text-lg font-semibold text-white hover:text-yellow-400 transition"
     onClick={() => setActiveMobileDropdown(activeMobileDropdown === "jobs" ? null : "jobs")}
@@ -202,7 +202,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
       </NavLink>
     </div>
   )}
-</div>
+</div> */}
 
 
           {/* Skills Dropdown for Mobile */}

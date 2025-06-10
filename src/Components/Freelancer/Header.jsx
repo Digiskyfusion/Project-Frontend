@@ -78,7 +78,7 @@ const Navbar = () => {
           <NavLink to="/reciept" className="hover:text-yellow-400">reciept</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400">Tv Channels</NavLink>
           <NavLink to={`/inbox`} className="hover:text-yellow-400">Inbox</NavLink>
-          <NavLink to={`/joblist`} className="hover:text-yellow-400">Job List</NavLink>
+          {/* <NavLink to={`/joblist`} className="hover:text-yellow-400">Job List</NavLink> */}
 
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
