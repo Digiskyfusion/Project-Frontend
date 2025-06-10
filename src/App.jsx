@@ -67,6 +67,7 @@ import BlogFourPage from "./Pages/BlogFourPage";
 import NewHomePage from './Pages/NewHomePage';
 import BlogFivePage from "./Pages/BlogFivePage";
 import BlogSixPage from "./Pages/BlogSixPage";
+import JobListPage from "./Pages/JobListPage";
 import BlogSevenPage from "./Pages/BlogSevenPage";
 import PortfolioPage from "./Pages/PortfolioPage";
 
@@ -187,6 +188,7 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
+        <Route path="/joblist" element={<JobListPage />} />
         {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
         <Route path="/createreview" element={<WriteReviewPage />} />
         <Route path="/reviewslist" element={<AllReviewPage />} />

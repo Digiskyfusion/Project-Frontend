@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import Logo from "./../../assets/Images/digilogo12.png";
-
+import { FaBriefcase, FaPlus } from "react-icons/fa";
+import { FiChevronDown } from "react-icons/fi";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
@@ -10,6 +11,9 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+const [activeDropdown, setActiveDropdown] = useState(null); // values: "skills", "jobs", null
+const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skills", "jobs", null
+
 
   const skills = [
     "Digital Marketing",
@@ -67,6 +71,43 @@ const Navbar = () => {
           <NavLink to="/reciept" className="hover:text-yellow-400">Receipt</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400">TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400">Inbox</NavLink>
+          {/* Jobs Dropdown (Desktop) */}
+
+<div className="relative " ref={dropdownRef}>
+  <button
+    className="flex items-center gap-1 cursor-pointer text-lg font-semibold text-white hover:text-yellow-400 transition"
+    onClick={() => setActiveDropdown(activeDropdown === "jobs" ? null : "jobs")}
+  >
+    Jobs
+    <FiChevronDown
+      className={`transition-transform duration-300 ${
+        activeDropdown === "jobs" ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  {activeDropdown === "jobs" && (
+    <div className="absolute top-12 left-0 bg-white shadow-lg rounded-xl p-3 w-56 z-50 border border-gray-100">
+      <NavLink
+        to="/all-jobs"
+        className="flex items-center gap-3 px-4 py-2 text-sm lg:text-[18px] text-gray-700  rounded-md hover:bg-gray-100  transition"
+        onClick={() => setActiveDropdown(null)}
+      >
+        <FaBriefcase className="text-gray-700" />
+        Posted Jobs
+      </NavLink>
+      <NavLink
+        to="/postjob"
+        className="flex items-center gap-3 px-4 py-2 mt-2 text-sm lg:text-[18px] text-gray-700 rounded-lg hover:bg-gray-100 transition"
+        onClick={() => setActiveDropdown(null)}
+      >
+        <FaPlus className="text-gray-700" />
+        Post a Job
+      </NavLink>
+    </div>
+  )}
+</div>
+
 
           {/* Skills Dropdown (Desktop) */}
           <div className="relative" ref={dropdownRef}>
@@ -120,6 +161,49 @@ const Navbar = () => {
           <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Receipt</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Inbox</NavLink>
+          {/* Jobs Dropdown (Mobile) */}
+<div className="relative">
+  <button
+    className="flex items-center gap-1 text-lg font-semibold text-white hover:text-yellow-400 transition"
+    onClick={() => setActiveMobileDropdown(activeMobileDropdown === "jobs" ? null : "jobs")}
+  >
+    Jobs
+    <FiChevronDown
+      className={`transition-transform duration-300 ${
+        activeMobileDropdown === "jobs" ? "rotate-180" : ""
+      }`}
+    />
+  </button>
+
+  {activeMobileDropdown === "jobs" && (
+    <div className="bg-white shadow-lg rounded-xl p-3 mt-2 z-50 border border-gray-100">
+      <NavLink
+        to="/all-jobs"
+        className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-100 hover:text-green-700 transition"
+        onClick={() => {
+          setActiveMobileDropdown(null);
+          setIsMobileMenuOpen(false);
+        }}
+      >
+        <FaBriefcase className="text-gray-700" />
+        Posted Jobs
+      </NavLink>
+
+      <NavLink
+        to="/postjob"
+        className="flex items-center gap-3 px-4 py-2 mt-2 text-sm text-gray-700 rounded-lg hover:bg-gray-100 hover:text-green-700 transition"
+        onClick={() => {
+          setActiveMobileDropdown(null);
+          setIsMobileMenuOpen(false);
+        }}
+      >
+        <FaPlus className="text-gray-700" />
+        Post a Job
+      </NavLink>
+    </div>
+  )}
+</div>
+
 
           {/* Skills Dropdown for Mobile */}
           <div className="relative">
