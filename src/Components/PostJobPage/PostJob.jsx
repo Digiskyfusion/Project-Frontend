@@ -75,7 +75,7 @@ const PostJob = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto mt-12 px-6 mb-10 py-10 bg-white shadow-xl rounded-3xl border">
+    <div className="max-w-5xl mx-auto mt-12 px-6 mb-10 py-10 bg-white shadow-xl rounded-3xl border ">
       <Toaster />
       <h1 className="text-4xl font-bold text-gray-800 mb-10 flex items-center gap-4">
         <FaBriefcase className="text-green-600" /> Post a Job

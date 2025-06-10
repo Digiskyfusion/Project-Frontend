@@ -14,11 +14,16 @@ function PostJobPage() {
     }
   }, [token, navigate]);
   return (
-    <div>
-     <Header2 />
+    <>
+      <Header2 />
+    
+    <div className='p-5 sm:p-0'>
+     
       <PostJob />
-      <Footer />
+      
     </div>
+    <Footer />
+    </>
   )
 }
 
