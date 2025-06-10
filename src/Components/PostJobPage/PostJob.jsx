@@ -54,10 +54,13 @@ const PostJob = () => {
 
     try {
       const res = await fetch(`${URL}/api/jobs/`, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      });
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(jobData),
+});
 
       const data = await res.json();
       if (res.ok) {
@@ -146,6 +149,7 @@ const PostJob = () => {
         <div>
           <label className="text-lg font-semibold mb-2 block">Experience Required</label>
           <input
+            type="number"
             name="experience"
             required
             placeholder="e.g. 2+ years"
@@ -164,6 +168,7 @@ const PostJob = () => {
             name="description"
             rows={6}
             required
+              minLength={200} // Optional visual validation
             placeholder="Describe the responsibilities, expectations, required skills, and scope of work in detail."
             className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
             value={jobData.description}
