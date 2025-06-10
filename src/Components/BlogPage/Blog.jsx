@@ -52,7 +52,17 @@ const BlogPage = () => {
   tag: 'Freelancing',
   text: "Confused between freelancing and a 9–5 job? Let’s break down the pros, cons, income potential, and flexibility of both — so you can choose your perfect path.",
   link: '/blog/how-to-earn-online-after-12th'
+},
+
+{
+  picture: 'https://images.pexels.com/photos/6476587/pexels-photo-6476587.jpeg',
+  title: 'Freelancing vs Office Jobs: Which One’s Better for You?',
+  date: 'May 22, 2025',
+  tag: 'Freelancing',
+  text: "Confused between freelancing and a 9–5 job? Let’s break down the pros, cons, income potential, and flexibility of both — so you can choose your perfect path.",
+  link: '/blog/earn-money-online-in-india-without-investment'
 }
+
 
 
   ];
