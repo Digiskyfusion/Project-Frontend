@@ -106,7 +106,7 @@ useEffect(() => {
               {/* Button only for client actions */}
               {item.route && (
                 <button
-                  className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                  className="mt-3 px-4 py-2 bg-green-500 cursor-pointer text-white rounded-lg hover:bg-green-600 transition"
                   onClick={() => handleNavigation(item.route)}
                 >
                   {item.title}
