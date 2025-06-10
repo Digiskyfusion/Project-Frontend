@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import JobSection from "../Components/JobSection/AllJobs";
-
+import Header2 from "../Components/Client/Header";
+import Footer from "../Components/Footer/Footer";
 
 function AllJobsPage() {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ function AllJobsPage() {
 
   return (
     <div>
+    <Header2 />
     <JobSection />
+    <Footer />
     </div>
   );
 }

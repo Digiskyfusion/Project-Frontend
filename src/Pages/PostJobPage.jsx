@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import PostJob from '../Components/PostJobPage/PostJob';
-
+import Header2 from "../Components/Client/Header";
+import Footer from "../Components/Footer/Footer";
 function PostJobPage() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
@@ -14,7 +15,9 @@ function PostJobPage() {
   }, [token, navigate]);
   return (
     <div>
+     <Header2 />
       <PostJob />
+      <Footer />
     </div>
   )
 }

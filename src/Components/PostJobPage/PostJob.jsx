@@ -1,30 +1,27 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaBriefcase, FaDollarSign, FaFileUpload, FaEye, FaMapMarkerAlt } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
+import { FaBriefcase, FaDollarSign, FaEye, FaMapMarkerAlt } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import { useLocation } from "react-router-dom";
 
 const PostJob = () => {
-  const URL= import.meta.env.VITE_API_URL
-
+  const URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const location = useLocation();
+
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [jobData, setJobData] = useState({
     title: "",
     skills: "",
-    scope: "",
     budget: "",
     currency: "INR",
     description: "",
-    file: null,
-    filePreview: null,
-    location: "", // Added location field
+    experience: "",
   });
 
   useEffect(() => {
-    if (location.state && location.state.job) {
+    if (location.state?.job) {
       setJobData(location.state.job);
     }
   }, [location.state]);
@@ -32,17 +29,6 @@ const PostJob = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setJobData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setJobData((prev) => ({
-        ...prev,
-        file: file,
-       filePreview: window.URL.createObjectURL(file), // ✅ Ensure using `window.URL`
-      }));
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -54,176 +40,175 @@ const PostJob = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("title", jobData.title);
-    formData.append("skills", jobData.skills);
-    formData.append("scope", jobData.scope);
-    formData.append("budget", jobData.budget);
-    formData.append("currency", jobData.currency);
-    formData.append("description", jobData.description);
-    formData.append("location", jobData.location); // Send location data
-    if (jobData.file) {
-      formData.append("file", jobData.file);
+    if (jobData.description.length < 200) {
+      toast.error("Job description must be at least 200 characters long.");
+      return;
     }
+     setIsLoading(true); // Start loading
+
+    const formData = new FormData();
+    Object.entries(jobData).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
 
     try {
-      const res = await fetch(`http://localhost:3000/api/jobs`, {
+      const res = await fetch(`${URL}/api/jobs`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
       });
-      console.log(formData);
-      
 
       const data = await res.json();
       if (res.ok) {
         toast.success("Job posted successfully!");
         navigate("/all-jobs");
       } else {
-        toast.error(data.message);
+        toast.error(data.message || "Failed to post job.");
       }
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong. Please try again.");
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl border border-gray-200">
+    <div className="max-w-5xl mx-auto mt-12 px-6 mb-10 py-10 bg-white shadow-xl rounded-3xl border">
       <Toaster />
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          <FaBriefcase className="text-green-600" /> Post a Job
-        </h2>
+      <h1 className="text-4xl font-bold text-gray-800 mb-10 flex items-center gap-4">
+        <FaBriefcase className="text-green-600" /> Post a Job
+      </h1>
 
-        <input
-          type="text"
-          name="title"
-          placeholder="Job title"
-          required
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-          value={jobData.title}
-          onChange={handleChange}
-        />
-
-        <select
-          name="skills"
-          required
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-          value={jobData.skills}
-          onChange={handleChange}
-        >
-          <option value="">Select required skills</option>
-          <option value="Graphics Design">Graphics Design</option>
-          <option value="Web Development">Web Development</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <select
-          name="scope"
-          required
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-          value={jobData.scope}
-          onChange={handleChange}
-        >
-          <option value="">Select job scope</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-
-        <div className="flex gap-3">
-          <select
-            name="currency"
-            className="p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-            value={jobData.currency}
-            onChange={handleChange}
-          >
-            <option value="USD">USD ($)</option>
-            <option value="INR">INR (₹)</option>
-            <option value="EUR">EUR (€)</option>
-          </select>
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Job Title */}
+        <div>
+          <label className="text-lg font-semibold mb-2 block">Job Title</label>
           <input
-            type="number"
-            name="budget"
-            placeholder="Budget"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-            value={jobData.budget}
+            name="title"
+            required
+            placeholder="e.g. Frontend Developer"
+            className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+            value={jobData.title}
             onChange={handleChange}
           />
         </div>
 
-        <input
-          type="text"
-          name="location"
-          placeholder="Job Location"
-          required
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-          value={jobData.location}
-          onChange={handleChange}
-        />
+        {/* Skills */}
+        <div>
+          <label className="text-lg font-semibold mb-2 block">Required Skill</label>
+          <select
+            name="skills"
+            required
+            className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+            value={jobData.skills}
+            onChange={handleChange}
+          >
+            <option value="">Select</option>
+               <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Graphic Designing">Graphic Designing</option>
+                <option value="Video Editing">Video Editing</option>
+                <option value="Development">Development</option>
+                <option value="Content Writing">Content Writing</option>
+                <option value="Influencer Marketing">Influencer Marketing</option>
+          </select>
+        </div>
 
-        <textarea
-          name="description"
-          placeholder="Describe the job details"
-          required
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-400"
-          value={jobData.description}
-          onChange={handleChange}
-        />
+        {/* Budget + Currency */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="text-lg font-semibold mb-2 block">Currency</label>
+            <select
+              name="currency"
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+              value={jobData.currency}
+              onChange={handleChange}
+            >
+              <option value="INR">INR (₹)</option>
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+            </select>
+          </div>
 
-        <label className="flex items-center gap-2 cursor-pointer bg-gray-100 p-3 border rounded-lg">
-          <FaFileUpload className="text-blue-500" />
-          <span>{jobData.file ? jobData.file.name : "Upload File"}</span>
-          <input
-            type="file"
-            name="file"
-            className="hidden"
-            onChange={handleFileChange}
-          />
-        </label>
-
-        {jobData.filePreview && (
-          <div className="mt-2">
-            <p className="text-sm text-gray-500">File Preview:</p>
-            <img loading="lazy"
-              src={jobData.filePreview}
-              alt="Preview"
-              className="w-full h-40 object-cover mt-2 rounded-lg"
+          <div>
+            <label className="text-lg font-semibold mb-2 block">Budget</label>
+            <input
+              type="number"
+              name="budget"
+              required
+              placeholder="e.g. 5000"
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+              value={jobData.budget}
+              onChange={handleChange}
             />
           </div>
-        )}
+        </div>
 
-        <div className="flex gap-4">
+        {/* Experience */}
+        <div>
+          <label className="text-lg font-semibold mb-2 block">Experience Required</label>
+          <input
+            name="experience"
+            required
+            placeholder="e.g. 2+ years"
+            className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+            value={jobData.experience}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Description */}
+        <div>
+          <label className="text-lg font-semibold mb-2 block">
+            Job Description <span className="text-sm text-gray-500">(Min 200 characters)</span>
+          </label>
+          <textarea
+            name="description"
+            rows={6}
+            required
+            placeholder="Describe the responsibilities, expectations, required skills, and scope of work in detail."
+            className="w-full px-4 py-3 border rounded-xl focus:ring-2 ring-green-500"
+            value={jobData.description}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <button
             type="button"
             onClick={() => setIsPreviewOpen(true)}
-            className="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 rounded-lg flex items-center justify-center gap-2"
+            className="w-full sm:w-1/2 bg-gray-700 cursor-pointer hover:bg-gray-800 text-white py-3 rounded-xl flex items-center justify-center gap-2"
           >
             <FaEye /> Preview
           </button>
-
           <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-all"
-          >
-            Post Job
-          </button>
+  type="submit"
+  disabled={isLoading}
+  className={`w-full sm:w-1/2 bg-green-600 cursor-pointer text-white py-3 rounded-xl flex items-center justify-center gap-2 transition ${
+    isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-700"
+  }`}
+>
+  {isLoading ? "Posting..." : "Post Job"}
+</button>
         </div>
       </form>
 
       {/* Preview Modal */}
       {isPreviewOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
-            <h2 className="text-xl font-bold mb-3">Job Preview</h2>
-            <p><strong>Title:</strong> {jobData.title}</p>
-            <p><strong>Skills:</strong> {jobData.skills}</p>
-            <p><strong>Scope:</strong> {jobData.scope}</p>
-            <p><strong>Budget:</strong> {jobData.currency} {jobData.budget}</p>
-            <p><strong>Location:</strong> {jobData.location}</p>
-            <p><strong>Description:</strong> {jobData.description}</p>
-            {jobData.filePreview && <img src={jobData.filePreview} alt="File Preview" className="w-full h-32 object-cover mt-3 rounded-lg" />}
-            <button onClick={() => setIsPreviewOpen(false)} className="w-full mt-4 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Close Preview</button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-2xl w-full max-w-lg shadow-2xl">
+            <h2 className="text-2xl font-bold mb-4 text-center">Job Preview</h2>
+            <div className="text-gray-800 space-y-2">
+              <p><strong>Title:</strong> {jobData.title}</p>
+              <p><strong>Skills:</strong> {jobData.skills}</p>
+              <p><strong>Experience:</strong> {jobData.experience}</p>
+              <p><strong>{jobData.currency}:</strong>  {jobData.budget}</p>
+              <p><strong>Description:</strong> {jobData.description}</p>
+            </div>
+            <button
+              onClick={() => setIsPreviewOpen(false)}
+              className="w-full mt-6 bg-red-500 cursor-pointer hover:bg-red-600 text-white py-2 rounded-xl"
+            >
+              Close Preview
+            </button>
           </div>
         </div>
       )}
