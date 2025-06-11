@@ -105,3 +105,37 @@
   font-weight: 500;
   font-style: normal;
 }
+
+
+/* index.css - Unique Animated Aurora Background */
+/* index.css - Floating Circles Background */
+
+.animated-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(#00f2ff33, transparent), #0f172a;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.animated-bg::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, #0ff 10%, transparent 11%);
+  background-size: 50px 50px;
+  animation: moveCircles 20s linear infinite;
+  opacity: 0.08;
+}
+
+@keyframes moveCircles {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-25%, -25%);
+  }
+}
+

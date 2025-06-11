@@ -237,8 +237,11 @@ const FreelancerSkills = () => {
             </div>
 
             
-            <div className="relative animate-fade-in delay-100">
-  <label className="block text-[#004930] font-medium mb-2">Showcase Links (e.g. GitHub, Portfolio)</label>
+<div className="relative animate-fade-in delay-100">
+  <label className="block text-[#004930] font-medium mb-2">
+    Showcase Links (e.g. GitHub, Portfolio) — 1 allowed for free
+  </label>
+
   {user.showcaseLinks.map((link, index) => (
     <div key={index} className="flex items-center mb-2">
       <input
@@ -252,6 +255,7 @@ const FreelancerSkills = () => {
         }}
         className="flex-1 p-2 border border-[#004930] rounded-lg bg-gray-50 text-gray-700 mr-2"
       />
+
       {index > 0 && (
         <button
           type="button"
@@ -266,16 +270,27 @@ const FreelancerSkills = () => {
       )}
     </div>
   ))}
-  {user.showcaseLinks.length < 5 && (
-    <button
-      type="button"
-      onClick={() => setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] })}
-      className="mt-2 text-[#004930] text-sm hover:underline"
-    >
-      + Add another link
-    </button>
-  )}
+
+  <button
+    type="button"
+    onClick={() => {
+      if (user.showcaseLinks.length >= 1) {
+        toast.error("Only 1 showcase link is allowed for free. Purchase a plan to add more.");
+      } else {
+        setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] });
+      }
+    }}
+    className="mt-2 text-[#004930] text-sm hover:underline"
+  >
+    + Add another link
+  </button>
 </div>
+
+
+
+
+
+
 {/* Past Experience */}
 <div className="relative animate-fade-in delay-100">
   <label className="block text-[#004930] font-medium mb-2">Past Experience</label>

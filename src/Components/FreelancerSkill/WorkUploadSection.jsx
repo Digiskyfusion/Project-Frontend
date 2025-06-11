@@ -16,6 +16,12 @@ const WorkUploadSection = ({ user, setUser, userId }) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    // ⛔️ Stop upload if a file already exists
+    if (user.work.length >= 1) {
+      toast.error("You can upload only one file. Purchase a plan to upload more.");
+      return;
+    }
+
     const fileExt = file.name.split(".").pop();
     const fileName = `${userId}-work-${Date.now()}.${fileExt}`;
     const filePath = `work/${fileName}`;
@@ -43,9 +49,11 @@ const WorkUploadSection = ({ user, setUser, userId }) => {
 
   return (
     <div className="relative animate-fade-in delay-100">
-      <label className="block text-[#004930] font-medium mb-2">Upload Work Files (Max 5)</label>
+      <label className="block text-[#004930] font-medium mb-2">
+        Upload Work File (Only 1 allowed for free)
+      </label>
 
-      {/* Display Uploaded Files */}
+      {/* Uploaded File Display */}
       <div className="flex flex-wrap gap-4">
         {user.work.map((fileUrl, index) => {
           const type = getFileType(fileUrl);
@@ -85,15 +93,13 @@ const WorkUploadSection = ({ user, setUser, userId }) => {
         })}
       </div>
 
-      {/* Upload Input */}
-      {user.work.length < 5 && (
-        <input
-          type="file"
-          accept="image/*,video/*,application/pdf"
-          className="mt-3 p-2 w-full sm:w-1/2 lg:w-1/3 border cursor-pointer border-[#004930] rounded-lg bg-gray-50 text-gray-700"
-          onChange={handleWorkFileUpload}
-        />
-      )}
+      {/* Upload File Input – always visible */}
+      <input
+        type="file"
+        accept="image/*,video/*,application/pdf"
+        className="mt-3 p-2 w-full sm:w-1/2 lg:w-1/3 border cursor-pointer border-[#004930] rounded-lg bg-gray-50 text-gray-700"
+        onChange={handleWorkFileUpload}
+      />
     </div>
   );
 };
