@@ -70,6 +70,7 @@ import BlogSixPage from "./Pages/BlogSixPage";
 import JobListPage from "./Pages/JobListPage";
 import BlogSevenPage from "./Pages/BlogSevenPage";
 import PortfolioPage from "./Pages/PortfolioPage";
+import UsersWithWork from "./Components/Client/UserWithWork";
 
 
 
@@ -189,6 +190,7 @@ function App() {
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
         <Route path="/joblist" element={<JobListPage />} />
+        <Route path="/userwork" element={<UsersWithWork />} />
         {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
         <Route path="/createreview" element={<WriteReviewPage />} />
         <Route path="/reviewslist" element={<AllReviewPage />} />
