@@ -10,6 +10,10 @@ function PortfolioPage() {
   const [user, setUser] = useState(null);
   const subdomain = getSubdomain();
   const API_URL = import.meta.env.VITE_API_URL;
+  const [locked, setLocked] = useState(false);
+
+
+
 
   useEffect(() => {
     if (!subdomain) return;
@@ -19,10 +23,19 @@ function PortfolioPage() {
       .catch((err) => console.error("User not found", err));
   }, [subdomain]);
 
+
+  useEffect(() => {
+    console.log(user,'999');
+  if (user && user.plan != 'premium') {
+    const timer = setTimeout(() => setLocked(true), 10000); // 10 seconds
+    return () => clearTimeout(timer);
+  }
+}, [user]);
+
   if (!user)
     return (
       <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
-        Loading...
+        Invalid User
       </div>
     );
 
@@ -239,7 +252,21 @@ function PortfolioPage() {
           </motion.div>
         </motion.div>
       </div>
+      {locked && (
+  <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center text-white text-center px-4">
+    <h2 className="text-3xl font-bold mb-4">🔒 Portfolio Locked</h2>
+    <p className="mb-6 text-lg">Unlock your personal portfolio by upgrading to a premium plan.</p>
+    <a
+      href="https://digisky.ai/MembershipPlans"
+      className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full transition-all"
+    >
+      🚀 Upgrade to Premium
+    </a>
+  </div>
+)}
+
     </div>
+    
   );
 }
 

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import supabase from "../../supabaseClient";
 import { FaFilePdf } from "react-icons/fa";
 
-const WorkUploadSection = ({ user, setUser, userId }) => {
+const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
   const getFileType = (url) => {
     const ext = url.split('.').pop().toLowerCase();
     if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) return "image";
@@ -17,10 +17,10 @@ const WorkUploadSection = ({ user, setUser, userId }) => {
     if (!file) return;
 
     // ⛔️ Stop upload if a file already exists
-    if (user.work.length >= 1) {
-      toast.error("You can upload only one file. Purchase a plan to upload more.");
-      return;
-    }
+    if (!hasValidPlan && user.work?.length >= 1) {
+  toast.error("Upgrade to a plan to upload more than one work file.");
+  return;
+}
 
     const fileExt = file.name.split(".").pop();
     const fileName = `${userId}-work-${Date.now()}.${fileExt}`;

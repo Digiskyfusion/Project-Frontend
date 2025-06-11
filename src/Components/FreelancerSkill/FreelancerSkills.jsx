@@ -19,6 +19,7 @@ const FreelancerSkills = () => {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [userId, setUserId] = useState(null);
+  const [userPlan, setUserPlan] = useState(null);
   const [roleType, setRoleType] = useState("");
   const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "", showcaseLinks: [""],pastExperience: "",work: [],  });
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,7 @@ const FreelancerSkills = () => {
         const response = await axios.get(`${API_URL}/user/${userId}`);
         setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "", showcaseLinks: response.data.showcaseLinks || [""] , pastExperience: response.data.pastExperience || "",    work: Array.isArray(response.data.work) ? response.data.work : [], });
         setImagePreview(response.data.image || null);
+        setUserPlan(response.data.plan || null);
       } catch (error) {
         toast.error("Failed to fetch user data");
       }
@@ -139,6 +141,8 @@ const FreelancerSkills = () => {
     }
   };
   
+  const hasValidPlan = userPlan === "Basic" || userPlan === "Standard" || userPlan === "Premium";
+
 
   return (
     <div className="flex flex-col bg-green-100 p-4 md:p-8">
@@ -272,18 +276,20 @@ const FreelancerSkills = () => {
   ))}
 
   <button
-    type="button"
-    onClick={() => {
-      if (user.showcaseLinks.length >= 1) {
-        toast.error("Only 1 showcase link is allowed for free. Purchase a plan to add more.");
-      } else {
-        setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] });
-      }
-    }}
-    className="mt-2 text-[#004930] text-sm hover:underline"
-  >
-    + Add another link
-  </button>
+  type="button"
+  onClick={() => {
+    if (!hasValidPlan) {
+      toast.error("Upgrade to a plan to add more showcase links.");
+      return;
+    }
+
+    setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] });
+  }}
+  className="mt-2 text-[#004930] text-sm hover:underline"
+>
+  + Add another link
+</button>
+
 </div>
 
 
@@ -309,7 +315,7 @@ const FreelancerSkills = () => {
 {/* Work File Upload */}
 {/* Work File Upload */}
 <div className="relative animate-fade-in delay-100">
-  <WorkUploadSection user={user} setUser={setUser} userId={userId} />
+  <WorkUploadSection user={user} setUser={setUser} userId={userId} hasValidPlan={hasValidPlan} />
 
 </div>
 

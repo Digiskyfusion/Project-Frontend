@@ -6,16 +6,24 @@ const MembershipPlans = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
+  // const plans = [
+  //   { name: "Basic", credit: 10, amount: 200 },
+  //   { name: "Standard", credit: 25, amount: 400 },
+  //   { name: "Premium", credit: 50, amount: 600 },
+  // ];
+
   const plans = [
-    { name: "Basic", credit: 10, amount: 200 },
-    { name: "Standard", credit: 25, amount: 400 },
-    { name: "Premium", credit: 50, amount: 600 },
-  ];
+  { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
+  { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
+  { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+];
+
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [token, setToken] = useState(null);
+  const [roleType, setRoleType] = useState(null);
   const [userId, setUserId] = useState(null);
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -28,6 +36,8 @@ const MembershipPlans = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setToken(storedToken);
     setUserId(storedUser?._id);
+    setRoleType(storedUser.roleType);
+    console.log('user',storedUser)
     setUserDetails({
       name: storedUser?.name || "",
       email: storedUser?.email || "",
@@ -35,45 +45,158 @@ const MembershipPlans = () => {
     });
   }, []);
 
-  const handleSubscribe = async (plan) => {
-    setMessage("");
+  // const handleSubscribe = async (plan) => {
+  //   setMessage("");
 
-    if (!token || !userId) {
-      setMessage("Authentication required. Redirecting to login...");
-      setTimeout(() => navigate("/registration"), 1500);
-      return;
-    }
+  //   if (!token || !userId) {
+  //     setMessage("Authentication required. Redirecting to login...");
+  //     setTimeout(() => navigate("/registration"), 1500);
+  //     return;
+  //   }
 
-    setLoading(true);
+  //   setLoading(true);
 
-    try {
-      const orderRes = await fetch(`${API_URL}/api/payment/create-order`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: plan.amount }),
-      });
+  //   try {
+  //     const orderRes = await fetch(`${API_URL}/api/payment/create-order`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ amount: plan.amount }),
+  //     });
 
-      const orderData = await orderRes.json();
-      if (!orderRes.ok) throw new Error(orderData.error || "Failed to create order");
+  //     const orderData = await orderRes.json();
+  //     if (!orderRes.ok) throw new Error(orderData.error || "Failed to create order");
 
-      const options = {
-        key: RAZORPAY_KEY,
-        amount: orderData.amount,
-        currency: "INR",
-        name: "Matrimony App",
-        description: `${plan.name} Plan`,
-        order_id: orderData.id,
-        handler: async function (response) {
-          const verifyRes = await fetch(`${API_URL}/api/payment/verify-payment`, {
+  //     const options = {
+  //       key: RAZORPAY_KEY,
+  //       amount: orderData.amount,
+  //       currency: "INR",
+  //       name: "Matrimony App",
+  //       description: `${plan.name} Plan`,
+  //       order_id: orderData.id,
+  //       handler: async function (response) {
+  //         const verifyRes = await fetch(`${API_URL}/api/payment/verify-payment`, {
+  //           method: "POST",
+  //           headers: { "Content-Type": "application/json" },
+  //           body: JSON.stringify({
+  //             razorpay_order_id: response.razorpay_order_id,
+  //             razorpay_payment_id: response.razorpay_payment_id,
+  //             razorpay_signature: response.razorpay_signature,
+  //             userId,
+  //             plan: plan.credit,
+  //             planName: plan.name,
+  //           }),
+  //         });
+
+  //         const verifyData = await verifyRes.json();
+  //         if (!verifyRes.ok) throw new Error(verifyData.error || "Verification failed");
+
+  //         setMessage(verifyData.message);
+  //         navigate("/reciept");
+  //       },
+  //       prefill: {
+  //         name: userDetails.name || "User Name",
+  //         email: userDetails.email || "user@example.com",
+  //         contact: userDetails.contact || "9999999999",
+  //       },
+  //       theme: { color: "#004930" },
+  //     };
+
+  //     const razorpay = new window.Razorpay(options);
+  //     razorpay.open();
+  //   } catch (error) {
+  //     setMessage(error.message || "Payment failed");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
+//   const handleSubscribe = async (plan) => {
+//   setMessage("");
+
+//   if (!token || !userId) {
+//     setMessage("Authentication required. Redirecting to login...");
+//     setTimeout(() => navigate("/registration"), 1500);
+//     return;
+//   }
+
+//   setLoading(true);
+
+//   try {
+//     const subRes = await fetch(`${API_URL}/api/payment/create-subscription`, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ planId: plan.planId }),
+//     });
+
+//     const subData = await subRes.json();
+//     if (!subRes.ok) throw new Error(subData.error || "Failed to create subscription");
+
+//     const options = {
+//       key: RAZORPAY_KEY,
+//       subscription_id: subData.id,
+//       name: "Matrimony App",
+//       description: `${plan.name} Plan - Monthly`,
+//       handler: async function (response) {
+//         // Save or verify on server (optional for subscriptions)
+//         console.log("Subscription success:", response);
+//         navigate("/reciept");
+//       },
+//       prefill: {
+//         name: userDetails.name,
+//         email: userDetails.email,
+//         contact: userDetails.contact,
+//       },
+//       theme: { color: "#004930" },
+//     };
+
+//     const razorpay = new window.Razorpay(options);
+//     razorpay.open();
+//   } catch (error) {
+//     setMessage(error.message || "Subscription failed");
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+
+const handleSubscribe = async (plan) => {
+  setMessage("");
+
+  if (!token || !userId) {
+    setMessage("Authentication required. Redirecting to login...");
+    setTimeout(() => navigate("/registration"), 1500);
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const subRes = await fetch(`${API_URL}/api/payment/create-subscription`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ planId: plan.planId }),
+    });
+
+    const subData = await subRes.json();
+    if (!subRes.ok) throw new Error(subData.error || "Failed to create subscription");
+
+    const options = {
+      key: RAZORPAY_KEY,
+      subscription_id: subData.id,
+      name: "Digisky AI",
+      description: `${plan.name} Plan - Monthly`,
+      handler: async function (response) {
+        try {
+          const verifyRes = await fetch(`${API_URL}/api/payment/verify-subscription`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              razorpay_order_id: response.razorpay_order_id,
+              razorpay_subscription_id: response.razorpay_subscription_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
               userId,
-              plan: plan.credit,
-              planName: plan.name,
+              plan: plan.name,
             }),
           });
 
@@ -82,23 +205,28 @@ const MembershipPlans = () => {
 
           setMessage(verifyData.message);
           navigate("/reciept");
-        },
-        prefill: {
-          name: userDetails.name || "User Name",
-          email: userDetails.email || "user@example.com",
-          contact: userDetails.contact || "9999999999",
-        },
-        theme: { color: "#004930" },
-      };
+        } catch (err) {
+          setMessage(err.message || "Something went wrong.");
+        }
+      }, // 👈 Don't forget this comma here!
 
-      const razorpay = new window.Razorpay(options);
-      razorpay.open();
-    } catch (error) {
-      setMessage(error.message || "Payment failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+      prefill: {
+        name: userDetails.name,
+        email: userDetails.email,
+        contact: userDetails.contact,
+      },
+      theme: { color: "#004930" },
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+  } catch (error) {
+    setMessage(error.message || "Subscription failed");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="flex flex-col items-center p-8 bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100">
@@ -127,9 +255,56 @@ const MembershipPlans = () => {
               <FaIndianRupeeSign className="text-xl mr-1" />
               {plan.amount}/month
             </h3>
-            <p className="text-sm mt-2">
-              Get {plan.credit} credits per month. Upgrade anytime.
-            </p>
+           {roleType === 'freelancer' && (
+  <>
+    {plan.name === "Basic" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Unlimited work and link uploads to showcase your talent.</li>
+        <li>✅ Boost your visibility and increase your chances of getting hired.</li>
+      </ul>
+    )}
+
+    {plan.name === "Standard" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Everything in <strong>Basic</strong>, plus:</li>
+        <li>✅ Access to chat — connect directly with clients or freelancers.</li>
+        <li>✅ Featured placement — get your profile and work highlighted at the top.</li>
+      </ul>
+    )}
+
+    {plan.name === "Premium" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Everything in <strong>Standard</strong>, plus:</li>
+        <li>✅ Your own personalized portfolio with a custom domain name.</li>
+        <li>✅ Stand out and share your work with a professional presence anywhere.</li>
+      </ul>
+    )}
+  </>
+)}
+{roleType === 'client' && (
+  <>
+    {plan.name === "Basic" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Unlimited job uploads.</li>
+      </ul>
+    )}
+
+    {plan.name === "Standard" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Everything in <strong>Basic</strong>, plus:</li>
+        <li>✅ Access to chat — connect directly with freelancers.</li>
+      </ul>
+    )}
+
+    {plan.name === "Premium" && (
+      <ul className="text-sm mt-2 space-y-1">
+        <li>✅ Everything in <strong>Standard</strong>, plus:</li>
+        <li>✅ Featured placement — get your profile and job highlighted at the top.</li>
+      </ul>
+    )}
+  </>
+)}
+
             <button className="mt-4 py-2 px-5 cursor-pointer bg-[#004930] text-white rounded-full transition duration-300 group-hover:bg-white group-hover:text-black">
               Select Plan
             </button>
