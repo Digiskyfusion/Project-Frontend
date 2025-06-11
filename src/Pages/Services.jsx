@@ -46,7 +46,7 @@ function Services() {
         <HiddenCont />
         <Employ />
         <CarouselSection />
-        {/* <FullJobCard /> */}
+        <FullJobCard />
         <SecondReviews />
        </div>
         <Footer />

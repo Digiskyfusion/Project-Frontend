@@ -159,6 +159,7 @@ console.log("job ", data);
 
 // Edit Job Form Component
 const EditJobForm = ({ job, onClose, updateJobState }) => {
+   const API = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     title: job.title,
     // company: job.company,
@@ -174,15 +175,18 @@ const EditJobForm = ({ job, onClose, updateJobState }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const user = JSON.parse(localStorage.getItem("user")); // Parse the stored user object
+    const userId= user?._id
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-
+   
+console.log("hihihihih", userId);
     try {
       console.log("Updating job:", formData);
 
-      const res = await fetch(`${URL}/api/jobs/${job._id}`, {
+      const res = await fetch(`${API}/api/jobs/${userId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

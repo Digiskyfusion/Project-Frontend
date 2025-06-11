@@ -23,7 +23,11 @@ const JobList = () => {
         }
 
         const data = await res.json();
+        // const reversedData = [...data].reverse(); // clone and reverse
         setJobs(data || []);
+        // console.log("data",data);
+        // console.log("data reverse",reversedData);
+        
       } catch (error) {
         console.error("Error fetching jobs:", error.message);
       } finally {
@@ -33,6 +37,7 @@ const JobList = () => {
 
     fetchJobs();
   }, [token]);
+console.log("hihi",jobs);
 
   if (loading) {
     return (
@@ -50,9 +55,9 @@ const JobList = () => {
         <p className="text-center text-gray-600">No jobs found.</p>
       ) : (
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {[...jobs].reverse().map((job) => (
+          {jobs.map((job,index) => (
             <div
-              key={job._id}
+              key={index}
               className="bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <h3 className="text-2xl font-semibold text-[#004930] mb-3">{job.title}</h3>
@@ -81,7 +86,7 @@ const JobList = () => {
 
                 <div className="flex items-center gap-2">
                   <FaUserTie className="text-yellow-600" />
-                  <span>{job.experience} experience</span>
+                  <span>{job.experience}</span>
                 </div>
               </div>
 

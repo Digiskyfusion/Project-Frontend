@@ -4,7 +4,7 @@ export function getSubdomain() {
 
   // Skip subdomain logic for localhost or 127.0.0.1
   if (host === "localhost" || host === "127.0.0.1") {
-    return "arav"; // 👈 Set a dummy username for local testing
+    return "Manisha"; // 👈 Set a dummy username for local testing
   }
 
   const parts = host.split(".");

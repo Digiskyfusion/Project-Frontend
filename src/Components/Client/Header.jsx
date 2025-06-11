@@ -71,6 +71,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
           <NavLink to="/reciept" className="hover:text-yellow-400">Receipt</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400">TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400">Inbox</NavLink>
+            <NavLink to={`/userwork`} className="hover:text-yellow-400">Work</NavLink>
           {/* Jobs Dropdown (Desktop) */}
 
 <div className="relative " ref={dropdownRef}>
@@ -161,6 +162,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
           <NavLink to="/reciept" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Receipt</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Inbox</NavLink>
+          {/* <NavLink to="/userwork" className="hover:text-yellow-400" onClick={() => setIsMobileMenuOpen(false)}>Work</NavLink> */}
           {/* Jobs Dropdown (Mobile) */}
 <div className="relative">
   <button

@@ -15,7 +15,7 @@ const PostJob = () => {
     title: "",
     skills: "",
     budget: "",
-    currency: "",
+    currency: "INR",
     description: "",
     experience: "",
   });
@@ -149,7 +149,7 @@ const PostJob = () => {
         <div>
           <label className="text-lg font-semibold mb-2 block">Experience Required</label>
           <input
-            type="number"
+            
             name="experience"
             required
             placeholder="e.g. 2+ years"
