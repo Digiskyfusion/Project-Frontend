@@ -71,7 +71,7 @@ const [activeMobileDropdown, setActiveMobileDropdown] = useState(null); // "skil
           <NavLink to="/reciept" className="hover:text-yellow-400">Receipt</NavLink>
           <NavLink to="/channel" className="hover:text-yellow-400">TV Channels</NavLink>
           <NavLink to="/inbox" className="hover:text-yellow-400">Inbox</NavLink>
-            {/* <NavLink to={`/userwork`} className="hover:text-yellow-400">Work</NavLink> */}
+            <NavLink to={`/userwork`} className="hover:text-yellow-400">Work</NavLink>
           {/* Jobs Dropdown (Desktop) */}
 
 <div className="relative " ref={dropdownRef}>

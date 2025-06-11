@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getSubdomain } from "../utils/getSubdomain";
+import { motion } from "framer-motion";
+import "../index.css";
+import Typewriter from "typewriter-effect";
+
 
 function PortfolioPage() {
   const [user, setUser] = useState(null);
@@ -17,17 +21,10 @@ function PortfolioPage() {
 
   if (!user)
     return (
-      <div className="h-screen flex items-center justify-center text-xl text-indigo-600 font-semibold animate-pulse">
+      <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
         Loading...
       </div>
     );
-
-  const formatDate = (isoDate) =>
-    new Date(isoDate).toLocaleDateString("en-IN", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
 
   const getFileType = (url) => {
     const ext = url.split(".").pop().toLowerCase();
@@ -37,112 +34,210 @@ function PortfolioPage() {
     return "other";
   };
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="min-h-screen relative bg-gradient-to-br from-purple-100 via-white to-purple-300 p-8 sm:p-12 overflow-hidden animated-blobs">
-      <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-3xl p-8 space-y-10 transition-all duration-300 border border-gray-200 relative z-10">
+    <div className="relative min-h-screen overflow-hidden  text-white">
+      <div className="animated-bg"></div>
 
-        {/* Header */}
-        <div className="flex items-center gap-6">
-          <img
-            src={user.image || "/default-avatar.png"}
-            alt={user.name}
-            className="w-32 h-32 rounded-full border-4 border-purple-500 object-cover shadow-lg"
-          />
-          <div>
-            <h1 className="text-4xl font-extrabold text-gray-800">{user.name}</h1>
-            <p className="text-gray-600 mt-1 text-sm italic">
-              {user.bio || "No bio added yet."}
-            </p>
-          </div>
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto p-2 sm:p-6">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={sectionVariants}
+          transition={{ duration: 1 }}
+          className="bg-black/20 rounded-2xl p-3 sm:p-6 space-y-6 border border-white/20 shadow-xl"
+        >
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2 }}
+            className="flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-6"
+          >
+            <motion.img
+              src={user.image || "/default-avatar.png"}
+              alt={user.name}
+              className="w-28 h-28 rounded-full border-4 border-cyan-500 object-cover shadow-lg"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.4 }}
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <h1 className="text-3xl font-bold text-white text-center sm:text-start">
+                {user.name}
+              </h1>
+             <div className="text-white text-center sm:text-start text-base sm:text-lg mt-2">
+ <Typewriter
+  onInit={(typewriter) => {
+    typewriter
+      .typeString(user.bio || "No bio added yet.")
+      .start();
+  }}
+  options={{
+    autoStart: true,
+    loop: false,
+    delay: 15, // ⬅️ Fast speed
+    cursor: "|", // optional
+  }}
+/>
 
-        {/* Details */}
-        <div className="grid sm:grid-cols-2 gap-4 text-base text-gray-700 bg-gray-50 rounded-lg p-4 shadow-md">
-          <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Mobile:</strong> {user.mobileNumber}</p>
-          <p><strong>Experience:</strong> {user.experience || "Not provided"}</p>
-        </div>
+</div>
 
-        {/* Skills */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3 text-purple-700">Skills</h2>
-          <div className="flex flex-wrap gap-2">
-            {user.skills?.map((skill, index) => (
-              <span key={index} className="bg-purple-100 hover:bg-purple-200 text-purple-900 text-sm font-medium px-3 py-1 rounded-full transition-all">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
 
-        {/* Showcase Links */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3 text-purple-700">Showcase Links</h2>
-          <ul className="list-disc ml-5 text-purple-700 space-y-1">
-            {user.showcaseLinks?.map((link, idx) => (
-              <li key={idx}>
-                <a
-                  href={`https://${link}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline hover:text-purple-900 transition"
+          {/* Details */}
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.7 }}
+            className="grid sm:grid-cols-1 gap-4 text-sm text-gray-300"
+          >
+            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Mobile:</strong> {user.mobileNumber}</p>
+            <p><strong>Experience:</strong> {user.experience || "Not provided"}</p>
+          </motion.div>
+
+          {/* Skills */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.8 }}
+            variants={sectionVariants}
+          >
+            <h2 className="text-xl font-semibold text-white mb-2">Skills</h2>
+            <motion.div
+              className="flex flex-wrap gap-2"
+              variants={{
+                visible: {
+                  transition: { staggerChildren: 0.1 },
+                },
+              }}
+            >
+              {user.skills?.map((skill, index) => (
+                <motion.span
+                  key={index}
+                  className="bg-cyan-800/20 border border-cyan-400 text-cyan-100 px-3 py-1 rounded-full text-sm"
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  initial="hidden"
+                  animate="visible"
                 >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  {skill}
+                </motion.span>
+              ))}
+            </motion.div>
+          </motion.div>
 
-        {/* Past Experience */}
-        {user.pastExperience && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-3 text-purple-700">Past Experience</h2>
-            <p className="text-gray-700 bg-gray-50 p-4 rounded-lg shadow-inner">
-              {user.pastExperience}
-            </p>
-          </div>
-        )}
-
-        {/* Work Files */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-3 text-purple-700">Work Showcase</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {user.work?.map((fileUrl, idx) => {
-              const fileType = getFileType(fileUrl);
-              return (
-                <div
+          {/* Showcase Links */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.9 }}
+            variants={sectionVariants}
+          >
+            <h2 className="text-xl font-semibold text-white mb-2">Showcase Links</h2>
+            <ul className="list-disc ml-5 text-white space-y-1">
+              {user.showcaseLinks?.map((link, idx) => (
+                <motion.li
                   key={idx}
-                  className="border rounded-xl p-3 shadow-lg bg-white hover:shadow-xl transition transform hover:scale-105"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1 + idx * 0.1 }}
                 >
-                  {fileType === "image" && (
-                    <img
-                      src={fileUrl}
-                      alt={`Work ${idx}`}
-                      className="w-full h-44 object-cover rounded-md transition-transform duration-300 hover:scale-105"
-                    />
-                  )}
-                  {fileType === "video" && (
-                    <video controls className="w-full h-44 rounded-md">
-                      <source src={fileUrl} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
-                  {fileType === "pdf" && (
-                    <a
-                      href={fileUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-purple-600 underline block text-center py-6 hover:text-purple-800 transition"
-                    >
-                      View PDF
-                    </a>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                  <a
+                    href={`${link}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {link}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Past Experience */}
+          {user.pastExperience && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.1 }}
+              variants={sectionVariants}
+            >
+              <h2 className="text-xl font-semibold text-white mb-2">Past Experience</h2>
+              <p className="text-gray-200">{user.pastExperience}</p>
+            </motion.div>
+          )}
+
+          {/* Work Showcase */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.2 }}
+            variants={sectionVariants}
+          >
+            <h2 className="text-xl font-semibold text-white mb-2">Work Showcase</h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              {user.work?.map((fileUrl, idx) => {
+                const fileType = getFileType(fileUrl);
+                return (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.3 + idx * 0.1 }}
+                    className="bg-white/10 backdrop-blur-lg rounded-lg p-2 border border-white/10"
+                  >
+                    {fileType === "image" && (
+                      <img
+                        src={fileUrl}
+                        alt={`Work ${idx}`}
+                        className="w-full h-64 object-cover rounded"
+                      />
+                    )}
+                    {fileType === "video" && (
+                      <video controls className="w-full h-64 rounded">
+                        <source src={fileUrl} type="video/mp4" />
+                      </video>
+                    )}
+                    {fileType === "pdf" && (
+                      <div className="w-full h-64 rounded overflow-hidden">
+                        <iframe
+                          src={fileUrl}
+                          title={`PDF ${idx}`}
+                          className="w-full h-full"
+                          frameBorder="0"
+                        ></iframe>
+                        <a
+                          href={fileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 block text-sm text-white text-center underline"
+                        >
+                          Open Fullscreen PDF
+                        </a>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
