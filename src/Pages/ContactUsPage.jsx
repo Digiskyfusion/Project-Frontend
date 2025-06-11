@@ -40,7 +40,7 @@ function ContactUsPages() {
         ) : (
           <HeaderGlobal />
         )}
-       <div className="mt-20">
+       <div className="">
          <ContactUs />
         <HiddenContContact />
         <Secondsection />

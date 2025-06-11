@@ -72,6 +72,8 @@ import BlogSevenPage from "./Pages/BlogSevenPage";
 import PortfolioPage from "./Pages/PortfolioPage";
 import { getSubdomain } from "./utils/getSubdomain";
 import UsersWithWork from "./Components/Client/UserWithWork";
+import SearchResults from "./Components/ServicePage/SearchResults";
+import SearchResultPage from "./Pages/SearchResultPage";
 
 
 
@@ -228,6 +230,7 @@ function App() {
         <Route path="/blog/how-to-earn-online-after-12th" element={<BlogSixPage />} />
         <Route path="/blog/earn-money-online-in-india-without-investment" element={<BlogSevenPage/>} />
         <Route path="/portfolio/:username" element={<PortfolioPage />} />
+            <Route path="/search/:keyword" element={<SearchResultPage />} />
         {/* <Route path="/newHomepage" element={<NewHomePage />} /> */}
       </Routes>
 

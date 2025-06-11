@@ -41,12 +41,12 @@ function Services() {
      <HeaderGlobal />
    )}
 
-       <div className=" mt-20 lg:mt-22">
+       <div className=" ">
          <Platform />
         <HiddenCont />
         <Employ />
         <CarouselSection />
-        <FullJobCard />
+        {/* <FullJobCard /> */}
         <SecondReviews />
        </div>
         <Footer />

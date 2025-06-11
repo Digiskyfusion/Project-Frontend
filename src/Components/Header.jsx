@@ -28,7 +28,7 @@ const NavbarAlt = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-30 transition-all duration-300 elsie-regular  ${
+      className={`sticky top-0 w-full z-30 transition-all duration-300 elsie-regular  ${
         isScrolled ? "bg-[#004930] shadow-md" : ""
       } text-white  py-4 bg-[#004930]`}
     >
