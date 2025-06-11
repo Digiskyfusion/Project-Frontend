@@ -17,48 +17,59 @@ function LoginForm() {
     const { name, value } = e.target;
     setLoginForm((prevData) => ({ ...prevData, [name]: value }));
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!loginForm.email || !loginForm.password) {
-      toast.error("Email and Password are required!");
-      return;
+  if (!loginForm.email || !loginForm.password) {
+    toast.error("Email and Password are required!");
+    return;
+  }
+
+  try {
+    const response = await axios.post(`${API_URL}/user/login`, loginForm);
+    console.log("API Response:", response.data);
+
+    const { token, message, user } = response.data;
+
+    if (token && user) {
+      const { _id, roleType, email, mobileNumber, name, state } = user;
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ _id, roleType, email, mobileNumber, name, state })
+      );
+      localStorage.setItem("token", token);
+
+      toast.success(message || "Login successful!");
+
+      setTimeout(() => {
+        const redirectPath = localStorage.getItem("redirectAfterLogin");
+
+        // ✅ If freelancer and redirect path exists, go there
+        if (roleType === "freelancer" && redirectPath) {
+          localStorage.removeItem("redirectAfterLogin");
+          navigate(redirectPath, { replace: true });
+          return;
+        }
+
+        // ✅ Normal role-based redirection
+        if (roleType === "freelancer") {
+          navigate("/freelancerSkill", { replace: true });
+        } else if (roleType === "client") {
+          navigate("/UserSkills", { replace: true });
+        } else {
+          navigate("/", { replace: true });
+        }
+      }, 1000);
+    } else {
+      toast.error("Invalid response from server!");
     }
-  
-    try {
-      const response = await axios.post(`${API_URL}/user/login`, loginForm);
-      console.log("API Response:", response.data);
-  
-      const { token, message, user } = response.data;
-  
-      if (token && user) {
-        const { _id, roleType, email, mobileNumber, name, state } = user;
-  
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ _id, roleType, email, mobileNumber, name, state })
-        );
-        localStorage.setItem("token", token);
-  
-        toast.success(message || "Login successful!");
-  
-        setTimeout(() => {
-          if (roleType === "freelancer") {
-            navigate("/freelancerSkill", { replace: true });
-          } else if (roleType === "client") {
-            navigate("/UserSkills", { replace: true });
-          } else {
-            navigate("/", { replace: true });
-          }
-        }, 1000);
-      } else {
-        toast.error("Invalid response from server!");
-      }
-    } catch (error) {
-      console.error("Login Error:", error.response?.data || error.message);
-      toast.error(error.response?.data?.message || "Something went wrong!");
-    }
-  };
+  } catch (error) {
+    console.error("Login Error:", error.response?.data || error.message);
+    toast.error(error.response?.data?.message || "Something went wrong!");
+  }
+};
+
   
   return (
     <>

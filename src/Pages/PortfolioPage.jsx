@@ -74,7 +74,7 @@ function PortfolioPage() {
               <h1 className="text-3xl font-bold text-white text-center sm:text-start">
                 {user.name}
               </h1>
-             <div className="text-cyan-200 text-center sm:text-start text-base sm:text-lg mt-2">
+             <div className="text-white text-center sm:text-start text-base sm:text-lg mt-2">
  <Typewriter
   onInit={(typewriter) => {
     typewriter
@@ -100,7 +100,7 @@ function PortfolioPage() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.7 }}
-            className="grid sm:grid-cols-1 gap-4 text-sm text-gray-300"
+            className="grid sm:grid-cols-1 gap-4 text-sm "
           >
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Mobile:</strong> {user.mobileNumber}</p>
@@ -114,7 +114,7 @@ function PortfolioPage() {
             transition={{ delay: 0.8 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold text-cyan-400 mb-2">Skills</h2>
+            <h2 className="text-xl font-semibold mb-2">Skills</h2>
             <motion.div
               className="flex flex-wrap gap-2"
               variants={{
@@ -126,7 +126,7 @@ function PortfolioPage() {
               {user.skills?.map((skill, index) => (
                 <motion.span
                   key={index}
-                  className="bg-cyan-800/20 border border-cyan-400 text-cyan-100 px-3 py-1 rounded-full text-sm"
+                  className="bg-cyan-800/20 border border-white  px-3 py-1 rounded-full text-sm"
                   variants={{
                     hidden: { opacity: 0, y: 10 },
                     visible: { opacity: 1, y: 0 },
@@ -147,8 +147,8 @@ function PortfolioPage() {
             transition={{ delay: 0.9 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold text-cyan-400 mb-2">Showcase Links</h2>
-            <ul className="list-disc ml-5 text-cyan-300 space-y-1">
+            <h2 className="text-xl font-semibold  mb-2">Showcase Links</h2>
+            <ul className="list-disc ml-5  space-y-1">
               {user.showcaseLinks?.map((link, idx) => (
                 <motion.li
                   key={idx}
@@ -157,7 +157,7 @@ function PortfolioPage() {
                   transition={{ delay: 1 + idx * 0.1 }}
                 >
                   <a
-                    href={`https://${link}`}
+                    href={`${link}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
@@ -177,7 +177,7 @@ function PortfolioPage() {
               transition={{ delay: 1.1 }}
               variants={sectionVariants}
             >
-              <h2 className="text-xl font-semibold text-cyan-400 mb-2">Past Experience</h2>
+              <h2 className="text-xl font-semibold  mb-2">Past Experience</h2>
               <p className="text-gray-200">{user.pastExperience}</p>
             </motion.div>
           )}
@@ -189,7 +189,7 @@ function PortfolioPage() {
             transition={{ delay: 1.2 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold text-cyan-400 mb-2">Work Showcase</h2>
+            <h2 className="text-xl font-semibold  mb-2">Work Showcase</h2>
             <div className="grid md:grid-cols-3 gap-4">
               {user.work?.map((fileUrl, idx) => {
                 const fileType = getFileType(fileUrl);
@@ -226,7 +226,7 @@ function PortfolioPage() {
                           href={fileUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-2 block text-sm text-cyan-300 text-center underline"
+                          className="mt-2 block text-sm  text-center underline"
                         >
                           Open Fullscreen PDF
                         </a>

@@ -39,7 +39,7 @@ function ChooseUSPage() {
   ) : (
     <HeaderGlobal />
   )}
-  <div className="mt-20">
+  <div className="">
     
     <ThirdSectionFirst />
     <HiddenCont />

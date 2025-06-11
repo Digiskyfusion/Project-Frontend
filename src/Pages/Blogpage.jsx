@@ -8,7 +8,7 @@ function Blogpage() {
   return (
     <>
     <NavbarAlt />
-   <div className='mt-20'>
+   <div className=''>
      <BlogPage />
    </div>
     {/* <BlogsPage/> */}

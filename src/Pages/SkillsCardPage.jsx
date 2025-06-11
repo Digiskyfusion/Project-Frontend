@@ -37,11 +37,10 @@ function SkillsCardPage() {
 ) : (
   <HeaderGlobal />
 )}
-<div className={hasToken ? 'mt-0' : 'mt-20'}>
+
  <HiddenSkillContent />
       <SkillPage />
-     </div>
-      <Footer />
+    
     </div>
   )
 }
