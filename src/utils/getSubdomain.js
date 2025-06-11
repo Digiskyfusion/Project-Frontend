@@ -11,6 +11,7 @@ export function getSubdomain() {
   
   // Example: username.digisky.ai
   if (parts.length >= 3) {
+    console.log('2',parts)
     return parts[0]; // "username"
   }
 

@@ -327,13 +327,15 @@ const FreelancerSkills = () => {
 
 <div className="flex justify-center mt-6">
   <button
-    onClick={() => {
-      window.location.href = `https://${user.name}.digisky.ai`;
-    }}
-    className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all"
-  >
-    🚀 Get Your Own Portfolio with Your Domain
-  </button>
+  onClick={() => {
+    const sanitizedName = user.name.replace(/\s+/g, "_"); // Replace all spaces with underscores
+    window.location.href = `https://${sanitizedName}.digisky.ai`;
+  }}
+  className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all"
+>
+  🚀 Get Your Own Portfolio with Your Domain
+</button>
+
 </div>
 
 
