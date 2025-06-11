@@ -70,12 +70,14 @@ import BlogSixPage from "./Pages/BlogSixPage";
 import JobListPage from "./Pages/JobListPage";
 import BlogSevenPage from "./Pages/BlogSevenPage";
 import PortfolioPage from "./Pages/PortfolioPage";
+import { getSubdomain } from "./utils/getSubdomain";
 
 
 
 
 
 function App() {
+  const subdomain = getSubdomain();
 
   const[fcmToken, setFcmToken] = useState(null);
 
@@ -142,6 +144,14 @@ function App() {
       };
     }
   }, []);
+
+  if (
+    subdomain &&
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1"
+  ) {
+    return <PortfolioPage />;
+  }
 
   return (
     <BrowserRouter>
