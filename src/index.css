@@ -114,7 +114,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(#36454F, transparent), #36454F;
+  background: radial-gradient(black, transparent), black;
   overflow: hidden;
   z-index: 0;
 }
@@ -127,7 +127,7 @@
   background-image: radial-gradient(circle, white 10%, transparent 11%);
   background-size: 50px 50px;
   animation: moveCircles 20s linear infinite;
-  opacity: 0.08;
+  opacity: 0.2;
 }
 
 @keyframes moveCircles {

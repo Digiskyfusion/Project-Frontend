@@ -40,7 +40,7 @@ function PortfolioPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gray-900 text-white">
+    <div className="relative min-h-screen overflow-hidden  text-white">
       <div className="animated-bg"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto p-2 sm:p-6">
@@ -49,7 +49,7 @@ function PortfolioPage() {
           animate="visible"
           variants={sectionVariants}
           transition={{ duration: 1 }}
-          className="bg-white/10 rounded-2xl p-3 sm:p-6 space-y-6 border border-white/20 shadow-xl"
+          className="bg-black/20 rounded-2xl p-3 sm:p-6 space-y-6 border border-white/20 shadow-xl"
         >
           {/* Header */}
           <motion.div
@@ -114,7 +114,7 @@ function PortfolioPage() {
             transition={{ delay: 0.8 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold mb-2">Skills</h2>
+            <h2 className="text-xl font-semibold text-white mb-2">Skills</h2>
             <motion.div
               className="flex flex-wrap gap-2"
               variants={{
@@ -147,8 +147,8 @@ function PortfolioPage() {
             transition={{ delay: 0.9 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold  mb-2">Showcase Links</h2>
-            <ul className="list-disc ml-5  space-y-1">
+            <h2 className="text-xl font-semibold text-white mb-2">Showcase Links</h2>
+            <ul className="list-disc ml-5 text-white space-y-1">
               {user.showcaseLinks?.map((link, idx) => (
                 <motion.li
                   key={idx}
@@ -177,7 +177,7 @@ function PortfolioPage() {
               transition={{ delay: 1.1 }}
               variants={sectionVariants}
             >
-              <h2 className="text-xl font-semibold  mb-2">Past Experience</h2>
+              <h2 className="text-xl font-semibold text-white mb-2">Past Experience</h2>
               <p className="text-gray-200">{user.pastExperience}</p>
             </motion.div>
           )}
@@ -189,7 +189,7 @@ function PortfolioPage() {
             transition={{ delay: 1.2 }}
             variants={sectionVariants}
           >
-            <h2 className="text-xl font-semibold  mb-2">Work Showcase</h2>
+            <h2 className="text-xl font-semibold text-white mb-2">Work Showcase</h2>
             <div className="grid md:grid-cols-3 gap-4">
               {user.work?.map((fileUrl, idx) => {
                 const fileType = getFileType(fileUrl);
@@ -226,7 +226,7 @@ function PortfolioPage() {
                           href={fileUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-2 block text-sm  text-center underline"
+                          className="mt-2 block text-sm text-white text-center underline"
                         >
                           Open Fullscreen PDF
                         </a>
