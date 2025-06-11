@@ -35,7 +35,7 @@ function PortfolioPage() {
   if (!user)
     return (
       <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
-        Invalid User
+        Loading...
       </div>
     );
 
