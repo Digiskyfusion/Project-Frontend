@@ -3,7 +3,8 @@ import toast from "react-hot-toast";
 import supabase from "../../supabaseClient";
 import { FaFilePdf, FaTrash } from "react-icons/fa";
 
-const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
+const WorkUploadSection = ({ user, setUser, userId, userPlan  }) => {
+  const hasValidPlan = ["Basic", "Standard", "Premium"].includes(userPlan);
   const getFileType = (url) => {
     const ext = url.split('.').pop().toLowerCase();
     if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) return "image";

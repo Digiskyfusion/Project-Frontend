@@ -315,7 +315,7 @@ const FreelancerSkills = () => {
 {/* Work File Upload */}
 {/* Work File Upload */}
 <div className="relative animate-fade-in delay-100">
-  <WorkUploadSection user={user} setUser={setUser} userId={userId} hasValidPlan={hasValidPlan} />
+  <WorkUploadSection user={user} setUser={setUser} userId={userId} userPlan={userPlan} />
 
 </div>
 
@@ -339,7 +339,7 @@ const FreelancerSkills = () => {
 </div> */}
 
 <div className="flex justify-center mt-6">
-  {userPlan == "premium" ? (
+  {userPlan == "Premium" ? (
     <div className="text-center bg-green-50 border border-green-700 p-4 rounded-xl shadow-md w-full max-w-xl">
       <p className="text-green-900 font-semibold text-lg mb-2">🌟 You have a Premium Plan!</p>
       <p className="text-sm text-gray-700 mb-4">Your personal portfolio is live at:</p>
