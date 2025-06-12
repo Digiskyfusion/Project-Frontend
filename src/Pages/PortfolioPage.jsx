@@ -11,17 +11,22 @@ function PortfolioPage() {
   const subdomain = getSubdomain();
   const API_URL = import.meta.env.VITE_API_URL;
   const [locked, setLocked] = useState(false);
-
+  const [error, setError] = useState(null);
 
 
 
   useEffect(() => {
-    if (!subdomain) return;
-    axios
-      .get(`${API_URL}/user/portfolio/${subdomain}`)
-      .then((res) => setUser(res.data))
-      .catch((err) => console.error("User not found", err));
-  }, [subdomain]);
+  if (!subdomain) return;
+  setError(null); // reset error before loading
+  axios
+    .get(`${API_URL}/user/portfolio/${subdomain}`)
+    .then((res) => setUser(res.data))
+    .catch((err) => {
+      console.error("User not found", err);
+      setError("User not found");
+    });
+}, [subdomain]);
+
 
 
   useEffect(() => {
@@ -32,12 +37,22 @@ function PortfolioPage() {
   }
 }, [user]);
 
-  if (!user)
-    return (
-      <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
-        Loading...
-      </div>
-    );
+  if (!user && !error) {
+  return (
+    <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
+      Loading...
+    </div>
+  );
+}
+
+if (error) {
+  return (
+    <div className="h-screen flex items-center justify-center text-xl text-red-500 bg-black">
+      {error}
+    </div>
+  );
+}
+
 
   const getFileType = (url) => {
     const ext = url.split(".").pop().toLowerCase();
