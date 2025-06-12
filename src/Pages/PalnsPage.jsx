@@ -26,13 +26,22 @@ function PalnsPage() {
   return (
     <div>
      {roleType === "freelancer" ? (
+      <div>
       <Header1 />
+      <MembershipPlans />
+      </div>
     ) : roleType === "client" ? (
+      <div>
       <Header2 />
+      <MembershipPlans />
+      </div>
     ) : (
+      <div>
       <HeaderGlobal />
+      <MembershipPlans />
+      </div>
     )}
-    <MembershipPlans />
+    
     <Footer />
       
     </div>
