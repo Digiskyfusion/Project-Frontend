@@ -14,8 +14,8 @@ const MembershipPlans = () => {
 
   const plans = [
   { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
-  { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
   { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+  { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
 ];
 
 
@@ -44,121 +44,6 @@ const MembershipPlans = () => {
       contact: storedUser?.contact || "",
     });
   }, []);
-
-  // const handleSubscribe = async (plan) => {
-  //   setMessage("");
-
-  //   if (!token || !userId) {
-  //     setMessage("Authentication required. Redirecting to login...");
-  //     setTimeout(() => navigate("/registration"), 1500);
-  //     return;
-  //   }
-
-  //   setLoading(true);
-
-  //   try {
-  //     const orderRes = await fetch(`${API_URL}/api/payment/create-order`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ amount: plan.amount }),
-  //     });
-
-  //     const orderData = await orderRes.json();
-  //     if (!orderRes.ok) throw new Error(orderData.error || "Failed to create order");
-
-  //     const options = {
-  //       key: RAZORPAY_KEY,
-  //       amount: orderData.amount,
-  //       currency: "INR",
-  //       name: "Matrimony App",
-  //       description: `${plan.name} Plan`,
-  //       order_id: orderData.id,
-  //       handler: async function (response) {
-  //         const verifyRes = await fetch(`${API_URL}/api/payment/verify-payment`, {
-  //           method: "POST",
-  //           headers: { "Content-Type": "application/json" },
-  //           body: JSON.stringify({
-  //             razorpay_order_id: response.razorpay_order_id,
-  //             razorpay_payment_id: response.razorpay_payment_id,
-  //             razorpay_signature: response.razorpay_signature,
-  //             userId,
-  //             plan: plan.credit,
-  //             planName: plan.name,
-  //           }),
-  //         });
-
-  //         const verifyData = await verifyRes.json();
-  //         if (!verifyRes.ok) throw new Error(verifyData.error || "Verification failed");
-
-  //         setMessage(verifyData.message);
-  //         navigate("/reciept");
-  //       },
-  //       prefill: {
-  //         name: userDetails.name || "User Name",
-  //         email: userDetails.email || "user@example.com",
-  //         contact: userDetails.contact || "9999999999",
-  //       },
-  //       theme: { color: "#004930" },
-  //     };
-
-  //     const razorpay = new window.Razorpay(options);
-  //     razorpay.open();
-  //   } catch (error) {
-  //     setMessage(error.message || "Payment failed");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-
-//   const handleSubscribe = async (plan) => {
-//   setMessage("");
-
-//   if (!token || !userId) {
-//     setMessage("Authentication required. Redirecting to login...");
-//     setTimeout(() => navigate("/registration"), 1500);
-//     return;
-//   }
-
-//   setLoading(true);
-
-//   try {
-//     const subRes = await fetch(`${API_URL}/api/payment/create-subscription`, {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ planId: plan.planId }),
-//     });
-
-//     const subData = await subRes.json();
-//     if (!subRes.ok) throw new Error(subData.error || "Failed to create subscription");
-
-//     const options = {
-//       key: RAZORPAY_KEY,
-//       subscription_id: subData.id,
-//       name: "Matrimony App",
-//       description: `${plan.name} Plan - Monthly`,
-//       handler: async function (response) {
-//         // Save or verify on server (optional for subscriptions)
-//         console.log("Subscription success:", response);
-//         navigate("/reciept");
-//       },
-//       prefill: {
-//         name: userDetails.name,
-//         email: userDetails.email,
-//         contact: userDetails.contact,
-//       },
-//       theme: { color: "#004930" },
-//     };
-
-//     const razorpay = new window.Razorpay(options);
-//     razorpay.open();
-//   } catch (error) {
-//     setMessage(error.message || "Subscription failed");
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-
 
 const handleSubscribe = async (plan) => {
   setMessage("");
@@ -245,8 +130,11 @@ const handleSubscribe = async (plan) => {
         {plans.map((plan, index) => (
           <div
             key={index}
-            className="border-[#004930] hover:bg-[#004930] hover:text-white px-8 py-12 sm:px-12 lg:px-20 sm:py-16 lg:py-20 rounded-2xl shadow-lg text-center border group 
-              transition duration-300 border-t-8 transform hover:scale-105 cursor-pointer"
+           className={`relative border-[#004930] px-8 py-12 sm:px-12 lg:px-20 sm:py-16 lg:py-20 rounded-2xl shadow-lg text-center border group transition duration-300 transform cursor-pointer ${
+    plan.name === "Premium"
+      ? "bg-gradient-to-b from-white via-emerald-100 to-white scale-110 z-10 shadow-2xl"
+      : "hover:bg-[#004930] hover:text-white hover:scale-105"
+  }`}
             style={{ boxShadow: "0 -4px 10px rgba(0, 0, 0, 0.1)" }}
             onClick={() => handleSubscribe(plan)}
           >
@@ -255,6 +143,12 @@ const handleSubscribe = async (plan) => {
               <FaIndianRupeeSign className="text-xl mr-1" />
               {plan.amount}/month
             </h3>
+            {plan.name === "Premium" && (
+  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+    🔥 Special Offer
+  </div>
+)}
+
            {roleType === 'freelancer' && (
   <>
     {plan.name === "Basic" && (
@@ -310,7 +204,11 @@ const handleSubscribe = async (plan) => {
   </>
 )}
 
-            <button className="mt-4 py-2 px-5 cursor-pointer bg-[#004930] text-white rounded-full transition duration-300 group-hover:bg-white group-hover:text-black">
+            <button className={`mt-4 py-2 px-5 cursor-pointer bg-[#004930] text-white rounded-full transition duration-300 ${
+    plan.name === "Premium"
+      ? " group-hover:text-white group-hover:bg-black"
+      : " group-hover:text-black group-hover:bg-white"
+  }`}>
               Select Plan
             </button>
           </div>
