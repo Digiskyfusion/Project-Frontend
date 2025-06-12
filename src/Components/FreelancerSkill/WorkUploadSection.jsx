@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import supabase from "../../supabaseClient";
-import { FaFilePdf } from "react-icons/fa";
+import { FaFilePdf, FaTrash } from "react-icons/fa";
 
 const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
   const getFileType = (url) => {
@@ -16,11 +16,10 @@ const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // ⛔️ Stop upload if a file already exists
     if (!hasValidPlan && user.work?.length >= 1) {
-  toast.error("Upgrade to a plan to upload more than one work file.");
-  return;
-}
+      toast.error("Upgrade to a plan to upload more than one work file.");
+      return;
+    }
 
     const fileExt = file.name.split(".").pop();
     const fileName = `${userId}-work-${Date.now()}.${fileExt}`;
@@ -32,7 +31,7 @@ const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
       const { error } = await supabase.storage.from("images").upload(filePath, file);
       if (error) throw error;
 
-      const publicUrl = supabase.storage.from("images").getPublicUrl(filePath).data.publicUrl;
+      const { publicUrl } = supabase.storage.from("images").getPublicUrl(filePath).data;
 
       setUser((prev) => ({
         ...prev,
@@ -47,6 +46,30 @@ const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
     }
   };
 
+  const handleRemoveFile = async (fileUrlToRemove) => {
+    const pathParts = fileUrlToRemove.split("/storage/v1/object/public/images/")[1];
+
+    toast.loading("Removing file...");
+
+    try {
+      const { error } = await supabase.storage.from("images").remove([pathParts]);
+      if (error) throw error;
+
+      // Update user state
+      const updatedWork = user.work.filter((url) => url !== fileUrlToRemove);
+      setUser((prev) => ({
+        ...prev,
+        work: updatedWork,
+      }));
+
+      toast.dismiss();
+      toast.success("File removed successfully please save changes!");
+    } catch (err) {
+      toast.dismiss();
+      toast.error("Failed to remove file: " + err.message);
+    }
+  };
+
   return (
     <div className="relative animate-fade-in delay-100">
       <label className="block text-[#004930] font-medium mb-2">
@@ -58,42 +81,52 @@ const WorkUploadSection = ({ user, setUser, userId, hasValidPlan }) => {
         {user.work.map((fileUrl, index) => {
           const type = getFileType(fileUrl);
           return (
-            <a
-              key={index}
-              href={fileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
-            >
-              {type === "image" && (
-                <img
-                  src={fileUrl}
-                  alt={`work-${index}`}
-                  className="w-full h-32 object-cover rounded"
-                />
-              )}
-              {type === "video" && (
-                <video controls className="w-full h-32 rounded">
-                  <source src={fileUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              )}
-              {type === "pdf" && (
-                <div className="w-full h-32 flex items-center justify-center bg-red-100 text-red-700 text-4xl border rounded">
-                  <FaFilePdf />
-                </div>
-              )}
-              {type === "link" && (
-                <span className="text-blue-600 underline break-words block">
-                  {fileUrl}
-                </span>
-              )}
-            </a>
+            <div key={index} className="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+              <a
+                href={fileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                {type === "image" && (
+                  <img
+                    src={fileUrl}
+                    alt={`work-${index}`}
+                    className="w-full h-32 object-cover rounded"
+                  />
+                )}
+                {type === "video" && (
+                  <video controls className="w-full h-32 rounded">
+                    <source src={fileUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
+                {type === "pdf" && (
+                  <div className="w-full h-32 flex items-center justify-center bg-red-100 text-red-700 text-4xl border rounded">
+                    <FaFilePdf />
+                  </div>
+                )}
+                {type === "link" && (
+                  <span className="text-blue-600 underline break-words block">
+                    {fileUrl}
+                  </span>
+                )}
+              </a>
+
+              {/* 🗑 Remove Button */}
+              <button
+                onClick={() => handleRemoveFile(fileUrl)}
+                className="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full shadow hover:bg-red-700"
+                title="Remove file"
+              >
+                <FaTrash size={14} />
+              </button>
+            </div>
           );
         })}
       </div>
 
-      {/* Upload File Input – always visible */}
+      {/* Upload File Input */}
       <input
         type="file"
         accept="image/*,video/*,application/pdf"
