@@ -275,7 +275,12 @@ const handleSubscribe = async (plan) => {
     {plan.name === "Premium" && (
       <ul className="text-sm mt-2 space-y-1">
         <li>✅ Everything in <strong>Standard</strong>, plus:</li>
-        <li>✅ Your own personalized portfolio with a custom domain name.</li>
+        <li>
+  ✅ <span className="italic font-semibold px-2 py-1 rounded">
+    Your own personalized portfolio with a custom domain name.
+  </span>
+</li>
+
         <li>✅ Stand out and share your work with a professional presence anywhere.</li>
       </ul>
     )}

@@ -32,7 +32,7 @@ function PortfolioPage() {
   useEffect(() => {
     console.log(user,'999');
   if (user && user.plan != 'premium') {
-    const timer = setTimeout(() => setLocked(true), 10000); // 10 seconds
+    const timer = setTimeout(() => setLocked(true), 5000); // 10 seconds
     return () => clearTimeout(timer);
   }
 }, [user]);
