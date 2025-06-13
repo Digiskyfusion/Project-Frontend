@@ -77,29 +77,31 @@ export default function NewHomeone() {
         >
           {initialCards.map((card, idx) => (
             <motion.div
-              key={idx}
-              variants={cardVariants}
-              className="group rounded-2xl p-5 bg-white cursor-pointer flex gap-4 items-center w-full
-                border border-gray-200 shadow-[0_5px_0_#4caf50] 
-                transition-all duration-300 ease-in-out transform
-                hover:-translate-y-1 hover:shadow-[0_8px_0_#388e3c]
-                active:translate-y-0 active:shadow-[0_4px_0_#2e7d32]
-                hover:ring-2 hover:ring-green-300"
-            >
-              <img
-                src={card.icon}
-                alt={card.title}
-                className="w-[75px] h-[75px] object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-              <div>
-                <h3 className="text-lg font-bold text-gray-800 group-hover:text-green-700">
-                  {card.title}
-                </h3>
-                <p className="text-sm mt-2 font-medium text-gray-600 group-hover:text-green-600">
-                  {card.desc}
-                </p>
-              </div>
-            </motion.div>
+  key={idx}
+  variants={cardVariants}
+  className="rounded-2xl p-6 bg-white border border-gray-300 shadow-md
+    transition-all duration-300 ease-in-out
+    hover:shadow-xl hover:border-green-300"
+>
+  <div className="flex items-start gap-5"> 
+    <div className="flex-shrink-0 w-[70px] h-[70px] rounded-xl  flex items-center justify-center "> 
+      <img
+        src={card.icon}
+        alt={card.title}
+        className="w-10 h-10 object-contain"
+      />
+    </div>
+    <div className="flex flex-col">
+      <h3 className="text-[18px] font-semibold text-black mb-1">
+        {card.title}
+      </h3>
+      <p className="text-[15px] text-black leading-relaxed">
+        {card.desc}
+      </p>
+    </div>
+  </div>
+</motion.div>
+
           ))}
         </motion.div>
 

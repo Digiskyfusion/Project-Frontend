@@ -67,6 +67,7 @@ import BlogFourPage from "./Pages/BlogFourPage";
 import NewHomePage from './Pages/NewHomePage';
 import BlogFivePage from "./Pages/BlogFivePage";
 import BlogSixPage from "./Pages/BlogSixPage";
+import NewHomeone from "./Components/NewHomePage/NewHomeone";
 
 
 
@@ -147,6 +148,7 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<NewHomePage />} />
+        <Route path="/singleapge" element={<NewHomeone />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat/:id" element={<LiveChatPage />} />
