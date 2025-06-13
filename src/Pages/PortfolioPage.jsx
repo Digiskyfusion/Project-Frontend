@@ -11,33 +11,48 @@ function PortfolioPage() {
   const subdomain = getSubdomain();
   const API_URL = import.meta.env.VITE_API_URL;
   const [locked, setLocked] = useState(false);
-
+  const [error, setError] = useState(null);
 
 
 
   useEffect(() => {
-    if (!subdomain) return;
-    axios
-      .get(`${API_URL}/user/portfolio/${subdomain}`)
-      .then((res) => setUser(res.data))
-      .catch((err) => console.error("User not found", err));
-  }, [subdomain]);
+  if (!subdomain) return;
+  setError(null); // reset error before loading
+  axios
+    .get(`${API_URL}/user/portfolio/${subdomain}`)
+    .then((res) => setUser(res.data))
+    .catch((err) => {
+      console.error("User not found", err);
+      setError("User not found");
+    });
+}, [subdomain]);
+
 
 
   useEffect(() => {
     console.log(user,'999');
-  if (user && user.plan != 'premium') {
-    const timer = setTimeout(() => setLocked(true), 10000); // 10 seconds
+  if (user && user.plan != 'Premium') {
+    const timer = setTimeout(() => setLocked(true), 5000); // 10 seconds
     return () => clearTimeout(timer);
   }
 }, [user]);
 
-  if (!user)
-    return (
-      <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
-        Loading...
-      </div>
-    );
+  if (!user && !error) {
+  return (
+    <div className="h-screen flex items-center justify-center text-xl text-white bg-black">
+      Loading...
+    </div>
+  );
+}
+
+if (error) {
+  return (
+    <div className="h-screen flex items-center justify-center text-xl text-red-500 bg-black">
+      {error}
+    </div>
+  );
+}
+
 
   const getFileType = (url) => {
     const ext = url.split(".").pop().toLowerCase();
@@ -255,7 +270,7 @@ function PortfolioPage() {
       {locked && (
   <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center text-white text-center px-4">
     <h2 className="text-3xl font-bold mb-4">🔒 Portfolio Locked</h2>
-    <p className="mb-6 text-lg">Unlock your personal portfolio by upgrading to a premium plan.</p>
+    <p className="mb-6 text-lg">Unlock your personal portfolio by upgrading to a Premium plan.</p>
     <a
       href="https://digisky.ai/MembershipPlans"
       className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full transition-all"

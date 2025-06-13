@@ -287,7 +287,7 @@ const FreelancerSkills = () => {
   }}
   className="mt-2 text-[#004930] text-sm hover:underline"
 >
-  + Add another link
+  + Add another link 
 </button>
 
 </div>
@@ -315,7 +315,7 @@ const FreelancerSkills = () => {
 {/* Work File Upload */}
 {/* Work File Upload */}
 <div className="relative animate-fade-in delay-100">
-  <WorkUploadSection user={user} setUser={setUser} userId={userId} hasValidPlan={hasValidPlan} />
+  <WorkUploadSection user={user} setUser={setUser} userId={userId} userPlan={userPlan} />
 
 </div>
 
@@ -325,7 +325,7 @@ const FreelancerSkills = () => {
 
 
 
-<div className="flex justify-center mt-6">
+{/* <div className="flex justify-center mt-6">
   <button
   onClick={() => {
     const sanitizedName = user.name.replace(/\s+/g, "_"); // Replace all spaces with underscores
@@ -336,7 +336,53 @@ const FreelancerSkills = () => {
   🚀 Get Your Own Portfolio with Your Domain
 </button>
 
+</div> */}
+
+<div className="flex justify-center mt-6">
+  {userPlan == "Premium" ? (
+    <div className="text-center bg-green-50 border border-green-700 p-4 rounded-xl shadow-md w-full max-w-xl">
+      <p className="text-green-900 font-semibold text-lg mb-2">🌟 You have a Premium Plan!</p>
+      <p className="text-sm text-gray-700 mb-4">Your personal portfolio is live at:</p>
+      <div className="flex items-center justify-center mb-4">
+        <input
+          type="text"
+          value={`https://${user.name?.replace(/\s+/g, "_")}.digisky.ai`}
+          readOnly
+          className="bg-white border border-green-700 px-3 py-2 rounded-l-md text-gray-800 w-full max-w-md"
+        />
+        <button
+          className="bg-green-800 text-white px-4 py-2 rounded-r-md hover:bg-green-900"
+          onClick={() => {
+            navigator.clipboard.writeText(`https://${user.name?.replace(/\s+/g, "_")}.digisky.ai`);
+            toast.success("Portfolio URL copied to clipboard!");
+          }}
+        >
+          Copy
+        </button>
+      </div>
+      <button
+        onClick={() => {
+          const sanitizedName = user.name.replace(/\s+/g, "_");
+          window.open(`https://${sanitizedName}.digisky.ai`, "_blank");
+        }}
+        className="bg-green-900 hover:bg-green-800 text-white px-6 py-2 rounded-md font-medium"
+      >
+        🔗 View Your Premium Portfolio
+      </button>
+    </div>
+  ) : (
+    <button
+      onClick={() => {
+        const sanitizedName = user.name.replace(/\s+/g, "_");
+        window.location.href = `https://${sanitizedName}.digisky.ai`;
+      }}
+      className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all"
+    >
+      🚀 Get Your Own Portfolio with Your Domain
+    </button>
+  )}
 </div>
+
 
 
           </div>
