@@ -3,7 +3,7 @@ import ProfileDetails from '../Components/UserProfile/ProfileDetails'
 import Footer from '../Components/Footer/Footer'
 import Header1 from "../Components/Freelancer/Header";
 import Header2 from "../Components/Client/Header";
-
+import HeaderGlobal from "../Components/Header"; // Import Global Header
 function UserProfileDetals() {
 
      const [roleType, setRoleType] = useState("");
@@ -27,7 +27,13 @@ function UserProfileDetals() {
   return (
     <div>
      {/* Conditionally render headers based on roleType */}
-     {roleType === "freelancer" ? <Header1 /> : <Header2 />}
+      {roleType === "freelancer" ? (
+  <Header1 />
+) : roleType === "client" ? (
+  <Header2 />
+) : (
+  <HeaderGlobal />
+)}
       <ProfileDetails />
       <Footer />
     </div>
