@@ -89,10 +89,10 @@ function Signuppage() {
         <div className="w-full mb-4">
           <span className="font-medium text-gray-700">Select Role:</span>
           <div className="flex justify-between gap-4 mt-2">
-            <button className={`px-4 py-2 w-1/2 border rounded-lg ${formData.roleType === "freelancer" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("freelancer")}>
+            <button className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${formData.roleType === "freelancer" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("freelancer")}>
               Freelancer
             </button>
-            <button className={`px-4 py-2 w-1/2 border rounded-lg ${formData.roleType === "client" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("client")}>
+            <button className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${formData.roleType === "client" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("client")}>
               Client
             </button>
           </div>
@@ -286,7 +286,7 @@ function Signuppage() {
       <span className="font-bold text-purple-600">Uppercase</span>, and{" "}
       <span className="font-bold text-orange-600">Lowercase</span> in your password.
     </p>
-           <button className="bg-green-700 text-white py-3 rounded-lg w-full">Sign Up</button>
+           <button className="bg-green-700 text-white py-3 cursor-pointer rounded-lg w-full">Sign Up</button>
 
           <p className="text-gray-600 text-sm text-center mt-2">
             Already have an account?{" "}

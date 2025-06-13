@@ -4,6 +4,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaBriefcase, FaPen, FaImage } from "react-icons/fa";
 import supabase from "../../supabaseClient";
+import WorkUploadSection from "./WorkUploadSection";
 const skillsOptions = [
   "Digital Marketing",
   "Graphic Designing",
@@ -18,8 +19,9 @@ const FreelancerSkills = () => {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [userId, setUserId] = useState(null);
+  const [userPlan, setUserPlan] = useState(null);
   const [roleType, setRoleType] = useState("");
-  const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "", showcaseLinks: [""] });
+  const [user, setUser] = useState({ skills: "", bio: "", experience: "", image: "", showcaseLinks: [""],pastExperience: "",work: [],  });
   const [loading, setLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -41,8 +43,9 @@ const FreelancerSkills = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`${API_URL}/user/${userId}`);
-        setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "", showcaseLinks: response.data.showcaseLinks || [""] });
+        setUser({ ...response.data, skills: response.data.skills || "", image: response.data.image || "", showcaseLinks: response.data.showcaseLinks || [""] , pastExperience: response.data.pastExperience || "",    work: Array.isArray(response.data.work) ? response.data.work : [], });
         setImagePreview(response.data.image || null);
+        setUserPlan(response.data.plan || null);
       } catch (error) {
         toast.error("Failed to fetch user data");
       }
@@ -121,6 +124,7 @@ const FreelancerSkills = () => {
           experience: response.data.experience || user.experience,
           skills: response.data.skills || user.skills,
           image: response.data.image || user.image,
+          
         });
   
         setTimeout(() => {
@@ -137,6 +141,8 @@ const FreelancerSkills = () => {
     }
   };
   
+  const hasValidPlan = userPlan === "Basic" || userPlan === "Standard" || userPlan === "Premium";
+
 
   return (
     <div className="flex flex-col bg-green-100 p-4 md:p-8">
@@ -150,6 +156,25 @@ const FreelancerSkills = () => {
           <div className="grid grid-cols-1 gap-6">
             {/* Skills Dropdown */}
             {/* Skills Selection */}
+
+            {/* Image Upload */}
+            <div className="relative animate-fade-in delay-100">
+              <label className="block text-[#004930] font-medium mb-2">Upload Profile Image</label>
+              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
+                <span className="px-3 text-[#004930]"><FaImage /></span>
+                <input
+                  type="file"
+                  className="w-full border-none focus:ring-0 bg-transparent cursor-pointer text-gray-700 outline-0"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+              </div>
+              {imagePreview && (
+                <div className="mt-4 flex justify-center">
+                  <img src={imagePreview} alt="Preview" className="w-32 h-32 rounded-lg shadow-md" />
+                </div>
+              )}
+            </div>
 <div className="relative animate-fade-in delay-100">
   <label className="block text-[#004930] font-medium mb-2">Skills (Max 3)</label>
   <div className="border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
@@ -158,6 +183,7 @@ const FreelancerSkills = () => {
         <input
           type="checkbox"
           value={skill}
+          className="cursor-pointer"
           checked={user.skills.includes(skill)}
           onChange={(e) => {
             const selectedSkill = e.target.value;
@@ -209,31 +235,17 @@ const FreelancerSkills = () => {
                   className="w-full p-3 border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
                   value={user.experience}
                   onChange={(e) => setUser({ ...user, experience: e.target.value })}
-                  placeholder="Years of experience"
+                  placeholder=" 2+ Years of experience"
                 />
               </div>
             </div>
 
-            {/* Image Upload */}
-            <div className="relative animate-fade-in delay-100">
-              <label className="block text-[#004930] font-medium mb-2">Upload Profile Image</label>
-              <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50 p-3">
-                <span className="px-3 text-[#004930]"><FaImage /></span>
-                <input
-                  type="file"
-                  className="w-full border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
-              {imagePreview && (
-                <div className="mt-4 flex justify-center">
-                  <img src={imagePreview} alt="Preview" className="w-32 h-32 rounded-lg shadow-md" />
-                </div>
-              )}
-            </div>
-            <div className="relative animate-fade-in delay-100">
-  <label className="block text-[#004930] font-medium mb-2">Showcase Links (e.g. GitHub, Portfolio)</label>
+            
+<div className="relative animate-fade-in delay-100">
+  <label className="block text-[#004930] font-medium mb-2">
+    Showcase Links (e.g. GitHub, Portfolio) — 1 allowed for free
+  </label>
+
   {user.showcaseLinks.map((link, index) => (
     <div key={index} className="flex items-center mb-2">
       <input
@@ -247,6 +259,7 @@ const FreelancerSkills = () => {
         }}
         className="flex-1 p-2 border border-[#004930] rounded-lg bg-gray-50 text-gray-700 mr-2"
       />
+
       {index > 0 && (
         <button
           type="button"
@@ -261,29 +274,129 @@ const FreelancerSkills = () => {
       )}
     </div>
   ))}
-  {user.showcaseLinks.length < 5 && (
+
+  <button
+  type="button"
+  onClick={() => {
+    if (!hasValidPlan) {
+      toast.error("Upgrade to a plan to add more showcase links.");
+      return;
+    }
+
+    setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] });
+  }}
+  className="mt-2 text-[#004930] text-sm hover:underline"
+>
+  + Add another link 
+</button>
+
+</div>
+
+
+
+
+
+
+{/* Past Experience */}
+<div className="relative animate-fade-in delay-100">
+  <label className="block text-[#004930] font-medium mb-2">Past Experience</label>
+  <div className="flex items-center border border-[#004930] rounded-lg shadow-sm bg-gray-50">
+    <span className="px-3 text-[#004930]"><FaBriefcase /></span>
+    <input
+      type="text"
+      className="w-full p-3 border-none focus:ring-0 bg-transparent text-gray-700 outline-0"
+      value={user.pastExperience}
+      onChange={(e) => setUser({ ...user, pastExperience: e.target.value })}
+      placeholder="e.g. Previous roles, companies"
+    />
+  </div>
+</div>
+{/* Work Array */}
+{/* Work File Upload */}
+{/* Work File Upload */}
+<div className="relative animate-fade-in delay-100">
+  <WorkUploadSection user={user} setUser={setUser} userId={userId} userPlan={userPlan} />
+
+</div>
+
+
+
+
+
+
+
+{/* <div className="flex justify-center mt-6">
+  <button
+  onClick={() => {
+    const sanitizedName = user.name.replace(/\s+/g, "_"); // Replace all spaces with underscores
+    window.location.href = `https://${sanitizedName}.digisky.ai`;
+  }}
+  className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all"
+>
+  🚀 Get Your Own Portfolio with Your Domain
+</button>
+
+</div> */}
+
+<div className="flex justify-center mt-6">
+  {userPlan == "Premium" ? (
+    <div className="text-center bg-green-50 border border-green-700 p-4 rounded-xl shadow-md w-full max-w-xl">
+      <p className="text-green-900 font-semibold text-lg mb-2">🌟 You have a Premium Plan!</p>
+      <p className="text-sm text-gray-700 mb-4">Your personal portfolio is live at:</p>
+      <div className="flex items-center justify-center mb-4">
+        <input
+          type="text"
+          value={`https://${user.name?.replace(/\s+/g, "_")}.digisky.ai`}
+          readOnly
+          className="bg-white border border-green-700 px-3 py-2 rounded-l-md text-gray-800 w-full max-w-md"
+        />
+        <button
+          className="bg-green-800 text-white px-4 py-2 rounded-r-md hover:bg-green-900"
+          onClick={() => {
+            navigator.clipboard.writeText(`https://${user.name?.replace(/\s+/g, "_")}.digisky.ai`);
+            toast.success("Portfolio URL copied to clipboard!");
+          }}
+        >
+          Copy
+        </button>
+      </div>
+      <button
+        onClick={() => {
+          const sanitizedName = user.name.replace(/\s+/g, "_");
+          window.open(`https://${sanitizedName}.digisky.ai`, "_blank");
+        }}
+        className="bg-green-900 hover:bg-green-800 text-white px-6 py-2 rounded-md font-medium"
+      >
+        🔗 View Your Premium Portfolio
+      </button>
+    </div>
+  ) : (
     <button
-      type="button"
-      onClick={() => setUser({ ...user, showcaseLinks: [...user.showcaseLinks, ""] })}
-      className="mt-2 text-[#004930] text-sm hover:underline"
+      onClick={() => {
+        const sanitizedName = user.name.replace(/\s+/g, "_");
+        window.location.href = `https://${sanitizedName}.digisky.ai`;
+      }}
+      className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 cursor-pointer rounded-lg font-semibold shadow-md transition-all"
     >
-      + Add another link
+      🚀 Get Your Own Portfolio with Your Domain
     </button>
   )}
 </div>
+
+
 
           </div>
 
           <div className="w-full md:flex gap-3 justify-between mt-8">
             <button
               onClick={() => navigate(-1)}
-              className="px-6 py-2 w-full text-[#004930] border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
+              className="px-6 py-2 w-full text-[#004930] cursor-pointer border border-[#004930] rounded-lg hover:bg-[#b2e7d5] hover:text-black transition-all"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className={`px-6 py-2 w-full mt-3 md:mt-0 bg-[#004930] text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
+              className={`px-6 py-2 w-full mt-3 md:mt-0 cursor-pointer bg-[#004930] text-white rounded-lg ${loading ? "opacity-75" : "hover:bg-[#00371f]"} transition-all`}
               disabled={loading}
             >
               {loading ? "Saving..." : "Save Changes"}

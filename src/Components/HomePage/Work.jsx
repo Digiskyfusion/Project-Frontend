@@ -36,14 +36,14 @@ useEffect(() => {
 
   const content = {
     client: [
-      { img: joboffer, title: 'Search Freelancer', text: 'Search freelancers by category, describe your project, set your budget, and hire the best talent.', route: '/freelancerlist' },
-      { img: jobpost, title: 'Connect with Experts', text: 'Browse top-rated freelancers, check their work, and hire with confidence.', route: '/freelancerlist' },
-      { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/freelancerlist' }
+      { img: joboffer, title: 'Search Freelancer', text: 'Search freelancers by category, describe your project, set your budget, and hire the best talent.', route: '/clientlist' },
+      { img: jobpost, title: 'Connect with Experts', text: 'Browse top-rated freelancers, check their work, and hire with confidence.', route: '/clientlist' },
+      { img: workdone, title: 'Get Work Done', text: 'Track progress, communicate easily, and receive high-quality results.', route: '/clientlist' }
     ],
     freelancer: [
-      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/clientlist" },
-      { img: workdone, title: 'Stay Active on the Platform', text: 'Be online frequently to increase visibility and get more job invitations.', route: "/clientlist" },
-      { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route: "/clientlist" }
+      { img: first, title: 'Create a Winning Profile', text: 'Highlight your skills, experience, and portfolio.', route: "/freelancerlist" },
+      { img: workdone, title: 'Stay Active on the Platform', text: 'Be online frequently to increase visibility and get more job invitations.', route: "/freelancerlist" },
+      { img: joboffer, title: 'Build Your Reputation', text: 'Deliver great work, get positive reviews, and attract more clients.', route: "/freelancerlist" }
     ]
   };
 
@@ -106,7 +106,7 @@ useEffect(() => {
               {/* Button only for client actions */}
               {item.route && (
                 <button
-                  className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                  className="mt-3 px-4 py-2 bg-green-500 cursor-pointer text-white rounded-lg hover:bg-green-600 transition"
                   onClick={() => handleNavigation(item.route)}
                 >
                   {item.title}

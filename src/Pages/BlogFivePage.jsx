@@ -7,7 +7,8 @@ function BlogFivePage() {
   return (
     <>
       <NavbarAlt />
-      <BlogsPage  title={
+      <BlogsPage  
+       title={
     <p>
       Trusted Freelancing Platform for Beginners in India | Start with{' '}
       <a

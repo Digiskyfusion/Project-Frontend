@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { FaEnvelope, FaUserFriends, FaTools, FaArrowLeft } from "react-icons/fa";
 import defaultImage from "./../../assets/Images/userimage.png";
+import SingleUserProfile from "./SingleUserDetail";
 
 const UserDetail = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -123,6 +124,9 @@ const UserDetail = () => {
             <p className="text-gray-700 italic font-medium">"{user.bio}"</p>
           </div>
         )}
+
+        <SingleUserProfile user={user} />
+        
       </div>
       {/* <div className="mt-6">
           <button

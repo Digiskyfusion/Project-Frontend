@@ -67,13 +67,20 @@ import BlogFourPage from "./Pages/BlogFourPage";
 import NewHomePage from './Pages/NewHomePage';
 import BlogFivePage from "./Pages/BlogFivePage";
 import BlogSixPage from "./Pages/BlogSixPage";
-import NewHomeone from "./Components/NewHomePage/NewHomeone";
+import JobListPage from "./Pages/JobListPage";
+import BlogSevenPage from "./Pages/BlogSevenPage";
+import PortfolioPage from "./Pages/PortfolioPage";
+import { getSubdomain } from "./utils/getSubdomain";
+import UsersWithWork from "./Components/Client/UserWithWork";
+import SearchResults from "./Components/ServicePage/SearchResults";
+import SearchResultPage from "./Pages/SearchResultPage";
 
 
 
 
 
 function App() {
+  const subdomain = getSubdomain();
 
   const[fcmToken, setFcmToken] = useState(null);
 
@@ -141,6 +148,14 @@ function App() {
     }
   }, []);
 
+  if (
+    subdomain &&
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1"
+  ) {
+    return <PortfolioPage />;
+  }
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -148,7 +163,7 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<NewHomePage />} />
-        <Route path="/singleapge" element={<NewHomeone />} />
+        {/* <Route path="/singleapge" element={<NewHomeone />} /> */}
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/ChooseUSPage" element={<ChooseUSPage />} />
         <Route path="/livechat/:id" element={<LiveChatPage />} />
@@ -187,6 +202,8 @@ function App() {
         <Route path="/cart" element={<CartTvPage />} />
         <Route path="/postjob" element={<PostJobPage />} />
         <Route path="/all-jobs" element={<AllJobsPage />} />
+        <Route path="/joblist" element={<JobListPage />} />
+        <Route path="/userwork" element={<UsersWithWork />} />
         {/* <Route path="/Freelancerprofile" element={<FreelancerProfileUpdate />} /> */}
         <Route path="/createreview" element={<WriteReviewPage />} />
         <Route path="/reviewslist" element={<AllReviewPage />} />
@@ -212,6 +229,9 @@ function App() {
         <Route path="/blog/online-jobs-10th-pass" element={<BlogFourPage />} />
         <Route path="/blog/trusted-freelancing-platform-for-beginners" element={<BlogFivePage />} />
         <Route path="/blog/how-to-earn-online-after-12th" element={<BlogSixPage />} />
+        <Route path="/blog/earn-money-online-in-india-without-investment" element={<BlogSevenPage/>} />
+        <Route path="/portfolio/:username" element={<PortfolioPage />} />
+            <Route path="/search/:keyword" element={<SearchResultPage />} />
         {/* <Route path="/newHomepage" element={<NewHomePage />} /> */}
       </Routes>
 

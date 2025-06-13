@@ -177,10 +177,16 @@ import EditProfileHiddenContent from "../Components/EditProfileHidden/EditProfil
 
 
               </div>
-              <div>
+              {/* <div>
               <label className="block text-gray-700 font-medium mb-2">Your Credits</label>
               <p className="text-lg font-semibold text-gray-800 bg-gray-200 px-4 py-2 rounded-md">
   {user.credits}
+</p>
+              </div> */}
+              <div>
+              <label className="block text-gray-700 font-medium mb-2">Your Plan</label>
+              <p className="text-lg font-semibold text-gray-800 bg-gray-200 px-4 py-2 rounded-md">
+  {user.plan ? user.plan : `You don't have any plan`}
 </p>
               </div>
             </div>
