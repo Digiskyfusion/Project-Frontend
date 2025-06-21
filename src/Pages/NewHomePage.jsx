@@ -5,7 +5,7 @@ import HeaderGlobal from "../Components/Header";
 import NewHomeone from '../Components/NewHomePage/NewHomeone';
 import Footer from '../Components/Footer/Footer';
 import NewHomeFour from './../Components/NewHomePage/NewHomeFour';
-import NewHomeTwo from './../Components/NewHomePage/NewHomeTwo';
+// import NewHomeTwo from './../Components/NewHomePage/NewHomeTwo';
 import NewHomeFive from '../Components/NewHomePage/NewHomeFive';
 import NewHomeSix from '../Components/NewHomePage/NewHomeSix';
 import UserCarousel from '../Components/NewHomePage/UserCarousel';
@@ -14,7 +14,7 @@ import Work from '../Components/HomePage/Work';
 import HomeOneNew from '../Components/NewHomePage/homeOneNew';
 
 // Lazy load NewHomeZero
-const NewHomeZero = lazy(() => import('../Components/NewHomePage/NewHomeZero'));
+// const NewHomeZero = lazy(() => import('../Components/NewHomePage/NewHomeZero'));
 
 function NewHomePage() {
   const [roleType, setRoleType] = useState(null);
