@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter';
 // import one from '../../assets/Images/one.png';
-import two from '../../assets/Images/two.png';
-import three from '../../assets/Images/three.png';
+// import one from '../../assets/Images/two.png';
+// import three from '../../assets/Images/three.png';
 // import one from '../../assets/Images/newone.jpg';
-import one from '../../assets/Images/newone1.jpg';
+// import two from '../../assets/Images/newone1.jpg';
+// import two from '../../assets/Images/Airbrush-image-extender.jpeg';
+import one from '../../assets/Images/twonew.jpg';
+// import three from '../../assets/Images/threenew.jpg';
+// import three from '../../assets/Images/newone.png';
+import three from '../../assets/Images/finalone.jpeg';
+import two from '../../assets/Images/threenew.jpeg';
+
 
 const carouselData = [
   {
@@ -64,7 +71,7 @@ function HomeOneNew() {
 
 
       {/* Overlay to darken the background for better readability */}
-      <div className="absolute inset-0 bg-black/50 z-0" />
+      <div className="absolute inset-0 bg-black/35 z-0" />
 
       {/* Text Content */}
       <div className="relative p-8 rounded-xl text-center sm:text-start max-w-5xl z-10">
