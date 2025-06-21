@@ -11,6 +11,7 @@ import NewHomeSix from '../Components/NewHomePage/NewHomeSix';
 import UserCarousel from '../Components/NewHomePage/UserCarousel';
 import NewHomeThree from '../Components/NewHomePage/NewHomeThree';
 import Work from '../Components/HomePage/Work';
+import HomeOneNew from '../Components/NewHomePage/homeOneNew';
 
 // Lazy load NewHomeZero
 const NewHomeZero = lazy(() => import('../Components/NewHomePage/NewHomeZero'));
@@ -44,8 +45,8 @@ function NewHomePage() {
 
       {/* Suspense wrapper for lazy-loaded NewHomeZero */}
       <Suspense fallback={<div className="text-center min-h-screen flex items-center justify-center my-10 text-green-950 font-bold text-5xl">Loading...</div>}>
-        <NewHomeZero />
-     
+        {/* <NewHomeZero /> */}
+     <HomeOneNew />
 
       <NewHomeone />
       <NewHomeFour />

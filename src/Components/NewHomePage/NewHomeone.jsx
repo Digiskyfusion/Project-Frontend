@@ -64,7 +64,7 @@ export default function NewHomeone() {
   }, [isInView, controls]);
 
   return (
-    <div className="flex items-center justify-center px-6 py-12 bg-white overflow-hidden eb-garamond">
+    <div className="flex items-center justify-center px-6 py-3 sm:py-12 bg-white overflow-hidden eb-garamond">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl">
 
         {/* ✅ Left Section (Cards) */}
