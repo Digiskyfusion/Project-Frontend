@@ -1,38 +1,27 @@
+// Updated Signuppage Component with Enhancements
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import {
-  FaUser,
-  FaGlobe,
-  FaEnvelope,
-  FaPhone,
-  FaLock,
-  FaUsers,
-  FaEye,
-  FaEyeSlash,
-  FaGoogle,
-  FaApple,
-} from "react-icons/fa";
-// import newpic from "./../../assets/Images/new pic.png";
+import { FaUser, FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
 import Logo from "../../assets/Images/digilogo12.png";
 import newpic from "../../assets/Images/signupnew.png";
-import Select from 'react-select';
-import { getNames, getCode } from 'country-list';
-import { getCountryCallingCode } from 'libphonenumber-js';
-
-
+import Select from "react-select";
+import { getNames, getCode } from "country-list";
+import { getCountryCallingCode } from "libphonenumber-js";
 
 function Signuppage() {
-  const countryOptions = getNames().map(name => ({ value: name, label: name }));
+  const countryOptions = getNames().map((name) => ({
+    value: name,
+    label: name,
+  }));
   const API_URL = import.meta.env.VITE_API_URL;
-  console.log("API_URL");
-  console.log(API_URL);
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirm_password, setShowconfirm_password] = useState(false);
-  const [countries, setCountries] = useState([]);
   const [phonePrefix, setPhonePrefix] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,44 +31,58 @@ function Signuppage() {
     mobileNumber: "",
     city: "",
     country: "",
+    state: "",
   });
 
   useEffect(() => {
-    const countryNames = getNames();
-    setCountries(countryNames);
+    // no-op, previously used for setting countries
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-     // If user selected country, update country and phone prefix
-    if (name === "country") {
-      const isoCode = getCode(value); // e.g. "India" → "IN"
-      const callingCode = getCountryCallingCode(isoCode); // e.g. "IN" → "91"
-      setPhonePrefix(`+${callingCode}`);
-    }
-
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleRoleChange = (role) => {
-    // console.log(role);
-
     setFormData((prevData) => ({ ...prevData, roleType: role }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData); // Check if state is included pr
-    if (formData.password !== formData.confirm_password) {
+    setLoading(true);
+    const missingFields = [];
+    const trimmedData = {
+      ...formData,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobileNumber: formData.mobileNumber.trim(),
+    };
+
+    if (!trimmedData.name) missingFields.push("Name");
+    if (!trimmedData.email) missingFields.push("Email");
+    if (!trimmedData.password) missingFields.push("Password");
+    if (!trimmedData.confirm_password) missingFields.push("Confirm Password");
+    if (!trimmedData.country) missingFields.push("Country");
+    if (!trimmedData.mobileNumber) missingFields.push("Mobile Number");
+
+    if (missingFields.length > 0) {
+      setLoading(false);
+      return toast.error(`Please fill: ${missingFields.join(", ")}`);
+    }
+
+    if (trimmedData.password !== trimmedData.confirm_password) {
+      setLoading(false);
       return toast.error("Passwords do not match!");
     }
 
     try {
-      const response = await axios.post(`${API_URL}/user/register`, formData);
-      console.log("Response:", response);
+      const response = await axios.post(
+        `${API_URL}/user/register`,
+        trimmedData
+      );
 
       if (response.status === 200) {
-        toast.success("user register successfully");
+        toast.success("User registered successfully");
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
         navigate("/login");
@@ -92,14 +95,15 @@ function Signuppage() {
           confirm_password: "",
           roleType: "",
           mobileNumber: "",
+          city: "",
+          state: "",
         });
-      } else {
-        toast.success("user register successfully");
-        navigate("/login");
       }
     } catch (error) {
       console.error("Signup Error:", error);
       toast.error(error.response?.data?.message || "Signup failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,7 +119,6 @@ function Signuppage() {
               className="h-12 bg-black rounded-md md:h-16 "
             />
           </Link>
-
           <p className="mb-6 text-gray-600">Create an account to continue</p>
 
           <div className="w-full mb-4">
@@ -151,34 +154,39 @@ function Signuppage() {
             <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
               <label className="relative">
                 <input
+                  autoFocus
                   type="text"
                   name="name"
+                  autoComplete="name"
                   placeholder="Enter name"
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg"
+                  required
                 />
                 <FaUser className="absolute text-gray-400 right-3 top-3" />
               </label>
-             {/* COUNTRY DROPDOWN */}
-     <label className="relative w-full">
- <Select
-  options={countryOptions}
-  placeholder="Select a country" // <-- This line
-  value={countryOptions.find(opt => opt.value === formData.country)}
-  onChange={(selectedOption) => {
-    const name = selectedOption?.value || "";
-    const iso = getCode(name);
-    const code = getCountryCallingCode(iso);
-    setFormData(prev => ({ ...prev, country: name }));
-    setPhonePrefix(`+${code}`);
-  }}
-  className="w-full"
-  classNamePrefix="react-select"
-/>
-
-</label>
-
+              <label className="relative w-full">
+                <Select
+                  options={countryOptions}
+                  placeholder="Select a country"
+                  value={countryOptions.find(
+                    (opt) => opt.value === formData.country
+                  )}
+                  onChange={(selectedOption) => {
+                    const name = selectedOption?.value || "";
+                    const iso = getCode(name);
+                    if (iso) {
+                      const code = getCountryCallingCode(iso);
+                      setPhonePrefix(`+${code}`);
+                    }
+                    setFormData((prev) => ({ ...prev, country: name }));
+                  }}
+                  className="w-full"
+                  classNamePrefix="react-select"
+                  required
+                />
+              </label>
             </div>
 
             <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
@@ -186,26 +194,34 @@ function Signuppage() {
                 <input
                   type="email"
                   name="email"
+                  autoComplete="email"
                   placeholder="Enter email"
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg"
+                  required
                 />
                 <FaEnvelope className="absolute text-gray-400 right-3 top-3" />
               </label>
-               <label className="relative w-full">
-        <input
-          type="text"
-          name="mobileNumber"
-          value={phonePrefix + formData.mobileNumber}
-          onChange={(e) => {
-            const input = e.target.value.replace(phonePrefix, '');
-            setFormData((prev) => ({ ...prev, mobileNumber: input }));
-          }}
-          placeholder="Enter phone number"
-          className="w-full p-2 border rounded-lg"
-        />
-      </label>
+              <label className="relative w-full">
+                <input
+                  type="tel"
+                  name="mobileNumber"
+                  autoComplete="tel"
+                  value={phonePrefix + formData.mobileNumber}
+                  onChange={(e) => {
+                    const input = e.target.value.replace(phonePrefix, "");
+                    const numericInput = input.replace(/\D/g, "").slice(0, 10);
+                    setFormData((prev) => ({
+                      ...prev,
+                      mobileNumber: numericInput,
+                    }));
+                  }}
+                  placeholder="Enter phone number"
+                  className="w-full p-2 border rounded-lg"
+                  required
+                />
+              </label>
             </div>
 
             <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
@@ -213,10 +229,12 @@ function Signuppage() {
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  autoComplete="new-password"
                   placeholder="Enter password"
                   value={formData.password}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg"
+                  required
                 />
                 <button
                   type="button"
@@ -234,6 +252,7 @@ function Signuppage() {
                   value={formData.confirm_password}
                   onChange={handleChange}
                   className="w-full p-2 border rounded-lg"
+                  required
                 />
                 <button
                   type="button"
@@ -244,6 +263,7 @@ function Signuppage() {
                 </button>
               </label>
             </div>
+
             <p className="p-3 text-sm font-medium text-gray-700 bg-gray-100 border-l-4 border-blue-500 rounded-md">
               You have to use{" "}
               <span className="font-bold text-blue-600">Alphabet</span>,{" "}
@@ -253,8 +273,12 @@ function Signuppage() {
               <span className="font-bold text-orange-600">Lowercase</span> in
               your password.
             </p>
-            <button className="w-full py-3 text-white bg-green-700 rounded-lg cursor-pointer">
-              Sign Up
+
+            <button
+              className="w-full py-3 text-white bg-green-700 rounded-lg cursor-pointer disabled:opacity-50"
+              disabled={loading}
+            >
+              {loading ? "Registering..." : "Sign Up"}
             </button>
 
             <p className="mt-2 text-sm text-center text-gray-600">
@@ -264,13 +288,8 @@ function Signuppage() {
               </Link>
             </p>
           </form>
-
-          {/* <div className="flex flex-col items-center w-full gap-4 mt-6">
-          <button className="flex items-center w-full gap-2 px-6 py-2 text-center text-gray-700 border border-gray-300 rounded-lg">
-            <FaGoogle className="text-xl" /> Continue with Google
-          </button>
-        </div> */}
         </div>
+
         <div className="justify-center hidden w-1/2 md:flex">
           <img
             loading="lazy"
@@ -278,43 +297,6 @@ function Signuppage() {
             alt="Signup"
             className="w-full max-w-lg rounded-lg shadow-lg"
           />
-        </div>
-      </div>
-
-      <div className="px-4 py-8 bg-gray-100">
-        <h1 className="mb-8 text-xl italic font-bold text-center text-gray-800 underline md:text-3xl decoration-green-700 decoration-2">
-          Explore Ours
-        </h1>
-
-        <div className="grid max-w-6xl grid-cols-1 gap-8 px-4 mx-auto md:grid-cols-2">
-          {/* Client Demo */}
-          <div className="p-3 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:shadow-lg">
-            <p className="mb-3 text-lg italic font-medium text-center text-green-700">
-              Client Demo
-            </p>
-            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
-              <iframe
-                src="https://www.youtube.com/embed/cGP8DunjPys"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                className="absolute top-0 left-0 object-cover w-full h-full"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Freelancer Demo */}
-          <div className="p-3 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:shadow-lg">
-            <p className="mb-3 text-lg italic font-medium text-center text-green-700">
-              Freelancer Demo
-            </p>
-            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
-              <iframe
-                className="absolute top-0 left-0 object-cover w-full h-full"
-                src="https://www.youtube.com/embed/41FH3-GKPcI"
-                title="YouTube video player"
-              ></iframe>
-            </div>
-          </div>
         </div>
       </div>
     </>
