@@ -57,6 +57,11 @@ function Signuppage() {
       email: formData.email.trim(),
       mobileNumber: formData.mobileNumber.trim(),
     };
+    
+    if(!trimmedData.roleType?.length > 0){
+      setLoading(false);
+      return toast.error('Please select a role.')
+    }
 
     if (!trimmedData.name) missingFields.push("Name");
     if (!trimmedData.email) missingFields.push("Email");
@@ -64,6 +69,8 @@ function Signuppage() {
     if (!trimmedData.confirm_password) missingFields.push("Confirm Password");
     if (!trimmedData.country) missingFields.push("Country");
     if (!trimmedData.mobileNumber) missingFields.push("Mobile Number");
+
+    
 
     if (missingFields.length > 0) {
       setLoading(false);
@@ -264,7 +271,7 @@ function Signuppage() {
               </label>
             </div>
 
-            <p className="p-3 text-sm font-medium text-gray-700 bg-gray-100 border-l-4 border-blue-500 rounded-md">
+            {/* <p className="p-3 text-sm font-medium text-gray-700 bg-gray-100 border-l-4 border-blue-500 rounded-md">
               You have to use{" "}
               <span className="font-bold text-blue-600">Alphabet</span>,{" "}
               <span className="font-bold text-green-600">Numeric</span>,{" "}
@@ -272,6 +279,10 @@ function Signuppage() {
               <span className="font-bold text-purple-600">Uppercase</span>, and{" "}
               <span className="font-bold text-orange-600">Lowercase</span> in
               your password.
+            </p> */}
+            <p className="p-3 text-sm font-medium text-gray-700 bg-gray-100 border-l-4 border-blue-500 rounded-md">
+              All fields are 
+              <span className="font-bold text-red-600"> required</span>.{" "}
             </p>
 
             <button
