@@ -1,20 +1,38 @@
-import { useState } from "react";
-import { useNavigate , Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { FaUser, FaGlobe, FaEnvelope, FaPhone, FaLock, FaUsers, FaEye, FaEyeSlash, FaGoogle, FaApple } from "react-icons/fa";
+import {
+  FaUser,
+  FaGlobe,
+  FaEnvelope,
+  FaPhone,
+  FaLock,
+  FaUsers,
+  FaEye,
+  FaEyeSlash,
+  FaGoogle,
+  FaApple,
+} from "react-icons/fa";
 // import newpic from "./../../assets/Images/new pic.png";
-import Logo from '../../assets/Images/digilogo12.png';
-import newpic from '../../assets/Images/signupnew.png';
+import Logo from "../../assets/Images/digilogo12.png";
+import newpic from "../../assets/Images/signupnew.png";
+import Select from 'react-select';
+import { getNames, getCode } from 'country-list';
+import { getCountryCallingCode } from 'libphonenumber-js';
+
 
 
 function Signuppage() {
+  const countryOptions = getNames().map(name => ({ value: name, label: name }));
   const API_URL = import.meta.env.VITE_API_URL;
   console.log("API_URL");
   console.log(API_URL);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirm_password, setShowconfirm_password] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [phonePrefix, setPhonePrefix] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,19 +41,30 @@ function Signuppage() {
     roleType: "",
     state: "",
     mobileNumber: "",
-    city:"",
-    country:"",
+    city: "",
+    country: "",
   });
+
+  useEffect(() => {
+    const countryNames = getNames();
+    setCountries(countryNames);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value); // Debugging
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+     // If user selected country, update country and phone prefix
+    if (name === "country") {
+      const isoCode = getCode(value); // e.g. "India" → "IN"
+      const callingCode = getCountryCallingCode(isoCode); // e.g. "IN" → "91"
+      setPhonePrefix(`+${callingCode}`);
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleRoleChange = (role) => {
     // console.log(role);
-    
+
     setFormData((prevData) => ({ ...prevData, roleType: role }));
   };
 
@@ -77,280 +106,218 @@ function Signuppage() {
 
   return (
     <>
-    <div className="flex flex-col md:flex-row items-center justify-center p-6 bg-gray-100 ">
-      <Toaster />
-      <div className="p-8 bg-white shadow-lg rounded-lg w-full md:w-1/2 flex flex-col items-center">
-      <Link to="/" className="text-2xl font-bold">
-                 <img src={Logo} alt="Logo" className="bg-black h-12  md:h-16 rounded-md " />
-               </Link>
-        
-        <p className="text-gray-600 mb-6">Create an account to continue</p>
+      <div className="flex flex-col items-center justify-center p-6 bg-gray-100 md:flex-row ">
+        <Toaster />
+        <div className="flex flex-col items-center w-full p-8 bg-white rounded-lg shadow-lg md:w-1/2">
+          <Link to="/" className="text-2xl font-bold">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="h-12 bg-black rounded-md md:h-16 "
+            />
+          </Link>
 
-        <div className="w-full mb-4">
-          <span className="font-medium text-gray-700">Select Role:</span>
-          <div className="flex justify-between gap-4 mt-2">
-            <button className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${formData.roleType === "freelancer" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("freelancer")}>
-              Freelancer
-            </button>
-            <button className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${formData.roleType === "client" ? "bg-green-700 text-white" : "border-gray-300"}`} onClick={() => handleRoleChange("client")}>
-              Client
-            </button>
-          </div>
-        </div>
+          <p className="mb-6 text-gray-600">Create an account to continue</p>
 
-        <form className="w-full flex flex-col space-y-4" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <label className="relative">
-              <input type="text" name="name" placeholder="Enter name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-              <FaUser className="absolute right-3 top-3 text-gray-400" />
-            </label>
-            <label className="relative w-full">
-  <select
-    name="country"
-    value={formData.country}
-    onChange={handleChange}
-    className="w-full p-2 border rounded-lg appearance-none bg-white"
-  >
-    <option value="">Select a country</option>
-    <option value="Andhra Pradesh">Andhra Pradesh</option>
-    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-    <option value="Assam">Assam</option>
-    <option value="Bihar">Bihar</option>
-    <option value="Chhattisgarh">Chhattisgarh</option>
-    <option value="Goa">Goa</option>
-    <option value="Gujarat">Gujarat</option>
-    <option value="Haryana">Haryana</option>
-    <option value="Himachal Pradesh">Himachal Pradesh</option>
-    <option value="Jharkhand">Jharkhand</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-    <option value="Madhya Pradesh">Madhya Pradesh</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Manipur">Manipur</option>
-    <option value="Meghalaya">Meghalaya</option>
-    <option value="Mizoram">Mizoram</option>
-    <option value="Nagaland">Nagaland</option>
-    <option value="Odisha">Odisha</option>
-    <option value="Punjab">Punjab</option>
-    <option value="Rajasthan">Rajasthan</option>
-    <option value="Sikkim">Sikkim</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
-    <option value="Telangana">Telangana</option>
-    <option value="Tripura">Tripura</option>
-    <option value="Uttar Pradesh">Uttar Pradesh</option>
-    <option value="Uttarakhand">Uttarakhand</option>
-    <option value="West Bengal">West Bengal</option>
-    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-    <option value="Chandigarh">Chandigarh</option>
-    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-    <option value="Lakshadweep">Lakshadweep</option>
-    <option value="Delhi">Delhi</option>
-    <option value="Puducherry">Puducherry</option>
-    <option value="Ladakh">Ladakh</option>
-    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  </select>
-</label>
-
-          </div>
-
-
-
-
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-   <label className="relative w-full">
-  <select
-    name="state"
-    value={formData.state}
-    onChange={handleChange}
-    className="w-full p-2 border rounded-lg appearance-none bg-white"
-  >
-    <option value="">Select a state</option>
-    <option value="Andhra Pradesh">Andhra Pradesh</option>
-    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-    <option value="Assam">Assam</option>
-    <option value="Bihar">Bihar</option>
-    <option value="Chhattisgarh">Chhattisgarh</option>
-    <option value="Goa">Goa</option>
-    <option value="Gujarat">Gujarat</option>
-    <option value="Haryana">Haryana</option>
-    <option value="Himachal Pradesh">Himachal Pradesh</option>
-    <option value="Jharkhand">Jharkhand</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-    <option value="Madhya Pradesh">Madhya Pradesh</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Manipur">Manipur</option>
-    <option value="Meghalaya">Meghalaya</option>
-    <option value="Mizoram">Mizoram</option>
-    <option value="Nagaland">Nagaland</option>
-    <option value="Odisha">Odisha</option>
-    <option value="Punjab">Punjab</option>
-    <option value="Rajasthan">Rajasthan</option>
-    <option value="Sikkim">Sikkim</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
-    <option value="Telangana">Telangana</option>
-    <option value="Tripura">Tripura</option>
-    <option value="Uttar Pradesh">Uttar Pradesh</option>
-    <option value="Uttarakhand">Uttarakhand</option>
-    <option value="West Bengal">West Bengal</option>
-    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-    <option value="Chandigarh">Chandigarh</option>
-    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-    <option value="Lakshadweep">Lakshadweep</option>
-    <option value="Delhi">Delhi</option>
-    <option value="Puducherry">Puducherry</option>
-    <option value="Ladakh">Ladakh</option>
-    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  </select>
-</label>
-
-<label className="relative w-full">
-  <select
-    name="city"
-    value={formData.city}
-    onChange={handleChange}
-    className="w-full p-2 border rounded-lg appearance-none bg-white"
-  >
-    <option value="">Select a city</option>
-    <option value="Andhra Pradesh">Andhra Pradesh</option>
-    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-    <option value="Assam">Assam</option>
-    <option value="Bihar">Bihar</option>
-    <option value="Chhattisgarh">Chhattisgarh</option>
-    <option value="Goa">Goa</option>
-    <option value="Gujarat">Gujarat</option>
-    <option value="Haryana">Haryana</option>
-    <option value="Himachal Pradesh">Himachal Pradesh</option>
-    <option value="Jharkhand">Jharkhand</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-    <option value="Madhya Pradesh">Madhya Pradesh</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Manipur">Manipur</option>
-    <option value="Meghalaya">Meghalaya</option>
-    <option value="Mizoram">Mizoram</option>
-    <option value="Nagaland">Nagaland</option>
-    <option value="Odisha">Odisha</option>
-    <option value="Punjab">Punjab</option>
-    <option value="Rajasthan">Rajasthan</option>
-    <option value="Sikkim">Sikkim</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
-    <option value="Telangana">Telangana</option>
-    <option value="Tripura">Tripura</option>
-    <option value="Uttar Pradesh">Uttar Pradesh</option>
-    <option value="Uttarakhand">Uttarakhand</option>
-    <option value="West Bengal">West Bengal</option>
-    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-    <option value="Chandigarh">Chandigarh</option>
-    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-    <option value="Lakshadweep">Lakshadweep</option>
-    <option value="Delhi">Delhi</option>
-    <option value="Puducherry">Puducherry</option>
-    <option value="Ladakh">Ladakh</option>
-    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-  </select>
-</label>
-
-</div> */}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <label className="relative">
-              <input type="email" name="email" placeholder="Enter email" value={formData.email} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-              <FaEnvelope className="absolute right-3 top-3 text-gray-400" />
-            </label>
-            <label className="relative">
-              <input type="text" name="mobileNumber" placeholder="Enter phone number" value={formData.mobileNumber} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-              <FaPhone className="absolute right-3 top-3 text-gray-400" />
-            </label>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <label className="relative">
-              <input type={showPassword ? "text" : "password"} name="password" placeholder="Enter password" value={formData.password} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-              <button type="button" className="absolute right-3 top-3 text-gray-400" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+          <div className="w-full mb-4">
+            <span className="font-medium text-gray-700">Select Role:</span>
+            <div className="flex justify-between gap-4 mt-2">
+              <button
+                className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${
+                  formData.roleType === "freelancer"
+                    ? "bg-green-700 text-white"
+                    : "border-gray-300"
+                }`}
+                onClick={() => handleRoleChange("freelancer")}
+              >
+                Freelancer
               </button>
-            </label>
-            <label className="relative">
-            <input type={showconfirm_password ? "text" : "password"} name="confirm_password" placeholder="Confirm password" value={formData.confirm_password} onChange={handleChange} className="w-full p-2 border rounded-lg" />
-            <button type="button" className="absolute right-3 top-3 text-gray-400" onClick={() => setShowconfirm_password(!showconfirm_password)}>
-              {showconfirm_password ? <FaEyeSlash /> : <FaEye />}
-            </button>
-          </label>
+              <button
+                className={`px-4 py-2 w-1/2 border cursor-pointer rounded-lg ${
+                  formData.roleType === "client"
+                    ? "bg-green-700 text-white"
+                    : "border-gray-300"
+                }`}
+                onClick={() => handleRoleChange("client")}
+              >
+                Client
+              </button>
+            </div>
           </div>
-          <p className="text-sm text-gray-700 font-medium bg-gray-100 p-3 rounded-md border-l-4 border-blue-500">
-      You have to use{" "}
-      <span className="font-bold text-blue-600">Alphabet</span>,{" "}
-      <span className="font-bold text-green-600">Numeric</span>,{" "}
-      <span className="font-bold text-red-600">Symbol</span>,{" "}
-      <span className="font-bold text-purple-600">Uppercase</span>, and{" "}
-      <span className="font-bold text-orange-600">Lowercase</span> in your password.
-    </p>
-           <button className="bg-green-700 text-white py-3 cursor-pointer rounded-lg w-full">Sign Up</button>
 
-          <p className="text-gray-600 text-sm text-center mt-2">
-            Already have an account?{" "}
-            <Link to="/login" className="text-green-700 font-medium">Login</Link>
-          </p>
-        </form>
+          <form
+            className="flex flex-col w-full space-y-4"
+            onSubmit={handleSubmit}
+          >
+            <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+              <label className="relative">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <FaUser className="absolute text-gray-400 right-3 top-3" />
+              </label>
+             {/* COUNTRY DROPDOWN */}
+     <label className="relative w-full">
+ <Select
+  options={countryOptions}
+  placeholder="Select a country" // <-- This line
+  value={countryOptions.find(opt => opt.value === formData.country)}
+  onChange={(selectedOption) => {
+    const name = selectedOption?.value || "";
+    const iso = getCode(name);
+    const code = getCountryCallingCode(iso);
+    setFormData(prev => ({ ...prev, country: name }));
+    setPhonePrefix(`+${code}`);
+  }}
+  className="w-full"
+  classNamePrefix="react-select"
+/>
 
-        {/* <div className="flex flex-col items-center gap-4 mt-6 w-full">
-          <button className="flex items-center gap-2 border border-gray-300 text-gray-700 py-2 px-6 rounded-lg w-full text-center">
+</label>
+
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+              <label className="relative">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <FaEnvelope className="absolute text-gray-400 right-3 top-3" />
+              </label>
+               <label className="relative w-full">
+        <input
+          type="text"
+          name="mobileNumber"
+          value={phonePrefix + formData.mobileNumber}
+          onChange={(e) => {
+            const input = e.target.value.replace(phonePrefix, '');
+            setFormData((prev) => ({ ...prev, mobileNumber: input }));
+          }}
+          placeholder="Enter phone number"
+          className="w-full p-2 border rounded-lg"
+        />
+      </label>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
+              <label className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <button
+                  type="button"
+                  className="absolute text-gray-400 right-3 top-3"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </label>
+              <label className="relative">
+                <input
+                  type={showconfirm_password ? "text" : "password"}
+                  name="confirm_password"
+                  placeholder="Confirm password"
+                  value={formData.confirm_password}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <button
+                  type="button"
+                  className="absolute text-gray-400 right-3 top-3"
+                  onClick={() => setShowconfirm_password(!showconfirm_password)}
+                >
+                  {showconfirm_password ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </label>
+            </div>
+            <p className="p-3 text-sm font-medium text-gray-700 bg-gray-100 border-l-4 border-blue-500 rounded-md">
+              You have to use{" "}
+              <span className="font-bold text-blue-600">Alphabet</span>,{" "}
+              <span className="font-bold text-green-600">Numeric</span>,{" "}
+              <span className="font-bold text-red-600">Symbol</span>,{" "}
+              <span className="font-bold text-purple-600">Uppercase</span>, and{" "}
+              <span className="font-bold text-orange-600">Lowercase</span> in
+              your password.
+            </p>
+            <button className="w-full py-3 text-white bg-green-700 rounded-lg cursor-pointer">
+              Sign Up
+            </button>
+
+            <p className="mt-2 text-sm text-center text-gray-600">
+              Already have an account?{" "}
+              <Link to="/login" className="font-medium text-green-700">
+                Login
+              </Link>
+            </p>
+          </form>
+
+          {/* <div className="flex flex-col items-center w-full gap-4 mt-6">
+          <button className="flex items-center w-full gap-2 px-6 py-2 text-center text-gray-700 border border-gray-300 rounded-lg">
             <FaGoogle className="text-xl" /> Continue with Google
           </button>
         </div> */}
+        </div>
+        <div className="justify-center hidden w-1/2 md:flex">
+          <img
+            loading="lazy"
+            src={newpic}
+            alt="Signup"
+            className="w-full max-w-lg rounded-lg shadow-lg"
+          />
+        </div>
       </div>
-      <div className="hidden md:flex justify-center w-1/2">
-        <img loading="lazy" src={newpic} alt="Signup" className="w-full max-w-lg shadow-lg rounded-lg" />
+
+      <div className="px-4 py-8 bg-gray-100">
+        <h1 className="mb-8 text-xl italic font-bold text-center text-gray-800 underline md:text-3xl decoration-green-700 decoration-2">
+          Explore Ours
+        </h1>
+
+        <div className="grid max-w-6xl grid-cols-1 gap-8 px-4 mx-auto md:grid-cols-2">
+          {/* Client Demo */}
+          <div className="p-3 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:shadow-lg">
+            <p className="mb-3 text-lg italic font-medium text-center text-green-700">
+              Client Demo
+            </p>
+            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+              <iframe
+                src="https://www.youtube.com/embed/cGP8DunjPys"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                className="absolute top-0 left-0 object-cover w-full h-full"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* Freelancer Demo */}
+          <div className="p-3 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:shadow-lg">
+            <p className="mb-3 text-lg italic font-medium text-center text-green-700">
+              Freelancer Demo
+            </p>
+            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
+              <iframe
+                className="absolute top-0 left-0 object-cover w-full h-full"
+                src="https://www.youtube.com/embed/41FH3-GKPcI"
+                title="YouTube video player"
+              ></iframe>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-
-
-    <div className="bg-gray-100 py-8 px-4">
-       <h1 className="text-center text-xl md:text-3xl font-bold italic text-gray-800 mb-8 underline decoration-green-700 decoration-2">
-         Explore Ours
-       </h1>
-     
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
-   {/* Client Demo */}
-   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
-     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
-       Client Demo
-     </p>
-     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
-       <iframe
-       src="https://www.youtube.com/embed/cGP8DunjPys"
-          title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-         className="absolute top-0 left-0 w-full h-full object-cover"
-       >
-       </iframe>
-     </div>
-   </div>
- 
-   {/* Freelancer Demo */}
-   <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-3 transition-shadow duration-300">
-     <p className="text-center text-lg font-medium italic text-green-700 mb-3">
-       Freelancer Demo
-     </p>
-     <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border border-gray-200">
-       <iframe
-         className="absolute top-0 left-0 w-full h-full object-cover"
-         src="https://www.youtube.com/embed/41FH3-GKPcI" 
-          title="YouTube video player"
-       >
-       </iframe>
-     </div>
-   </div>
- </div>
-</div>
-
-
-
-
-
-
     </>
   );
 }

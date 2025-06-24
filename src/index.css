@@ -138,4 +138,22 @@
     transform: translate(-25%, -25%);
   }
 }
+.react-select__control {
+  border: 1px solid black !important;
+  border-radius: 0.5rem !important; /* Match your other input's rounded-lg */
+    box-shadow: none !important;
+   height: 42px !important;
+  min-height: 42px !important;
+  padding: 0 !important;
+}
+
+.react-select__control--is-focused {
+  border-color: black !important;
+  box-shadow: none !important;
+}
+
+.react-select__single-value {
+  color: #111;
+}
+
 
