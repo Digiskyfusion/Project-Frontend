@@ -117,8 +117,26 @@ function SecondReviews() {
 
           {/* {/ Two Male Image /} */}
           <div className="relative flex justify-center md:justify-end lg:w-[80%] mt-4 lg:mt-0">
-            <img src={twomale} alt='' className='w-full lg:w-[80%] object-contain lg:absolute lg:bottom-[-15.5rem]' />
-          </div>
+  <img
+    src={twomale}
+    alt=""
+    className="
+      w-[90%]
+      sm:w-[85%]
+      md:w-[80%]
+      object-contain
+      mt-6           // Add some top margin on mobile
+      mb-0         // More bottom margin on mobile
+      lg:absolute
+      lg:bottom-[-15.5rem]
+      lg:mt-0
+      lg:mb-7
+      lg:w-[80%]
+    "
+  />
+</div>
+
+
         </div>
       </div>
     </div>

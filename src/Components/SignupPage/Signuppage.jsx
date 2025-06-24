@@ -39,7 +39,6 @@ function Signuppage() {
     password: "",
     confirm_password: "",
     roleType: "",
-    state: "",
     mobileNumber: "",
     city: "",
     country: "",
@@ -87,7 +86,7 @@ function Signuppage() {
 
         setFormData({
           name: "",
-          state: "",
+          country: "",
           email: "",
           password: "",
           confirm_password: "",
