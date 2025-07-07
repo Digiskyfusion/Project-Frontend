@@ -1,17 +1,20 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" },
     {
-      "source": "/portfolio/:username",
-      "destination": "/portfolio"
-    },
-     {
       "source": "/sitemap.xml",
       "destination": "https://digiskyai-backend.onrender.com/sitemap.xml"
     },
     {
       "source": "/robots.txt",
       "destination": "https://digiskyai-backend.onrender.com/robots.txt"
+    },
+    {
+      "source": "/portfolio/:username",
+      "destination": "/portfolio"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
