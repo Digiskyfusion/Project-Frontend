@@ -4,6 +4,14 @@
     {
       "source": "/portfolio/:username",
       "destination": "/portfolio"
+    },
+     {
+      "source": "/sitemap.xml",
+      "destination": "https://digiskyai-backend.onrender.com/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "https://digiskyai-backend.onrender.com/robots.txt"
     }
   ]
 }
