@@ -4,6 +4,7 @@ import  { useState } from "react";
 const ForgotPassword = () => {
   const URL= import.meta.env.VITE_API_URL
 // auth remove form the api url 
+// deployed on this commit 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const handleSubmit = async (e) => {
