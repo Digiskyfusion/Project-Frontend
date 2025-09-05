@@ -7,8 +7,10 @@ const ForgotPassword = () => {
 // deployed on this commit 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch(`${API_URL}/api/forget-password`, {
         method: "POST",
