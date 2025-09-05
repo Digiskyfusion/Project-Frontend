@@ -81,7 +81,7 @@ const handleSubmit = async (e) => {
                </Link>
         
        
-        <p className="text-gray-600 mb-6">Please login to continue</p>
+        <p className="text-gray-600 mb-6">Please login to continue1</p>
 
         <form className="w-full flex flex-col space-y-4" onSubmit={handleSubmit}>
           <label className="relative w-full">
