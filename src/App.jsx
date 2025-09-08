@@ -74,7 +74,7 @@ import { getSubdomain } from "./utils/getSubdomain";
 import UsersWithWork from "./Components/Client/UserWithWork";
 import SearchResults from "./Components/ServicePage/SearchResults";
 import SearchResultPage from "./Pages/SearchResultPage";
-
+import ResetPassword from "./Components/ResetPasswordPage/ResetPassword";
 
 
 
@@ -233,6 +233,7 @@ function App() {
         <Route path="/portfolio/:username" element={<PortfolioPage />} />
             <Route path="/search/:keyword" element={<SearchResultPage />} />
         {/* <Route path="/newHomepage" element={<NewHomePage />} /> */}
+        <Route path="/resetpassword" element={<ResetPassword />} />
       </Routes>
 
 

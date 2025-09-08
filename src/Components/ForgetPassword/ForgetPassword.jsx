@@ -2,14 +2,17 @@ import  { useState } from "react";
 // import {  useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const URL= import.meta.env.VITE_API_URL
-
+ const API_URL = import.meta.env.VITE_API_URL;
+// auth remove form the api url 
+// deployed on this commit 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/forget-password`, {
+      const response = await fetch(`${API_URL}/api/forget-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
