@@ -7,25 +7,25 @@ const MembershipPlans = () => {
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
 
-//   const plans = [
-//   { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
-//   { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
-//   { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
-// ];
-
-
-
-
   const plans = [
-    { name: "Basic", credit: 10, amount: 200, planId: "plan_RFWlozRMl36n2G" },
-    { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
-    {
-      name: "Standard",
-      credit: 25,
-      amount: 400,
-      planId: "plan_Qfr2eVCdI1Vi1w",
-    },
-  ];
+  { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
+  { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+  { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
+];
+
+
+
+
+  // const plans = [
+  //   { name: "Basic", credit: 10, amount: 200, planId: "plan_RFWlozRMl36n2G" },
+  //   { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+  //   {
+  //     name: "Standard",
+  //     credit: 25,
+  //     amount: 400,
+  //     planId: "plan_Qfr2eVCdI1Vi1w",
+  //   },
+  // ];
 
 
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ const MembershipPlans = () => {
     setToken(storedToken);
     setUserId(storedUser?._id);
     setRoleType(storedUser.roleType);
-    console.log('user',storedUser)
+   
     setUserDetails({
       name: storedUser?.name || "",
       email: storedUser?.email || "",
@@ -121,30 +121,24 @@ const MembershipPlans = () => {
 //   }
 // };
 const handleSubscribe = async (plan) => {
-  console.log("[DEBUG-HS-001] handleSubscribe triggered with plan:", plan);
+
   setMessage("");
 
   if (!token || !userId) {
-    console.warn("[DEBUG-HS-002] Token or UserID missing. Redirecting to login.", {
-      token,
-      userId,
-    });
+  
     setMessage("Authentication required. Redirecting to login...");
     setTimeout(() => {
-      console.log("[DEBUG-HS-003] Navigating to /registration due to missing authentication");
+ 
       navigate("/registration");
     }, 1500);
     return;
   }
 
   setLoading(true);
-  console.log("[DEBUG-HS-004] Loading state set to true");
+
 
   try {
-    console.log("[DEBUG-HS-005] Creating subscription request...", {
-      api: `${API_URL}/api/payment/create-subscription`,
-      planId: plan.planId,
-    });
+  
 
     const subRes = await fetch(`${API_URL}/api/payment/create-subscription`, {
       method: "POST",
@@ -152,12 +146,12 @@ const handleSubscribe = async (plan) => {
       body: JSON.stringify({ planId: plan.planId }),
     });
 
-    console.log("[DEBUG-HS-006] Subscription API response received. Status:", subRes.status);
+
     const subData = await subRes.json();
-    console.log("[DEBUG-HS-007] Subscription API response data:", subData);
+  
 
     if (!subRes.ok) {
-      console.error("[DEBUG-HS-008] Subscription API returned error:", subData.error);
+   
       throw new Error(subData.error || "Failed to create subscription");
     }
 
@@ -167,18 +161,9 @@ const handleSubscribe = async (plan) => {
       name: "Digisky AI",
       description: `${plan.name} Plan - Monthly`,
       handler: async function (response) {
-        console.log("[DEBUG-HS-009] Razorpay handler triggered with response:", response);
+       
         try {
-          console.log("[DEBUG-HS-010] Sending verification request...", {
-            api: `${API_URL}/api/payment/verify-subscription`,
-            payload: {
-              razorpay_subscription_id: response.razorpay_subscription_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              userId,
-              plan: plan.name,
-            },
-          });
+        
 
           const verifyRes = await fetch(`${API_URL}/api/payment/verify-subscription`, {
             method: "POST",
@@ -192,16 +177,16 @@ const handleSubscribe = async (plan) => {
             }),
           });
 
-          console.log("[DEBUG-HS-011] Verify API response status:", verifyRes.status);
+        
           const verifyData = await verifyRes.json();
-          console.log("[DEBUG-HS-012] Verify API response data:", verifyData);
+          
 
           if (!verifyRes.ok) {
             console.error("[DEBUG-HS-013] Verification failed:", verifyData.error);
             throw new Error(verifyData.error || "Verification failed");
           }
 
-          console.log("[DEBUG-HS-014] Verification successful. Navigating to receipt page.");
+        
           setMessage(verifyData.message);
           navigate("/reciept");
         } catch (err) {
@@ -218,17 +203,17 @@ const handleSubscribe = async (plan) => {
       theme: { color: "#004930" },
     };
 
-    console.log("[DEBUG-HS-016] Razorpay options ready:", options);
+
 
     const razorpay = new window.Razorpay(options);
-    console.log("[DEBUG-HS-017] Opening Razorpay checkout...");
+   
     razorpay.open();
   } catch (error) {
     console.error("[DEBUG-HS-018] Error during subscription flow:", error);
     setMessage(error.message || "Subscription failed");
   } finally {
     setLoading(false);
-    console.log("[DEBUG-HS-019] Loading state set to false");
+  
   }
 };
 
