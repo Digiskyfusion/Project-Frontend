@@ -6,17 +6,26 @@ const MembershipPlans = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
-  // const plans = [
-  //   { name: "Basic", credit: 10, amount: 200 },
-  //   { name: "Standard", credit: 25, amount: 400 },
-  //   { name: "Premium", credit: 50, amount: 600 },
-  // ];
+
+//   const plans = [
+//   { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
+//   { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+//   { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
+// ];
+
+
+
 
   const plans = [
-  { name: "Basic", credit: 10, amount: 200, planId: "plan_Qfqgtp1Gyp2JLn" },
-  { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
-  { name: "Standard", credit: 25, amount: 400, planId: "plan_Qfr2eVCdI1Vi1w" },
-];
+    { name: "Basic", credit: 10, amount: 200, planId: "plan_RDuPMCz19nXRZF" },
+    { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
+    {
+      name: "Standard",
+      credit: 25,
+      amount: 400,
+      planId: "plan_Qfr2eVCdI1Vi1w",
+    },
+  ];
 
 
   const navigate = useNavigate();
