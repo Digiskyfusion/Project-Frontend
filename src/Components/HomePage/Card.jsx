@@ -17,7 +17,7 @@ const MembershipPlans = () => {
 
 
   const plans = [
-    { name: "Basic", credit: 10, amount: 200, planId: "plan_RDuPMCz19nXRZF" },
+    { name: "Basic", credit: 10, amount: 200, planId: "plan_RFWlozRMl36n2G" },
     { name: "Premium", credit: 50, amount: 600, planId: "plan_Qfr2yBBJVHLAZW" },
     {
       name: "Standard",
